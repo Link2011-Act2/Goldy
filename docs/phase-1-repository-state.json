@@ -1,0 +1,547 @@
+{
+  "schemaVersion": 1,
+  "scope": "Project Goldy Phase 1 read-only investigation; no builds, tests, commits, pushes or releases",
+  "fingerprintNotes": "trackedDiffSha256 hashes UTF-8 git diff --no-ext-diff --binary HEAD, joined with LF and without its final newline; untracked/index/source hashes use raw file bytes; ignored files are outside this inventory",
+  "baseline": {
+    "capturedAtUtc": "2026-10-21T10:02:04.7153964+00:00",
+    "repositories": [
+      {
+        "repository": "D:\\apps\\shutup",
+        "head": "1a18497cfbe62eac20ecf3ba8264cb8daf163fac",
+        "status": [
+          " M app/src/main/java/jp/linkserver/shutter/ui/ShutterApp.kt",
+          " M app/src/main/java/jp/linkserver/shutter/ui/Theme.kt",
+          " M verification/pyrite-migration/report.md",
+          "?? app/src/androidTest/java/jp/linkserver/shutter/ui/PyritePaletteTest.kt",
+          "?? verification/pyrite-light-palette/after-ui.txt",
+          "?? verification/pyrite-light-palette/before-ui.txt",
+          "?? verification/pyrite-light-palette/catalog-color-checks.json",
+          "?? verification/pyrite-light-palette/dark-dynamic-after.json",
+          "?? verification/pyrite-light-palette/dark-dynamic-before.json",
+          "?? verification/pyrite-light-palette/dark-static-after.json",
+          "?? verification/pyrite-light-palette/dark-static-before.json",
+          "?? verification/pyrite-light-palette/image-metrics.json",
+          "?? verification/pyrite-light-palette/light-dynamic-about.png",
+          "?? verification/pyrite-light-palette/light-dynamic-after.json",
+          "?? verification/pyrite-light-palette/light-dynamic-before.json",
+          "?? verification/pyrite-light-palette/light-dynamic-settings.png",
+          "?? verification/pyrite-light-palette/light-static-about.png",
+          "?? verification/pyrite-light-palette/light-static-after.json",
+          "?? verification/pyrite-light-palette/light-static-before.json",
+          "?? verification/pyrite-light-palette/light-static-settings.png",
+          "?? verification/pyrite-light-palette/report.md"
+        ],
+        "trackedDiffSha256": "1680418632e8e1a308f12da423b2626a10cc79d55bc35d01ca307e068c6d64fc",
+        "untrackedFiles": [
+          {
+            "path": "app/src/androidTest/java/jp/linkserver/shutter/ui/PyritePaletteTest.kt",
+            "sha256": "87872eff08dc672f745017005342b37874679c20586df9af33dbbc32006523b6"
+          },
+          {
+            "path": "verification/pyrite-light-palette/after-ui.txt",
+            "sha256": "2a47c40f62ac9f36b3d62db4aa0eca95db9945cba33997ca0e85cd08cda9980e"
+          },
+          {
+            "path": "verification/pyrite-light-palette/before-ui.txt",
+            "sha256": "1fbb43d551f0bc1bf755a28ed427817f6c155ee01670f7700937cee14197d214"
+          },
+          {
+            "path": "verification/pyrite-light-palette/catalog-color-checks.json",
+            "sha256": "6cfac7becf4347e302426e387985cf9bb1bffe1c99fefcd77e7233d22dd2a13b"
+          },
+          {
+            "path": "verification/pyrite-light-palette/dark-dynamic-after.json",
+            "sha256": "817084748626e303e4642050b556c1f627ef140d4c743bf467da4fe8affd67a3"
+          },
+          {
+            "path": "verification/pyrite-light-palette/dark-dynamic-before.json",
+            "sha256": "817084748626e303e4642050b556c1f627ef140d4c743bf467da4fe8affd67a3"
+          },
+          {
+            "path": "verification/pyrite-light-palette/dark-static-after.json",
+            "sha256": "c0cc9054fd17a24fff5690f26b10c735bc3d66ae1421c153f129934c43bd02c4"
+          },
+          {
+            "path": "verification/pyrite-light-palette/dark-static-before.json",
+            "sha256": "c0cc9054fd17a24fff5690f26b10c735bc3d66ae1421c153f129934c43bd02c4"
+          },
+          {
+            "path": "verification/pyrite-light-palette/image-metrics.json",
+            "sha256": "e2f41bb113e7defa0bb5e4ce6dc506c425c2c15bdf83f235bb0921161eac807d"
+          },
+          {
+            "path": "verification/pyrite-light-palette/light-dynamic-about.png",
+            "sha256": "c79be3cbdb56ffd515d7f4a8c460defbe42a6ccac2a06f47471b281ca8cd18b5"
+          },
+          {
+            "path": "verification/pyrite-light-palette/light-dynamic-after.json",
+            "sha256": "a793c225d3efdb82249a0580ae22028a07001605c1d2bd9d7140c9471078b24b"
+          },
+          {
+            "path": "verification/pyrite-light-palette/light-dynamic-before.json",
+            "sha256": "7a3a0d6e1af9e78fe7f1db0a30a98f1e5479765ba38591fd25d67d547d62fb26"
+          },
+          {
+            "path": "verification/pyrite-light-palette/light-dynamic-settings.png",
+            "sha256": "08f153e185c3d5a030effd5d201bdf78aa13d2e138249516d1187e028fc115aa"
+          },
+          {
+            "path": "verification/pyrite-light-palette/light-static-about.png",
+            "sha256": "3d5b36a1a63c8fd9d801cb944e44fd14793c2f4c17ecae3ec96cc6bf8154e36e"
+          },
+          {
+            "path": "verification/pyrite-light-palette/light-static-after.json",
+            "sha256": "04f3e49db0905f9b5170bae8eeab143f581b1e72797aaeedc1e9342ff81a471a"
+          },
+          {
+            "path": "verification/pyrite-light-palette/light-static-before.json",
+            "sha256": "02358f449bd10f9fbc7e4eef5f177aaaa95286e52486aec98602a7b4b8b3e602"
+          },
+          {
+            "path": "verification/pyrite-light-palette/light-static-settings.png",
+            "sha256": "3ceced3309c3ab988811cdffbef05fb9db5685587e240878494726adb6414e16"
+          },
+          {
+            "path": "verification/pyrite-light-palette/report.md",
+            "sha256": "4ce6ce44f18b72fbcf461f80bed69b635995496b2d1362217b462084f36a88c4"
+          }
+        ],
+        "indexSha256": "ca83cc65d47c0cb08f4db87eb58e107de20e6ef7cf1ea95424da869bec4e93f5"
+      },
+      {
+        "repository": "D:\\apps\\schedulernittc",
+        "head": "9fad0402e268902bbfbea485ca216218c17afdf1",
+        "status": [],
+        "trackedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "untrackedFiles": [],
+        "indexSha256": "fe0b970703132671a96de0b8fd5391afa6b528d2e572019fbd9366e085285c5d"
+      },
+      {
+        "repository": "D:\\apps\\glyphvisualizer",
+        "head": "d0adb9c7e98bd888110da7edcd1997ebb29ca4db",
+        "status": [],
+        "trackedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "untrackedFiles": [],
+        "indexSha256": "e8931de32cc807dd05ca4119df322797ed031fd520ac434e3e7020d8420ce50a"
+      }
+    ]
+  },
+  "completion": {
+    "capturedAtUtc": "2026-10-21T10:28:24.686Z",
+    "repositories": [
+      {
+        "repository": "D:\\apps\\shutup",
+        "head": "1a18497cfbe62eac20ecf3ba8264cb8daf163fac",
+        "status": [
+          " M app/src/main/java/jp/linkserver/shutter/ui/ShutterApp.kt",
+          " M app/src/main/java/jp/linkserver/shutter/ui/Theme.kt",
+          " M verification/pyrite-migration/report.md",
+          "?? app/src/androidTest/java/jp/linkserver/shutter/ui/PyritePaletteTest.kt",
+          "?? verification/pyrite-light-palette/after-ui.txt",
+          "?? verification/pyrite-light-palette/before-ui.txt",
+          "?? verification/pyrite-light-palette/catalog-color-checks.json",
+          "?? verification/pyrite-light-palette/dark-dynamic-after.json",
+          "?? verification/pyrite-light-palette/dark-dynamic-before.json",
+          "?? verification/pyrite-light-palette/dark-static-after.json",
+          "?? verification/pyrite-light-palette/dark-static-before.json",
+          "?? verification/pyrite-light-palette/image-metrics.json",
+          "?? verification/pyrite-light-palette/light-dynamic-about.png",
+          "?? verification/pyrite-light-palette/light-dynamic-after.json",
+          "?? verification/pyrite-light-palette/light-dynamic-before.json",
+          "?? verification/pyrite-light-palette/light-dynamic-settings.png",
+          "?? verification/pyrite-light-palette/light-static-about.png",
+          "?? verification/pyrite-light-palette/light-static-after.json",
+          "?? verification/pyrite-light-palette/light-static-before.json",
+          "?? verification/pyrite-light-palette/light-static-settings.png",
+          "?? verification/pyrite-light-palette/report.md"
+        ],
+        "trackedDiffSha256": "1680418632e8e1a308f12da423b2626a10cc79d55bc35d01ca307e068c6d64fc",
+        "untrackedFiles": [
+          {
+            "path": "app/src/androidTest/java/jp/linkserver/shutter/ui/PyritePaletteTest.kt",
+            "sha256": "87872eff08dc672f745017005342b37874679c20586df9af33dbbc32006523b6"
+          },
+          {
+            "path": "verification/pyrite-light-palette/after-ui.txt",
+            "sha256": "2a47c40f62ac9f36b3d62db4aa0eca95db9945cba33997ca0e85cd08cda9980e"
+          },
+          {
+            "path": "verification/pyrite-light-palette/before-ui.txt",
+            "sha256": "1fbb43d551f0bc1bf755a28ed427817f6c155ee01670f7700937cee14197d214"
+          },
+          {
+            "path": "verification/pyrite-light-palette/catalog-color-checks.json",
+            "sha256": "6cfac7becf4347e302426e387985cf9bb1bffe1c99fefcd77e7233d22dd2a13b"
+          },
+          {
+            "path": "verification/pyrite-light-palette/dark-dynamic-after.json",
+            "sha256": "817084748626e303e4642050b556c1f627ef140d4c743bf467da4fe8affd67a3"
+          },
+          {
+            "path": "verification/pyrite-light-palette/dark-dynamic-before.json",
+            "sha256": "817084748626e303e4642050b556c1f627ef140d4c743bf467da4fe8affd67a3"
+          },
+          {
+            "path": "verification/pyrite-light-palette/dark-static-after.json",
+            "sha256": "c0cc9054fd17a24fff5690f26b10c735bc3d66ae1421c153f129934c43bd02c4"
+          },
+          {
+            "path": "verification/pyrite-light-palette/dark-static-before.json",
+            "sha256": "c0cc9054fd17a24fff5690f26b10c735bc3d66ae1421c153f129934c43bd02c4"
+          },
+          {
+            "path": "verification/pyrite-light-palette/image-metrics.json",
+            "sha256": "e2f41bb113e7defa0bb5e4ce6dc506c425c2c15bdf83f235bb0921161eac807d"
+          },
+          {
+            "path": "verification/pyrite-light-palette/light-dynamic-about.png",
+            "sha256": "c79be3cbdb56ffd515d7f4a8c460defbe42a6ccac2a06f47471b281ca8cd18b5"
+          },
+          {
+            "path": "verification/pyrite-light-palette/light-dynamic-after.json",
+            "sha256": "a793c225d3efdb82249a0580ae22028a07001605c1d2bd9d7140c9471078b24b"
+          },
+          {
+            "path": "verification/pyrite-light-palette/light-dynamic-before.json",
+            "sha256": "7a3a0d6e1af9e78fe7f1db0a30a98f1e5479765ba38591fd25d67d547d62fb26"
+          },
+          {
+            "path": "verification/pyrite-light-palette/light-dynamic-settings.png",
+            "sha256": "08f153e185c3d5a030effd5d201bdf78aa13d2e138249516d1187e028fc115aa"
+          },
+          {
+            "path": "verification/pyrite-light-palette/light-static-about.png",
+            "sha256": "3d5b36a1a63c8fd9d801cb944e44fd14793c2f4c17ecae3ec96cc6bf8154e36e"
+          },
+          {
+            "path": "verification/pyrite-light-palette/light-static-after.json",
+            "sha256": "04f3e49db0905f9b5170bae8eeab143f581b1e72797aaeedc1e9342ff81a471a"
+          },
+          {
+            "path": "verification/pyrite-light-palette/light-static-before.json",
+            "sha256": "02358f449bd10f9fbc7e4eef5f177aaaa95286e52486aec98602a7b4b8b3e602"
+          },
+          {
+            "path": "verification/pyrite-light-palette/light-static-settings.png",
+            "sha256": "3ceced3309c3ab988811cdffbef05fb9db5685587e240878494726adb6414e16"
+          },
+          {
+            "path": "verification/pyrite-light-palette/report.md",
+            "sha256": "4ce6ce44f18b72fbcf461f80bed69b635995496b2d1362217b462084f36a88c4"
+          }
+        ],
+        "indexSha256": "ca83cc65d47c0cb08f4db87eb58e107de20e6ef7cf1ea95424da869bec4e93f5"
+      },
+      {
+        "repository": "D:\\apps\\schedulernittc",
+        "head": "9fad0402e268902bbfbea485ca216218c17afdf1",
+        "status": [],
+        "trackedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "untrackedFiles": [],
+        "indexSha256": "fe0b970703132671a96de0b8fd5391afa6b528d2e572019fbd9366e085285c5d"
+      },
+      {
+        "repository": "D:\\apps\\glyphvisualizer",
+        "head": "d0adb9c7e98bd888110da7edcd1997ebb29ca4db",
+        "status": [],
+        "trackedDiffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "untrackedFiles": [],
+        "indexSha256": "e8931de32cc807dd05ca4119df322797ed031fd520ac434e3e7020d8420ce50a"
+      }
+    ]
+  },
+  "comparison": {
+    "repositories": [
+      {
+        "repository": "D:\\apps\\shutup",
+        "headUnchanged": true,
+        "statusUnchanged": true,
+        "trackedDiffUnchanged": true,
+        "untrackedFilesUnchanged": true,
+        "indexUnchanged": true
+      },
+      {
+        "repository": "D:\\apps\\schedulernittc",
+        "headUnchanged": true,
+        "statusUnchanged": true,
+        "trackedDiffUnchanged": true,
+        "untrackedFilesUnchanged": true,
+        "indexUnchanged": true
+      },
+      {
+        "repository": "D:\\apps\\glyphvisualizer",
+        "headUnchanged": true,
+        "statusUnchanged": true,
+        "trackedDiffUnchanged": true,
+        "untrackedFilesUnchanged": true,
+        "indexUnchanged": true
+      }
+    ],
+    "investigatedSourceFiles": 20,
+    "investigatedSourceFilesUnchanged": true,
+    "allComparedStateUnchanged": true
+  },
+  "sourceInventory": [
+    {
+      "name": "ShutUp",
+      "repository": "D:\\apps\\shutup",
+      "files": [
+        {
+          "path": "app/src/main/java/jp/linkserver/shutter/GitHubReleaseChecker.kt",
+          "lines": 97,
+          "sha256": "7275c11691fabf7948f6b158e590bdc34be1464726c0d0d23522ae214186d96a"
+        },
+        {
+          "path": "app/src/main/java/jp/linkserver/shutter/ReleaseVersion.kt",
+          "lines": 51,
+          "sha256": "b5c5040f6187fa2707c91b6558de241bc6746aa937f9d3b3ae22dd2f05d8e164"
+        },
+        {
+          "path": "app/src/main/java/jp/linkserver/shutter/ReleaseChannel.kt",
+          "lines": 19,
+          "sha256": "e45b0435802749f38fd5bbdb866d66c521eea34db8a9bd1ce057f2beea7fdb57"
+        },
+        {
+          "path": "app/src/main/java/jp/linkserver/shutter/InstalledAppVersion.kt",
+          "lines": 35,
+          "sha256": "85bd503b0692e1f7938be43ca5aeaf6122357fbee7fd35a90418bef93eaf47c9"
+        },
+        {
+          "path": "app/src/main/java/jp/linkserver/shutter/update/AppUpdateRepository.kt",
+          "lines": 66,
+          "sha256": "d893bb5b782f03798ce604fcc23125aa71f0329e5af4e86ff5413ed87744b2fd"
+        },
+        {
+          "path": "app/src/main/java/jp/linkserver/shutter/update/AppUpdatePreferences.kt",
+          "lines": 76,
+          "sha256": "be8cb0d83a9b9cc9fd5a51c49bb85135c59e1f9f733461639cccd47e92ae9b1f"
+        },
+        {
+          "path": "app/src/main/java/jp/linkserver/shutter/update/UpdateDeveloperSettings.kt",
+          "lines": 17,
+          "sha256": "e8e33b98ce847e418f643e50c15da29d9a1446251ecafef70816a0ccd5a6937e"
+        },
+        {
+          "path": "app/src/main/java/jp/linkserver/shutter/update/AppUpdateViewModel.kt",
+          "lines": 42,
+          "sha256": "b6a436f102af8e42ba2d139b7bbf6c8548daf1a3d9d96823493e71ee14e47bc3"
+        },
+        {
+          "path": "app/src/main/java/jp/linkserver/shutter/update/UpdateDownloadViewModel.kt",
+          "lines": 121,
+          "sha256": "539fa30abd78eaadc47940d3d1eb151573dec4637ba933b4b6e45660a916bddd"
+        },
+        {
+          "path": "app/src/main/java/jp/linkserver/shutter/ui/AppUpdateUi.kt",
+          "lines": 117,
+          "sha256": "3e226aa3587d7b761a9800aa1848a983236826999bb87998dcb7c6b9fd038cf5"
+        },
+        {
+          "path": "app/src/main/java/jp/linkserver/shutter/ui/UpdateOverviewContent.kt",
+          "lines": 199,
+          "sha256": "1b7be7c2bf7a0bf597329a9e81461e12f64fb60e80003ebd0838639de59eff59"
+        },
+        {
+          "path": "app/src/main/java/jp/linkserver/shutter/ui/ReleaseNotesMarkdown.kt",
+          "lines": 48,
+          "sha256": "1e6a41d1e548c735d7d03fe4c824e4a16d921760f5ca0f93b4948c68c1bf2440"
+        }
+      ],
+      "totalLines": 888,
+      "licenseFirstLines": [
+        "MIT License",
+        "",
+        "Copyright (c) 2026 Azul1nk",
+        ""
+      ]
+    },
+    {
+      "name": "NITTC Scheduler",
+      "repository": "D:\\apps\\schedulernittc",
+      "files": [
+        {
+          "path": "app/src/main/java/jp/linkserver/nittcsc/update/GitHubReleaseChecker.kt",
+          "lines": 351,
+          "sha256": "7ab54baff22e0e1eb43dd9fc587d8cc7ef97407e9f4032a83550e068724ddfb6"
+        },
+        {
+          "path": "app/src/main/java/jp/linkserver/nittcsc/update/AppUpdateRepository.kt",
+          "lines": 74,
+          "sha256": "cdfa82045dab09e5de95d5e9947d77782e66b6a4c0263ba064677153aa002ec8"
+        },
+        {
+          "path": "app/src/main/java/jp/linkserver/nittcsc/update/AppUpdatePreferences.kt",
+          "lines": 103,
+          "sha256": "d17f8904eb0acde06f19aadc14c000af7b50eb6072cd5016b7b326dfa9fba2fb"
+        },
+        {
+          "path": "app/src/main/java/jp/linkserver/nittcsc/ui/UpdateOverviewScreen.kt",
+          "lines": 580,
+          "sha256": "2b617e82de2bc956f73b50762325d5267cdef8f2d6ceb223a8a73b7774316687"
+        },
+        {
+          "path": "app/src/main/java/jp/linkserver/nittcsc/ui/AppUpdatePrompt.kt",
+          "lines": 75,
+          "sha256": "ac4d59ad60c59094c88438d8c029f336ffadb43e1b0d1cc70c5d3131ec5c9440"
+        }
+      ],
+      "totalLines": 1183,
+      "licenseFirstLines": [
+        "MIT License",
+        "",
+        "Copyright (c) 2026 Azul1nk",
+        ""
+      ]
+    },
+    {
+      "name": "GlyphVisualizer",
+      "repository": "D:\\apps\\glyphvisualizer",
+      "files": [
+        {
+          "path": "app/src/main/java/jp/linkserver/glyphvisualizer/update/GitHubReleaseChecker.kt",
+          "lines": 261,
+          "sha256": "95a707e6d03c3e111a7e4d2f1434273be07ed19afc64c47f45c28eeeda4c5029"
+        },
+        {
+          "path": "app/src/main/java/jp/linkserver/glyphvisualizer/update/AppUpdateRepository.kt",
+          "lines": 102,
+          "sha256": "31fbf7b24053fe47d08e2d9274e2384d748e178dd0fe7ec564d206953f469824"
+        },
+        {
+          "path": "app/src/main/java/jp/linkserver/glyphvisualizer/ui/UpdateOverviewScreen.kt",
+          "lines": 361,
+          "sha256": "0167a54df8339e13f68d82c34e137300210ea07268914b59b5785f5649cc7b2f"
+        }
+      ],
+      "totalLines": 724,
+      "licenseFirstLines": [
+        "MIT License",
+        "",
+        "Copyright (c) 2026 Azul1nk",
+        ""
+      ]
+    }
+  ],
+  "sourceVerification": [
+    {
+      "repository": "D:\\apps\\shutup",
+      "path": "app/src/main/java/jp/linkserver/shutter/GitHubReleaseChecker.kt",
+      "expectedSha256": "7275c11691fabf7948f6b158e590bdc34be1464726c0d0d23522ae214186d96a",
+      "actualSha256": "7275c11691fabf7948f6b158e590bdc34be1464726c0d0d23522ae214186d96a"
+    },
+    {
+      "repository": "D:\\apps\\shutup",
+      "path": "app/src/main/java/jp/linkserver/shutter/ReleaseVersion.kt",
+      "expectedSha256": "b5c5040f6187fa2707c91b6558de241bc6746aa937f9d3b3ae22dd2f05d8e164",
+      "actualSha256": "b5c5040f6187fa2707c91b6558de241bc6746aa937f9d3b3ae22dd2f05d8e164"
+    },
+    {
+      "repository": "D:\\apps\\shutup",
+      "path": "app/src/main/java/jp/linkserver/shutter/ReleaseChannel.kt",
+      "expectedSha256": "e45b0435802749f38fd5bbdb866d66c521eea34db8a9bd1ce057f2beea7fdb57",
+      "actualSha256": "e45b0435802749f38fd5bbdb866d66c521eea34db8a9bd1ce057f2beea7fdb57"
+    },
+    {
+      "repository": "D:\\apps\\shutup",
+      "path": "app/src/main/java/jp/linkserver/shutter/InstalledAppVersion.kt",
+      "expectedSha256": "85bd503b0692e1f7938be43ca5aeaf6122357fbee7fd35a90418bef93eaf47c9",
+      "actualSha256": "85bd503b0692e1f7938be43ca5aeaf6122357fbee7fd35a90418bef93eaf47c9"
+    },
+    {
+      "repository": "D:\\apps\\shutup",
+      "path": "app/src/main/java/jp/linkserver/shutter/update/AppUpdateRepository.kt",
+      "expectedSha256": "d893bb5b782f03798ce604fcc23125aa71f0329e5af4e86ff5413ed87744b2fd",
+      "actualSha256": "d893bb5b782f03798ce604fcc23125aa71f0329e5af4e86ff5413ed87744b2fd"
+    },
+    {
+      "repository": "D:\\apps\\shutup",
+      "path": "app/src/main/java/jp/linkserver/shutter/update/AppUpdatePreferences.kt",
+      "expectedSha256": "be8cb0d83a9b9cc9fd5a51c49bb85135c59e1f9f733461639cccd47e92ae9b1f",
+      "actualSha256": "be8cb0d83a9b9cc9fd5a51c49bb85135c59e1f9f733461639cccd47e92ae9b1f"
+    },
+    {
+      "repository": "D:\\apps\\shutup",
+      "path": "app/src/main/java/jp/linkserver/shutter/update/UpdateDeveloperSettings.kt",
+      "expectedSha256": "e8e33b98ce847e418f643e50c15da29d9a1446251ecafef70816a0ccd5a6937e",
+      "actualSha256": "e8e33b98ce847e418f643e50c15da29d9a1446251ecafef70816a0ccd5a6937e"
+    },
+    {
+      "repository": "D:\\apps\\shutup",
+      "path": "app/src/main/java/jp/linkserver/shutter/update/AppUpdateViewModel.kt",
+      "expectedSha256": "b6a436f102af8e42ba2d139b7bbf6c8548daf1a3d9d96823493e71ee14e47bc3",
+      "actualSha256": "b6a436f102af8e42ba2d139b7bbf6c8548daf1a3d9d96823493e71ee14e47bc3"
+    },
+    {
+      "repository": "D:\\apps\\shutup",
+      "path": "app/src/main/java/jp/linkserver/shutter/update/UpdateDownloadViewModel.kt",
+      "expectedSha256": "539fa30abd78eaadc47940d3d1eb151573dec4637ba933b4b6e45660a916bddd",
+      "actualSha256": "539fa30abd78eaadc47940d3d1eb151573dec4637ba933b4b6e45660a916bddd"
+    },
+    {
+      "repository": "D:\\apps\\shutup",
+      "path": "app/src/main/java/jp/linkserver/shutter/ui/AppUpdateUi.kt",
+      "expectedSha256": "3e226aa3587d7b761a9800aa1848a983236826999bb87998dcb7c6b9fd038cf5",
+      "actualSha256": "3e226aa3587d7b761a9800aa1848a983236826999bb87998dcb7c6b9fd038cf5"
+    },
+    {
+      "repository": "D:\\apps\\shutup",
+      "path": "app/src/main/java/jp/linkserver/shutter/ui/UpdateOverviewContent.kt",
+      "expectedSha256": "1b7be7c2bf7a0bf597329a9e81461e12f64fb60e80003ebd0838639de59eff59",
+      "actualSha256": "1b7be7c2bf7a0bf597329a9e81461e12f64fb60e80003ebd0838639de59eff59"
+    },
+    {
+      "repository": "D:\\apps\\shutup",
+      "path": "app/src/main/java/jp/linkserver/shutter/ui/ReleaseNotesMarkdown.kt",
+      "expectedSha256": "1e6a41d1e548c735d7d03fe4c824e4a16d921760f5ca0f93b4948c68c1bf2440",
+      "actualSha256": "1e6a41d1e548c735d7d03fe4c824e4a16d921760f5ca0f93b4948c68c1bf2440"
+    },
+    {
+      "repository": "D:\\apps\\schedulernittc",
+      "path": "app/src/main/java/jp/linkserver/nittcsc/update/GitHubReleaseChecker.kt",
+      "expectedSha256": "7ab54baff22e0e1eb43dd9fc587d8cc7ef97407e9f4032a83550e068724ddfb6",
+      "actualSha256": "7ab54baff22e0e1eb43dd9fc587d8cc7ef97407e9f4032a83550e068724ddfb6"
+    },
+    {
+      "repository": "D:\\apps\\schedulernittc",
+      "path": "app/src/main/java/jp/linkserver/nittcsc/update/AppUpdateRepository.kt",
+      "expectedSha256": "cdfa82045dab09e5de95d5e9947d77782e66b6a4c0263ba064677153aa002ec8",
+      "actualSha256": "cdfa82045dab09e5de95d5e9947d77782e66b6a4c0263ba064677153aa002ec8"
+    },
+    {
+      "repository": "D:\\apps\\schedulernittc",
+      "path": "app/src/main/java/jp/linkserver/nittcsc/update/AppUpdatePreferences.kt",
+      "expectedSha256": "d17f8904eb0acde06f19aadc14c000af7b50eb6072cd5016b7b326dfa9fba2fb",
+      "actualSha256": "d17f8904eb0acde06f19aadc14c000af7b50eb6072cd5016b7b326dfa9fba2fb"
+    },
+    {
+      "repository": "D:\\apps\\schedulernittc",
+      "path": "app/src/main/java/jp/linkserver/nittcsc/ui/UpdateOverviewScreen.kt",
+      "expectedSha256": "2b617e82de2bc956f73b50762325d5267cdef8f2d6ceb223a8a73b7774316687",
+      "actualSha256": "2b617e82de2bc956f73b50762325d5267cdef8f2d6ceb223a8a73b7774316687"
+    },
+    {
+      "repository": "D:\\apps\\schedulernittc",
+      "path": "app/src/main/java/jp/linkserver/nittcsc/ui/AppUpdatePrompt.kt",
+      "expectedSha256": "ac4d59ad60c59094c88438d8c029f336ffadb43e1b0d1cc70c5d3131ec5c9440",
+      "actualSha256": "ac4d59ad60c59094c88438d8c029f336ffadb43e1b0d1cc70c5d3131ec5c9440"
+    },
+    {
+      "repository": "D:\\apps\\glyphvisualizer",
+      "path": "app/src/main/java/jp/linkserver/glyphvisualizer/update/GitHubReleaseChecker.kt",
+      "expectedSha256": "95a707e6d03c3e111a7e4d2f1434273be07ed19afc64c47f45c28eeeda4c5029",
+      "actualSha256": "95a707e6d03c3e111a7e4d2f1434273be07ed19afc64c47f45c28eeeda4c5029"
+    },
+    {
+      "repository": "D:\\apps\\glyphvisualizer",
+      "path": "app/src/main/java/jp/linkserver/glyphvisualizer/update/AppUpdateRepository.kt",
+      "expectedSha256": "31fbf7b24053fe47d08e2d9274e2384d748e178dd0fe7ec564d206953f469824",
+      "actualSha256": "31fbf7b24053fe47d08e2d9274e2384d748e178dd0fe7ec564d206953f469824"
+    },
+    {
+      "repository": "D:\\apps\\glyphvisualizer",
+      "path": "app/src/main/java/jp/linkserver/glyphvisualizer/ui/UpdateOverviewScreen.kt",
+      "expectedSha256": "0167a54df8339e13f68d82c34e137300210ea07268914b59b5785f5649cc7b2f",
+      "actualSha256": "0167a54df8339e13f68d82c34e137300210ea07268914b59b5785f5649cc7b2f"
+    }
+  ]
+}

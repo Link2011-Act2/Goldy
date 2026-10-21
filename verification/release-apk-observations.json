@@ -1,0 +1,553 @@
+{
+  "observedAt": "2026-10-21",
+  "method": "Official public APKs, no installation; per-entry method distinguishes whole-APK verification from manifest byte-range analysis",
+  "observations": [
+    {
+      "repository": "Link2011-Act2/ShutUp",
+      "releaseId": 415013948,
+      "tag": "v1.1.0-Release",
+      "releaseUrl": "https://github.com/Link2011-Act2/ShutUp/releases/tag/v1.1.0-Release",
+      "asset": {
+        "id": 647477047,
+        "name": "shutup_v110release.apk",
+        "size": 2878925,
+        "digest": "sha256:4f567b5cee03217a9c3c5efc11031edf5b6abaff29754022fb74f546e6e21f6b",
+        "url": "https://github.com/Link2011-Act2/ShutUp/releases/download/v1.1.0-Release/shutup_v110release.apk"
+      },
+      "sha256": "4f567b5cee03217a9c3c5efc11031edf5b6abaff29754022fb74f546e6e21f6b",
+      "bytes": 2878925,
+      "redirectHosts": [
+        "release-assets.githubusercontent.com"
+      ],
+      "manifest": "package: name='jp.linkserver.shutter' versionCode='4' versionName='1.1.0-Release' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+      "signatureVerified": true,
+      "signatureReport": "Verifies\nVerified using v1 scheme (JAR signing): false\nVerified using v2 scheme (APK Signature Scheme v2): true\nVerified using v3 scheme (APK Signature Scheme v3): false\nVerified using v3.1 scheme (APK Signature Scheme v3.1): false\nVerified using v4 scheme (APK Signature Scheme v4): false\nVerified for SourceStamp: false\nNumber of signers: 1\nSigner #1 certificate DN: C=JP, ST=Yamagata, L=Tendo, O=Individual, OU=Development, CN=Riku Sato\nSigner #1 certificate SHA-256 digest: 40c469f16948f47f52d70c626a78bd055e83ec8279965841623c86293e0a0ec3\nSigner #1 certificate SHA-1 digest: 4c7734165bfa187f0ccded151ac11aea9f3231f5\nSigner #1 certificate MD5 digest: f45a05f85e76296332076005e27563e7\nSigner #1 key algorithm: RSA\nSigner #1 key size (bits): 2048\nSigner #1 public key SHA-256 digest: d4b19a4630d14bfc23dcc51f2257de45131c61000085d4062b6b5f898f2d80b2\nSigner #1 public key SHA-1 digest: abef3e58e6640d0099ddbfcd53378c46186cf059\nSigner #1 public key MD5 digest: ee86b6b052e6639d7eea697a5e6fc8a2\nWARNING: A restricted method in java.lang.System has been called\nWARNING: java.lang.System::loadLibrary has been called by org.conscrypt.NativeLibraryUtil in an unnamed module (file:/C:/Users/wwwri/AppData/Local/Android/Sdk/build-tools/36.0.0/lib/apksigner.jar)\nWARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module\nWARNING: Restricted methods will be blocked in a future release unless native access is enabled\n\n",
+      "method": "Whole official APK; size and SHA-256 checked against GitHub; aapt2 manifest; apksigner verify --verbose --print-certs"
+    },
+    {
+      "repository": "Link2011-Act2/ShutUp",
+      "releaseId": 409656143,
+      "tag": "v1.0.1-Release",
+      "releaseUrl": "https://github.com/Link2011-Act2/ShutUp/releases/tag/v1.0.1-Release",
+      "asset": {
+        "id": 630706872,
+        "name": "shutup_v101release.apk",
+        "size": 2761385,
+        "digest": "sha256:4820d65823ad8803b2ece5e6bcbdb279eb74ec60755d1ec338bd3861f13709cf",
+        "url": "https://github.com/Link2011-Act2/ShutUp/releases/download/v1.0.1-Release/shutup_v101release.apk"
+      },
+      "sha256": "4820d65823ad8803b2ece5e6bcbdb279eb74ec60755d1ec338bd3861f13709cf",
+      "bytes": 2761385,
+      "redirectHosts": [
+        "release-assets.githubusercontent.com"
+      ],
+      "manifest": "package: name='jp.linkserver.shutter' versionCode='3' versionName='1.0.1-Release' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+      "signatureVerified": true,
+      "signatureReport": "Verifies\nVerified using v1 scheme (JAR signing): false\nVerified using v2 scheme (APK Signature Scheme v2): true\nVerified using v3 scheme (APK Signature Scheme v3): false\nVerified using v3.1 scheme (APK Signature Scheme v3.1): false\nVerified using v4 scheme (APK Signature Scheme v4): false\nVerified for SourceStamp: false\nNumber of signers: 1\nSigner #1 certificate DN: C=JP, ST=Yamagata, L=Tendo, O=Individual, OU=Development, CN=Riku Sato\nSigner #1 certificate SHA-256 digest: 40c469f16948f47f52d70c626a78bd055e83ec8279965841623c86293e0a0ec3\nSigner #1 certificate SHA-1 digest: 4c7734165bfa187f0ccded151ac11aea9f3231f5\nSigner #1 certificate MD5 digest: f45a05f85e76296332076005e27563e7\nSigner #1 key algorithm: RSA\nSigner #1 key size (bits): 2048\nSigner #1 public key SHA-256 digest: d4b19a4630d14bfc23dcc51f2257de45131c61000085d4062b6b5f898f2d80b2\nSigner #1 public key SHA-1 digest: abef3e58e6640d0099ddbfcd53378c46186cf059\nSigner #1 public key MD5 digest: ee86b6b052e6639d7eea697a5e6fc8a2\nWARNING: A restricted method in java.lang.System has been called\nWARNING: java.lang.System::loadLibrary has been called by org.conscrypt.NativeLibraryUtil in an unnamed module (file:/C:/Users/wwwri/AppData/Local/Android/Sdk/build-tools/36.0.0/lib/apksigner.jar)\nWARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module\nWARNING: Restricted methods will be blocked in a future release unless native access is enabled\n\n"
+    },
+    {
+      "repository": "Link2011-Act2/ShutUp",
+      "releaseId": 409566238,
+      "tag": "v1.0.0-Release",
+      "releaseUrl": "https://github.com/Link2011-Act2/ShutUp/releases/tag/v1.0.0-Release",
+      "asset": {
+        "id": 630322544,
+        "name": "shutup_v100release.apk",
+        "size": 2761301,
+        "digest": "sha256:0af33f7a390b5fe52d1fa4bf3d6a29633d413e94db7f85fc23960e1ae8855262",
+        "url": "https://github.com/Link2011-Act2/ShutUp/releases/download/v1.0.0-Release/shutup_v100release.apk"
+      },
+      "sha256": "0af33f7a390b5fe52d1fa4bf3d6a29633d413e94db7f85fc23960e1ae8855262",
+      "bytes": 2761301,
+      "redirectHosts": [
+        "release-assets.githubusercontent.com"
+      ],
+      "manifest": "package: name='jp.linkserver.shutter' versionCode='2' versionName='1.0.0-Release' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+      "signatureVerified": true,
+      "signatureReport": "Verifies\nVerified using v1 scheme (JAR signing): false\nVerified using v2 scheme (APK Signature Scheme v2): true\nVerified using v3 scheme (APK Signature Scheme v3): false\nVerified using v3.1 scheme (APK Signature Scheme v3.1): false\nVerified using v4 scheme (APK Signature Scheme v4): false\nVerified for SourceStamp: false\nNumber of signers: 1\nSigner #1 certificate DN: C=JP, ST=Yamagata, L=Tendo, O=Individual, OU=Development, CN=Riku Sato\nSigner #1 certificate SHA-256 digest: 40c469f16948f47f52d70c626a78bd055e83ec8279965841623c86293e0a0ec3\nSigner #1 certificate SHA-1 digest: 4c7734165bfa187f0ccded151ac11aea9f3231f5\nSigner #1 certificate MD5 digest: f45a05f85e76296332076005e27563e7\nSigner #1 key algorithm: RSA\nSigner #1 key size (bits): 2048\nSigner #1 public key SHA-256 digest: d4b19a4630d14bfc23dcc51f2257de45131c61000085d4062b6b5f898f2d80b2\nSigner #1 public key SHA-1 digest: abef3e58e6640d0099ddbfcd53378c46186cf059\nSigner #1 public key MD5 digest: ee86b6b052e6639d7eea697a5e6fc8a2\nWARNING: A restricted method in java.lang.System has been called\nWARNING: java.lang.System::loadLibrary has been called by org.conscrypt.NativeLibraryUtil in an unnamed module (file:/C:/Users/wwwri/AppData/Local/Android/Sdk/build-tools/36.0.0/lib/apksigner.jar)\nWARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module\nWARNING: Restricted methods will be blocked in a future release unless native access is enabled\n\n"
+    },
+    {
+      "repository": "Link2011-Act2/NITTC_Scheduler",
+      "releaseId": 400873348,
+      "tag": "v1.1.1-Release",
+      "releaseUrl": "https://github.com/Link2011-Act2/NITTC_Scheduler/releases/tag/v1.1.1-Release",
+      "asset": {
+        "id": 603033882,
+        "name": "nittcsc_v111release.apk",
+        "size": 52910568,
+        "digest": "sha256:82d36566a3c7dabf06ed3cb131372d53cb0a319333bb1d40731a2cb555e3716b",
+        "url": "https://github.com/Link2011-Act2/NITTC_Scheduler/releases/download/v1.1.1-Release/nittcsc_v111release.apk"
+      },
+      "manifest": "package: name='jp.linkserver.nittcsc' versionCode='21' versionName='1.1.1-Release' platformBuildVersionName='17' platformBuildVersionCode='37' compileSdkVersion='37' compileSdkVersionCodename='17'",
+      "manifestSha256": "062fe80a7953212954f4f347d5171ddc82fd1dfaefca252e1c975ca5f0600e5e",
+      "method": "Whole official APK; size and SHA-256 checked against GitHub; aapt2 manifest; apksigner verify --verbose --print-certs",
+      "redirectHosts": [
+        "release-assets.githubusercontent.com"
+      ],
+      "sha256": "82d36566a3c7dabf06ed3cb131372d53cb0a319333bb1d40731a2cb555e3716b",
+      "bytes": 52910568,
+      "signatureVerified": true,
+      "signatureReport": "Verifies\nVerified using v1 scheme (JAR signing): false\nVerified using v2 scheme (APK Signature Scheme v2): true\nVerified using v3 scheme (APK Signature Scheme v3): false\nVerified using v3.1 scheme (APK Signature Scheme v3.1): false\nVerified using v4 scheme (APK Signature Scheme v4): false\nVerified for SourceStamp: false\nNumber of signers: 1\nSigner #1 certificate DN: C=JP, ST=Yamagata, L=Yamagata, O=NITTCSC, OU=Personal, CN=Azul1nk\nSigner #1 certificate SHA-256 digest: 453a2d6db4b8c48f8e295944735fb4caace9db5fe40503d26dc69ed8107feed3\nSigner #1 certificate SHA-1 digest: 30e68d3be529f38f753c380c3a29b55e583898ba\nSigner #1 certificate MD5 digest: eef23fc4894ded2690edbaa23f963660\nSigner #1 key algorithm: RSA\nSigner #1 key size (bits): 2048\nSigner #1 public key SHA-256 digest: 0fd5472d4f0906f5a97a27da196ae335b575abb483749b8359e94071ecd510da\nSigner #1 public key SHA-1 digest: 54bb130190ccc687a8d661f2f3aafbdccd238a7c\nSigner #1 public key MD5 digest: ff3a5fcd2cc8b5a75144e8037271cae0\nWARNING: A restricted method in java.lang.System has been called\nWARNING: java.lang.System::loadLibrary has been called by org.conscrypt.NativeLibraryUtil in an unnamed module (file:/C:/Users/wwwri/AppData/Local/Android/Sdk/build-tools/36.0.0/lib/apksigner.jar)\nWARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module\nWARNING: Restricted methods will be blocked in a future release unless native access is enabled\n\n"
+    },
+    {
+      "repository": "Link2011-Act2/NITTC_Scheduler",
+      "releaseId": 399251933,
+      "tag": "v1.1.0-Release",
+      "releaseUrl": "https://github.com/Link2011-Act2/NITTC_Scheduler/releases/tag/v1.1.0-Release",
+      "asset": {
+        "id": 598471331,
+        "name": "nittcsc_v110release.apk",
+        "size": 52883158,
+        "digest": "sha256:9b12af518646a18d85378ff84c8eb97414609e140234ac20465ea6559f19f8b4",
+        "url": "https://github.com/Link2011-Act2/NITTC_Scheduler/releases/download/v1.1.0-Release/nittcsc_v110release.apk"
+      },
+      "manifest": "package: name='jp.linkserver.nittcsc' versionCode='20' versionName='1.1.0-Release' platformBuildVersionName='17' platformBuildVersionCode='37' compileSdkVersion='37' compileSdkVersionCodename='17'",
+      "manifestSha256": "719e8f1c0aa2c2e345ef9d875d16960829b69edd631b04169eac80edb930fbc4",
+      "method": "HTTPS byte ranges of official APK ZIP; original AndroidManifest.xml inspected by aapt2; whole APK digest/signature not checked",
+      "redirectHosts": [
+        "release-assets.githubusercontent.com"
+      ]
+    },
+    {
+      "repository": "Link2011-Act2/NITTC_Scheduler",
+      "releaseId": 360373821,
+      "tag": "v1.0.0-Release",
+      "releaseUrl": "https://github.com/Link2011-Act2/NITTC_Scheduler/releases/tag/v1.0.0-Release",
+      "asset": {
+        "id": 491364581,
+        "name": "nittcsc_v100release.apk",
+        "size": 53257232,
+        "digest": "sha256:e744c27e43ab358af9050c763cbf49d6f837baa389cee5863ad516cfc13e9cfe",
+        "url": "https://github.com/Link2011-Act2/NITTC_Scheduler/releases/download/v1.0.0-Release/nittcsc_v100release.apk"
+      },
+      "manifest": "package: name='jp.linkserver.nittcsc' versionCode='18' versionName='1.0.0-Release' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+      "manifestSha256": "9415d027f7fb14d479d2df13e64a77d00161237f95f8b5956aeedec27c0ff594",
+      "method": "HTTPS byte ranges of official APK ZIP; original AndroidManifest.xml inspected by aapt2; whole APK digest/signature not checked",
+      "redirectHosts": [
+        "release-assets.githubusercontent.com"
+      ]
+    },
+    {
+      "repository": "Link2011-Act2/NITTC_Scheduler",
+      "releaseId": 356756429,
+      "tag": "v1.0.0-RC6",
+      "releaseUrl": "https://github.com/Link2011-Act2/NITTC_Scheduler/releases/tag/v1.0.0-RC6",
+      "asset": {
+        "id": 483512651,
+        "name": "nittcsc_v100rc6.apk",
+        "size": 53253524,
+        "digest": "sha256:a42a2bed59d16a85bdd740d0a51f80a3a0e8af6d3afa5446ab94a34d7c3cd894",
+        "url": "https://github.com/Link2011-Act2/NITTC_Scheduler/releases/download/v1.0.0-RC6/nittcsc_v100rc6.apk"
+      },
+      "manifest": "package: name='jp.linkserver.nittcsc' versionCode='17' versionName='1.0.0-RC6' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+      "manifestSha256": "f520297b46622bc09a131d9e0af7fee7f8e5e9b5f9654e37b3f856a7a9a07d40",
+      "method": "HTTPS byte ranges of official APK ZIP; original AndroidManifest.xml inspected by aapt2; whole APK digest/signature not checked",
+      "redirectHosts": [
+        "release-assets.githubusercontent.com"
+      ]
+    },
+    {
+      "repository": "Link2011-Act2/NITTC_Scheduler",
+      "releaseId": 356314689,
+      "tag": "v1.0.0-RC5",
+      "releaseUrl": "https://github.com/Link2011-Act2/NITTC_Scheduler/releases/tag/v1.0.0-RC5",
+      "asset": {
+        "id": 482307029,
+        "name": "nittcsc_v100rc5.apk",
+        "size": 53253524,
+        "digest": "sha256:116d9c31fbe12980b928a3c68895e3c7afca7d080c1ff958093000831255ee71",
+        "url": "https://github.com/Link2011-Act2/NITTC_Scheduler/releases/download/v1.0.0-RC5/nittcsc_v100rc5.apk"
+      },
+      "manifest": "package: name='jp.linkserver.nittcsc' versionCode='16' versionName='1.0.0-RC5' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+      "manifestSha256": "eae8cdde3416c36c76fd100595675cd956494aef24d40dfffb25954795cdb666",
+      "method": "HTTPS byte ranges of official APK ZIP; original AndroidManifest.xml inspected by aapt2; whole APK digest/signature not checked",
+      "redirectHosts": [
+        "release-assets.githubusercontent.com"
+      ]
+    },
+    {
+      "repository": "Link2011-Act2/NITTC_Scheduler",
+      "releaseId": 349553840,
+      "tag": "v1.0.0-RC4",
+      "releaseUrl": "https://github.com/Link2011-Act2/NITTC_Scheduler/releases/tag/v1.0.0-RC4",
+      "asset": {
+        "id": 468077320,
+        "name": "nittcsc_v100rc4.apk",
+        "size": 53168916,
+        "digest": "sha256:c94fdab7056b5279af19db48cf55e6c0a588406d1cf95651c901eaf1605839b9",
+        "url": "https://github.com/Link2011-Act2/NITTC_Scheduler/releases/download/v1.0.0-RC4/nittcsc_v100rc4.apk"
+      },
+      "manifest": "package: name='jp.linkserver.nittcsc' versionCode='15' versionName='1.0.0-RC4' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+      "manifestSha256": "95e66592ac08605a7fc92512902e4c0ae4c7dda71fc07fdae57c98a3af365e63",
+      "method": "HTTPS byte ranges of official APK ZIP; original AndroidManifest.xml inspected by aapt2; whole APK digest/signature not checked",
+      "redirectHosts": [
+        "release-assets.githubusercontent.com"
+      ]
+    },
+    {
+      "repository": "Link2011-Act2/NITTC_Scheduler",
+      "releaseId": 349538546,
+      "tag": "v1.0.0-RC3",
+      "releaseUrl": "https://github.com/Link2011-Act2/NITTC_Scheduler/releases/tag/v1.0.0-RC3",
+      "asset": {
+        "id": 468052640,
+        "name": "nittcsc_v100rc3.apk",
+        "size": 53150596,
+        "digest": "sha256:a9cf25b2a8aafdc8ebde101669734c7842991361361825f1edf24aaabf90eb81",
+        "url": "https://github.com/Link2011-Act2/NITTC_Scheduler/releases/download/v1.0.0-RC3/nittcsc_v100rc3.apk"
+      },
+      "manifest": "package: name='jp.linkserver.nittcsc' versionCode='14' versionName='1.0.0-RC3' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+      "manifestSha256": "98350521f27d1288db9a5cb43b3587a648256b252d7c44adede11ca89ee5a9b8",
+      "method": "HTTPS byte ranges of official APK ZIP; original AndroidManifest.xml inspected by aapt2; whole APK digest/signature not checked",
+      "redirectHosts": [
+        "release-assets.githubusercontent.com"
+      ]
+    },
+    {
+      "repository": "Link2011-Act2/NITTC_Scheduler",
+      "releaseId": 349159425,
+      "tag": "v1.0.0-RC2",
+      "releaseUrl": "https://github.com/Link2011-Act2/NITTC_Scheduler/releases/tag/v1.0.0-RC2",
+      "asset": {
+        "id": 467136045,
+        "name": "nittcsc_v100rc2.apk",
+        "size": 53145052,
+        "digest": "sha256:a2acce47c0c2a7fcd892a24e787627549c969db3e27be3a444149b7abe8cfda8",
+        "url": "https://github.com/Link2011-Act2/NITTC_Scheduler/releases/download/v1.0.0-RC2/nittcsc_v100rc2.apk"
+      },
+      "manifest": "package: name='jp.linkserver.nittcsc' versionCode='13' versionName='1.0.0-RC2' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+      "manifestSha256": "a66810a6a43f0e020805ca0481666e7813ffb59603c41302708a58e25128847d",
+      "method": "HTTPS byte ranges of official APK ZIP; original AndroidManifest.xml inspected by aapt2; whole APK digest/signature not checked",
+      "redirectHosts": [
+        "release-assets.githubusercontent.com"
+      ]
+    },
+    {
+      "repository": "Link2011-Act2/NITTC_Scheduler",
+      "releaseId": 339619045,
+      "tag": "v1.0.0-RC1",
+      "releaseUrl": "https://github.com/Link2011-Act2/NITTC_Scheduler/releases/tag/v1.0.0-RC1",
+      "asset": {
+        "id": 448267125,
+        "name": "nittcsc_v100rc1.apk",
+        "size": 52752240,
+        "digest": "sha256:3766f7d72120294a0d39a47241c22cdb4663ba798ea9a9c0086ba4efc227897f",
+        "url": "https://github.com/Link2011-Act2/NITTC_Scheduler/releases/download/v1.0.0-RC1/nittcsc_v100rc1.apk"
+      },
+      "manifest": "package: name='jp.linkserver.nittcsc' versionCode='12' versionName='1.0.0-RC1' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+      "manifestSha256": "34ed14193d4168f02b4a60a067881358a44b99e50fb28e4cbf6233d0a5104c0b",
+      "method": "HTTPS byte ranges of official APK ZIP; original AndroidManifest.xml inspected by aapt2; whole APK digest/signature not checked",
+      "redirectHosts": [
+        "release-assets.githubusercontent.com"
+      ]
+    },
+    {
+      "repository": "Link2011-Act2/NITTC_Scheduler",
+      "releaseId": 339149790,
+      "tag": "v1.0.0-RC0",
+      "releaseUrl": "https://github.com/Link2011-Act2/NITTC_Scheduler/releases/tag/v1.0.0-RC0",
+      "asset": {
+        "id": 447214887,
+        "name": "nittcsc_v100rc0.apk",
+        "size": 52726552,
+        "digest": "sha256:e3f528b2e4893cfc2b5515995c73604a8bc65a5233856a7f346c96c7fb79a22e",
+        "url": "https://github.com/Link2011-Act2/NITTC_Scheduler/releases/download/v1.0.0-RC0/nittcsc_v100rc0.apk"
+      },
+      "manifest": "package: name='jp.linkserver.nittcsc' versionCode='11' versionName='1.0.0-RC0' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+      "manifestSha256": "7444144632fba235680e7fe5d5a27722617d64b26c498a6da9abb2a369310d8a",
+      "method": "HTTPS byte ranges of official APK ZIP; original AndroidManifest.xml inspected by aapt2; whole APK digest/signature not checked",
+      "redirectHosts": [
+        "release-assets.githubusercontent.com"
+      ]
+    },
+    {
+      "repository": "Link2011-Act2/NITTC_Scheduler",
+      "releaseId": 316692606,
+      "tag": "v0.9.6-Beta",
+      "releaseUrl": "https://github.com/Link2011-Act2/NITTC_Scheduler/releases/tag/v0.9.6-Beta",
+      "asset": {
+        "id": 410520676,
+        "name": "nittcsc_v096beta.apk",
+        "size": 52472746,
+        "digest": "sha256:d6024d39d20563ce03fbf9ecb904aa2cfd4d0ae90b5883ef6a3471f10ef4bb41",
+        "url": "https://github.com/Link2011-Act2/NITTC_Scheduler/releases/download/v0.9.6-Beta/nittcsc_v096beta.apk"
+      },
+      "manifest": "package: name='jp.linkserver.nittcsc' versionCode='9' versionName='0.9.6-Beta' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+      "manifestSha256": "08bf48174186f48fb6f5646957af71761bcf5f5b09cdc426669b2066ed53834d",
+      "method": "HTTPS byte ranges of official APK ZIP; original AndroidManifest.xml inspected by aapt2; whole APK digest/signature not checked",
+      "redirectHosts": [
+        "release-assets.githubusercontent.com"
+      ]
+    },
+    {
+      "repository": "Link2011-Act2/NITTC_Scheduler",
+      "releaseId": 316662098,
+      "tag": "v0.9.5-Beta",
+      "releaseUrl": "https://github.com/Link2011-Act2/NITTC_Scheduler/releases/tag/v0.9.5-Beta",
+      "asset": {
+        "id": 410418801,
+        "name": "nittcsc_v095beta.apk",
+        "size": 52456326,
+        "digest": "sha256:8ba2aed41811068f7e596fed9c910d0d79eb2e5c55696a476f041c86ed9a662d",
+        "url": "https://github.com/Link2011-Act2/NITTC_Scheduler/releases/download/v0.9.5-Beta/nittcsc_v095beta.apk"
+      },
+      "manifest": "package: name='jp.linkserver.nittcsc' versionCode='8' versionName='0.9.5-Beta' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+      "manifestSha256": "79e727d8fa6ecfd865e3aca89586abe50abc3c25be70f36526f2b4db457991e0",
+      "method": "HTTPS byte ranges of official APK ZIP; original AndroidManifest.xml inspected by aapt2; whole APK digest/signature not checked",
+      "redirectHosts": [
+        "release-assets.githubusercontent.com"
+      ]
+    },
+    {
+      "repository": "Link2011-Act2/NITTC_Scheduler",
+      "releaseId": 313747811,
+      "tag": "v0.9.4-Beta",
+      "releaseUrl": "https://github.com/Link2011-Act2/NITTC_Scheduler/releases/tag/v0.9.4-Beta",
+      "asset": {
+        "id": 405902418,
+        "name": "nittcsc_v094beta.apk",
+        "size": 52227489,
+        "digest": "sha256:95e8be39f6c869d6ebde01a396e45c4f217c1a2a74ea4bee59e660bcc28299e6",
+        "url": "https://github.com/Link2011-Act2/NITTC_Scheduler/releases/download/v0.9.4-Beta/nittcsc_v094beta.apk"
+      },
+      "manifest": "package: name='jp.linkserver.nittcsc' versionCode='7' versionName='0.9.4-Beta' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+      "manifestSha256": "cd24d88452f581d0c1d06164838c24ff907708aac410d6bdd1712810e5adcda5",
+      "method": "HTTPS byte ranges of official APK ZIP; original AndroidManifest.xml inspected by aapt2; whole APK digest/signature not checked",
+      "redirectHosts": [
+        "release-assets.githubusercontent.com"
+      ]
+    },
+    {
+      "repository": "Link2011-Act2/NITTC_Scheduler",
+      "releaseId": 311461132,
+      "tag": "v0.9.3-Beta",
+      "releaseUrl": "https://github.com/Link2011-Act2/NITTC_Scheduler/releases/tag/v0.9.3-Beta",
+      "asset": {
+        "id": 401102553,
+        "name": "nittcsc_v093beta.apk",
+        "size": 52205465,
+        "digest": "sha256:2b110d92ce4f6708296d0437ad887ee9c5677203eb6e76cf17fbe0d822a10f7f",
+        "url": "https://github.com/Link2011-Act2/NITTC_Scheduler/releases/download/v0.9.3-Beta/nittcsc_v093beta.apk"
+      },
+      "manifest": "package: name='jp.linkserver.nittcsc' versionCode='6' versionName='0.9.3-Beta' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+      "manifestSha256": "ae8f4462e1995f0a6bf07dd59fdcb030dc1f9e0ca58b84c6032c159166f31a2a",
+      "method": "HTTPS byte ranges of official APK ZIP; original AndroidManifest.xml inspected by aapt2; whole APK digest/signature not checked",
+      "redirectHosts": [
+        "release-assets.githubusercontent.com"
+      ]
+    },
+    {
+      "repository": "Link2011-Act2/NITTC_Scheduler",
+      "releaseId": 311198770,
+      "tag": "v0.9.2-Beta",
+      "releaseUrl": "https://github.com/Link2011-Act2/NITTC_Scheduler/releases/tag/v0.9.2-Beta",
+      "asset": {
+        "id": 400758785,
+        "name": "nittcsc_v092beta.apk",
+        "size": 52205465,
+        "digest": "sha256:d0c05dd9e30388b8204e47ccacde78b14030d1f3861415ca032d63551449a738",
+        "url": "https://github.com/Link2011-Act2/NITTC_Scheduler/releases/download/v0.9.2-Beta/nittcsc_v092beta.apk"
+      },
+      "manifest": "package: name='jp.linkserver.nittcsc' versionCode='5' versionName='0.9.2-Beta' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+      "manifestSha256": "04b54ac85abe629f5ea424c7c5cc5cf3e75ffefcbbcb06a4fe3590d541d7951c",
+      "method": "HTTPS byte ranges of official APK ZIP; original AndroidManifest.xml inspected by aapt2; whole APK digest/signature not checked",
+      "redirectHosts": [
+        "release-assets.githubusercontent.com"
+      ]
+    },
+    {
+      "repository": "Link2011-Act2/NITTC_Scheduler",
+      "releaseId": 310854349,
+      "tag": "v0.9.1-Beta",
+      "releaseUrl": "https://github.com/Link2011-Act2/NITTC_Scheduler/releases/tag/v0.9.1-Beta",
+      "asset": {
+        "id": 399903159,
+        "name": "nittcsc_v091beta.apk",
+        "size": 52162709,
+        "digest": "sha256:84709d7a6af2eb1a24af5a255e63809a68f43046abe223d66f3f8b00755a4b6b",
+        "url": "https://github.com/Link2011-Act2/NITTC_Scheduler/releases/download/v0.9.1-Beta/nittcsc_v091beta.apk"
+      },
+      "manifest": "package: name='jp.linkserver.nittcsc' versionCode='4' versionName='0.9.1-Beta' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+      "manifestSha256": "a0c02ba74c2f5a1e36969b75d52980a4a67192d1dd574e6c924128bdf6c49945",
+      "method": "HTTPS byte ranges of official APK ZIP; original AndroidManifest.xml inspected by aapt2; whole APK digest/signature not checked",
+      "redirectHosts": [
+        "release-assets.githubusercontent.com"
+      ]
+    },
+    {
+      "repository": "Link2011-Act2/NITTC_Scheduler",
+      "releaseId": 310739154,
+      "tag": "v0.9.0-Beta",
+      "releaseUrl": "https://github.com/Link2011-Act2/NITTC_Scheduler/releases/tag/v0.9.0-Beta",
+      "asset": {
+        "id": 399476184,
+        "name": "nittcsc_v090beta.apk",
+        "size": 65022444,
+        "digest": "sha256:224d920747127b30c71ad233a18a4c30308b8e3034f5c6c9721dbdb24cb7b9cd",
+        "url": "https://github.com/Link2011-Act2/NITTC_Scheduler/releases/download/v0.9.0-Beta/nittcsc_v090beta.apk"
+      },
+      "manifest": "package: name='jp.linkserver.nittcsc' versionCode='3' versionName='0.9.0-Beta' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+      "manifestSha256": "a4683592b985da0fb86076f6e32c2841944818e476923615b71c6dc5f67fc322",
+      "method": "HTTPS byte ranges of official APK ZIP; original AndroidManifest.xml inspected by aapt2; whole APK digest/signature not checked",
+      "redirectHosts": [
+        "release-assets.githubusercontent.com"
+      ]
+    },
+    {
+      "repository": "Link2011-Act2/GlyphBarty",
+      "releaseId": 381374185,
+      "tag": "v2.1.0-Release",
+      "releaseUrl": "https://github.com/Link2011-Act2/GlyphBarty/releases/tag/v2.1.0-Release",
+      "asset": {
+        "id": 541371942,
+        "name": "glyphbarty_v210release.apk",
+        "size": 2842758,
+        "digest": "sha256:1e3058c285a9edc2a6b6389b175f775774f21657f4f6f99fac46dac4b052f1e3",
+        "url": "https://github.com/Link2011-Act2/GlyphBarty/releases/download/v2.1.0-Release/glyphbarty_v210release.apk"
+      },
+      "manifest": "package: name='jp.linkserver.glyphvisualizer' versionCode='15' versionName='2.1.0-Release' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+      "manifestSha256": "1e754d8f6d5aec80050643b5f71b028ae9aa23cdb68133251395cd387fa50e53",
+      "method": "Whole official APK; size and SHA-256 checked against GitHub; aapt2 manifest; apksigner verify --verbose --print-certs",
+      "redirectHosts": [
+        "release-assets.githubusercontent.com"
+      ],
+      "sha256": "1e3058c285a9edc2a6b6389b175f775774f21657f4f6f99fac46dac4b052f1e3",
+      "bytes": 2842758,
+      "signatureVerified": true,
+      "signatureReport": "Verifies\nVerified using v1 scheme (JAR signing): false\nVerified using v2 scheme (APK Signature Scheme v2): true\nVerified using v3 scheme (APK Signature Scheme v3): false\nVerified using v3.1 scheme (APK Signature Scheme v3.1): false\nVerified using v4 scheme (APK Signature Scheme v4): false\nVerified for SourceStamp: false\nNumber of signers: 1\nSigner #1 certificate DN: C=JP, ST=Yamagata, L=Yamagata, O=GLYPH, OU=Personal, CN=Azul1nk\nSigner #1 certificate SHA-256 digest: 9923cb88eb0eb38b32862001198676cedfcb6e5fe834d09c7fde27f5a75337ef\nSigner #1 certificate SHA-1 digest: 359822832e0e33b2e48a4023fbe1a7ffab39b345\nSigner #1 certificate MD5 digest: 681233895d8f5a929c52b23bbe3b3a34\nSigner #1 key algorithm: RSA\nSigner #1 key size (bits): 2048\nSigner #1 public key SHA-256 digest: 19f10761b76ecfdb9c843f557bdb34c9b55c9b9041f78677dddc25db26897db7\nSigner #1 public key SHA-1 digest: 541c2a01e8d86976df6ac732ff2a6bbd8f4b2551\nSigner #1 public key MD5 digest: 0ad7648cb573ada670dbef2050ca8029\nWARNING: A restricted method in java.lang.System has been called\nWARNING: java.lang.System::loadLibrary has been called by org.conscrypt.NativeLibraryUtil in an unnamed module (file:/C:/Users/wwwri/AppData/Local/Android/Sdk/build-tools/36.0.0/lib/apksigner.jar)\nWARNING: Use --enable-native-access=ALL-UNNAMED to avoid a warning for callers in this module\nWARNING: Restricted methods will be blocked in a future release unless native access is enabled\n\n"
+    },
+    {
+      "repository": "Link2011-Act2/GlyphBarty",
+      "releaseId": 378909905,
+      "tag": "v2.0.1-Release",
+      "releaseUrl": "https://github.com/Link2011-Act2/GlyphBarty/releases/tag/v2.0.1-Release",
+      "asset": {
+        "id": 534919138,
+        "name": "glyphbarty_v201release.apk",
+        "size": 2791042,
+        "digest": "sha256:e171c16d6e443c8752aed8d07df07d5e0145e95cdb08351cda6ac9bcd86d5302",
+        "url": "https://github.com/Link2011-Act2/GlyphBarty/releases/download/v2.0.1-Release/glyphbarty_v201release.apk"
+      },
+      "manifest": "package: name='jp.linkserver.glyphvisualizer' versionCode='11' versionName='2.0.1-Release' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+      "manifestSha256": "353567935828f0fdb1b5bbb9c86a5231058818f5ab935ec9896d24d46e6cd68a",
+      "method": "HTTPS byte ranges of official APK ZIP; original AndroidManifest.xml inspected by aapt2; whole APK digest/signature not checked",
+      "redirectHosts": [
+        "release-assets.githubusercontent.com"
+      ]
+    },
+    {
+      "repository": "Link2011-Act2/GlyphBarty",
+      "releaseId": 377236221,
+      "tag": "v2.0.0-Release",
+      "releaseUrl": "https://github.com/Link2011-Act2/GlyphBarty/releases/tag/v2.0.0-Release",
+      "asset": {
+        "id": 530987762,
+        "name": "glyphbarty_v200release.apk",
+        "size": 2665814,
+        "digest": "sha256:34b1b69fe6262f157b89cd634cdb388ed9cb2f926fa82659988b74befc14ac32",
+        "url": "https://github.com/Link2011-Act2/GlyphBarty/releases/download/v2.0.0-Release/glyphbarty_v200release.apk"
+      },
+      "manifest": "package: name='jp.linkserver.glyphvisualizer' versionCode='10' versionName='2.0.0-Release' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+      "manifestSha256": "16bef8c8f50d7da1b257b2772989edf764543235c878e703fee00fe3e3dd762d",
+      "method": "HTTPS byte ranges of official APK ZIP; original AndroidManifest.xml inspected by aapt2; whole APK digest/signature not checked",
+      "redirectHosts": [
+        "release-assets.githubusercontent.com"
+      ]
+    },
+    {
+      "repository": "Link2011-Act2/GlyphBarty",
+      "releaseId": 338538043,
+      "tag": "v1.3.1-Release",
+      "releaseUrl": "https://github.com/Link2011-Act2/GlyphBarty/releases/tag/v1.3.1-Release",
+      "asset": {
+        "id": 445630628,
+        "name": "glyphbarty_v131release.apk",
+        "size": 2385150,
+        "digest": "sha256:e01e301739c93bce6d6e77b201fd3cfb2947ad31b3ac8ac8b9dc910c82af4190",
+        "url": "https://github.com/Link2011-Act2/GlyphBarty/releases/download/v1.3.1-Release/glyphbarty_v131release.apk"
+      },
+      "manifest": "package: name='jp.linkserver.glyphvisualizer' versionCode='6' versionName='1.3.1-Release' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+      "manifestSha256": "a907b44eafbc3681d6226698ca11b780aa8ebfe585255a1c9928895371889462",
+      "method": "HTTPS byte ranges of official APK ZIP; original AndroidManifest.xml inspected by aapt2; whole APK digest/signature not checked",
+      "redirectHosts": [
+        "release-assets.githubusercontent.com"
+      ]
+    },
+    {
+      "repository": "Link2011-Act2/GlyphBarty",
+      "releaseId": 332511688,
+      "tag": "v1.3.0-Release",
+      "releaseUrl": "https://github.com/Link2011-Act2/GlyphBarty/releases/tag/v1.3.0-Release",
+      "asset": {
+        "id": 435287274,
+        "name": "glyphbarty_v130release.apk",
+        "size": 2385146,
+        "digest": "sha256:372a8b560d1a45b7ca8a63613541fcbbb370be97eacad135c1ea2cc6b6a2b93b",
+        "url": "https://github.com/Link2011-Act2/GlyphBarty/releases/download/v1.3.0-Release/glyphbarty_v130release.apk"
+      },
+      "manifest": "package: name='jp.linkserver.glyphvisualizer' versionCode='5' versionName='1.3.0-Release' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+      "manifestSha256": "e15c466705ea28fe450c8270bcfa5e35b2e8cb233ba9fd4031b7f2deff6c86fc",
+      "method": "HTTPS byte ranges of official APK ZIP; original AndroidManifest.xml inspected by aapt2; whole APK digest/signature not checked",
+      "redirectHosts": [
+        "release-assets.githubusercontent.com"
+      ]
+    },
+    {
+      "repository": "Link2011-Act2/GlyphBarty",
+      "releaseId": 323880917,
+      "tag": "v1.2.0-Release",
+      "releaseUrl": "https://github.com/Link2011-Act2/GlyphBarty/releases/tag/v1.2.0-Release",
+      "asset": {
+        "id": 422477730,
+        "name": "glyphbarty_v120release.apk",
+        "size": 2215804,
+        "digest": "sha256:741e9e83e2427aed62147490d015c93a849479ab51f4c4a04472f14391384de8",
+        "url": "https://github.com/Link2011-Act2/GlyphBarty/releases/download/v1.2.0-Release/glyphbarty_v120release.apk"
+      },
+      "manifest": "package: name='jp.linkserver.glyphvisualizer' versionCode='3' versionName='1.2.0-Release' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+      "manifestSha256": "f4253e0152bcc865bd6b6d57a8b10242fb5542643acf8348a356d3c8333b7712",
+      "method": "HTTPS byte ranges of official APK ZIP; original AndroidManifest.xml inspected by aapt2; whole APK digest/signature not checked",
+      "redirectHosts": [
+        "release-assets.githubusercontent.com"
+      ]
+    },
+    {
+      "repository": "Link2011-Act2/GlyphBarty",
+      "releaseId": 322546043,
+      "tag": "v1.1.0-Release",
+      "releaseUrl": "https://github.com/Link2011-Act2/GlyphBarty/releases/tag/v1.1.0-Release",
+      "asset": {
+        "id": 420172583,
+        "name": "glyphbarty_v110release.apk",
+        "size": 2042032,
+        "digest": "sha256:856b14c5e8f3e325cb72dd6004e562e84377cb0a8e9f358f6ec35d7dc926ba80",
+        "url": "https://github.com/Link2011-Act2/GlyphBarty/releases/download/v1.1.0-Release/glyphbarty_v110release.apk"
+      },
+      "manifest": "package: name='jp.linkserver.glyphvisualizer' versionCode='2' versionName='1.1.0-Release' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+      "manifestSha256": "e78d9d8ac39ca4cec99d7f52185a8bd47cf6bb64d2e0a97b3fbb5e9596c2d774",
+      "method": "HTTPS byte ranges of official APK ZIP; original AndroidManifest.xml inspected by aapt2; whole APK digest/signature not checked",
+      "redirectHosts": [
+        "release-assets.githubusercontent.com"
+      ]
+    },
+    {
+      "repository": "Link2011-Act2/GlyphBarty",
+      "releaseId": 321084634,
+      "tag": "v1.0.0-Release",
+      "releaseUrl": "https://github.com/Link2011-Act2/GlyphBarty/releases/tag/v1.0.0-Release",
+      "asset": {
+        "id": 418286732,
+        "name": "glyphbarty_v100release.apk",
+        "size": 1988372,
+        "digest": "sha256:e238be99457b42515937be4eae57c19ec1d52e463ab7714d13d4716f9cda4d2c",
+        "url": "https://github.com/Link2011-Act2/GlyphBarty/releases/download/v1.0.0-Release/glyphbarty_v100release.apk"
+      },
+      "manifest": "package: name='jp.linkserver.glyphvisualizer' versionCode='1' versionName='1.0.0-Release' platformBuildVersionName='16' platformBuildVersionCode='36' compileSdkVersion='36' compileSdkVersionCodename='16'",
+      "manifestSha256": "8c8c5392470a4d91a0e55db29093148ca0e0e2d6a504700f1927863ddba2f307",
+      "method": "HTTPS byte ranges of official APK ZIP; original AndroidManifest.xml inspected by aapt2; whole APK digest/signature not checked",
+      "redirectHosts": [
+        "release-assets.githubusercontent.com"
+      ]
+    }
+  ]
+}

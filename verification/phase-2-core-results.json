@@ -1,0 +1,700 @@
+{
+  "baseline": {
+    "at": "2026-10-21T10:36:10.905Z",
+    "repos": [
+      {
+        "root": "D:/apps/goldy",
+        "head": "3d5429b4c6043d558a874fd1d60b1dfa242ab31e",
+        "status": [
+          " M .gitignore",
+          " D .idea/.gitignore",
+          " D app/.gitignore",
+          "?? docs/phase-1-api-and-migration.md",
+          "?? docs/phase-1-investigation.md",
+          "?? docs/phase-1-repository-state.json"
+        ],
+        "diffSha256": "98f41084dd50bdbec998d41ca4642b8226f7e9a450aa82ee2dcb0757d31b9786",
+        "indexSha256": "6b1921b674bbf3c94349602fbacea3eddd6c2233a4e6bd743aa495af6f412921",
+        "untracked": [
+          {
+            "path": "docs/phase-1-api-and-migration.md",
+            "sha256": "b621cb874696b40b8388105f4d3554500d99313f6b2bca6aa885b2f100d884a5"
+          },
+          {
+            "path": "docs/phase-1-investigation.md",
+            "sha256": "fddbd4e164ad7418cab6436a86c02e16e834d8e50e2dd8fd2cc7d532170c97c1"
+          },
+          {
+            "path": "docs/phase-1-repository-state.json",
+            "sha256": "3499782e142acdaeb7575554d4c9c6ce840f3b782915eae1257cd249a960e48b"
+          }
+        ],
+        "dirty": [
+          {
+            "path": ".gitignore",
+            "sha256": "dfb23ddcb42c5c08e426d12a8c72aec8239224ba643262e42009f36b6ea4216b"
+          },
+          {
+            "path": ".idea/.gitignore",
+            "sha256": "ENOENT"
+          },
+          {
+            "path": "app/.gitignore",
+            "sha256": "ENOENT"
+          }
+        ]
+      },
+      {
+        "root": "D:/apps/shutup",
+        "head": "1a18497cfbe62eac20ecf3ba8264cb8daf163fac",
+        "status": [
+          " M app/src/main/java/jp/linkserver/shutter/ui/ShutterApp.kt",
+          " M app/src/main/java/jp/linkserver/shutter/ui/Theme.kt",
+          " M verification/pyrite-migration/report.md",
+          "?? app/src/androidTest/java/jp/linkserver/shutter/ui/PyritePaletteTest.kt",
+          "?? verification/pyrite-light-palette/after-ui.txt",
+          "?? verification/pyrite-light-palette/before-ui.txt",
+          "?? verification/pyrite-light-palette/catalog-color-checks.json",
+          "?? verification/pyrite-light-palette/dark-dynamic-after.json",
+          "?? verification/pyrite-light-palette/dark-dynamic-before.json",
+          "?? verification/pyrite-light-palette/dark-static-after.json",
+          "?? verification/pyrite-light-palette/dark-static-before.json",
+          "?? verification/pyrite-light-palette/image-metrics.json",
+          "?? verification/pyrite-light-palette/light-dynamic-about.png",
+          "?? verification/pyrite-light-palette/light-dynamic-after.json",
+          "?? verification/pyrite-light-palette/light-dynamic-before.json",
+          "?? verification/pyrite-light-palette/light-dynamic-settings.png",
+          "?? verification/pyrite-light-palette/light-static-about.png",
+          "?? verification/pyrite-light-palette/light-static-after.json",
+          "?? verification/pyrite-light-palette/light-static-before.json",
+          "?? verification/pyrite-light-palette/light-static-settings.png",
+          "?? verification/pyrite-light-palette/report.md"
+        ],
+        "diffSha256": "840db1106a3947ef9a88ad400eadb879c291aa74f34dbd4d77af842526cb9016",
+        "indexSha256": "ca83cc65d47c0cb08f4db87eb58e107de20e6ef7cf1ea95424da869bec4e93f5",
+        "untracked": [
+          {
+            "path": "app/src/androidTest/java/jp/linkserver/shutter/ui/PyritePaletteTest.kt",
+            "sha256": "87872eff08dc672f745017005342b37874679c20586df9af33dbbc32006523b6"
+          },
+          {
+            "path": "verification/pyrite-light-palette/after-ui.txt",
+            "sha256": "2a47c40f62ac9f36b3d62db4aa0eca95db9945cba33997ca0e85cd08cda9980e"
+          },
+          {
+            "path": "verification/pyrite-light-palette/before-ui.txt",
+            "sha256": "1fbb43d551f0bc1bf755a28ed427817f6c155ee01670f7700937cee14197d214"
+          },
+          {
+            "path": "verification/pyrite-light-palette/catalog-color-checks.json",
+            "sha256": "6cfac7becf4347e302426e387985cf9bb1bffe1c99fefcd77e7233d22dd2a13b"
+          },
+          {
+            "path": "verification/pyrite-light-palette/dark-dynamic-after.json",
+            "sha256": "817084748626e303e4642050b556c1f627ef140d4c743bf467da4fe8affd67a3"
+          },
+          {
+            "path": "verification/pyrite-light-palette/dark-dynamic-before.json",
+            "sha256": "817084748626e303e4642050b556c1f627ef140d4c743bf467da4fe8affd67a3"
+          },
+          {
+            "path": "verification/pyrite-light-palette/dark-static-after.json",
+            "sha256": "c0cc9054fd17a24fff5690f26b10c735bc3d66ae1421c153f129934c43bd02c4"
+          },
+          {
+            "path": "verification/pyrite-light-palette/dark-static-before.json",
+            "sha256": "c0cc9054fd17a24fff5690f26b10c735bc3d66ae1421c153f129934c43bd02c4"
+          },
+          {
+            "path": "verification/pyrite-light-palette/image-metrics.json",
+            "sha256": "e2f41bb113e7defa0bb5e4ce6dc506c425c2c15bdf83f235bb0921161eac807d"
+          },
+          {
+            "path": "verification/pyrite-light-palette/light-dynamic-about.png",
+            "sha256": "c79be3cbdb56ffd515d7f4a8c460defbe42a6ccac2a06f47471b281ca8cd18b5"
+          },
+          {
+            "path": "verification/pyrite-light-palette/light-dynamic-after.json",
+            "sha256": "a793c225d3efdb82249a0580ae22028a07001605c1d2bd9d7140c9471078b24b"
+          },
+          {
+            "path": "verification/pyrite-light-palette/light-dynamic-before.json",
+            "sha256": "7a3a0d6e1af9e78fe7f1db0a30a98f1e5479765ba38591fd25d67d547d62fb26"
+          },
+          {
+            "path": "verification/pyrite-light-palette/light-dynamic-settings.png",
+            "sha256": "08f153e185c3d5a030effd5d201bdf78aa13d2e138249516d1187e028fc115aa"
+          },
+          {
+            "path": "verification/pyrite-light-palette/light-static-about.png",
+            "sha256": "3d5b36a1a63c8fd9d801cb944e44fd14793c2f4c17ecae3ec96cc6bf8154e36e"
+          },
+          {
+            "path": "verification/pyrite-light-palette/light-static-after.json",
+            "sha256": "04f3e49db0905f9b5170bae8eeab143f581b1e72797aaeedc1e9342ff81a471a"
+          },
+          {
+            "path": "verification/pyrite-light-palette/light-static-before.json",
+            "sha256": "02358f449bd10f9fbc7e4eef5f177aaaa95286e52486aec98602a7b4b8b3e602"
+          },
+          {
+            "path": "verification/pyrite-light-palette/light-static-settings.png",
+            "sha256": "3ceced3309c3ab988811cdffbef05fb9db5685587e240878494726adb6414e16"
+          },
+          {
+            "path": "verification/pyrite-light-palette/report.md",
+            "sha256": "4ce6ce44f18b72fbcf461f80bed69b635995496b2d1362217b462084f36a88c4"
+          }
+        ],
+        "dirty": [
+          {
+            "path": "app/src/main/java/jp/linkserver/shutter/ui/ShutterApp.kt",
+            "sha256": "b4b7b6f521bdadabfcc3ed2a42d6e89738812538a216a0881501242efb875b67"
+          },
+          {
+            "path": "app/src/main/java/jp/linkserver/shutter/ui/Theme.kt",
+            "sha256": "ca4c9bd267172220625cd26ad2f3f2a99b084dedcf6049712184f3a4949d9cd2"
+          },
+          {
+            "path": "verification/pyrite-migration/report.md",
+            "sha256": "906980fbbb82864a435cc01c5a4a941167bcf189fede040fcbedad9a15f0d39d"
+          }
+        ]
+      },
+      {
+        "root": "D:/apps/schedulernittc",
+        "head": "9fad0402e268902bbfbea485ca216218c17afdf1",
+        "status": [],
+        "diffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "indexSha256": "fe0b970703132671a96de0b8fd5391afa6b528d2e572019fbd9366e085285c5d",
+        "untracked": [],
+        "dirty": []
+      },
+      {
+        "root": "D:/apps/glyphvisualizer",
+        "head": "d0adb9c7e98bd888110da7edcd1997ebb29ca4db",
+        "status": [],
+        "diffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "indexSha256": "e8931de32cc807dd05ca4119df322797ed031fd520ac434e3e7020d8420ce50a",
+        "untracked": [],
+        "dirty": []
+      }
+    ]
+  },
+  "completion": {
+    "at": "2026-10-21T11:01:43.801Z",
+    "repos": [
+      {
+        "root": "D:/apps/goldy",
+        "head": "3d5429b4c6043d558a874fd1d60b1dfa242ab31e",
+        "status": [
+          " M .gitignore",
+          " D .idea/.gitignore",
+          " D app/.gitignore",
+          " M build.gradle.kts",
+          " M gradle/libs.versions.toml",
+          " M settings.gradle.kts",
+          "?? docs/phase-1-api-and-migration.md",
+          "?? docs/phase-1-investigation.md",
+          "?? docs/phase-1-repository-state.json",
+          "?? goldy-core/build.gradle.kts",
+          "?? goldy-core/src/main/AndroidManifest.xml",
+          "?? goldy-core/src/main/java/jp/linkserver/goldy/GitHubReleaseClient.kt",
+          "?? goldy-core/src/main/java/jp/linkserver/goldy/GitHubReleaseParser.kt",
+          "?? goldy-core/src/main/java/jp/linkserver/goldy/GitHubRepository.kt",
+          "?? goldy-core/src/main/java/jp/linkserver/goldy/Goldy.kt",
+          "?? goldy-core/src/main/java/jp/linkserver/goldy/Models.kt",
+          "?? goldy-core/src/main/java/jp/linkserver/goldy/PreferencesUpdateStateStore.kt",
+          "?? goldy-core/src/main/java/jp/linkserver/goldy/ReleaseSelector.kt",
+          "?? goldy-core/src/main/java/jp/linkserver/goldy/UpdatePolicy.kt",
+          "?? goldy-core/src/main/java/jp/linkserver/goldy/UpdateStateStore.kt",
+          "?? goldy-core/src/main/java/jp/linkserver/goldy/VersionPolicy.kt",
+          "?? goldy-core/src/main/java/jp/linkserver/goldy/internal/LegacyVersionRules.kt",
+          "?? goldy-core/src/main/java/jp/linkserver/goldy/internal/ShutUpVersions.kt",
+          "?? goldy-core/src/main/resources/META-INF/goldy/LICENSE",
+          "?? goldy-core/src/main/resources/META-INF/goldy/NOTICE",
+          "?? goldy-core/src/test/java/jp/linkserver/goldy/CacheJsonTest.kt",
+          "?? goldy-core/src/test/java/jp/linkserver/goldy/Fixtures.kt",
+          "?? goldy-core/src/test/java/jp/linkserver/goldy/GitHubReleaseClientTest.kt",
+          "?? goldy-core/src/test/java/jp/linkserver/goldy/GoldyStateTest.kt",
+          "?? goldy-core/src/test/java/jp/linkserver/goldy/PreferencesUpdateStateStoreTest.kt",
+          "?? goldy-core/src/test/java/jp/linkserver/goldy/ReleaseSelectorTest.kt",
+          "?? goldy-core/src/test/java/jp/linkserver/goldy/SelectionCharacterizationTest.kt",
+          "?? goldy-core/src/test/java/jp/linkserver/goldy/VersionCharacterizationTest.kt",
+          "?? goldy-core/src/test/java/jp/linkserver/goldy/legacy/glyph/Rules.kt",
+          "?? goldy-core/src/test/java/jp/linkserver/goldy/legacy/scheduler/Rules.kt",
+          "?? goldy-core/src/test/java/jp/linkserver/goldy/legacy/shutup/ReleaseChannel.kt",
+          "?? goldy-core/src/test/java/jp/linkserver/goldy/legacy/shutup/ReleaseVersion.kt",
+          "?? goldy-core/src/test/java/jp/linkserver/goldy/legacy/shutup/Selection.kt",
+          "?? goldy-core/src/test/resources/legacy-source-hashes.txt",
+          "?? verification/consumer/build.gradle.kts",
+          "?? verification/consumer/consumer/build.gradle.kts",
+          "?? verification/consumer/consumer/src/main/AndroidManifest.xml",
+          "?? verification/consumer/consumer/src/main/java/example/goldyconsumer/Consumer.kt",
+          "?? verification/consumer/consumer/src/test/java/example/goldyconsumer/ConsumerTest.kt",
+          "?? verification/consumer/gradle.properties",
+          "?? verification/consumer/settings.gradle.kts"
+        ],
+        "diffSha256": "bf68cf68db7df04936193b3c10fbddc50de4fff012b9bab7f689eba36327750b",
+        "indexSha256": "6b1921b674bbf3c94349602fbacea3eddd6c2233a4e6bd743aa495af6f412921",
+        "untracked": [
+          {
+            "path": "docs/phase-1-api-and-migration.md",
+            "sha256": "b621cb874696b40b8388105f4d3554500d99313f6b2bca6aa885b2f100d884a5"
+          },
+          {
+            "path": "docs/phase-1-investigation.md",
+            "sha256": "fddbd4e164ad7418cab6436a86c02e16e834d8e50e2dd8fd2cc7d532170c97c1"
+          },
+          {
+            "path": "docs/phase-1-repository-state.json",
+            "sha256": "3499782e142acdaeb7575554d4c9c6ce840f3b782915eae1257cd249a960e48b"
+          },
+          {
+            "path": "goldy-core/build.gradle.kts",
+            "sha256": "c314c05971da7a20f97c63acdc709381ec5fac91446d2b62838d4431e442c062"
+          },
+          {
+            "path": "goldy-core/src/main/AndroidManifest.xml",
+            "sha256": "678647a824ef7ab16066708585790ab265135d32fdf84bcd918a4b050f8891b9"
+          },
+          {
+            "path": "goldy-core/src/main/java/jp/linkserver/goldy/GitHubReleaseClient.kt",
+            "sha256": "8cbf74ac4d078235bf0ea0466280f073318b52333a2cf4dafa0b8b572621d592"
+          },
+          {
+            "path": "goldy-core/src/main/java/jp/linkserver/goldy/GitHubReleaseParser.kt",
+            "sha256": "fae768527b6c5bb5de9a84a41eb0ea7c84ba4c8fc266b015e0295ba0857843d0"
+          },
+          {
+            "path": "goldy-core/src/main/java/jp/linkserver/goldy/GitHubRepository.kt",
+            "sha256": "9dd2a179e938f2c4a06bd301e9b74859ea88df6755e206ce2fb1adb3519630dc"
+          },
+          {
+            "path": "goldy-core/src/main/java/jp/linkserver/goldy/Goldy.kt",
+            "sha256": "f8e7d1eb5cd8279be7cb4bb0c7d3b476452f0bd52cb668f29ebeb0f3f243ba42"
+          },
+          {
+            "path": "goldy-core/src/main/java/jp/linkserver/goldy/Models.kt",
+            "sha256": "83fb09b5a2368c5f966e9beee83f107f2ec8ef735ece35707442ce2cbbc3bc6f"
+          },
+          {
+            "path": "goldy-core/src/main/java/jp/linkserver/goldy/PreferencesUpdateStateStore.kt",
+            "sha256": "6dc0f8cc4b93e4ae1c821fa10f6888732514ccdcacd8af70c3a2f536d1667949"
+          },
+          {
+            "path": "goldy-core/src/main/java/jp/linkserver/goldy/ReleaseSelector.kt",
+            "sha256": "ec9d76f4cfd75edf32efd950ea299f68e5f6d00b9d80a9d80ad49d3f665e2139"
+          },
+          {
+            "path": "goldy-core/src/main/java/jp/linkserver/goldy/UpdatePolicy.kt",
+            "sha256": "0a14fc8711df90febe67e15424ee6ed009acfb0bf8acc97f1d5a32b591a33f3a"
+          },
+          {
+            "path": "goldy-core/src/main/java/jp/linkserver/goldy/UpdateStateStore.kt",
+            "sha256": "e2d8212c62cf6308b94e8235d1ca95d26c419b93728e641fe0f8fcf9d9bf71ac"
+          },
+          {
+            "path": "goldy-core/src/main/java/jp/linkserver/goldy/VersionPolicy.kt",
+            "sha256": "862e9e81595c630bc8804807175c04d22cab720154700968f2fddd64306ac2f9"
+          },
+          {
+            "path": "goldy-core/src/main/java/jp/linkserver/goldy/internal/LegacyVersionRules.kt",
+            "sha256": "3585978921cd63d88eb3bde7859a417fe66406fe3e50baaeb014ce7577377d41"
+          },
+          {
+            "path": "goldy-core/src/main/java/jp/linkserver/goldy/internal/ShutUpVersions.kt",
+            "sha256": "93f0bde279d5f9e6bdc2e4878bd728386e510216e8e896da1e4f043000467ef9"
+          },
+          {
+            "path": "goldy-core/src/main/resources/META-INF/goldy/LICENSE",
+            "sha256": "3d8292ba8f4e9abf5a18b2e09ee8640eccec6c5c9a52b0a131811a466c4b62da"
+          },
+          {
+            "path": "goldy-core/src/main/resources/META-INF/goldy/NOTICE",
+            "sha256": "280707db415bddda5da14f42843159c20223a71e5790b44a1a5e9f919aaac679"
+          },
+          {
+            "path": "goldy-core/src/test/java/jp/linkserver/goldy/CacheJsonTest.kt",
+            "sha256": "83953345cdca986d67daa2825b00166fd82c6e709872333ec63ce601aff69e56"
+          },
+          {
+            "path": "goldy-core/src/test/java/jp/linkserver/goldy/Fixtures.kt",
+            "sha256": "710f248b676ff24d553fbbd54280c9cc08d4130cbc9c3ca883da7d7ad1671a69"
+          },
+          {
+            "path": "goldy-core/src/test/java/jp/linkserver/goldy/GitHubReleaseClientTest.kt",
+            "sha256": "bbe9ffb3832cb02b61d50d6136b04f892d71e509340434f580f0ce8817b93bf7"
+          },
+          {
+            "path": "goldy-core/src/test/java/jp/linkserver/goldy/GoldyStateTest.kt",
+            "sha256": "79b0cfbd87274217749f7eb0a8406ef02b0e7a73731b1b573c5a3bed7082e1cd"
+          },
+          {
+            "path": "goldy-core/src/test/java/jp/linkserver/goldy/PreferencesUpdateStateStoreTest.kt",
+            "sha256": "d45537c7d933fd72947f6badc95d792384837d098675fcfa3d3acf28a799e0f8"
+          },
+          {
+            "path": "goldy-core/src/test/java/jp/linkserver/goldy/ReleaseSelectorTest.kt",
+            "sha256": "7c91615e6a8b1730f8c1f5a36112b7b1fde920f7f67ff790190bfbb485f4e448"
+          },
+          {
+            "path": "goldy-core/src/test/java/jp/linkserver/goldy/SelectionCharacterizationTest.kt",
+            "sha256": "1797471b50af0684676fb2679278961c132478b42a24121a98d4f9a18b870631"
+          },
+          {
+            "path": "goldy-core/src/test/java/jp/linkserver/goldy/VersionCharacterizationTest.kt",
+            "sha256": "642ea52d929b0bbbf0fc5116f62218c87fc66ed1c7b34cdd3d77b6af4835fd17"
+          },
+          {
+            "path": "goldy-core/src/test/java/jp/linkserver/goldy/legacy/glyph/Rules.kt",
+            "sha256": "2d2ef9318ae3db35f61f9242cef8d94891bb1c3f47e7150e23b092a4a8d73994"
+          },
+          {
+            "path": "goldy-core/src/test/java/jp/linkserver/goldy/legacy/scheduler/Rules.kt",
+            "sha256": "4925b17f603702fc0902b499db2833d2812fe30eefeac41125f69016d7c75b4c"
+          },
+          {
+            "path": "goldy-core/src/test/java/jp/linkserver/goldy/legacy/shutup/ReleaseChannel.kt",
+            "sha256": "65ed270c70ad682bf3214cff9262116980fafd6e030258f80bc404ec48d021e0"
+          },
+          {
+            "path": "goldy-core/src/test/java/jp/linkserver/goldy/legacy/shutup/ReleaseVersion.kt",
+            "sha256": "b2d6e2c667928df9ba5297dbff3ddd3a3c50bea5ced5db98a5f9c8f18e54fe47"
+          },
+          {
+            "path": "goldy-core/src/test/java/jp/linkserver/goldy/legacy/shutup/Selection.kt",
+            "sha256": "28078f7d0c6056385a95931a92bf7bfa72376d9fca072c39dbbcdc9cebc79169"
+          },
+          {
+            "path": "goldy-core/src/test/resources/legacy-source-hashes.txt",
+            "sha256": "338fab0ea78b28cd7df3d554b8bb3efaa5c8633f8126abcf7abd9d15a3e54d9e"
+          },
+          {
+            "path": "verification/consumer/build.gradle.kts",
+            "sha256": "063aadf7eea256881a8dec967d65144940a62a521f0a73f2be5dcc7ce9c8098d"
+          },
+          {
+            "path": "verification/consumer/consumer/build.gradle.kts",
+            "sha256": "9e7b8c438a218bf4ac13cebbc39a12f3c29ba68d9ec94cf3fa329a2b76e5cae3"
+          },
+          {
+            "path": "verification/consumer/consumer/src/main/AndroidManifest.xml",
+            "sha256": "571f2735faf5e857752ee057ac8ef63425576a721616c60b86ee5d4c0a2d682f"
+          },
+          {
+            "path": "verification/consumer/consumer/src/main/java/example/goldyconsumer/Consumer.kt",
+            "sha256": "40ffa549ae33ad25c0ecb10f6fc8611cd9bd725886541340456c44d6322577ae"
+          },
+          {
+            "path": "verification/consumer/consumer/src/test/java/example/goldyconsumer/ConsumerTest.kt",
+            "sha256": "bf0c90bddd13f8ec0024dcd7ca6448df479a06bbc42ce1dd299102fd21d24d82"
+          },
+          {
+            "path": "verification/consumer/gradle.properties",
+            "sha256": "ef133a3823e54117379f34ac35089091f5ca64b0d7be7600fe465dadfa994142"
+          },
+          {
+            "path": "verification/consumer/settings.gradle.kts",
+            "sha256": "cc9980afde51e5e7add08c59c3c0f54558fa00960a5100656bcfa8628871fdff"
+          }
+        ],
+        "dirty": [
+          {
+            "path": ".gitignore",
+            "sha256": "dfb23ddcb42c5c08e426d12a8c72aec8239224ba643262e42009f36b6ea4216b"
+          },
+          {
+            "path": ".idea/.gitignore",
+            "sha256": "ENOENT"
+          },
+          {
+            "path": "app/.gitignore",
+            "sha256": "ENOENT"
+          },
+          {
+            "path": "build.gradle.kts",
+            "sha256": "7ad3a30fcbbfd8fe0b8f4e5013d69f8972a539edbe7f26d77d3aaa4867c58f7e"
+          },
+          {
+            "path": "gradle/libs.versions.toml",
+            "sha256": "5b3569e7e62dd0e309b9d6750f5d8ecf36a26cc8d9d644eaf30953e5fb2c29df"
+          },
+          {
+            "path": "settings.gradle.kts",
+            "sha256": "a38ef54042902319ad1e389038a58d77e0fdc38a333ca6072f4907096b9deb41"
+          }
+        ]
+      },
+      {
+        "root": "D:/apps/shutup",
+        "head": "1a18497cfbe62eac20ecf3ba8264cb8daf163fac",
+        "status": [
+          " M app/src/main/java/jp/linkserver/shutter/ui/ShutterApp.kt",
+          " M app/src/main/java/jp/linkserver/shutter/ui/Theme.kt",
+          " M verification/pyrite-migration/report.md",
+          "?? app/src/androidTest/java/jp/linkserver/shutter/ui/PyritePaletteTest.kt",
+          "?? verification/pyrite-light-palette/after-ui.txt",
+          "?? verification/pyrite-light-palette/before-ui.txt",
+          "?? verification/pyrite-light-palette/catalog-color-checks.json",
+          "?? verification/pyrite-light-palette/dark-dynamic-after.json",
+          "?? verification/pyrite-light-palette/dark-dynamic-before.json",
+          "?? verification/pyrite-light-palette/dark-static-after.json",
+          "?? verification/pyrite-light-palette/dark-static-before.json",
+          "?? verification/pyrite-light-palette/image-metrics.json",
+          "?? verification/pyrite-light-palette/light-dynamic-about.png",
+          "?? verification/pyrite-light-palette/light-dynamic-after.json",
+          "?? verification/pyrite-light-palette/light-dynamic-before.json",
+          "?? verification/pyrite-light-palette/light-dynamic-settings.png",
+          "?? verification/pyrite-light-palette/light-static-about.png",
+          "?? verification/pyrite-light-palette/light-static-after.json",
+          "?? verification/pyrite-light-palette/light-static-before.json",
+          "?? verification/pyrite-light-palette/light-static-settings.png",
+          "?? verification/pyrite-light-palette/report.md"
+        ],
+        "diffSha256": "840db1106a3947ef9a88ad400eadb879c291aa74f34dbd4d77af842526cb9016",
+        "indexSha256": "ca83cc65d47c0cb08f4db87eb58e107de20e6ef7cf1ea95424da869bec4e93f5",
+        "untracked": [
+          {
+            "path": "app/src/androidTest/java/jp/linkserver/shutter/ui/PyritePaletteTest.kt",
+            "sha256": "87872eff08dc672f745017005342b37874679c20586df9af33dbbc32006523b6"
+          },
+          {
+            "path": "verification/pyrite-light-palette/after-ui.txt",
+            "sha256": "2a47c40f62ac9f36b3d62db4aa0eca95db9945cba33997ca0e85cd08cda9980e"
+          },
+          {
+            "path": "verification/pyrite-light-palette/before-ui.txt",
+            "sha256": "1fbb43d551f0bc1bf755a28ed427817f6c155ee01670f7700937cee14197d214"
+          },
+          {
+            "path": "verification/pyrite-light-palette/catalog-color-checks.json",
+            "sha256": "6cfac7becf4347e302426e387985cf9bb1bffe1c99fefcd77e7233d22dd2a13b"
+          },
+          {
+            "path": "verification/pyrite-light-palette/dark-dynamic-after.json",
+            "sha256": "817084748626e303e4642050b556c1f627ef140d4c743bf467da4fe8affd67a3"
+          },
+          {
+            "path": "verification/pyrite-light-palette/dark-dynamic-before.json",
+            "sha256": "817084748626e303e4642050b556c1f627ef140d4c743bf467da4fe8affd67a3"
+          },
+          {
+            "path": "verification/pyrite-light-palette/dark-static-after.json",
+            "sha256": "c0cc9054fd17a24fff5690f26b10c735bc3d66ae1421c153f129934c43bd02c4"
+          },
+          {
+            "path": "verification/pyrite-light-palette/dark-static-before.json",
+            "sha256": "c0cc9054fd17a24fff5690f26b10c735bc3d66ae1421c153f129934c43bd02c4"
+          },
+          {
+            "path": "verification/pyrite-light-palette/image-metrics.json",
+            "sha256": "e2f41bb113e7defa0bb5e4ce6dc506c425c2c15bdf83f235bb0921161eac807d"
+          },
+          {
+            "path": "verification/pyrite-light-palette/light-dynamic-about.png",
+            "sha256": "c79be3cbdb56ffd515d7f4a8c460defbe42a6ccac2a06f47471b281ca8cd18b5"
+          },
+          {
+            "path": "verification/pyrite-light-palette/light-dynamic-after.json",
+            "sha256": "a793c225d3efdb82249a0580ae22028a07001605c1d2bd9d7140c9471078b24b"
+          },
+          {
+            "path": "verification/pyrite-light-palette/light-dynamic-before.json",
+            "sha256": "7a3a0d6e1af9e78fe7f1db0a30a98f1e5479765ba38591fd25d67d547d62fb26"
+          },
+          {
+            "path": "verification/pyrite-light-palette/light-dynamic-settings.png",
+            "sha256": "08f153e185c3d5a030effd5d201bdf78aa13d2e138249516d1187e028fc115aa"
+          },
+          {
+            "path": "verification/pyrite-light-palette/light-static-about.png",
+            "sha256": "3d5b36a1a63c8fd9d801cb944e44fd14793c2f4c17ecae3ec96cc6bf8154e36e"
+          },
+          {
+            "path": "verification/pyrite-light-palette/light-static-after.json",
+            "sha256": "04f3e49db0905f9b5170bae8eeab143f581b1e72797aaeedc1e9342ff81a471a"
+          },
+          {
+            "path": "verification/pyrite-light-palette/light-static-before.json",
+            "sha256": "02358f449bd10f9fbc7e4eef5f177aaaa95286e52486aec98602a7b4b8b3e602"
+          },
+          {
+            "path": "verification/pyrite-light-palette/light-static-settings.png",
+            "sha256": "3ceced3309c3ab988811cdffbef05fb9db5685587e240878494726adb6414e16"
+          },
+          {
+            "path": "verification/pyrite-light-palette/report.md",
+            "sha256": "4ce6ce44f18b72fbcf461f80bed69b635995496b2d1362217b462084f36a88c4"
+          }
+        ],
+        "dirty": [
+          {
+            "path": "app/src/main/java/jp/linkserver/shutter/ui/ShutterApp.kt",
+            "sha256": "b4b7b6f521bdadabfcc3ed2a42d6e89738812538a216a0881501242efb875b67"
+          },
+          {
+            "path": "app/src/main/java/jp/linkserver/shutter/ui/Theme.kt",
+            "sha256": "ca4c9bd267172220625cd26ad2f3f2a99b084dedcf6049712184f3a4949d9cd2"
+          },
+          {
+            "path": "verification/pyrite-migration/report.md",
+            "sha256": "906980fbbb82864a435cc01c5a4a941167bcf189fede040fcbedad9a15f0d39d"
+          }
+        ]
+      },
+      {
+        "root": "D:/apps/schedulernittc",
+        "head": "9fad0402e268902bbfbea485ca216218c17afdf1",
+        "status": [],
+        "diffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "indexSha256": "fe0b970703132671a96de0b8fd5391afa6b528d2e572019fbd9366e085285c5d",
+        "untracked": [],
+        "dirty": []
+      },
+      {
+        "root": "D:/apps/glyphvisualizer",
+        "head": "d0adb9c7e98bd888110da7edcd1997ebb29ca4db",
+        "status": [],
+        "diffSha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+        "indexSha256": "e8931de32cc807dd05ca4119df322797ed031fd520ac434e3e7020d8420ce50a",
+        "untracked": [],
+        "dirty": []
+      }
+    ]
+  },
+  "verification": {
+    "protectedApps": [
+      {
+        "root": "D:/apps/shutup",
+        "headUnchanged": true,
+        "statusUnchanged": true,
+        "diffUnchanged": true,
+        "indexUnchanged": true,
+        "untrackedUnchanged": true
+      },
+      {
+        "root": "D:/apps/schedulernittc",
+        "headUnchanged": true,
+        "statusUnchanged": true,
+        "diffUnchanged": true,
+        "indexUnchanged": true,
+        "untrackedUnchanged": true
+      },
+      {
+        "root": "D:/apps/glyphvisualizer",
+        "headUnchanged": true,
+        "statusUnchanged": true,
+        "diffUnchanged": true,
+        "indexUnchanged": true,
+        "untrackedUnchanged": true
+      }
+    ],
+    "protectedGoldy": [
+      {
+        "path": ".gitignore",
+        "unchanged": true
+      },
+      {
+        "path": ".idea/.gitignore",
+        "unchanged": true
+      },
+      {
+        "path": "app/.gitignore",
+        "unchanged": true
+      },
+      {
+        "path": "docs/phase-1-api-and-migration.md",
+        "unchanged": true
+      },
+      {
+        "path": "docs/phase-1-investigation.md",
+        "unchanged": true
+      },
+      {
+        "path": "docs/phase-1-repository-state.json",
+        "unchanged": true
+      }
+    ],
+    "goldyHeadUnchanged": true,
+    "goldyIndexUnchanged": true,
+    "allProtected": true
+  },
+  "tests": {
+    "core": [
+      {
+        "name": "jp.linkserver.goldy.CacheJsonTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "jp.linkserver.goldy.GitHubReleaseClientTest",
+        "tests": 10,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "jp.linkserver.goldy.GoldyStateTest",
+        "tests": 14,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "jp.linkserver.goldy.PreferencesUpdateStateStoreTest",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "jp.linkserver.goldy.ReleaseSelectorTest",
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "jp.linkserver.goldy.SelectionCharacterizationTest",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "jp.linkserver.goldy.VersionCharacterizationTest",
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    ],
+    "consumer": [
+      {
+        "name": "example.goldyconsumer.ConsumerTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    ]
+  },
+  "lint": [
+    {
+      "path": "D:/apps/goldy/goldy-core/build/reports/lint-results-debug.xml",
+      "issues": 0
+    },
+    {
+      "path": "D:/apps/goldy/verification/consumer/consumer/build/reports/lint-results-debug.xml",
+      "issues": 0
+    }
+  ],
+  "artifact": {
+    "path": "D:/apps/goldy/goldy-core/build/outputs/aar/goldy-core-release.aar",
+    "size": 171599,
+    "sha256": "da12838e5ec7de210f7c96d28330d7abcb2467af7395fc64f78ee19d0ac147d0"
+  }
+}

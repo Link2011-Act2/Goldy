@@ -1,15 +1,25 @@
+# Gradle, Kotlin, and Android build outputs
+.gradle/
+.kotlin/
+build/
+.externalNativeBuild/
+.cxx/
+/captures/
+
+# Machine-specific configuration
+local.properties
+
+# Android Studio / IntelliJ IDEA local state
 *.iml
-.gradle
-/local.properties
-/.idea/caches
-/.idea/libraries
+/.idea/.name
+/.idea/caches/
+/.idea/libraries/
 /.idea/modules.xml
 /.idea/workspace.xml
 /.idea/navEditor.xml
 /.idea/assetWizardSettings.xml
+/.idea/shelf/
+
+# Operating system files
 .DS_Store
-/build
-/captures
-.externalNativeBuild
-.cxx
-local.properties
+Thumbs.db

@@ -1,0 +1,9 @@
+INSTRUMENTATION_RESULT: result=self archive + installed current signer: PASS
+shutup.apk: ApkMetadata(packageName=jp.linkserver.shutter, versionName=1.1.0-Release, versionCode=4, signers=ApkSigners(currentSha256=[40c469f16948f47f52d70c626a78bd055e83ec8279965841623c86293e0a0ec3], multiple=false)); foreign package rejected
+scheduler.apk: ApkMetadata(packageName=jp.linkserver.nittcsc, versionName=1.1.1-Release, versionCode=21, signers=ApkSigners(currentSha256=[453a2d6db4b8c48f8e295944735fb4caace9db5fe40503d26dc69ed8107feed3], multiple=false)); foreign package rejected
+glyph.apk: ApkMetadata(packageName=jp.linkserver.glyphvisualizer, versionName=2.1.0-Release, versionCode=15, signers=ApkSigners(currentSha256=[9923cb88eb0eb38b32862001198676cedfcb6e5fe834d09c7fde27f5a75337ef], multiple=false)); foreign package rejected
+tampered signed APK + truncated APK: rejected
+same package, alternate signer: rejected
+same package, two current signers: parsed and partial set rejected
+INSTRUMENTATION_RESULT: sdk=36
+INSTRUMENTATION_CODE: 0

@@ -1,0 +1,158 @@
+{
+  "date": "2026-10-21",
+  "module": ":gold",
+  "mavenCoordinate": "jp.linkserver.goldy:gold:0.1.0-SNAPSHOT",
+  "gold": {
+    "tests": 90,
+    "failures": 0,
+    "suites": [
+      {
+        "name": "OVERSPEC-PC",
+        "tests": "26",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0"
+      },
+      {
+        "name": "OVERSPEC-PC",
+        "tests": "2",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0"
+      },
+      {
+        "name": "OVERSPEC-PC",
+        "tests": "11",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0"
+      },
+      {
+        "name": "OVERSPEC-PC",
+        "tests": "2",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0"
+      },
+      {
+        "name": "OVERSPEC-PC",
+        "tests": "3",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0"
+      },
+      {
+        "name": "OVERSPEC-PC",
+        "tests": "10",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0"
+      },
+      {
+        "name": "OVERSPEC-PC",
+        "tests": "14",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0"
+      },
+      {
+        "name": "OVERSPEC-PC",
+        "tests": "5",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0"
+      },
+      {
+        "name": "OVERSPEC-PC",
+        "tests": "8",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0"
+      },
+      {
+        "name": "OVERSPEC-PC",
+        "tests": "2",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0"
+      },
+      {
+        "name": "OVERSPEC-PC",
+        "tests": "7",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0"
+      }
+    ]
+  },
+  "consumer": {
+    "tests": 4,
+    "failures": 0,
+    "suites": [
+      {
+        "name": "OVERSPEC-PC",
+        "tests": "4",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0"
+      }
+    ]
+  },
+  "lint": [
+    {
+      "path": "D:/apps/goldy/gold/build/reports/lint-results-debug.xml",
+      "issues": 0
+    },
+    {
+      "path": "D:/apps/goldy/gold/build/reports/lint-results-release.xml",
+      "issues": 0
+    },
+    {
+      "path": "D:/apps/goldy/verification/consumer/consumer/build/reports/lint-results-debug.xml",
+      "issues": 0
+    }
+  ],
+  "aar": {
+    "path": "D:/apps/goldy/gold/build/outputs/aar/gold-release.aar",
+    "bytes": 223348,
+    "sha256": "7dc20a5a319fc8e49856d6a317227c01d05de70a752da2f9541bea7737de453d",
+    "localPublicationPath": "D:/apps/goldy/build/consumer-repository/jp/linkserver/goldy/gold/0.1.0-SNAPSHOT/gold-0.1.0-20261021.114826-5.aar",
+    "localPublicationMatches": true
+  },
+  "compatibility": {
+    "orderingComparisons": 11094,
+    "channelAssertions": 129,
+    "selectionScenarios": 140
+  },
+  "apkResearch": {
+    "publicManifests": 28,
+    "wholeApkSizeDigestSignatureVerified": 5,
+    "wholeApkLatestThreeVerified": true,
+    "fixture": "gold/src/test/resources/release-apk-identity.json"
+  },
+  "emulators": {
+    "api28": {
+      "path": "verification/android-api28-results.txt",
+      "passed": true
+    },
+    "api36": {
+      "path": "verification/android-api36-results.txt",
+      "passed": true
+    },
+    "officialApksInstalled": false,
+    "probeOnly": true
+  },
+  "untested": [
+    "API26/27 legacy PackageManager on a device",
+    "API29 and API30-35 runtime paths",
+    "Scheduler PackageManager on API28",
+    "Physical/OEM devices",
+    "Actual Android HttpURLConnection internet transfer; unit tests inject transport",
+    "Whole APK signatures/digests for 23 historical APKs",
+    "Signer rotation acceptance intentionally unsupported"
+  ],
+  "preservation": "verification/phase-2-2-preservation.json",
+  "committed": false,
+  "pushed": false,
+  "released": false
+}

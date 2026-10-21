@@ -1,0 +1,83 @@
+[
+  {
+    "root": "D:/apps/goldy",
+    "head": "3d5429b4c6043d558a874fd1d60b1dfa242ab31e",
+    "headUnchanged": true,
+    "statusUnchanged": false,
+    "existingFilesChecked": 90,
+    "changed": [
+      {
+        "beforePath": "docs/phase-1-api-and-migration.md",
+        "path": "docs/phase-1-api-and-migration.md",
+        "authorized": true
+      },
+      {
+        "beforePath": "docs/phase-1-investigation.md",
+        "path": "docs/phase-1-investigation.md",
+        "authorized": true
+      },
+      {
+        "beforePath": "docs/phase-2-core-report.md",
+        "path": "docs/phase-2-core-report.md",
+        "authorized": true
+      },
+      {
+        "beforePath": "goldy-core/build.gradle.kts",
+        "path": "gold/build.gradle.kts",
+        "authorized": true
+      },
+      {
+        "beforePath": "verification/consumer/consumer/build.gradle.kts",
+        "path": "verification/consumer/consumer/build.gradle.kts",
+        "authorized": true
+      },
+      {
+        "beforePath": "verification/consumer/consumer/src/main/java/example/goldyconsumer/Consumer.kt",
+        "path": "verification/consumer/consumer/src/main/java/example/goldyconsumer/Consumer.kt",
+        "authorized": true
+      },
+      {
+        "beforePath": "verification/consumer/consumer/src/test/java/example/goldyconsumer/ConsumerTest.kt",
+        "path": "verification/consumer/consumer/src/test/java/example/goldyconsumer/ConsumerTest.kt",
+        "authorized": true
+      },
+      {
+        "beforePath": "settings.gradle.kts",
+        "path": "settings.gradle.kts",
+        "authorized": true
+      }
+    ],
+    "unexpectedChanges": [],
+    "status": " M .gitignore\n D .idea/.gitignore\n D app/.gitignore\n M build.gradle.kts\n M gradle/libs.versions.toml\n M settings.gradle.kts\n?? docs/phase-1-api-and-migration.md\n?? docs/phase-1-investigation.md\n?? docs/phase-1-repository-state.json\n?? docs/phase-2-2-apk-report.md\n?? docs/phase-2-core-report.md\n?? gold/build.gradle.kts\n?? gold/src/main/AndroidManifest.xml\n?? gold/src/main/java/jp/linkserver/goldy/AndroidApkInspector.kt\n?? gold/src/main/java/jp/linkserver/goldy/ApkDownloader.kt\n?? gold/src/main/java/jp/linkserver/goldy/ApkPolicy.kt\n?? gold/src/main/java/jp/linkserver/goldy/GitHubReleaseClient.kt\n?? gold/src/main/java/jp/linkserver/goldy/GitHubReleaseParser.kt\n?? gold/src/main/java/jp/linkserver/goldy/GitHubRepository.kt\n?? gold/src/main/java/jp/linkserver/goldy/Goldy.kt\n?? gold/src/main/java/jp/linkserver/goldy/Models.kt\n?? gold/src/main/java/jp/linkserver/goldy/PreferencesUpdateStateStore.kt\n?? gold/src/main/java/jp/linkserver/goldy/ReleaseSelector.kt\n?? gold/src/main/java/jp/linkserver/goldy/UpdatePolicy.kt\n?? gold/src/main/java/jp/linkserver/goldy/UpdateStateStore.kt\n?? gold/src/main/java/jp/linkserver/goldy/VersionPolicy.kt\n?? gold/src/main/java/jp/linkserver/goldy/internal/LegacyVersionRules.kt\n?? gold/src/main/java/jp/linkserver/goldy/internal/ShutUpVersions.kt\n?? gold/src/main/resources/META-INF/goldy/LICENSE\n?? gold/src/main/resources/META-INF/goldy/NOTICE\n?? gold/src/test/java/jp/linkserver/goldy/ApkDownloadTest.kt\n?? gold/src/test/java/jp/linkserver/goldy/ApkIdentityFixtureTest.kt\n?? gold/src/test/java/jp/linkserver/goldy/ApkVerifierTest.kt\n?? gold/src/test/java/jp/linkserver/goldy/ArchiveSigningFlagsTest.kt\n?? gold/src/test/java/jp/linkserver/goldy/CacheJsonTest.kt\n?? gold/src/test/java/jp/linkserver/goldy/Fixtures.kt\n?? gold/src/test/java/jp/linkserver/goldy/GitHubReleaseClientTest.kt\n?? gold/src/test/java/jp/linkserver/goldy/GoldyStateTest.kt\n?? gold/src/test/java/jp/linkserver/goldy/PreferencesUpdateStateStoreTest.kt\n?? gold/src/test/java/jp/linkserver/goldy/ReleaseSelectorTest.kt\n?? gold/src/test/java/jp/linkserver/goldy/SelectionCharacterizationTest.kt\n?? gold/src/test/java/jp/linkserver/goldy/VersionCharacterizationTest.kt\n?? gold/src/test/java/jp/linkserver/goldy/legacy/glyph/Rules.kt\n?? gold/src/test/java/jp/linkserver/goldy/legacy/scheduler/Rules.kt\n?? gold/src/test/java/jp/linkserver/goldy/legacy/shutup/ReleaseChannel.kt\n?? gold/src/test/java/jp/linkserver/goldy/legacy/shutup/ReleaseVersion.kt\n?? gold/src/test/java/jp/linkserver/goldy/legacy/shutup/Selection.kt\n?? gold/src/test/resources/legacy-source-hashes.txt\n?? gold/src/test/resources/release-apk-identity.json\n?? verification/android-api28-results.txt\n?? verification/android-api36-results.txt\n?? verification/android-probe/build.gradle.kts\n?? verification/android-probe/gradle.properties\n?? verification/android-probe/settings.gradle.kts\n?? verification/android-probe/src/main/AndroidManifest.xml\n?? verification/android-probe/src/main/java/example/goldyprobe/ApkProbe.kt\n?? verification/consumer/build.gradle.kts\n?? verification/consumer/consumer/build.gradle.kts\n?? verification/consumer/consumer/src/main/AndroidManifest.xml\n?? verification/consumer/consumer/src/main/java/example/goldyconsumer/Consumer.kt\n?? verification/consumer/consumer/src/test/java/example/goldyconsumer/ConsumerTest.kt\n?? verification/consumer/gradle.properties\n?? verification/consumer/settings.gradle.kts\n?? verification/phase-2-2-baseline.json\n?? verification/phase-2-core-results.json\n?? verification/release-apk-observations.json\n"
+  },
+  {
+    "root": "D:/apps/shutup",
+    "head": "1a18497cfbe62eac20ecf3ba8264cb8daf163fac",
+    "headUnchanged": true,
+    "statusUnchanged": true,
+    "existingFilesChecked": 189,
+    "changed": [],
+    "unexpectedChanges": [],
+    "status": " M app/src/main/java/jp/linkserver/shutter/ui/ShutterApp.kt\n M app/src/main/java/jp/linkserver/shutter/ui/Theme.kt\n M verification/pyrite-migration/report.md\n?? app/src/androidTest/java/jp/linkserver/shutter/ui/PyritePaletteTest.kt\n?? verification/pyrite-light-palette/after-ui.txt\n?? verification/pyrite-light-palette/before-ui.txt\n?? verification/pyrite-light-palette/catalog-color-checks.json\n?? verification/pyrite-light-palette/dark-dynamic-after.json\n?? verification/pyrite-light-palette/dark-dynamic-before.json\n?? verification/pyrite-light-palette/dark-static-after.json\n?? verification/pyrite-light-palette/dark-static-before.json\n?? verification/pyrite-light-palette/image-metrics.json\n?? verification/pyrite-light-palette/light-dynamic-about.png\n?? verification/pyrite-light-palette/light-dynamic-after.json\n?? verification/pyrite-light-palette/light-dynamic-before.json\n?? verification/pyrite-light-palette/light-dynamic-settings.png\n?? verification/pyrite-light-palette/light-static-about.png\n?? verification/pyrite-light-palette/light-static-after.json\n?? verification/pyrite-light-palette/light-static-before.json\n?? verification/pyrite-light-palette/light-static-settings.png\n?? verification/pyrite-light-palette/report.md\n"
+  },
+  {
+    "root": "D:/apps/schedulernittc",
+    "head": "9fad0402e268902bbfbea485ca216218c17afdf1",
+    "headUnchanged": true,
+    "statusUnchanged": true,
+    "existingFilesChecked": 284,
+    "changed": [],
+    "unexpectedChanges": [],
+    "status": ""
+  },
+  {
+    "root": "D:/apps/glyphvisualizer",
+    "head": "d0adb9c7e98bd888110da7edcd1997ebb29ca4db",
+    "headUnchanged": true,
+    "statusUnchanged": true,
+    "existingFilesChecked": 236,
+    "changed": [],
+    "unexpectedChanges": [],
+    "status": ""
+  }
+]

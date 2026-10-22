@@ -70,8 +70,26 @@ from local artifacts.
 
 ## Public verification status
 
-Pending GitHub commit/push, explicitly authorized private-to-public visibility
-change, JitPack build and artifact retrieval. No public success is claimed here.
+Initial implementation commit 8669fa692054f5406615586df6b49c8241cc3ab4 was pushed
+normally to master. With explicit user approval, the repository was changed
+from private to public and anonymous GitHub API/git access was confirmed.
+JitPack version 8669fa6920 built that exact commit on Linux/JDK21 and published
+Gold/Elief. Its initial full-SHA lookup retained needAuth, while the standard
+root-POM request with the actual 10-character SHA built successfully.
+
+Direct artifact verification detected JitPack rewriting the optional metadata
+component identity to the aggregate and sources URLs to nonexistent unclassified
+JARs. Publication metadata now omits that optional identity and the sources
+variant, retaining full API/runtime dependency/file/checksum variants; sources
+remain independently published with the normal Maven sources classifier.
+This workaround still requires a fresh pushed-SHA JitPack verification.
+
+The first fixture configured Kotlin paths through the Java source set, so AGP9
+did not compile the host Activity. Those APK size results are invalid and are
+not final measurements. The fixture now uses AndroidSourceSet.kotlin, applies
+Compose only for Elief, runs full lint, and requires MainActivity in the R8
+mapping before accepting a build. Corrected size measurements are pending.
+
 The fixture in verification/jitpack-consumer has only JitPack for Goldy modules,
 plus Google/Maven Central for external dependencies. It has no local Maven,
 project dependency or includeBuild. The runner copies it outside the producer

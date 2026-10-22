@@ -30,7 +30,7 @@ foreach ($taskFile in Get-ChildItem -LiteralPath $taskSource -Recurse -File) {
 New-Item -ItemType Directory -Force -Path (Join-Path $taskIsolated 'gradle/wrapper') | Out-Null
 Copy-Item -LiteralPath (Join-Path $taskRoot 'gradlew.bat') -Destination $taskIsolated
 Copy-Item -Path (Join-Path $taskRoot 'gradle/wrapper/*') -Destination (Join-Path $taskIsolated 'gradle/wrapper')
-$taskArgs = @(':app:assembleRelease',':app:verifyPublishedDependencies',':app:verifyHostManifest',
+$taskArgs = @(':app:assembleRelease',':app:verifyPublishedDependencies',':app:verifyHostManifest',':app:lintRelease',
     "-Pfeature=$Feature","-PhostProfile=$HostProfile",'--console=plain','--no-configuration-cache')
 if ($GoldyVersion) { $taskArgs += "-PgoldyVersion=$GoldyVersion" }
 if ($Expressive) { $taskArgs += '-Pexpressive=true' }
@@ -45,6 +45,9 @@ try {
     Copy-Item -LiteralPath $taskApk -Destination (Join-Path $taskResults 'app-release-unsigned.apk')
     $taskMapping = Join-Path $taskIsolated 'app/build/outputs/mapping/release/mapping.txt'
     if (-not (Test-Path $taskMapping)) { throw 'Expected R8 mapping was not generated.' }
+    if (-not (Select-String -LiteralPath $taskMapping -Pattern '^example\.jitpackconsumer\.MainActivity ->' -Quiet)) {
+        throw 'The host Activity was not compiled into the R8 output.'
+    }
     [pscustomobject]@{version=$GoldyVersion;feature=$Feature;host=$HostProfile;expressive=[bool]$Expressive;pomOnly=[bool]$PomOnly;
         apkBytes=(Get-Item $taskApk).Length;apkSha256=(Get-FileHash $taskApk -Algorithm SHA256).Hash;r8Mapping=$true;passed=$true} |
         ConvertTo-Json | Set-Content -Encoding utf8 (Join-Path $taskResults 'result.json')

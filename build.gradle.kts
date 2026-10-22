@@ -12,6 +12,23 @@ allprojects {
 }
 
 subprojects {
+    // JitPack rewrites optional component identity to the repository aggregate and
+    // drops the sources classifier from metadata file URLs. Leave identity to the
+    // Maven module and publish sources as the standard standalone Maven classifier.
+    // Binary API/runtime variants retain their dependency and checksum metadata.
+    val jitpackPublication = providers.gradleProperty("goldyGroup")
+        .map { it.startsWith("com.github.") }.getOrElse(false)
+    tasks.withType<org.gradle.api.publish.tasks.GenerateModuleMetadata>().configureEach {
+        if (jitpackPublication) doLast {
+            @Suppress("UNCHECKED_CAST")
+            val metadata = groovy.json.JsonSlurper().parse(outputFile.get().asFile) as MutableMap<String, Any?>
+            metadata.remove("component") // Optional in Gradle Module Metadata 1.1.
+            @Suppress("UNCHECKED_CAST")
+            val variants = metadata["variants"] as MutableList<Map<String, Any?>>
+            variants.removeAll { (it["attributes"] as? Map<*, *>)?.get("org.gradle.docstype") == "sources" }
+            outputFile.get().asFile.writeText(groovy.json.JsonOutput.prettyPrint(groovy.json.JsonOutput.toJson(metadata)) + "\n")
+        }
+    }
     plugins.withId("maven-publish") {
         extensions.configure<org.gradle.api.publish.PublishingExtension> {
             publications.withType<org.gradle.api.publish.maven.MavenPublication>().configureEach {

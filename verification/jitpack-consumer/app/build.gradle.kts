@@ -1,9 +1,10 @@
-plugins { id("com.android.application"); id("org.jetbrains.kotlin.plugin.compose") }
+plugins { id("com.android.application") }
 
 val feature = providers.gradleProperty("feature").getOrElse("elief")
 val hostProfile = providers.gradleProperty("hostProfile").getOrElse("scheduler")
 val expressive = providers.gradleProperty("expressive").orNull == "true"
 val goldyVersion = providers.gradleProperty("goldyVersion").orNull
+if (feature == "elief") apply(plugin = "org.jetbrains.kotlin.plugin.compose")
 require(feature in listOf("baseline", "gold", "elief"))
 require(hostProfile in listOf("shutup", "scheduler", "glyph"))
 if (feature != "baseline") require(goldyVersion?.matches(Regex("[0-9a-f]{7,40}")) == true) {
@@ -23,7 +24,7 @@ android {
     }
     compileOptions { sourceCompatibility = bytecode; targetCompatibility = bytecode }
     buildFeatures { compose = feature == "elief" }
-    sourceSets.getByName("main").java.setSrcDirs(buildList {
+    sourceSets.getByName("main").kotlin.directories.addAll(buildList {
         add("src/$feature/java")
         if (feature == "elief") add(if (expressive) "src/themeExpressive/java" else "src/themeStandard/java")
     })

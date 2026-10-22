@@ -30,6 +30,9 @@ subprojects {
         }
     }
     plugins.withId("maven-publish") {
+        tasks.withType<org.gradle.jvm.tasks.Jar>().matching { it.name == "sourceReleaseJar" }.configureEach {
+            from(layout.projectDirectory.dir("src/main/resources"))
+        }
         extensions.configure<org.gradle.api.publish.PublishingExtension> {
             publications.withType<org.gradle.api.publish.maven.MavenPublication>().configureEach {
                 pom {

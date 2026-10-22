@@ -39,6 +39,9 @@ foreach ($taskModule in @('gold','elief')) {
     try {
         $taskExpected = if ($taskModule -eq 'gold') { 'ApkInstaller.kt' } else { 'UpdateOverviewScreen.kt' }
         if (-not ($taskSources.Entries | Where-Object { $_.FullName.EndsWith($taskExpected) })) { throw 'Missing current source entry.' }
+        if (@($taskSources.Entries | Where-Object FullName -match 'META-INF/.+/(LICENSE|NOTICE)$').Count -lt 2) {
+            throw 'Sources JAR must carry its own LICENSE and NOTICE.'
+        }
     } finally { $taskSources.Dispose() }
 }
 Invoke-WebRequest -Uri "https://jitpack.io/com/github/Link2011-Act2/Goldy/$Version/build.log" -OutFile (Join-Path $taskDestination 'build.log') -TimeoutSec 30

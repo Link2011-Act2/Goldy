@@ -1,0 +1,267 @@
+{
+  "date": "2026-10-22",
+  "implementationCommit": "5c4f1952e6a08ba6ff89fdaf0ed303e083155bd1",
+  "jitpackVersion": "5c4f1952e6",
+  "jitpackBuildLog": "https://jitpack.io/com/github/Link2011-Act2/Goldy/5c4f1952e6/build.log",
+  "publicArtifacts": [
+    {
+      "module": "gold",
+      "file": "gold-5c4f1952e6.aar",
+      "url": "https://jitpack.io/com/github/Link2011-Act2/Goldy/gold/5c4f1952e6/gold-5c4f1952e6.aar",
+      "bytes": 280396,
+      "sha256": "2591539FA553D171A5C7ABD5826F5B967EA258BB4F1B2B5D23E5BDAD372F0159"
+    },
+    {
+      "module": "gold",
+      "file": "gold-5c4f1952e6.pom",
+      "url": "https://jitpack.io/com/github/Link2011-Act2/Goldy/gold/5c4f1952e6/gold-5c4f1952e6.pom",
+      "bytes": 1695,
+      "sha256": "BC6A7485A647C3B74383F816BFCC25FB356843FF559154FF4472116CAAC77F80"
+    },
+    {
+      "module": "gold",
+      "file": "gold-5c4f1952e6-sources.jar",
+      "url": "https://jitpack.io/com/github/Link2011-Act2/Goldy/gold/5c4f1952e6/gold-5c4f1952e6-sources.jar",
+      "bytes": 31127,
+      "sha256": "63F178AB4293662C7107D4491E134B59A2FC46839F3D0743AF6123F08EAC6DCE"
+    },
+    {
+      "module": "gold",
+      "file": "gold-5c4f1952e6.module",
+      "url": "https://jitpack.io/com/github/Link2011-Act2/Goldy/gold/5c4f1952e6/gold-5c4f1952e6.module",
+      "bytes": 3305,
+      "sha256": "3B17A4792FA7BE8AAA66958636F3098581A52227D253B4200A840E549FD8F1F4"
+    },
+    {
+      "module": "elief",
+      "file": "elief-5c4f1952e6.aar",
+      "url": "https://jitpack.io/com/github/Link2011-Act2/Goldy/elief/5c4f1952e6/elief-5c4f1952e6.aar",
+      "bytes": 59447,
+      "sha256": "9489E20964EDA145338589DCCA7D130FE64509AA7F8E9076148DCD1B446E152A"
+    },
+    {
+      "module": "elief",
+      "file": "elief-5c4f1952e6.pom",
+      "url": "https://jitpack.io/com/github/Link2011-Act2/Goldy/elief/5c4f1952e6/elief-5c4f1952e6.pom",
+      "bytes": 2509,
+      "sha256": "DDE01F828BFF8B1F0055698C94A8AD4EDA156DD5CA59D4FDA40B22D0D4F6BC07"
+    },
+    {
+      "module": "elief",
+      "file": "elief-5c4f1952e6-sources.jar",
+      "url": "https://jitpack.io/com/github/Link2011-Act2/Goldy/elief/5c4f1952e6/elief-5c4f1952e6-sources.jar",
+      "bytes": 6477,
+      "sha256": "601E5F1FFD918919CB31F1C1017EB785D17F83796686F7691CCA55ABD4825FE7"
+    },
+    {
+      "module": "elief",
+      "file": "elief-5c4f1952e6.module",
+      "url": "https://jitpack.io/com/github/Link2011-Act2/Goldy/elief/5c4f1952e6/elief-5c4f1952e6.module",
+      "bytes": 4650,
+      "sha256": "A43B24D2851C5E97A586C1EF87D5BFBE98D055D191399B88E0053B8CBB08EC69"
+    }
+  ],
+  "jvm": {
+    "elief": 10,
+    "gold": 103,
+    "failures": 0,
+    "sample": 1,
+    "coreConsumer": 4
+  },
+  "uiEvidence": {
+    "api28Font180": 12,
+    "reused": "Phase 2-4; UI logic unchanged",
+    "api36EarlierFont100": 11,
+    "api36Font180": 12,
+    "widthDp": 320,
+    "api28Font100": 12
+  },
+  "r8Matrix": [
+    {
+      "host": "shutup",
+      "baselineBytes": 97167,
+      "goldBytes": 131434,
+      "goldDeltaBytes": 34267,
+      "eliefBytes": 1763956,
+      "eliefDeltaBytes": 1666789
+    },
+    {
+      "host": "scheduler",
+      "baselineBytes": 63963,
+      "goldBytes": 80190,
+      "goldDeltaBytes": 16227,
+      "eliefBytes": 993912,
+      "eliefDeltaBytes": 929949
+    },
+    {
+      "host": "glyph",
+      "baselineBytes": 95347,
+      "goldBytes": 121042,
+      "goldDeltaBytes": 25695,
+      "eliefBytes": 1682044,
+      "eliefDeltaBytes": 1586697
+    }
+  ],
+  "consumerRuns": [
+    {
+      "version": "",
+      "feature": "baseline",
+      "host": "glyph",
+      "expressive": false,
+      "pomOnly": false,
+      "apkBytes": 95347,
+      "apkSha256": "57A30773D0CA210B4421D70BB18ECF25D6A9947959AD513A9CB4ACB09AD3B161",
+      "r8Mapping": true,
+      "lintErrors": 0,
+      "lintWarnings": 2,
+      "passed": true,
+      "hostActivityCompiled": true
+    },
+    {
+      "version": "5c4f1952e6",
+      "feature": "elief",
+      "host": "glyph",
+      "expressive": false,
+      "pomOnly": false,
+      "apkBytes": 1682044,
+      "apkSha256": "E3E2FED015055F190436B0F6F61C927CC3F9423D9010C3E0464817803442A4D3",
+      "r8Mapping": true,
+      "lintErrors": 0,
+      "lintWarnings": 1,
+      "passed": true,
+      "hostActivityCompiled": true
+    },
+    {
+      "version": "5c4f1952e6",
+      "feature": "elief",
+      "host": "glyph",
+      "expressive": true,
+      "pomOnly": false,
+      "apkBytes": 1698967,
+      "apkSha256": "01871F641DDFB28D68DF091BEA2E5212E4B24D57C8D57878DB735F68DB1D8B2D",
+      "r8Mapping": true,
+      "lintErrors": 0,
+      "lintWarnings": 1,
+      "passed": true,
+      "hostActivityCompiled": true
+    },
+    {
+      "version": "5c4f1952e6",
+      "feature": "gold",
+      "host": "glyph",
+      "expressive": false,
+      "pomOnly": false,
+      "apkBytes": 121042,
+      "apkSha256": "1AB6A1418DAB5FACE32BB3C8F89C27403FB083084FF0746DF1DD7924D51947B3",
+      "r8Mapping": true,
+      "lintErrors": 0,
+      "lintWarnings": 2,
+      "passed": true,
+      "hostActivityCompiled": true
+    },
+    {
+      "version": "",
+      "feature": "baseline",
+      "host": "scheduler",
+      "expressive": false,
+      "pomOnly": false,
+      "apkBytes": 63963,
+      "apkSha256": "28ADCFEE736F1508869431310B408DBABB10AA1F7A7AFCA122270DF4370C8788",
+      "r8Mapping": true,
+      "passed": true,
+      "hostActivityCompiled": true,
+      "lintErrors": 0
+    },
+    {
+      "version": "5c4f1952e6",
+      "feature": "elief",
+      "host": "scheduler",
+      "expressive": false,
+      "pomOnly": false,
+      "apkBytes": 993912,
+      "apkSha256": "89F15CA4C2253F2C9DF79C0A27BDFFA96C3A06A530E27E1E274553DC7AD159ED",
+      "r8Mapping": true,
+      "lintErrors": 0,
+      "lintWarnings": 1,
+      "passed": true,
+      "hostActivityCompiled": true
+    },
+    {
+      "version": "5c4f1952e6",
+      "feature": "elief",
+      "host": "scheduler",
+      "expressive": false,
+      "pomOnly": true,
+      "apkBytes": 993912,
+      "apkSha256": "A5FF51480EB313DB71B83643F3C0C07EA6982CF41DEEFF026FE20F287D65FF22",
+      "r8Mapping": true,
+      "lintErrors": 0,
+      "lintWarnings": 1,
+      "passed": true,
+      "hostActivityCompiled": true
+    },
+    {
+      "version": "5c4f1952e6",
+      "feature": "gold",
+      "host": "scheduler",
+      "expressive": false,
+      "pomOnly": false,
+      "apkBytes": 80190,
+      "apkSha256": "753ADFFAA65E3DBFB7F55DC1FA673397ECE2FEFFFC41D2BDB80A42C5DFDDDECC",
+      "r8Mapping": true,
+      "lintErrors": 0,
+      "lintWarnings": 2,
+      "passed": true,
+      "hostActivityCompiled": true
+    },
+    {
+      "version": "",
+      "feature": "baseline",
+      "host": "shutup",
+      "expressive": false,
+      "pomOnly": false,
+      "apkBytes": 97167,
+      "apkSha256": "0D3922465E58CB7E90F0F75C8E15EBF053B71978549358E27F38E15EDA8B5E47",
+      "r8Mapping": true,
+      "lintErrors": 0,
+      "lintWarnings": 2,
+      "passed": true,
+      "hostActivityCompiled": true
+    },
+    {
+      "version": "5c4f1952e6",
+      "feature": "elief",
+      "host": "shutup",
+      "expressive": false,
+      "pomOnly": false,
+      "apkBytes": 1763956,
+      "apkSha256": "EF63F953D473D0966B1789ECD3E1D2034535482CBC0B8F9B40390D6909170C9A",
+      "r8Mapping": true,
+      "lintErrors": 0,
+      "lintWarnings": 1,
+      "passed": true,
+      "hostActivityCompiled": true
+    },
+    {
+      "version": "5c4f1952e6",
+      "feature": "gold",
+      "host": "shutup",
+      "expressive": false,
+      "pomOnly": false,
+      "apkBytes": 131434,
+      "apkSha256": "1CD18814927E2A65B27C73E73A5F8CB1FC0EF920836F7BD17C692FF1EB53EBD8",
+      "r8Mapping": true,
+      "lintErrors": 0,
+      "lintWarnings": 2,
+      "passed": true,
+      "hostActivityCompiled": true
+    }
+  ],
+  "cleanProducer": "git archive of 8669fa6 built successfully; local.properties and old build outputs absent; dependency cache reused",
+  "limits": [
+    "API26/27 and API29-35 runtime unverified",
+    "No physical/OEM runtime or actual installation completion",
+    "No existing-app migration",
+    "R8 fixture sizes are not measurements of the existing three apps"
+  ]
+}

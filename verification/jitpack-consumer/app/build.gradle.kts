@@ -1,3 +1,5 @@
+import java.util.zip.ZipFile
+
 plugins { id("com.android.application") }
 
 val feature = providers.gradleProperty("feature").getOrElse("elief")
@@ -11,6 +13,11 @@ if (feature != "baseline") require(goldyVersion?.matches(Regex("[0-9a-f]{7,40}")
     "Pass the actually pushed commit using -PgoldyVersion=<SHA>."
 }
 val bytecode = if (hostProfile == "glyph") JavaVersion.VERSION_11 else JavaVersion.VERSION_17
+val publishedSources = configurations.create("publishedSources") {
+    isCanBeConsumed = false
+    isCanBeResolved = true
+    isTransitive = false
+}
 
 android {
     namespace = "example.jitpackconsumer"
@@ -37,11 +44,27 @@ kotlin { compilerOptions {
 } }
 dependencies {
     if (feature != "baseline") implementation("com.github.Link2011-Act2.Goldy:$feature:$goldyVersion")
+    if (feature != "baseline") add(publishedSources.name, "com.github.Link2011-Act2.Goldy:$feature:$goldyVersion:sources@jar")
     // Match the host provider in every measurement, including the baseline.
     implementation("androidx.core:core:1.19.1")
     if (feature == "elief") {
         implementation("androidx.activity:activity-compose:1.13.0")
         if (expressive) implementation("androidx.compose.material3:material3:1.5.0-beta01")
+    }
+}
+
+tasks.register("verifyPublishedSources") {
+    doLast {
+        if (feature != "baseline") {
+            val source = publishedSources.singleFile
+            check(source.name == "$feature-$goldyVersion-sources.jar")
+            ZipFile(source).use { archive ->
+                val expected = if (feature == "gold") "ApkInstaller.kt" else "UpdateOverviewScreen.kt"
+                check(archive.entries().asSequence().any { it.name.endsWith(expected) })
+                check(archive.entries().asSequence().count { it.name.endsWith("/LICENSE") || it.name.endsWith("/NOTICE") } >= 2)
+            }
+            println("Verified independent Maven sources classifier: " + source.name)
+        }
     }
 }
 

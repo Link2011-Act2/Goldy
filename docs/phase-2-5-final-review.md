@@ -65,8 +65,7 @@ not counted as JUnit tests and do not assert successful APK installation.
 
 Local Release AAR sizes: Gold 280404 bytes; Elief 59447 bytes. These are normal
 AARs, excluding transitive dependency bytes. Public Linux/JitPack sizes and
-R8 APK deltas will be recorded after actual public builds, rather than inferred
-from local artifacts.
+R8 APK deltas below come from the actual public artifacts and consumer builds.
 
 ## Public verification status
 
@@ -82,13 +81,45 @@ component identity to the aggregate and sources URLs to nonexistent unclassified
 JARs. Publication metadata now omits that optional identity and the sources
 variant, retaining full API/runtime dependency/file/checksum variants; sources
 remain independently published with the normal Maven sources classifier.
-This workaround still requires a fresh pushed-SHA JitPack verification.
+The new pushed commit 5c4f1952e6a08ba6ff89fdaf0ed303e083155bd1 was rebuilt as
+JitPack version 5c4f1952e6. Both modules' AAR/POM/sources/module files were
+downloaded anonymously and verified. Metadata file sizes and SHA-256 match the
+downloaded AARs; Elief's POM and API/runtime variants depend on this exact
+version's public Gold. No local coordinates or repository are needed. Both
+sources classifiers were also resolved by the independent Gradle consumer.
+
+Public Linux artifacts: Gold AAR **280396 bytes**, Elief AAR **59447 bytes**;
+sources JARs **31127 / 6477 bytes**. Public artifact URLs and checksums are in
+[phase-2-5-results.json](../verification/phase-2-5-results.json).
+The component element is optional in the
+[Gradle metadata specification](https://github.com/gradle/gradle/blob/master/platforms/documentation/docs/src/docs/design/gradle-module-metadata-latest-specification.md).
+Sources stay available through the standard Maven classifier; binary
+API/runtime variants retain complete dependencies and file checksums.
+The final license packaging check additionally adds each module's own
+LICENSE/NOTICE to its sources JAR, as well as the already-noticed AAR. That
+sources-only packaging change is checked by both the HTTP artifact verifier
+and the independent Gradle sources-classifier task.
 
 The first fixture configured Kotlin paths through the Java source set, so AGP9
 did not compile the host Activity. Those APK size results are invalid and are
 not final measurements. The fixture now uses AndroidSourceSet.kotlin, applies
 Compose only for Elief, runs full lint, and requires MainActivity in the R8
-mapping before accepting a build. Corrected size measurements are pending.
+mapping before accepting a build. All corrected consumer builds passed full
+lint with zero errors (Gold: two warnings; UI: one). The full matrix
+also passed a separate APK/Dex check for the actual MainActivity class.
+
+| Host profile | Baseline APK | Gold APK | Gold delta | Elief APK | Elief delta |
+|---|---:|---:|---:|---:|---:|
+| ShutUp: minSdk28 / JVM17 | 97167 | 131434 | +34267 | 1763956 | +1666789 |
+| Scheduler: minSdk26 / JVM17 | 63963 | 80190 | +16227 | 993912 | +929949 |
+| Glyph: minSdk33 / JVM11 | 95347 | 121042 | +25695 | 1682044 | +1586697 |
+
+All sizes are unsigned Release APK bytes after full R8 optimization. Each
+baseline has the same host provider; these are fixture-specific deltas, not
+measurements of the existing apps. Glyph's Expressive fixture passed at
+1698967 bytes (16923 more than its standard UI fixture). The Scheduler POM-only
+consumer passed with the same 993912-byte APK as default metadata resolution.
+The producer sample Release APK is 1353217 bytes.
 
 The fixture in verification/jitpack-consumer has only JitPack for Goldy modules,
 plus Google/Maven Central for external dependencies. It has no local Maven,

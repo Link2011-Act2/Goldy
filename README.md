@@ -7,10 +7,45 @@ transitively and uses the host's Material theme and typography.
 
 ## Installation
 
-The JitPack publication is being verified during Phase 2-5. Verified immutable
-coordinates will replace this paragraph after the public build and independent
-consumer have succeeded. Local `jp.linkserver.goldy:*:0.1.0-SNAPSHOT` artifacts
-are development fixtures, not public installation coordinates.
+Verified JitPack version **5c4f1952e6** builds commit
+`5c4f1952e6a08ba6ff89fdaf0ed303e083155bd1`.
+The [public build log](https://jitpack.io/com/github/Link2011-Act2/Goldy/5c4f1952e6/build.log)
+and an independent R8 consumer were checked against the downloaded AARs/POMs.
+
+In `settings.gradle.kts`:
+
+```kotlin
+dependencyResolutionManagement {
+    repositories {
+        google()
+        mavenCentral()
+        exclusiveContent {
+            forRepository { maven { url = uri("https://jitpack.io") } }
+            filter { includeGroup("com.github.Link2011-Act2.Goldy") }
+        }
+    }
+}
+```
+
+For Core only:
+
+```kotlin
+implementation("com.github.Link2011-Act2.Goldy:gold:5c4f1952e6")
+```
+
+For Compose UI, use Elief; it brings the same commit's Gold transitively:
+
+```kotlin
+implementation("com.github.Link2011-Act2.Goldy:elief:5c4f1952e6")
+```
+
+Consumers need compileSdk 37 or newer. Elief uses stable Material3 1.4.0 through
+Compose BOM 2026.02.01; the host enables Compose and supplies a compatible Kotlin
+Compose plugin. The verified fixture uses plugin 2.2.10. Expressive is a host
+opt-in, not a mandatory prerelease dependency. Sources JARs are available through
+the normal Maven `sources` classifier; Gradle metadata describes API/runtime
+variants. Local `jp.linkserver.goldy:*:0.1.0-SNAPSHOT` coordinates are development
+fixtures, not public installation coordinates.
 
 ## Core
 

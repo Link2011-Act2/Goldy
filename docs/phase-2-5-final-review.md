@@ -81,15 +81,17 @@ component identity to the aggregate and sources URLs to nonexistent unclassified
 JARs. Publication metadata now omits that optional identity and the sources
 variant, retaining full API/runtime dependency/file/checksum variants; sources
 remain independently published with the normal Maven sources classifier.
-The new pushed commit 5c4f1952e6a08ba6ff89fdaf0ed303e083155bd1 was rebuilt as
-JitPack version 5c4f1952e6. Both modules' AAR/POM/sources/module files were
+The metadata workaround was verified on commit 5c4f1952e6. The final implementation
+commit **6ddf8fd93451cdc92d859c68728d873652c65800** was then pushed and rebuilt as
+JitPack version **6ddf8fd934**. Both modules' AAR/POM/sources/module files were
 downloaded anonymously and verified. Metadata file sizes and SHA-256 match the
 downloaded AARs; Elief's POM and API/runtime variants depend on this exact
 version's public Gold. No local coordinates or repository are needed. Both
 sources classifiers were also resolved by the independent Gradle consumer.
 
 Public Linux artifacts: Gold AAR **280396 bytes**, Elief AAR **59447 bytes**;
-sources JARs **31127 / 6477 bytes**. Public artifact URLs and checksums are in
+sources JARs **32304 / 7673 bytes**, including their own LICENSE/NOTICE.
+Public artifact URLs and checksums are in
 [phase-2-5-results.json](../verification/phase-2-5-results.json).
 The component element is optional in the
 [Gradle metadata specification](https://github.com/gradle/gradle/blob/master/platforms/documentation/docs/src/docs/design/gradle-module-metadata-latest-specification.md).
@@ -99,6 +101,10 @@ The final license packaging check additionally adds each module's own
 LICENSE/NOTICE to its sources JAR, as well as the already-noticed AAR. That
 sources-only packaging change is checked by both the HTTP artifact verifier
 and the independent Gradle sources-classifier task.
+The final public AARs are byte-for-byte identical to those used for the complete
+5c4f1952e6 R8 matrix below. Gold and Elief were additionally rebuilt independently
+at 6ddf8fd934 with source-notice, R8, full lint and Manifest checks, so unchanged
+JVM/UI and the full profile matrix were not needlessly repeated.
 
 The first fixture configured Kotlin paths through the Java source set, so AGP9
 did not compile the host Activity. Those APK size results are invalid and are

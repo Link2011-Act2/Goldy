@@ -1,64 +1,64 @@
 {
   "date": "2026-10-22",
-  "implementationCommit": "5c4f1952e6a08ba6ff89fdaf0ed303e083155bd1",
-  "jitpackVersion": "5c4f1952e6",
-  "jitpackBuildLog": "https://jitpack.io/com/github/Link2011-Act2/Goldy/5c4f1952e6/build.log",
+  "implementationCommit": "6ddf8fd93451cdc92d859c68728d873652c65800",
+  "jitpackVersion": "6ddf8fd934",
+  "jitpackBuildLog": "https://jitpack.io/com/github/Link2011-Act2/Goldy/6ddf8fd934/build.log",
   "publicArtifacts": [
     {
       "module": "gold",
-      "file": "gold-5c4f1952e6.aar",
-      "url": "https://jitpack.io/com/github/Link2011-Act2/Goldy/gold/5c4f1952e6/gold-5c4f1952e6.aar",
+      "file": "gold-6ddf8fd934.aar",
+      "url": "https://jitpack.io/com/github/Link2011-Act2/Goldy/gold/6ddf8fd934/gold-6ddf8fd934.aar",
       "bytes": 280396,
       "sha256": "2591539FA553D171A5C7ABD5826F5B967EA258BB4F1B2B5D23E5BDAD372F0159"
     },
     {
       "module": "gold",
-      "file": "gold-5c4f1952e6.pom",
-      "url": "https://jitpack.io/com/github/Link2011-Act2/Goldy/gold/5c4f1952e6/gold-5c4f1952e6.pom",
-      "bytes": 1695,
-      "sha256": "BC6A7485A647C3B74383F816BFCC25FB356843FF559154FF4472116CAAC77F80"
+      "file": "gold-6ddf8fd934.pom",
+      "url": "https://jitpack.io/com/github/Link2011-Act2/Goldy/gold/6ddf8fd934/gold-6ddf8fd934.pom",
+      "bytes": 1657,
+      "sha256": "7ED07A622699D1C645FC5EC2482DEF3EF5B90ADC0893FF0B659AF0DE1DDFF572"
     },
     {
       "module": "gold",
-      "file": "gold-5c4f1952e6-sources.jar",
-      "url": "https://jitpack.io/com/github/Link2011-Act2/Goldy/gold/5c4f1952e6/gold-5c4f1952e6-sources.jar",
-      "bytes": 31127,
-      "sha256": "63F178AB4293662C7107D4491E134B59A2FC46839F3D0743AF6123F08EAC6DCE"
+      "file": "gold-6ddf8fd934-sources.jar",
+      "url": "https://jitpack.io/com/github/Link2011-Act2/Goldy/gold/6ddf8fd934/gold-6ddf8fd934-sources.jar",
+      "bytes": 32304,
+      "sha256": "D369437C1A166A0BAA59150E9F1AE12D992576C6BC09A796C30BDE3ACCC870C9"
     },
     {
       "module": "gold",
-      "file": "gold-5c4f1952e6.module",
-      "url": "https://jitpack.io/com/github/Link2011-Act2/Goldy/gold/5c4f1952e6/gold-5c4f1952e6.module",
+      "file": "gold-6ddf8fd934.module",
+      "url": "https://jitpack.io/com/github/Link2011-Act2/Goldy/gold/6ddf8fd934/gold-6ddf8fd934.module",
       "bytes": 3305,
-      "sha256": "3B17A4792FA7BE8AAA66958636F3098581A52227D253B4200A840E549FD8F1F4"
+      "sha256": "B41F51BA8999C7E7169B1F19B8902A65A00C34708CCFFED7AAE0C15FDE8E9325"
     },
     {
       "module": "elief",
-      "file": "elief-5c4f1952e6.aar",
-      "url": "https://jitpack.io/com/github/Link2011-Act2/Goldy/elief/5c4f1952e6/elief-5c4f1952e6.aar",
+      "file": "elief-6ddf8fd934.aar",
+      "url": "https://jitpack.io/com/github/Link2011-Act2/Goldy/elief/6ddf8fd934/elief-6ddf8fd934.aar",
       "bytes": 59447,
       "sha256": "9489E20964EDA145338589DCCA7D130FE64509AA7F8E9076148DCD1B446E152A"
     },
     {
       "module": "elief",
-      "file": "elief-5c4f1952e6.pom",
-      "url": "https://jitpack.io/com/github/Link2011-Act2/Goldy/elief/5c4f1952e6/elief-5c4f1952e6.pom",
-      "bytes": 2509,
-      "sha256": "DDE01F828BFF8B1F0055698C94A8AD4EDA156DD5CA59D4FDA40B22D0D4F6BC07"
+      "file": "elief-6ddf8fd934.pom",
+      "url": "https://jitpack.io/com/github/Link2011-Act2/Goldy/elief/6ddf8fd934/elief-6ddf8fd934.pom",
+      "bytes": 2471,
+      "sha256": "17867C78699E7C8BA19A91383DD32118A38BDE0BBDD175339E2F47B0612B6D39"
     },
     {
       "module": "elief",
-      "file": "elief-5c4f1952e6-sources.jar",
-      "url": "https://jitpack.io/com/github/Link2011-Act2/Goldy/elief/5c4f1952e6/elief-5c4f1952e6-sources.jar",
-      "bytes": 6477,
-      "sha256": "601E5F1FFD918919CB31F1C1017EB785D17F83796686F7691CCA55ABD4825FE7"
+      "file": "elief-6ddf8fd934-sources.jar",
+      "url": "https://jitpack.io/com/github/Link2011-Act2/Goldy/elief/6ddf8fd934/elief-6ddf8fd934-sources.jar",
+      "bytes": 7673,
+      "sha256": "0515EA2937B8DEA97C72C51B9686D4021622652B42270CAA0BACE101AEAA90E4"
     },
     {
       "module": "elief",
-      "file": "elief-5c4f1952e6.module",
-      "url": "https://jitpack.io/com/github/Link2011-Act2/Goldy/elief/5c4f1952e6/elief-5c4f1952e6.module",
+      "file": "elief-6ddf8fd934.module",
+      "url": "https://jitpack.io/com/github/Link2011-Act2/Goldy/elief/6ddf8fd934/elief-6ddf8fd934.module",
       "bytes": 4650,
-      "sha256": "A43B24D2851C5E97A586C1EF87D5BFBE98D055D191399B88E0053B8CBB08EC69"
+      "sha256": "186AD46BBAB78F375602AA2190B70DF3AEE6FF7BC7B887A96D810F998A62825D"
     }
   ],
   "jvm": {
@@ -263,5 +263,46 @@
     "No physical/OEM runtime or actual installation completion",
     "No existing-app migration",
     "R8 fixture sizes are not measurements of the existing three apps"
-  ]
+  ],
+  "r8MatrixVersion": "5c4f1952e6",
+  "r8MatrixAarsByteIdenticalToFinal": true,
+  "finalConsumerChecks": [
+    {
+      "version": "6ddf8fd934",
+      "feature": "gold",
+      "host": "scheduler",
+      "expressive": false,
+      "pomOnly": false,
+      "apkBytes": 80190,
+      "apkSha256": "753ADFFAA65E3DBFB7F55DC1FA673397ECE2FEFFFC41D2BDB80A42C5DFDDDECC",
+      "r8Mapping": true,
+      "hostActivityCompiled": true,
+      "lintErrors": 0,
+      "lintWarnings": 2,
+      "passed": true
+    },
+    {
+      "version": "6ddf8fd934",
+      "feature": "elief",
+      "host": "scheduler",
+      "expressive": false,
+      "pomOnly": false,
+      "apkBytes": 993912,
+      "apkSha256": "89F15CA4C2253F2C9DF79C0A27BDFFA96C3A06A530E27E1E274553DC7AD159ED",
+      "r8Mapping": true,
+      "hostActivityCompiled": true,
+      "lintErrors": 0,
+      "lintWarnings": 1,
+      "passed": true
+    }
+  ],
+  "preservation": {
+    "initialFilesBackedUp": 172,
+    "glyphFilesUnchanged": 236,
+    "resetOrCleanUsed": false,
+    "schedulerFilesUnchanged": 284,
+    "existingAppsMigrated": false,
+    "tagsOrGithubReleasesCreated": false,
+    "shutupFilesUnchanged": 189
+  }
 }

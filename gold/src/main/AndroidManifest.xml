@@ -1,3 +1,19 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <uses-permission android:name="android.permission.INTERNET" />
+    <!-- Hosts opt in to REQUEST_INSTALL_PACKAGES explicitly. -->
+    <queries>
+        <intent>
+            <action android:name="android.intent.action.VIEW" />
+            <data android:scheme="content" android:mimeType="application/vnd.android.package-archive" />
+        </intent>
+    </queries>
+    <application>
+        <provider
+            android:name="jp.linkserver.goldy.GoldyFileProvider"
+            android:authorities="${applicationId}.goldy.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/goldy_install_paths" />
+        </provider>
+    </application>
 </manifest>

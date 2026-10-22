@@ -1,0 +1,40 @@
+> Task :consumer:preBuild UP-TO-DATE
+> Task :consumer:preReleaseBuild UP-TO-DATE
+> Task :consumer:checkReleaseAarMetadata UP-TO-DATE
+> Task :consumer:mergeReleaseJniLibFolders UP-TO-DATE
+> Task :consumer:mergeReleaseNativeLibs NO-SOURCE
+> Task :consumer:stripReleaseDebugSymbols NO-SOURCE
+> Task :consumer:copyReleaseJniLibsProjectAndLocalJars UP-TO-DATE
+> Task :consumer:extractDeepLinksForAarRelease UP-TO-DATE
+> Task :consumer:generateReleaseResources UP-TO-DATE
+> Task :consumer:packageReleaseResources UP-TO-DATE
+> Task :consumer:processReleaseNavigationResources UP-TO-DATE
+> Task :consumer:parseReleaseLocalResources UP-TO-DATE
+> Task :consumer:generateReleaseRFile UP-TO-DATE
+> Task :consumer:extractReleaseAnnotations
+> Task :consumer:generateReleaseAssets UP-TO-DATE
+> Task :consumer:mergeReleaseAssets UP-TO-DATE
+> Task :consumer:javaPreCompileRelease UP-TO-DATE
+> Task :consumer:prepareLintJarForPublish UP-TO-DATE
+> Task :consumer:prepareReleaseArtProfile UP-TO-DATE
+> Task :consumer:processReleaseManifest UP-TO-DATE
+> Task :consumer:writeReleaseAarMetadata UP-TO-DATE
+> Task :consumer:mapReleaseSourceSetPaths UP-TO-DATE
+> Task :consumer:mergeReleaseResources UP-TO-DATE
+> Task :consumer:verifyReleaseResources UP-TO-DATE
+
+> Task :consumer:verifyPublishedUi
+Published Elief and transitive Gold AARs match producers; stable Material3 1.4.0; tables; no Pyrite.
+
+> Task :consumer:compileReleaseKotlin
+> Task :consumer:compileReleaseJavaWithJavac NO-SOURCE
+> Task :consumer:mergeReleaseGeneratedProguardFiles UP-TO-DATE
+> Task :consumer:mergeReleaseConsumerProguardFiles UP-TO-DATE
+> Task :consumer:processReleaseJavaRes UP-TO-DATE
+> Task :consumer:mergeReleaseJavaResource UP-TO-DATE
+> Task :consumer:syncReleaseLibJars UP-TO-DATE
+> Task :consumer:bundleReleaseAar UP-TO-DATE
+> Task :consumer:assembleRelease UP-TO-DATE
+
+BUILD SUCCESSFUL in 5s
+27 actionable tasks: 3 executed, 24 up-to-date

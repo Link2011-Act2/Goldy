@@ -58,6 +58,12 @@ class ApkException(val reason: ApkFailure, val status: Int? = null, cause: Throw
 object ApkVerifier {
     fun verify(installed: ApkMetadata, archive: ApkMetadata?, release: GitHubRelease,
                binding: ApkVersionBinding = ApkVersionBindings.Exact): ApkMetadata {
+        val apk = verifyInstalled(installed, archive)
+        if (apk.versionName.isBlank() || !binding.matches(release, apk)) throw ApkException(ApkFailure.VersionMismatch)
+        return apk
+    }
+
+    internal fun verifyInstalled(installed: ApkMetadata, archive: ApkMetadata?): ApkMetadata {
         val apk = archive ?: throw ApkException(ApkFailure.InvalidApk)
         if (apk.packageName != installed.packageName || apk.packageName.isBlank()) throw ApkException(ApkFailure.PackageMismatch)
         fun valid(s: ApkSigners): Boolean = s.currentSha256.isNotEmpty() &&
@@ -66,7 +72,6 @@ object ApkVerifier {
         if (!valid(apk.signers) || !valid(installed.signers) || apk.signers != installed.signers)
             throw ApkException(ApkFailure.SignerMismatch)
         if (installed.versionCode < 0 || apk.versionCode < installed.versionCode) throw ApkException(ApkFailure.VersionCodeTooLow)
-        if (apk.versionName.isBlank() || !binding.matches(release, apk)) throw ApkException(ApkFailure.VersionMismatch)
         return apk
     }
 }

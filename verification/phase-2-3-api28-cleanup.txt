@@ -1,0 +1,3 @@
+INSTRUMENTATION_RESULT: result=PASS: explicit release after installer closed
+INSTRUMENTATION_RESULT: sdk=28
+INSTRUMENTATION_CODE: 0

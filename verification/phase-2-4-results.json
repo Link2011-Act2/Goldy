@@ -1,0 +1,74 @@
+{
+  "date": "2026-10-22",
+  "jvm": {
+    "gold": 103,
+    "elief": 10,
+    "coreConsumer": 4,
+    "sample": 1
+  },
+  "lint": {
+    "gold-debug": {
+      "errors": 0,
+      "warnings": 2
+    },
+    "gold-release": {
+      "errors": 0,
+      "warnings": 2
+    },
+    "elief-debug": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "elief-release": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "app-debug": {
+      "errors": 0,
+      "warnings": 8
+    },
+    "app-release": {
+      "errors": 0,
+      "warnings": 8
+    }
+  },
+  "aar": {
+    "gold": {
+      "bytes": 280398,
+      "sha256": "f7c384357bac4a4d1b6f4a66f7e2273801981e31e8188be699584767be7d0983",
+      "unchanged": true
+    },
+    "elief": {
+      "bytes": 58519,
+      "sha256": "fe71ee55c55a057afb776ab3b895730111467ce693548b5abb1f5d344bfdde31"
+    }
+  },
+  "android": {
+    "api36": {
+      "widthDp": 320,
+      "fontScale": 1.8,
+      "tests": 12,
+      "passed": 12
+    },
+    "api28": {
+      "widthDp": 320,
+      "fontScale": 1.8,
+      "tests": 12,
+      "passed": 12,
+      "standardFontTests": {
+        "fontScale": 1,
+        "widthDp": 320,
+        "tests": 12,
+        "passed": 12
+      }
+    },
+    "api26": "No installed API 26 image; not tested",
+    "physicalDevices": "not tested"
+  },
+  "consumer": {
+    "elief": "published AAR; Gold transitive; Material3 1.4.0; hashes matched",
+    "gold": "existing independent consumer passed; no Compose/Markwon/Pyrite"
+  },
+  "manifest": "Debug/Release: no REQUEST_INSTALL_PACKAGES; no Service; unique nonexported Gold FileProvider; see phase-2-4-manifest.json",
+  "finalSampleBuild": "Debug and Release successful after final Elief cleanup; build/phase-2-4/final-sample-build.txt"
+}

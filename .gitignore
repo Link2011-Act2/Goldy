@@ -23,3 +23,7 @@ local.properties
 # Operating system files
 .DS_Store
 Thumbs.db
+
+# Workstation and sibling-repository preservation snapshots stay local.
+/verification/phase-2-3-baseline.json
+/verification/phase-2-4-baseline.json

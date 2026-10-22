@@ -23,3 +23,5 @@ class Consumer(context: Context) {
 fun apkDownloader(context: android.content.Context, repository: jp.linkserver.goldy.GitHubRepository) =
     jp.linkserver.goldy.ApkDownloader.create(context, jp.linkserver.goldy.ApkDownloadConfig(
         repository, jp.linkserver.goldy.ApkSelectionPolicies.ShutUp, jp.linkserver.goldy.ApkVersionBindings.ShutUp))
+
+fun installer(context: android.content.Context): jp.linkserver.goldy.ApkInstaller = jp.linkserver.goldy.ApkInstaller.create(context)

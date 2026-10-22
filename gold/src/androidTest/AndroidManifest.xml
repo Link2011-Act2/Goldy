@@ -1,0 +1,8 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" android:versionCode="1" android:versionName="1.0">
+    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+    <application android:usesCleartextTraffic="false">
+        <provider android:name="androidx.core.content.FileProvider" android:authorities="${applicationId}.host.fileprovider" android:exported="false" android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/host_test_paths" />
+        </provider>
+    </application>
+</manifest>

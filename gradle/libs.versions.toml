@@ -9,10 +9,13 @@ activityCompose = "1.13.0"
 kotlin = "2.2.10"
 composeBom = "2026.02.01"
 
+markwon = "4.6.2"
+material3Expressive = "1.5.0-beta01"
 coroutines = "1.9.0"
 json = "20250517"
 
 [libraries]
+androidx-core = { group = "androidx.core", name = "core", version.ref = "coreKtx" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
@@ -31,6 +34,12 @@ androidx-compose-material3 = { group = "androidx.compose.material3", name = "mat
 kotlinx-coroutines-core = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-core", version.ref = "coroutines" }
 kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-test", version.ref = "coroutines" }
 json = { group = "org.json", name = "json", version.ref = "json" }
+
+androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
+markwon-core = { group = "io.noties.markwon", name = "core", version.ref = "markwon" }
+markwon-tables = { group = "io.noties.markwon", name = "ext-tables", version.ref = "markwon" }
+androidx-compose-material3-expressive = { group = "androidx.compose.material3", name = "material3", version.ref = "material3Expressive" }
+androidx-lifecycle-viewmodel-ktx = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycleRuntimeKtx" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

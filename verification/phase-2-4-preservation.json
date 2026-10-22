@@ -1,0 +1,28 @@
+{
+  "goldy": {
+    "headUnchanged": true,
+    "changedExistingFiles": [
+      "app/build.gradle.kts",
+      "app/src/main/java/jp/linkserver/projectgoldy/MainActivity.kt",
+      "gradle/libs.versions.toml",
+      "settings.gradle.kts"
+    ],
+    "statusUnchanged": false,
+    "existingUncommittedChanges": "All pre-existing files unchanged except additive version-catalog entries required by Elief; prior core alias retained. Gold sources, tests, build and previous verification artifacts unchanged."
+  },
+  "shutup": {
+    "headUnchanged": true,
+    "changedExistingFiles": [],
+    "statusUnchanged": true
+  },
+  "schedulernittc": {
+    "headUnchanged": true,
+    "changedExistingFiles": [],
+    "statusUnchanged": true
+  },
+  "glyphvisualizer": {
+    "headUnchanged": true,
+    "changedExistingFiles": [],
+    "statusUnchanged": true
+  }
+}

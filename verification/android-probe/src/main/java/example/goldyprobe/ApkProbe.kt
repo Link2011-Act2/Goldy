@@ -12,6 +12,11 @@ class ApkProbe : Instrumentation() {
     override fun onStart() {
         val report = Bundle()
         try {
+            if (arguments.getString("mode") == "missing-permission") {
+                check(ApkInstaller.create(targetContext).permissionStatus() == InstallPermission.MissingManifestPermission)
+                report.putString("result", "PASS: explicit REQUEST_INSTALL_PACKAGES declaration required")
+                finish(0, report); return
+            }
             val inspector = AndroidApkInspector(targetContext)
             val installed = inspector.installed()
             val self = inspector.inspect(File(targetContext.applicationInfo.sourceDir))!!

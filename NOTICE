@@ -1,0 +1,11 @@
+Project Goldy
+Copyright (c) 2026 Azul1nk. MIT License; see LICENSE.
+
+Gold includes version-comparison algorithms derived from the MIT-licensed
+ShutUp, NITTC Scheduler and GlyphVisualizer/Glyph Barty implementations.
+Source revisions and characterization results are recorded in
+docs/phase-2-core-report.md.
+
+Gold and Elief are ordinary AARs; third-party dependencies are resolved
+transitively rather than shaded into them. Their licenses remain applicable.
+See docs/third-party-licenses.md.

@@ -26,3 +26,5 @@ rootProject.name = "Goldy"
 include(":app")
 
 include(":gold")
+
+include(":elief")

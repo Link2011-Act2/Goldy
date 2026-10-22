@@ -1,0 +1,17 @@
+INSTRUMENTATION_RESULT: failure=java.lang.IllegalStateException: Live transfer failed: Network cause=java.net.SocketTimeoutException: timeout
+	at jp.linkserver.goldy.GoldyTestRunner.network(GoldyTestRunner.kt:160)
+	at jp.linkserver.goldy.GoldyTestRunner.access$network(GoldyTestRunner.kt:18)
+	at jp.linkserver.goldy.GoldyTestRunner$network$1.invokeSuspend(Unknown Source:14)
+	at kotlin.coroutines.jvm.internal.BaseContinuationImpl.resumeWith(ContinuationImpl.kt:33)
+	at kotlinx.coroutines.DispatchedTask.run(DispatchedTask.kt:99)
+	at kotlinx.coroutines.EventLoopImplBase.processNextEvent(EventLoop.common.kt:263)
+	at kotlinx.coroutines.BlockingCoroutine.joinBlocking(Builders.kt:95)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking(Builders.kt:69)
+	at kotlinx.coroutines.BuildersKt.runBlocking(Unknown Source:1)
+	at kotlinx.coroutines.BuildersKt__BuildersKt.runBlocking$default(Builders.kt:47)
+	at kotlinx.coroutines.BuildersKt.runBlocking$default(Unknown Source:1)
+	at jp.linkserver.goldy.GoldyTestRunner.onStart(GoldyTestRunner.kt:26)
+	at android.app.Instrumentation$InstrumentationThread.run(Instrumentation.java:2597)
+
+INSTRUMENTATION_RESULT: result=
+INSTRUMENTATION_CODE: 1

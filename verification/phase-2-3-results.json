@@ -1,0 +1,237 @@
+{
+  "date": "2026-10-22",
+  "module": ":gold",
+  "futureComposeModule": ":elief (not implemented)",
+  "gold": {
+    "tests": 103,
+    "failures": 0,
+    "suites": [
+      {
+        "name": "jp.linkserver.goldy.ApkDownloadTest",
+        "tests": 26,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      {
+        "name": "jp.linkserver.goldy.ApkIdentityFixtureTest",
+        "tests": 2,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      {
+        "name": "jp.linkserver.goldy.ApkRevalidationTest",
+        "tests": 13,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      {
+        "name": "jp.linkserver.goldy.ApkVerifierTest",
+        "tests": 11,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      {
+        "name": "jp.linkserver.goldy.ArchiveSigningFlagsTest",
+        "tests": 2,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      {
+        "name": "jp.linkserver.goldy.CacheJsonTest",
+        "tests": 3,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      {
+        "name": "jp.linkserver.goldy.GitHubReleaseClientTest",
+        "tests": 10,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      {
+        "name": "jp.linkserver.goldy.GoldyStateTest",
+        "tests": 14,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      {
+        "name": "jp.linkserver.goldy.PreferencesUpdateStateStoreTest",
+        "tests": 5,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      {
+        "name": "jp.linkserver.goldy.ReleaseSelectorTest",
+        "tests": 8,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      {
+        "name": "jp.linkserver.goldy.SelectionCharacterizationTest",
+        "tests": 2,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      },
+      {
+        "name": "jp.linkserver.goldy.VersionCharacterizationTest",
+        "tests": 7,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      }
+    ]
+  },
+  "consumer": {
+    "tests": 4,
+    "failures": 0,
+    "suites": [
+      {
+        "name": "example.goldyconsumer.ConsumerTest",
+        "tests": 4,
+        "skipped": 0,
+        "failures": 0,
+        "errors": 0
+      }
+    ]
+  },
+  "lint": [
+    {
+      "path": "gold/build/reports/lint-results-debug.xml",
+      "errors": 0,
+      "warnings": 2
+    },
+    {
+      "path": "gold/build/reports/lint-results-release.xml",
+      "errors": 0,
+      "warnings": 2
+    },
+    {
+      "path": "verification/consumer/consumer/build/reports/lint-results-debug.xml",
+      "errors": 0,
+      "warnings": 0
+    }
+  ],
+  "aar": {
+    "path": "gold/build/outputs/aar/gold-release.aar",
+    "bytes": 280398,
+    "sha256": "f7c384357bac4a4d1b6f4a66f7e2273801981e31e8188be699584767be7d0983",
+    "phase22Bytes": 223348,
+    "deltaBytes": 57050,
+    "localPublishedMatches": true
+  },
+  "dependencies": {
+    "addedDirect": "androidx.core:core:1.19.1 (implementation)",
+    "runtimeGraph": "verification/phase-2-3-runtime-dependencies.txt",
+    "pyrite": false,
+    "compose": false
+  },
+  "android": {
+    "checks": [
+      {
+        "path": "verification/phase-2-3-api28-permission.txt",
+        "passed": true,
+        "groups": 1
+      },
+      {
+        "path": "verification/phase-2-3-api28-installer.txt",
+        "passed": true,
+        "groups": 11
+      },
+      {
+        "path": "verification/phase-2-3-api28-cleanup.txt",
+        "passed": true,
+        "groups": 1
+      },
+      {
+        "path": "verification/phase-2-3-api28-missing-permission.txt",
+        "passed": true,
+        "groups": 1
+      },
+      {
+        "path": "verification/phase-2-3-api28-network.txt",
+        "passed": true,
+        "groups": 3
+      },
+      {
+        "path": "verification/phase-2-3-api36-permission.txt",
+        "passed": true,
+        "groups": 1
+      },
+      {
+        "path": "verification/phase-2-3-api36-installer.txt",
+        "passed": true,
+        "groups": 11
+      },
+      {
+        "path": "verification/phase-2-3-api36-cleanup.txt",
+        "passed": true,
+        "groups": 1
+      },
+      {
+        "path": "verification/phase-2-3-api36-missing-permission.txt",
+        "passed": true,
+        "groups": 1
+      },
+      {
+        "path": "verification/phase-2-3-api36-network-retry.txt",
+        "passed": true,
+        "groups": 3
+      },
+      {
+        "path": "verification/phase-2-3-api36-no-installer.txt",
+        "passed": true,
+        "groups": 1
+      },
+      {
+        "path": "verification/phase-2-3-api36-provider-disabled.txt",
+        "passed": true,
+        "groups": 1
+      }
+    ],
+    "officialApksInstalled": false,
+    "onlySignedDisposableTestApksInstalled": true,
+    "actualInstallSuccessClaimed": false,
+    "api26": {
+      "tested": false,
+      "reason": "No local API26 image; official Google image metadata inspected and download attempted, but incomplete under network bandwidth limits",
+      "incompleteDownloadedBytes": 22011904
+    },
+    "api36InitialTimeout": {
+      "path": "verification/phase-2-3-api36-network.txt",
+      "classified": "Network / SocketTimeoutException",
+      "retryPassed": true
+    }
+  },
+  "manifest": {
+    "independentConsumerTask": ":verifyInstallerManifest",
+    "uniqueAuthority": "${applicationId}.goldy.fileprovider",
+    "hostPermissionOptIn": true,
+    "sharedRoot": "filesDir/goldy-apks/install/",
+    "writeGrant": false,
+    "persistableGrant": false,
+    "prefixGrant": false
+  },
+  "untested": [
+    "API26/27 actual runtime",
+    "API29-35 actual runtime",
+    "Physical devices / OEM installers",
+    "Successful completion of an installation (Activity handoff only)",
+    "Multi-process coordination",
+    "Signer rotation acceptance (intentionally not supported)"
+  ],
+  "preservation": "verification/phase-2-3-preservation.json",
+  "committed": false,
+  "pushed": false,
+  "released": false
+}

@@ -1,4 +1,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
-    <application android:label="Goldy APK verification probe" />
+    <application android:label="Goldy APK verification probe">
+        <provider android:name="androidx.core.content.FileProvider" android:authorities="${applicationId}.host.fileprovider" android:exported="false" android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/probe_host_paths" />
+        </provider>
+        <activity android:name=".UriProbeActivity" android:exported="true" android:theme="@android:style/Theme.NoDisplay" />
+    </application>
     <instrumentation android:name=".ApkProbe" android:targetPackage="example.goldyprobe" />
 </manifest>

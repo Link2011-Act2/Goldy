@@ -1,0 +1,6 @@
+INSTRUMENTATION_RESULT: result=PASS: PRODUCTION HttpURLConnection live GitHub HTTPS/CDN transfer, progress, size, SHA256, PackageManager parse; foreign package safely rejected
+progress callbacks=391, final bytes=2878925
+PASS: real HTTPS transfer cancellation cleans .part
+PASS: real GitHub HTTP404 surfaced; no partial file retained
+INSTRUMENTATION_RESULT: sdk=28
+INSTRUMENTATION_CODE: 0

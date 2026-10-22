@@ -1,0 +1,14 @@
+[
+  {
+    "variant": "debug",
+    "authority": "jp.linkserver.projectgoldy.goldy.fileprovider",
+    "installPermission": false,
+    "services": 0
+  },
+  {
+    "variant": "release",
+    "authority": "jp.linkserver.projectgoldy.goldy.fileprovider",
+    "installPermission": false,
+    "services": 0
+  }
+]

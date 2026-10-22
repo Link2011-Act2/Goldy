@@ -3,6 +3,12 @@ plugins {
     alias(libs.plugins.kotlin.compose)
 }
 
+kotlin { compilerOptions {
+    jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_11)
+    languageVersion.set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_2)
+    apiVersion.set(org.jetbrains.kotlin.gradle.dsl.KotlinVersion.KOTLIN_2_2)
+} }
+
 android {
     namespace = "jp.linkserver.projectgoldy"
     compileSdk {
@@ -37,9 +43,12 @@ android {
 }
 
 dependencies {
+    implementation(project(":elief"))
+    implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
-    implementation(libs.androidx.compose.material3)
+    // Expressive is opt-in in the sample; Elief itself keeps the stable BOM baseline.
+    implementation(libs.androidx.compose.material3.expressive)
     implementation(libs.androidx.compose.ui)
     implementation(libs.androidx.compose.ui.graphics)
     implementation(libs.androidx.compose.ui.tooling.preview)

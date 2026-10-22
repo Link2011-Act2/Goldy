@@ -1,0 +1,4 @@
+Elief is the optional Compose UI module of Project Goldy.
+Copyright (c) 2026 Azul1nk. MIT License; see the adjacent LICENSE.
+Markwon, CommonMark, AndroidX, Kotlin and Coroutines are external dependencies,
+not shaded into this AAR. See docs/third-party-licenses.md in the source repository.

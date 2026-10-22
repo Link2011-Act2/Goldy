@@ -3,13 +3,13 @@ plugins {
     `maven-publish`
 }
 
-group = "jp.linkserver.goldy"
-version = "0.1.0-SNAPSHOT"
-
 android {
     namespace = "jp.linkserver.goldy"
     compileSdk = 37
-    defaultConfig { minSdk = 26 }
+    defaultConfig {
+        minSdk = 26
+        testInstrumentationRunner = "jp.linkserver.goldy.GoldyTestRunner"
+    }
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_11
         targetCompatibility = JavaVersion.VERSION_11
@@ -26,6 +26,7 @@ kotlin {
 }
 
 dependencies {
+    implementation(libs.androidx.core)
     api(libs.kotlinx.coroutines.core)
     testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)

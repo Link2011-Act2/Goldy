@@ -1,0 +1,6 @@
+jdk:
+  - openjdk21
+before_install:
+  - bash scripts/jitpack-prepare.sh
+install:
+  - ./gradlew :gold:publishReleasePublicationToMavenLocal :elief:publishReleasePublicationToMavenLocal -PgoldyGroup=com.github.Link2011-Act2.Goldy -PgoldyVersion="$VERSION" --no-daemon --console=plain

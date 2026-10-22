@@ -51,6 +51,9 @@ class ApkDownloader internal constructor(
             config, File(context.applicationContext.cacheDir, "goldy-apks"), AndroidApkInspector(context), UrlAssetTransport)
     }
 
+    /** Main-safe. Progress runs on IO; marshal UI mutations to Main. Callback exceptions propagate.
+     * Cancellation disconnects the active transfer and removes uncommitted files.
+     */
     suspend fun download(release: GitHubRelease, onProgress: (ApkProgress) -> Unit = {}): VerifiedApk = transferGate.withLock {
         val asset = config.selection.select(release) ?: throw ApkException(ApkFailure.NoAsset)
         if (asset !in release.assets || asset.id <= 0 || !asset.name.endsWith(".apk", true)) throw ApkException(ApkFailure.NoAsset)

@@ -1,0 +1,20 @@
+    * TaskRecord{333eefd #27 A=com.google.android.packageinstaller U=0 StackId=6 sz=1}
+      userId=0 effectiveUid=u0a29 mCallingUid=u0a88 mUserSetupComplete=true mCallingPackage=jp.linkserver.goldy.test
+      affinity=com.google.android.packageinstaller
+      intent={act=android.intent.action.VIEW dat=content://jp.linkserver.goldy.test.goldy.fileprovider/goldy_install/43192716-d89e-4dc5-b88b-b7d80e72efb2.apk typ=application/vnd.android.package-archive flg=0x10800001 cmp=com.google.android.packageinstaller/com.android.packageinstaller.InstallStart clip={text/uri-list "APK" {U:content://jp.linkserver.goldy.test.goldy.fileprovider/goldy_install/43192716-d89e-4dc5-b88b-b7d80e72efb2.apk}}}
+      realActivity=com.google.android.packageinstaller/com.android.packageinstaller.InstallStart
+      Activities=[ActivityRecord{96ef3d5 u0 com.google.android.packageinstaller/com.android.packageinstaller.InstallStart t27}]
+      * Hist #0: ActivityRecord{96ef3d5 u0 com.google.android.packageinstaller/com.android.packageinstaller.InstallStart t27}
+          packageName=com.google.android.packageinstaller processName=com.google.android.packageinstaller
+          launchedFromUid=10088 launchedFromPackage=jp.linkserver.goldy.test userId=0
+          app=ProcessRecord{49c07f2 5624:com.google.android.packageinstaller/u0a29}
+          Intent { act=android.intent.action.VIEW dat=content://jp.linkserver.goldy.test.goldy.fileprovider/goldy_install/43192716-d89e-4dc5-b88b-b7d80e72efb2.apk typ=application/vnd.android.package-archive flg=0x10800001 cmp=com.google.android.packageinstaller/com.android.packageinstaller.InstallStart clip={text/uri-list "APK" {U:content://jp.linkserver.goldy.test.goldy.fileprovider/goldy_install/43192716-d89e-4dc5-b88b-b7d80e72efb2.apk}} }
+          frontOfTask=true task=TaskRecord{333eefd #27 A=com.google.android.packageinstaller U=0 StackId=6 sz=1}
+          taskAffinity=com.google.android.packageinstaller
+          realActivity=com.google.android.packageinstaller/com.android.packageinstaller.InstallStart
+          baseDir=/system/priv-app/GooglePackageInstaller/GooglePackageInstaller.apk
+          dataDir=/data/user_de/0/com.google.android.packageinstaller
+      TaskRecord{333eefd #27 A=com.google.android.packageinstaller U=0 StackId=6 sz=1}
+        Run #0: ActivityRecord{96ef3d5 u0 com.google.android.packageinstaller/com.android.packageinstaller.InstallStart t27}
+    mResumedActivity: ActivityRecord{96ef3d5 u0 com.google.android.packageinstaller/com.android.packageinstaller.InstallStart t27}
+  ResumedActivity: ActivityRecord{96ef3d5 u0 com.google.android.packageinstaller/com.android.packageinstaller.InstallStart t27}

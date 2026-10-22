@@ -1,0 +1,47 @@
+[
+  {
+    "root": ".",
+    "head": "176d6946fee53b0fe2fd0e89d5196d39a6b2f357",
+    "headUnchanged": true,
+    "statusUnchanged": false,
+    "existingFilesChecked": 108,
+    "changed": [
+      "gold/build.gradle.kts",
+      "gold/src/main/AndroidManifest.xml",
+      "gold/src/main/java/jp/linkserver/goldy/ApkPolicy.kt",
+      "gradle/libs.versions.toml",
+      "verification/android-probe/build.gradle.kts",
+      "verification/android-probe/src/main/AndroidManifest.xml",
+      "verification/android-probe/src/main/java/example/goldyprobe/ApkProbe.kt",
+      "verification/consumer/consumer/src/main/java/example/goldyconsumer/Consumer.kt"
+    ],
+    "status": " M gold/build.gradle.kts\n M gold/src/main/AndroidManifest.xml\n M gold/src/main/java/jp/linkserver/goldy/ApkPolicy.kt\n M gradle/libs.versions.toml\n M verification/android-probe/build.gradle.kts\n M verification/android-probe/src/main/AndroidManifest.xml\n M verification/android-probe/src/main/java/example/goldyprobe/ApkProbe.kt\n M verification/consumer/consumer/src/main/java/example/goldyconsumer/Consumer.kt\n?? docs/installer-api.md\n?? gold/src/androidTest/AndroidManifest.xml\n?? gold/src/androidTest/java/jp/linkserver/goldy/GoldyTestRunner.kt\n?? gold/src/androidTest/res/xml/host_test_paths.xml\n?? gold/src/main/java/jp/linkserver/goldy/ApkInstaller.kt\n?? gold/src/main/java/jp/linkserver/goldy/GoldyFileProvider.kt\n?? gold/src/main/java/jp/linkserver/goldy/InstallFiles.kt\n?? gold/src/main/res/xml/goldy_install_paths.xml\n?? gold/src/test/java/jp/linkserver/goldy/ApkRevalidationTest.kt\n?? verification/android-probe/src/main/java/example/goldyprobe/UriProbeActivity.kt\n?? verification/android-probe/src/main/res/xml/probe_host_paths.xml\n?? verification/phase-2-3-api28-activities.txt\n?? verification/phase-2-3-api28-cleanup.txt\n?? verification/phase-2-3-api28-installer.txt\n?? verification/phase-2-3-api28-missing-permission.txt\n?? verification/phase-2-3-api28-network.txt\n?? verification/phase-2-3-api28-permission.txt\n?? verification/phase-2-3-api36-activities.txt\n?? verification/phase-2-3-api36-cleanup.txt\n?? verification/phase-2-3-api36-installer.txt\n?? verification/phase-2-3-api36-missing-permission.txt\n?? verification/phase-2-3-api36-network-retry.txt\n?? verification/phase-2-3-api36-network.txt\n?? verification/phase-2-3-api36-no-installer.txt\n?? verification/phase-2-3-api36-permission.txt\n?? verification/phase-2-3-api36-provider-disabled.txt\n?? verification/phase-2-3-baseline.json\n?? verification/phase-2-3-runtime-dependencies.txt\n"
+  },
+  {
+    "root": "../shutup",
+    "head": "1a18497cfbe62eac20ecf3ba8264cb8daf163fac",
+    "headUnchanged": true,
+    "statusUnchanged": true,
+    "existingFilesChecked": 189,
+    "changed": [],
+    "status": " M app/src/main/java/jp/linkserver/shutter/ui/ShutterApp.kt\n M app/src/main/java/jp/linkserver/shutter/ui/Theme.kt\n M verification/pyrite-migration/report.md\n?? app/src/androidTest/java/jp/linkserver/shutter/ui/PyritePaletteTest.kt\n?? verification/pyrite-light-palette/after-ui.txt\n?? verification/pyrite-light-palette/before-ui.txt\n?? verification/pyrite-light-palette/catalog-color-checks.json\n?? verification/pyrite-light-palette/dark-dynamic-after.json\n?? verification/pyrite-light-palette/dark-dynamic-before.json\n?? verification/pyrite-light-palette/dark-static-after.json\n?? verification/pyrite-light-palette/dark-static-before.json\n?? verification/pyrite-light-palette/image-metrics.json\n?? verification/pyrite-light-palette/light-dynamic-about.png\n?? verification/pyrite-light-palette/light-dynamic-after.json\n?? verification/pyrite-light-palette/light-dynamic-before.json\n?? verification/pyrite-light-palette/light-dynamic-settings.png\n?? verification/pyrite-light-palette/light-static-about.png\n?? verification/pyrite-light-palette/light-static-after.json\n?? verification/pyrite-light-palette/light-static-before.json\n?? verification/pyrite-light-palette/light-static-settings.png\n?? verification/pyrite-light-palette/report.md\n"
+  },
+  {
+    "root": "../schedulernittc",
+    "head": "9fad0402e268902bbfbea485ca216218c17afdf1",
+    "headUnchanged": true,
+    "statusUnchanged": true,
+    "existingFilesChecked": 284,
+    "changed": [],
+    "status": ""
+  },
+  {
+    "root": "../glyphvisualizer",
+    "head": "d0adb9c7e98bd888110da7edcd1997ebb29ca4db",
+    "headUnchanged": true,
+    "statusUnchanged": true,
+    "existingFilesChecked": 236,
+    "changed": [],
+    "status": ""
+  }
+]

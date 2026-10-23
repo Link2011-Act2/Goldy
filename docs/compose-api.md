@@ -71,7 +71,7 @@ The Markdown view is text-selectable and uses native accessibility. Markdown tab
 
 ## Offline sample
 
-`:app` is the runnable fixture sample. It has light/dark, standard/Expressive, API31+ dynamic colors and a monospace custom-font example. Horizontally scroll the theme/scenario chips to access every option. Scenarios include update/no update, progress with known/unknown size, retryable failure, permission, missing APK, empty notes, handoff, checking and hostile Markdown. No action downloads or installs an APK; the header reports callbacks.
+`:app` is Goldy Demo. Its UI Showcase retains the offline fixtures, light/dark, standard/Expressive, API31+ dynamic colors and a monospace custom-font example. Horizontally scroll the theme/scenario chips to access every option. Showcase actions never download or install an APK. Separate Live Demo and self Update Demo modes use real Gold APIs only after explicit user actions; see [Goldy Demo](goldy-demo.md) for distribution rules, file lifetime and safe local test instructions.
 
 ## App adoption (separate approval required)
 

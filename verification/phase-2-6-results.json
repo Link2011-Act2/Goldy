@@ -1,0 +1,135 @@
+{
+  "phase": "2-6",
+  "date": "2026-10-23",
+  "baseCommit": "d97042dce6dec2b913ffb6a378969a441d39ac7f",
+  "branch": "master",
+  "committed": false,
+  "pushed": false,
+  "jvm": {
+    "elief": {
+      "tests": 10,
+      "errors": 0,
+      "failures": 0
+    },
+    "gold": {
+      "tests": 103,
+      "errors": 0,
+      "failures": 0
+    },
+    "app": {
+      "tests": 6,
+      "errors": 0,
+      "failures": 0
+    }
+  },
+  "builds": {
+    "instrumentationApk": true,
+    "r8AllPackages": true,
+    "debug": true,
+    "release": true
+  },
+  "lint": {
+    "debug": {
+      "warnings": 9,
+      "errors": 0
+    },
+    "release": {
+      "warnings": 9,
+      "errors": 0
+    }
+  },
+  "ui": {
+    "addedTestsPassed": 3,
+    "themes": [
+      "M3",
+      "M3 Expressive",
+      "Light",
+      "Dark",
+      "Dynamic Color",
+      "Monospace"
+    ],
+    "logs": [
+      "build/phase-2-6/api36-320dp-font180/instrumentation.txt",
+      "build/phase-2-6/api36-demo-final/instrumentation.txt",
+      "build/phase-2-6/api36-ui-final/instrumentation.txt",
+      "build/phase-2-6/api36-live/instrumentation.txt",
+      "build/phase-2-6/api36-restore-final/instrumentation.txt"
+    ],
+    "api": 36,
+    "initialScrollAssertionCorrected": true,
+    "liveApiTestsPassed": 1,
+    "existingTestsPassed": 12,
+    "finalAffectedTestsPassed": 4,
+    "widthDp": 320,
+    "activityRecreation": true,
+    "fontScale": 1.8,
+    "finalRestorationUiTestsPassed": 3
+  },
+  "live": {
+    "log": "build/phase-2-6/api36-live/live-api.txt",
+    "selfDistribution": "NoPublishedReleases",
+    "goldPublicApisOnly": true,
+    "realUnauthenticatedApi": true,
+    "otherAppDownloadsEnabled": false,
+    "repositories": [
+      {
+        "catalogCount": 3,
+        "selected": "v1.1.0-Release",
+        "repository": "Link2011-Act2/ShutUp"
+      },
+      {
+        "catalogCount": 18,
+        "selected": "v1.1.1-Release",
+        "repository": "Link2011-Act2/NITTC_Scheduler"
+      },
+      {
+        "catalogCount": 1,
+        "selected": "v2.1.0-Release",
+        "repository": "Link2011-Act2/GlyphBarty"
+      }
+    ]
+  },
+  "r8Smoke": {
+    "selfUpdateIdentityVisible": true,
+    "apkBytes": 1483581,
+    "launchPassed": true,
+    "r8": true,
+    "uiShowcaseVisible": true,
+    "createdSigningKey": false,
+    "existingDebugKeyOnly": true,
+    "initialSystemUiAnrOverlayDismissed": true
+  },
+  "apks": [
+    {
+      "sha256": "9491F3B122E1AF1F55B42DBCDB923A4DCF8D98D0B3F222BE07848666A05DD3C9",
+      "bytes": 13098120,
+      "path": "app/build/outputs/apk/debug/app-debug.apk"
+    },
+    {
+      "sha256": "BDEBEEFB2353ECF709461223B230C932F273CD538FF9BD3A7FB9C4097815436E",
+      "bytes": 1466370,
+      "path": "app/build/outputs/apk/release/app-release-unsigned.apk"
+    },
+    {
+      "sha256": "A7C1BACB7FDF4275AB62133875B0F31A893BA841BD9A6B7C021A41CDF83F7895",
+      "bytes": 1483581,
+      "path": "build/phase-2-6/app-release-local-test.apk"
+    }
+  ],
+  "preservation": {
+    "existingUiTestsUnchanged": true,
+    "createdTagOrRelease": false,
+    "otherAppsEdited": false,
+    "createdSigningKey": false,
+    "librarySourcesAndPublicApiUnchanged": true,
+    "readmeUnchanged": true,
+    "publicationUnchanged": true
+  },
+  "unverified": [
+    "Actual self download/installer/install completion until Demo distribution is prepared",
+    "Demo pending lease recovery/retry/release with a real prepared APK",
+    "API26-35 and physical/OEM Demo runtime",
+    "Real GitHub rate limiting; simulated 429 is covered by JVM tests",
+    "Live session cache does not persist across process death"
+  ]
+}

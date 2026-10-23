@@ -19,8 +19,10 @@ android {
         applicationId = "jp.linkserver.projectgoldy"
         minSdk = 26
         targetSdk = 37
-        versionCode = 1
-        versionName = "1.0"
+        versionCode = providers.gradleProperty("goldyDemoVersionCode").getOrElse("1").toInt().also { require(it > 0) }
+        versionName = providers.gradleProperty("goldyDemoVersionName").getOrElse("0.1.0-Release").also {
+            require(it.matches(Regex("[0-9]+\\.[0-9]+\\.[0-9]+-Release")))
+        }
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -29,7 +31,7 @@ android {
         release {
             optimization {
                 enable = true
-                packageScope = setOf("androidx.**", "kotlin.**", "kotlinx.**")
+                packageScope = setOf("**")
             }
         }
     }
@@ -44,6 +46,7 @@ android {
 
 dependencies {
     implementation(project(":elief"))
+    implementation(project(":gold"))
     implementation(libs.androidx.lifecycle.viewmodel.ktx)
     implementation(platform(libs.androidx.compose.bom))
     implementation(libs.androidx.activity.compose)
@@ -55,6 +58,7 @@ dependencies {
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
     androidTestImplementation(platform(libs.androidx.compose.bom))
     androidTestImplementation(libs.androidx.compose.ui.test.junit4)
     androidTestImplementation(libs.androidx.espresso.core)

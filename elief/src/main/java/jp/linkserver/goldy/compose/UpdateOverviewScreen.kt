@@ -6,6 +6,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.*
@@ -51,9 +52,15 @@ fun UpdateOverviewScreen(
                 if (candidate == null) {
                     if (!state.checking) Text(state.message ?: strings.noUpdate)
                 } else {
-                    Text(candidate.release.tag, style = MaterialTheme.typography.headlineMedium)
-                    Surface(shape = MaterialTheme.shapes.small, color = MaterialTheme.colorScheme.secondaryContainer) {
-                        Text(channelLabel, Modifier.padding(horizontal = 12.dp, vertical = 6.dp), style = MaterialTheme.typography.labelLarge)
+                    Row(
+                        modifier = Modifier.fillMaxWidth(),
+                        horizontalArrangement = Arrangement.spacedBy(12.dp),
+                        verticalAlignment = Alignment.CenterVertically
+                    ) {
+                        Text(candidate.release.tag, modifier = Modifier.weight(1f), style = MaterialTheme.typography.headlineMedium)
+                        Surface(shape = MaterialTheme.shapes.small, color = MaterialTheme.colorScheme.secondaryContainer) {
+                            Text(channelLabel, Modifier.padding(horizontal = 12.dp, vertical = 6.dp), style = MaterialTheme.typography.labelLarge)
+                        }
                     }
                     state.message?.let { Text(it) }
                     Card(Modifier.fillMaxWidth()) {

@@ -4,13 +4,13 @@ Elief is the optional Android UI artifact `jp.linkserver.goldy:elief:0.1.0-SNAPS
 
 ## Display and events
 
-`UpdateOverviewScreen(state, onBack, onOpenUrl, onAction)` displays a version, channel, notes, intermediate history, download/install state and release links. `ReleaseNotes(markdown, onOpenUrl)` is also usable separately. Both inherit MaterialTheme. The screen has a saveable scroll position and individually saveable history expansion, keyed to release IDs. Stable, unique IDs must be retained when reconstructing metadata.
+`UpdateOverviewScreen(state, onBack, onOpenUrl, onAction)` displays a version, channel, notes, intermediate history, download/install state and release links. `ReleaseNotes(markdown, onOpenUrl)` is also usable separately. Both inherit MaterialTheme. The screen has a saveable scroll position and one saveable expansion state for the whole history, keyed to the selected release ID. Stable, unique IDs must be retained when reconstructing metadata.
 
 `GoldyState.toUpdateUiState(versionPolicy, apkSelection, transfer, message)` uses the exact host policies. It does not download or authenticate an asset. Pass the same selection policy to ApkDownloadConfig. An ambiguous/missing APK gives a GitHub link and no download button. The host supplies localized metadata errors through message; absence of an update alone is not evidence that a network check succeeded.
 
 The transfer model is `UpdateTransferState`: Idle, Downloading(ApkProgress), Verifying, Ready, PreparingInstall, PermissionRequired, HandedOff, Cancelled, Failed(message, retry?). `UpdateAction` is Download, CancelDownload, Install, OpenInstallPermissionSettings. Ready represents a host-held VerifiedApk or prepared InstallRequest; it does not represent unverified downloaded bytes. Failed.retry can be null for non-retryable failures.
 
-The screen displays all content in a single vertical scroll, including action buttons. This allows long labels, 320dp widths and large fonts without a fixed bottom bar consuming the viewport. Return to the action card at the top to start/cancel a transfer. Downloading shows byte counts, attempt number and determinate progress when a positive total is known; otherwise the progress bar is indeterminate.
+Actions normally use a fixed bottom region. For large fonts or a short viewport they move into the content scroll, so 320dp layouts and long permission/error messages remain accessible. Downloading shows byte counts, attempt number and determinate progress when a positive total is known; otherwise the progress bar is indeterminate. See the layout adaptation rules below.
 
 ## Host ownership and real integration
 
@@ -62,6 +62,32 @@ Use the host MaterialTheme or MaterialExpressiveTheme around the screen. Colors,
 UpdateStrings replaces titles, actions, status/empty messages and history labels; channelLabel accepts a localized channel. Failed.message and UpdateUiState.message are host-supplied. loadingIndicator replaces the standard loading indicator. header adds app-specific decoration or introductory content. ReleaseNotes accepts an optional TextStyle. Numeric transfer counts use bytes (B) and an attempt number.
 
 Elief compiles against the existing Compose BOM 2026.02.01 (Compose UI 1.10.4, stable Material3 1.4.0), with Kotlin Compose plugin 2.2.10 and the existing AGP 9.4.1. The sample alone opts into Material3 1.5.0-beta01 for the public experimental Expressive theme used by Glyph Barty. It does not force that prerelease version onto Elief consumers.
+
+## Standard layout and display customization
+
+The standard screen uses an arrow IconButton (`UpdateStrings.back` is its accessibility description), a horizontal version/channel row, a bordered surfaceContainerHigh notes surface, and one saveable expansion control for the whole intermediate history. History cards show their version and channel. Content and docked actions are centered with an 840dp maximum width.
+
+Actions are docked below the scroll at ordinary sizes. At fontScale >= 1.5 or available height < 480dp, including reduced IME space, actions join the same scroll so they cannot crowd out the content. The docked region is bounded to 40% of the available height and can itself scroll for long permission/error messages. Navigation-bar insets, IME padding and Scaffold content insets are applied without a fixed spacer. These are layout choices, not an operation/installation policy.
+
+The original `UpdateOverviewScreen` signature is retained. A separate overload requires `presentation`; existing calls remain unambiguous. Other state, strings, Markdown and adapter signatures are unchanged. Defaults preserve the raw version tag on screen. To remove `v` only for display, or localize history channels:
+
+```kotlin
+UpdateOverviewScreen(
+    state = ui,
+    onBack = navigateBack,
+    onOpenUrl = openApprovedWebUrl,
+    onAction = onUpdateAction,
+    strings = UpdateStrings(title = "更新内容", back = "戻る"),
+    presentation = remember(policy) {
+        UpdatePresentation(
+            versionLabel = { it.tag.removePrefix("v") },
+            historyChannelLabel = { policy.versions.channel(it.tag, it.prerelease).name }
+        )
+    }
+)
+```
+
+`UpdatePresentation.backIcon` optionally replaces the decorative icon; its surrounding IconButton still owns the back event and description. `channelLabel` continues to control the selected release's channel. Channel chips are noninteractive labels. Display formatters never mutate GitHubRelease, comparison inputs or APK version binding. The host still owns system-back navigation, coroutine scope, file lifetime and all installer actions.
 
 ## Markdown trust boundary
 

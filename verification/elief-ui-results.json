@@ -1,0 +1,259 @@
+{
+  "task": "Elief standard UI improvements and BeastLocator investigation",
+  "date": "2026-10-23",
+  "baseCommit": "ef483970f31efc5d2dcb6560c229c6e71a464601",
+  "branch": "master",
+  "committed": false,
+  "pushed": false,
+  "jvm": {
+    "gold": {
+      "errors": 0,
+      "failures": 0,
+      "tests": 103
+    },
+    "elief": {
+      "errors": 0,
+      "failures": 0,
+      "tests": 12
+    },
+    "app": {
+      "errors": 0,
+      "failures": 0,
+      "tests": 6
+    }
+  },
+  "lint": {
+    "elief-debug": {
+      "errors": 0,
+      "ids": [],
+      "warnings": 0
+    },
+    "elief-release": {
+      "errors": 0,
+      "ids": [],
+      "warnings": 0
+    },
+    "app-debug": {
+      "errors": 0,
+      "ids": [
+        {
+          "count": 1,
+          "id": "RedundantLabel"
+        },
+        {
+          "count": 7,
+          "id": "UnusedResources"
+        },
+        {
+          "count": 1,
+          "id": "UseKtx"
+        }
+      ],
+      "warnings": 9
+    },
+    "app-release": {
+      "errors": 0,
+      "ids": [
+        {
+          "count": 1,
+          "id": "RedundantLabel"
+        },
+        {
+          "count": 7,
+          "id": "UnusedResources"
+        },
+        {
+          "count": 1,
+          "id": "UseKtx"
+        }
+      ],
+      "warnings": 9
+    }
+  },
+  "artifacts": {
+    "app/build/outputs/apk/debug/app-debug.apk": {
+      "sha256": "af5ad17005ab77de877814be78445dbb13bf6cb5b967e0bf4038b42e69fca9f7",
+      "bytes": 13132165
+    },
+    "app/build/outputs/apk/release/app-release-unsigned.apk": {
+      "sha256": "223235b0d1ce7d78238276ba652e2302593069f1aa6126f437ba0a8fa205f71e",
+      "bytes": 1483746
+    },
+    "gold/build/outputs/aar/gold-release.aar": {
+      "sha256": "6083596c2d5394a2c551bd12d14ed625c2b2cb8f696eec3a313769a15714d27a",
+      "bytes": 280404
+    },
+    "elief/build/outputs/aar/elief-release.aar": {
+      "sha256": "08aef6206850600a149b6d42f0035878a99a62baf8959d6f688514f8e718e669",
+      "bytes": 80600
+    }
+  },
+  "build": {
+    "log": "build/elief-ui-review/final-release-lint.log",
+    "releaseR8": "passed",
+    "debug": "passed",
+    "androidTest": "passed"
+  },
+  "independentConsumer": {
+    "eliefHashMatches": true,
+    "stableMaterial3": "1.4.0",
+    "log": "build/elief-ui-review/consumer.log",
+    "pyritePresent": false,
+    "jitPackRepublished": false,
+    "transitiveGoldHashMatches": true,
+    "source": "published local AARs, no producer project or includeBuild",
+    "result": "passed"
+  },
+  "binaryApi": {
+    "missingDescriptors": [],
+    "retained": true,
+    "originalDescriptors": 1
+  },
+  "ui": {
+    "captures": "build/elief-ui-review",
+    "newLayoutTests": 7,
+    "device": "dedicated read-only emulator",
+    "existingDemoScreenTests": 3,
+    "existingUpdateScreenTests": 12,
+    "distinctTestMethods": 22,
+    "api": 36,
+    "runs": [
+      {
+        "label": "api36-320-font100",
+        "fontScale": 1.0,
+        "passed": 21,
+        "failed": 0,
+        "scope": "UpdateScreenTest (12), DemoScreenTest (3), EliefLayoutTest (then 6)",
+        "log": "build/elief-ui-review/api36-320-font100/instrumentation.txt"
+      },
+      {
+        "failure": "PixelCopy capture timeout in fixtureStateScreenshots; no functional assertion failed",
+        "log": "build/elief-ui-review/api36-320-font180/instrumentation.txt",
+        "scope": "Same 21 cases",
+        "label": "api36-320-font180",
+        "fontScale": 1.8,
+        "passed": 20,
+        "failed": 1
+      },
+      {
+        "label": "api36-180-capture-theme-final",
+        "fontScale": 1.8,
+        "passed": 2,
+        "failed": 0,
+        "scope": "fixtureStateScreenshots retry; hostFontAndThemes with added Expressive Light / Dynamic Light",
+        "log": "build/elief-ui-review/api36-180-capture-theme-final/instrumentation.txt"
+      },
+      {
+        "log": "build/elief-ui-review/api36-normal-final/instrumentation.txt",
+        "scope": "Final raw-tag screen: notesAndActionsRespectTheHostWidthAndSystemInsets",
+        "label": "api36-normal-final",
+        "fontScale": 1.0,
+        "passed": 1,
+        "harnessNote": "OK (1 test) initially rejected by plural-only summary parser, subsequently fixed",
+        "failed": 0
+      },
+      {
+        "label": "api36-wide1000",
+        "fontScale": 1.0,
+        "passed": 1,
+        "failed": 0,
+        "scope": "1000x700dp, density160, max840dp width and system insets",
+        "log": "build/elief-ui-review/api36-wide1000/instrumentation.txt"
+      },
+      {
+        "label": "api36-noapk-failure100",
+        "fontScale": 1.0,
+        "passed": 1,
+        "failed": 0,
+        "scope": "Final no-APK+failure release link",
+        "log": "build/elief-ui-review/api36-noapk-failure100/instrumentation.txt"
+      },
+      {
+        "label": "api36-noapk-failure180",
+        "fontScale": 1.8,
+        "passed": 1,
+        "failed": 0,
+        "scope": "Final no-APK+failure release link",
+        "log": "build/elief-ui-review/api36-noapk-failure180/instrumentation.txt"
+      }
+    ],
+    "finalSummary": "All exercised functional cases passed; capture timeout passed on targeted retry; no full-suite repeat after final no-APK branch"
+  },
+  "r8Runtime": {
+    "version": true,
+    "download": true,
+    "back": true,
+    "systemUiOverlay": false
+  },
+  "preservation": {
+    "goldyHeadUnchanged": true,
+    "readOnlyRepositories": {
+      "ShutUp": {
+        "head": "1a18497cfbe62eac20ecf3ba8264cb8daf163fac",
+        "statusUnchanged": true,
+        "indexUnchanged": true,
+        "addedCount": 0,
+        "headUnchanged": true,
+        "changedCount": 0,
+        "branchUnchanged": true,
+        "comparedEntries": 189,
+        "branch": "main"
+      },
+      "Scheduler": {
+        "head": "9fad0402e268902bbfbea485ca216218c17afdf1",
+        "statusUnchanged": true,
+        "indexUnchanged": true,
+        "addedCount": 0,
+        "headUnchanged": true,
+        "changedCount": 0,
+        "branchUnchanged": true,
+        "comparedEntries": 284,
+        "branch": "master"
+      },
+      "Glyph": {
+        "head": "d0adb9c7e98bd888110da7edcd1997ebb29ca4db",
+        "statusUnchanged": true,
+        "indexUnchanged": true,
+        "addedCount": 0,
+        "headUnchanged": true,
+        "changedCount": 0,
+        "branchUnchanged": true,
+        "comparedEntries": 236,
+        "branch": "master"
+      },
+      "BeastLocator": {
+        "head": "bc8589756a58b0637cca35eb1ac6042c2577d66c",
+        "statusUnchanged": true,
+        "indexUnchanged": true,
+        "addedCount": 0,
+        "headUnchanged": true,
+        "changedCount": 0,
+        "branchUnchanged": true,
+        "comparedEntries": 143,
+        "branch": "develop"
+      },
+      "Pyrite": {
+        "head": "508b1cf5131679fee7581acbc7ea55a365b6ff2c",
+        "statusUnchanged": true,
+        "indexUnchanged": true,
+        "addedCount": 0,
+        "headUnchanged": true,
+        "changedCount": 0,
+        "branchUnchanged": true,
+        "comparedEntries": 152,
+        "branch": "master"
+      }
+    },
+    "goldCoreUnchanged": true,
+    "existingPublicStateAndRendererUnchanged": true,
+    "readmeUnchanged": true,
+    "goldyIndexUnchanged": true
+  },
+  "notVerified": [
+    "API26-35 for this UI revision",
+    "Physical device",
+    "Real installer/self-update for this UI revision",
+    "Fresh live GitHub network or JitPack publication (network/core unchanged)",
+    "BeastLocator tests/runtime/public APK identity or signing rotation"
+  ]
+}

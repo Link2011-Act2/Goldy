@@ -62,7 +62,7 @@ class FixtureUpdateViewModel : ViewModel() {
     }
 }
 
-val scenarioNames = listOf("Update", "No update", "Downloading", "Unknown size", "Failure", "Permission", "No APK", "Empty notes", "Handed off", "Checking", "Unsafe notes", "Cancelled")
+val scenarioNames = listOf("Update", "No update", "Downloading", "Unknown size", "Failure", "Permission", "No APK", "Empty notes", "Handed off", "Checking", "Unsafe notes", "Cancelled", "No history")
 
 fun fixture(index: Int): UpdateUiState {
     val release = GitHubRelease(20, "v2.4.0-Beta", notes = fixtureNotes,
@@ -85,6 +85,7 @@ fun fixture(index: Int): UpdateUiState {
         9 -> UpdateUiState(checking = true)
         10 -> base.copy(update = candidate.copy(release = release.copy(notes = "[Safe](https://example.org/safe) [Unsafe](javascript:alert) ![Remote](https://127.0.0.1/image.png)\n\n<script>bad()</script>\n\n<b>HTML</b>")))
         11 -> base.copy(transfer = UpdateTransferState.Cancelled)
+        12 -> base.copy(update = candidate.copy(intermediateReleases = emptyList()))
         else -> base
     }
 }

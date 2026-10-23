@@ -39,11 +39,11 @@ try {
     Invoke-Adb @('logcat','-d','-s','GoldyDemoVerification:I','*:S') |
         Set-Content -Encoding utf8 (Join-Path $destination 'live-api.txt')
     $text = $output -join "`n"
-    if ($text -notmatch 'OK \(\d+ tests\)' -or $text -match 'FAILURES!!!|INSTRUMENTATION_FAILED|Process crashed') {
+    if ($text -notmatch 'OK \(\d+ tests?\)' -or $text -match 'FAILURES!!!|INSTRUMENTATION_FAILED|Process crashed') {
         $output | Select-String 'stack=|FAILURES|Tests run:|INSTRUMENTATION_RESULT' | Write-Output
         throw 'Demo tests failed; inspect the saved instrumentation log.'
     }
-    Write-Output ($Label + ': ' + ($text | Select-String 'OK \(\d+ tests\)').Matches.Value)
+    Write-Output ($Label + ': ' + ($text | Select-String 'OK \(\d+ tests?\)').Matches.Value)
     if (-not $Live) {
         if ($classes.Contains('UpdateScreenTest')) { Invoke-Adb @('pull','/sdcard/Android/data/jp.linkserver.projectgoldy/files/phase-2-4',$destination) }
         if ($classes.Contains('DemoScreenTest')) { Invoke-Adb @('pull','/sdcard/Android/data/jp.linkserver.projectgoldy/files/phase-2-6',$destination) }

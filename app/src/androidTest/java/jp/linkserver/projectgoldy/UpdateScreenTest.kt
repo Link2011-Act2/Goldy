@@ -26,7 +26,8 @@ class UpdateScreenTest {
 
     @Test fun updateBackAndReleaseCallbacks() {
         rule.onNodeWithText("v2.4.0-Beta").assertIsDisplayed()
-        rule.onNodeWithText("Back").performClick()
+        rule.runOnIdle { assertEquals("v2.4.0-Beta", rule.activity.model.state.update?.release?.tag) }
+        rule.onNodeWithContentDescription("Back").performClick()
         rule.runOnIdle { assertEquals("Back requested by host", rule.activity.model.event) }
         rule.onAllNodesWithText("Open on GitHub")[0].performScrollTo().performClick()
         rule.runOnIdle { assertTrue(rule.activity.model.event.startsWith("Host received link: https://github.com/")) }
@@ -40,7 +41,7 @@ class UpdateScreenTest {
         rule.onNodeWithText("No update is available.").assertIsDisplayed()
         rule.onNodeWithText("Download APK").assertDoesNotExist()
         select(6)
-        rule.onNodeWithText("No compatible APK", substring = true).assertIsDisplayed()
+        rule.onNodeWithText("No compatible APK", substring = true).performScrollTo().assertIsDisplayed()
         rule.onNodeWithText("Download APK").assertDoesNotExist()
     }
     @Test fun cancelUnknownLengthTransfer() {
@@ -51,7 +52,7 @@ class UpdateScreenTest {
     }
     @Test fun retryAndDuplicateTapGuard() {
         select(4)
-        rule.onNodeWithText("Connection interrupted.", substring = true).assertIsDisplayed()
+        rule.onNodeWithText("Connection interrupted.", substring = true).performScrollTo().assertIsDisplayed()
         rule.onNodeWithText("Try again").performScrollTo().performClick()
         rule.runOnIdle {
             // A second event delivered before recomposition must still be rejected by the host.
@@ -77,11 +78,14 @@ class UpdateScreenTest {
         }
     }
     @Test fun expandedHistoryAndScrollSurviveActivityRecreation() {
-        rule.onNodeWithTag("history-19").performScrollTo().performClick()
+        rule.onNodeWithTag("history-19").assertDoesNotExist()
+        rule.onNodeWithTag("history-toggle").performScrollTo().performClick()
+        rule.onNodeWithTag("history-19").performScrollTo().assertIsDisplayed()
         val before = rule.onNodeWithTag("goldy-content").fetchSemanticsNode().config[SemanticsProperties.VerticalScrollAxisRange].value()
         assertTrue(before > 0f)
         rule.activityRule.scenario.recreate()
-        rule.onNodeWithText("Hide notes").assertIsDisplayed()
+        rule.onNodeWithTag("history-toggle").assert(SemanticsMatcher.expectValue(SemanticsProperties.StateDescription, "Hide notes"))
+        rule.onNodeWithTag("history-19").assertIsDisplayed()
         capture("history-restored")
         val after = rule.onNodeWithTag("goldy-content").fetchSemanticsNode().config[SemanticsProperties.VerticalScrollAxisRange].value()
         assertEquals(before, after, 2f)
@@ -94,8 +98,12 @@ class UpdateScreenTest {
         capture("dark")
         rule.onNodeWithText("Expressive", useUnmergedTree = true).performScrollTo().performClick()
         capture("expressive-dark")
+        rule.onNodeWithText("Dark", useUnmergedTree = true).performScrollTo().performClick()
+        capture("expressive-light")
         if (Build.VERSION.SDK_INT >= 31) {
             rule.onNodeWithText("Dynamic", useUnmergedTree = true).performScrollTo().performClick()
+            capture("dynamic-light")
+            rule.onNodeWithText("Dark", useUnmergedTree = true).performScrollTo().performClick()
             capture("dynamic-dark")
         } else rule.onNodeWithText("Dynamic").assertIsNotEnabled()
         rule.onNodeWithText("Custom font", useUnmergedTree = true).performScrollTo().performClick()

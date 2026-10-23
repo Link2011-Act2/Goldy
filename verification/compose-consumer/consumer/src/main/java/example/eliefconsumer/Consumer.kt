@@ -17,3 +17,13 @@ fun Consumer(state: GoldyState, transfer: UpdateTransferState, back: () -> Unit,
             loadingIndicator = { androidx.compose.material3.CircularProgressIndicator() })
     }
 }
+
+/** Additive overload; raw tags and host-specific history labels remain display choices. */
+@Composable
+fun CustomizedConsumer(state: UpdateUiState, back: () -> Unit) {
+    MaterialTheme {
+        UpdateOverviewScreen(state, back, {}, {},
+            strings = UpdateStrings(title = "更新内容", back = "戻る"),
+            presentation = UpdatePresentation(versionLabel = { it.tag.removePrefix("v") }, historyChannelLabel = { "リリース" }))
+    }
+}

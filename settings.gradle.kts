@@ -19,6 +19,10 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        maven {
+            url = uri("https://jitpack.io")
+            content { includeModule("com.github.Link2011-Act2", "Pyrite") }
+        }
     }
 }
 

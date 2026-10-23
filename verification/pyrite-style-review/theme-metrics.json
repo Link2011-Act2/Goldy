@@ -1,0 +1,68 @@
+[
+  {
+    "theme": "m3e-light",
+    "canvas": "#FFE2EBF0",
+    "card": "#FFF2F8FB",
+    "primary": "#FF0E5E76",
+    "bodyContrast": 16.105341536202445,
+    "actionContrast": 7.2882375326213,
+    "errorContrast": 12.774510571553446,
+    "eliefCardPixel": -853765,
+    "pyriteCardPixel": -853765
+  },
+  {
+    "theme": "m3e-dark",
+    "canvas": "#FF0E1519",
+    "card": "#FF26313A",
+    "primary": "#FF8DD3EE",
+    "bodyContrast": 10.25765194188175,
+    "actionContrast": 7.964313570463927,
+    "errorContrast": 7.165684112822945,
+    "eliefCardPixel": -14274246,
+    "pyriteCardPixel": -14274246
+  },
+  {
+    "theme": "nothing-light",
+    "canvas": "#FFEDEDED",
+    "card": "#FFFFFFFF",
+    "primary": "#FF000000",
+    "bodyContrast": 21,
+    "actionContrast": 21,
+    "errorContrast": 12.774510571553446,
+    "eliefCardPixel": -1,
+    "pyriteCardPixel": -1
+  },
+  {
+    "theme": "nothing-dark",
+    "canvas": "#FF000000",
+    "card": "#FF121212",
+    "primary": "#FFFFFFFF",
+    "bodyContrast": 18.733663748203206,
+    "actionContrast": 21,
+    "errorContrast": 7.165684112822945,
+    "eliefCardPixel": -15592942,
+    "pyriteCardPixel": -15592942
+  },
+  {
+    "theme": "m3e-dynamic-light",
+    "canvas": "#FFF4F3FA",
+    "card": "#FFFFFFFF",
+    "primary": "#FF475D92",
+    "bodyContrast": 17.191238008382143,
+    "actionContrast": 6.464077041951287,
+    "errorContrast": 12.774510571553446,
+    "eliefCardPixel": -1,
+    "pyriteCardPixel": -1
+  },
+  {
+    "theme": "m3e-dynamic-dark",
+    "canvas": "#FF121318",
+    "card": "#FF282A2F",
+    "primary": "#FFB0C6FF",
+    "bodyContrast": 11.138064285157814,
+    "actionContrast": 7.770630643344992,
+    "errorContrast": 7.165684112822945,
+    "eliefCardPixel": -14144977,
+    "pyriteCardPixel": -14144977
+  }
+]

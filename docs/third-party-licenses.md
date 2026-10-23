@@ -3,11 +3,13 @@
 Gold and Elief are normal AARs, not fat/shaded AARs. Dependencies and their
 notices remain separate artifacts. An application distributor must retain
 the applicable notices for the complete resolved application, including its
-own dependencies. No proprietary font or Pyrite code is included.
+own dependencies. No proprietary font is bundled. Gold/Elief contain no Pyrite
+dependency; Goldy Demo separately consumes the public Pyrite AAR.
 
 | Dependency family | License | Source |
 |---|---|---|
 | Goldy and derived version algorithms | MIT | Root LICENSE and Gold's META-INF/goldy/LICENSE/NOTICE; source revisions in phase-2-core-report.md |
+| Pyrite (Demo only), pinned to 508b1cf5131679fee7581acbc7ea55a365b6ff2c | MIT | Public AAR META-INF/pyrite/LICENSE/NOTICE.md and [Pyrite source](https://github.com/Link2011-Act2/Pyrite/tree/508b1cf5131679fee7581acbc7ea55a365b6ff2c) |
 | AndroidX, Compose, Material3, annotation, collection, lifecycle, startup, profileinstaller, arch.core, tracing, versionedparcelable, concurrent | Apache-2.0 | Published Maven POMs and [AndroidX source](https://android.googlesource.com/platform/frameworks/support/+/androidx-main/LICENSE.txt) |
 | Kotlin standard library and kotlinx.coroutines | Apache-2.0 | [Kotlin license](https://github.com/JetBrains/kotlin/blob/master/license/LICENSE.txt), [Coroutines license](https://github.com/Kotlin/kotlinx.coroutines/blob/master/LICENSE.txt) |
 | Markwon core / ext-tables 4.6.2 | Apache-2.0 | [Markwon license](https://github.com/noties/Markwon/blob/v4.6.2/LICENSE) |

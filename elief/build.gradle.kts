@@ -21,6 +21,7 @@ dependencies {
     api(platform(libs.androidx.compose.bom))
     api(libs.androidx.compose.material3)
     implementation(libs.androidx.compose.foundation)
+    implementation(libs.androidx.compose.animation)
     implementation(libs.markwon.core)
     implementation(libs.markwon.tables)
     testImplementation(libs.junit)

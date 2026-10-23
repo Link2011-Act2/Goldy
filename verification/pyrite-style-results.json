@@ -1,0 +1,339 @@
+{
+  "task": "Elief / Pyrite style unification",
+  "date": "2026-10-23",
+  "baseCommit": "be3d5f90674a6178150fef0c1df032d1a4f5ab3d",
+  "branch": "master",
+  "committed": false,
+  "pushed": false,
+  "jitPackRepublished": false,
+  "pyrite": {
+    "revision": "508b1cf5131679fee7581acbc7ea55a365b6ff2c",
+    "coordinate": "com.github.Link2011-Act2:Pyrite:508b1cf5131679fee7581acbc7ea55a365b6ff2c",
+    "existingBuildStatus": "ok",
+    "public": true,
+    "sourcesMatched": 17,
+    "aarBytes": 207801,
+    "aarSha256": "57493fdcf23a8f60a67f78ba402d8c714fc723ed72e0ba16f31b92aee72e376c",
+    "cacheMatchesPublic": true,
+    "compose": "1.12.0",
+    "material3": "1.5.0-beta01",
+    "requiredByElief": false
+  },
+  "jvm": {
+    "gold": {
+      "tests": 103,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "elief": {
+      "tests": 12,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "app": {
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "lint": {
+    "elief-debug": {
+      "errors": 0,
+      "warnings": 0,
+      "ids": {}
+    },
+    "elief-release": {
+      "errors": 0,
+      "warnings": 0,
+      "ids": {}
+    },
+    "app-debug": {
+      "errors": 0,
+      "warnings": 9,
+      "ids": {
+        "RedundantLabel": 1,
+        "UnusedResources": 7,
+        "UseKtx": 1
+      }
+    },
+    "app-release": {
+      "errors": 0,
+      "warnings": 9,
+      "ids": {
+        "RedundantLabel": 1,
+        "UnusedResources": 7,
+        "UseKtx": 1
+      }
+    }
+  },
+  "artifacts": {
+    "app/build/outputs/apk/debug/app-debug.apk": {
+      "bytes": 13488912,
+      "sha256": "444dac192b015d06394dcda6a90442c58279483432069e27cd58fc0d4acd3425"
+    },
+    "app/build/outputs/apk/release/app-release-unsigned.apk": {
+      "bytes": 1502734,
+      "sha256": "dfa3b2a6becec994f3527162d9e00a0a02fd00dbfe5cb71c04d58db1c9b9e2ad"
+    },
+    "gold/build/outputs/aar/gold-release.aar": {
+      "bytes": 280404,
+      "sha256": "6083596c2d5394a2c551bd12d14ed625c2b2cb8f696eec3a313769a15714d27a"
+    },
+    "elief/build/outputs/aar/elief-release.aar": {
+      "bytes": 85954,
+      "sha256": "14ea1087216bd907a50836dccd2b60bfeabaada0f8de7906b74186800ff0d2b7"
+    }
+  },
+  "ui": {
+    "api": 36,
+    "distinctMethods": 26,
+    "runs": [
+      {
+        "label": "final-320-font100",
+        "passed": 26,
+        "failures": 0,
+        "fontScale": 1.0,
+        "widthDp": 320,
+        "log": "build/pyrite-style-review/final-320-font100/instrumentation.txt"
+      },
+      {
+        "label": "final-320-font180",
+        "passed": 14,
+        "failures": 0,
+        "fontScale": 1.8,
+        "widthDp": 320,
+        "log": "build/pyrite-style-review/final-320-font180/instrumentation.txt"
+      },
+      {
+        "label": "final-wide1000",
+        "passed": 2,
+        "failures": 0,
+        "fontScale": 1.0,
+        "widthDp": 1000,
+        "log": "build/pyrite-style-review/final-wide1000/instrumentation.txt"
+      },
+      {
+        "label": "dynamic-off-retry100",
+        "passed": 1,
+        "failures": 0,
+        "fontScale": 1.0,
+        "widthDp": 320,
+        "log": "build/pyrite-style-review/dynamic-off-retry100/instrumentation.txt"
+      },
+      {
+        "label": "dynamic-off-retry180",
+        "passed": 1,
+        "failures": 0,
+        "fontScale": 1.8,
+        "widthDp": 320,
+        "log": "build/pyrite-style-review/dynamic-off-retry180/instrumentation.txt"
+      },
+      {
+        "label": "system-bars-100",
+        "passed": 1,
+        "failures": 0,
+        "fontScale": 1.0,
+        "widthDp": 320,
+        "log": "build/pyrite-style-review/system-bars-100/instrumentation.txt"
+      },
+      {
+        "label": "system-bars-180",
+        "passed": 1,
+        "failures": 0,
+        "fontScale": 1.8,
+        "widthDp": 320,
+        "log": "build/pyrite-style-review/system-bars-180/instrumentation.txt"
+      }
+    ],
+    "initialIssue": "One new test selected unmerged Text instead of disabled Chip; corrected and passed final suite",
+    "startupAnr": "Follow-up first attempt ended before test startup; ApplicationExitInfo reason ANR, failed to complete startup. After build/background load stopped, both targeted runs passed.",
+    "finalSmallChange": "Private modifier extension cleanup, effective Dynamic selection, host system bar icon appearance via LocalActivity; affected flows rechecked at both font scales"
+  },
+  "r8Runtime": {
+    "processAlive": true,
+    "installActionInvoked": false,
+    "signing": "existing local debug key, ignored smoke copy only",
+    "nothingDark": true,
+    "device": "dedicated emulator-5556",
+    "originalBackIcon": true,
+    "result": "passed",
+    "versionAndDownloadVisible": true,
+    "expressive": true,
+    "systemBarIconsReviewed": true
+  },
+  "binaryApi": {
+    "retained": true,
+    "typesChecked": [
+      "jp.linkserver.goldy.compose.ReleaseNotesKt",
+      "jp.linkserver.goldy.compose.UpdateAction",
+      "jp.linkserver.goldy.compose.UpdateOverviewScreenKt",
+      "jp.linkserver.goldy.compose.UpdateStrings",
+      "jp.linkserver.goldy.compose.UpdateTransferState",
+      "jp.linkserver.goldy.compose.UpdateTransferState$Cancelled",
+      "jp.linkserver.goldy.compose.UpdateTransferState$Downloading",
+      "jp.linkserver.goldy.compose.UpdateTransferState$Failed",
+      "jp.linkserver.goldy.compose.UpdateTransferState$HandedOff",
+      "jp.linkserver.goldy.compose.UpdateTransferState$Idle",
+      "jp.linkserver.goldy.compose.UpdateTransferState$PermissionRequired",
+      "jp.linkserver.goldy.compose.UpdateTransferState$PreparingInstall",
+      "jp.linkserver.goldy.compose.UpdateTransferState$Ready",
+      "jp.linkserver.goldy.compose.UpdateTransferState$Verifying",
+      "jp.linkserver.goldy.compose.UpdateUiState",
+      "jp.linkserver.goldy.compose.UpdateUiStateKt"
+    ],
+    "originalDescriptors": 147,
+    "missingDescriptors": [],
+    "pyriteClassesInElief": [],
+    "basis": "Start-of-task AAR versus final published local Elief AAR; public JVM method and field descriptors"
+  },
+  "independentConsumer": {
+    "result": "passed",
+    "inputs": "Local published AARs only; no producer project/includeBuild",
+    "stableMaterial3": "1.4.0",
+    "pyritePresent": false,
+    "goldAndEliefHashesMatch": true,
+    "task": "assembleRelease (library AAR), verifyPublishedUi",
+    "r8App": "Verified separately with Demo"
+  },
+  "themeMetrics": [
+    {
+      "theme": "m3e-light",
+      "canvas": "#FFE2EBF0",
+      "card": "#FFF2F8FB",
+      "primary": "#FF0E5E76",
+      "bodyContrast": 16.105341536202445,
+      "actionContrast": 7.2882375326213,
+      "errorContrast": 12.774510571553446,
+      "eliefCardPixel": -853765,
+      "pyriteCardPixel": -853765
+    },
+    {
+      "theme": "m3e-dark",
+      "canvas": "#FF0E1519",
+      "card": "#FF26313A",
+      "primary": "#FF8DD3EE",
+      "bodyContrast": 10.25765194188175,
+      "actionContrast": 7.964313570463927,
+      "errorContrast": 7.165684112822945,
+      "eliefCardPixel": -14274246,
+      "pyriteCardPixel": -14274246
+    },
+    {
+      "theme": "nothing-light",
+      "canvas": "#FFEDEDED",
+      "card": "#FFFFFFFF",
+      "primary": "#FF000000",
+      "bodyContrast": 21,
+      "actionContrast": 21,
+      "errorContrast": 12.774510571553446,
+      "eliefCardPixel": -1,
+      "pyriteCardPixel": -1
+    },
+    {
+      "theme": "nothing-dark",
+      "canvas": "#FF000000",
+      "card": "#FF121212",
+      "primary": "#FFFFFFFF",
+      "bodyContrast": 18.733663748203206,
+      "actionContrast": 21,
+      "errorContrast": 7.165684112822945,
+      "eliefCardPixel": -15592942,
+      "pyriteCardPixel": -15592942
+    },
+    {
+      "theme": "m3e-dynamic-light",
+      "canvas": "#FFF4F3FA",
+      "card": "#FFFFFFFF",
+      "primary": "#FF475D92",
+      "bodyContrast": 17.191238008382143,
+      "actionContrast": 6.464077041951287,
+      "errorContrast": 12.774510571553446,
+      "eliefCardPixel": -1,
+      "pyriteCardPixel": -1
+    },
+    {
+      "theme": "m3e-dynamic-dark",
+      "canvas": "#FF121318",
+      "card": "#FF282A2F",
+      "primary": "#FFB0C6FF",
+      "bodyContrast": 11.138064285157814,
+      "actionContrast": 7.770630643344992,
+      "errorContrast": 7.165684112822945,
+      "eliefCardPixel": -14144977,
+      "pyriteCardPixel": -14144977
+    }
+  ],
+  "gallery": "verification/pyrite-style-review/index.html",
+  "demoLicenseEntries": [
+    "META-INF/pyrite/LICENSE",
+    "META-INF/pyrite/NOTICE.md"
+  ],
+  "preservation": {
+    "readOnlyRepositories": {
+      "pyrite": {
+        "head": "508b1cf5131679fee7581acbc7ea55a365b6ff2c",
+        "branch": "master",
+        "comparedEntries": 152,
+        "headUnchanged": true,
+        "branchUnchanged": true,
+        "indexUnchanged": true,
+        "statusUnchanged": true
+      },
+      "shutup": {
+        "head": "1a18497cfbe62eac20ecf3ba8264cb8daf163fac",
+        "branch": "main",
+        "comparedEntries": 189,
+        "headUnchanged": true,
+        "branchUnchanged": true,
+        "indexUnchanged": true,
+        "statusUnchanged": true
+      },
+      "schedulernittc": {
+        "head": "9fad0402e268902bbfbea485ca216218c17afdf1",
+        "branch": "master",
+        "comparedEntries": 284,
+        "headUnchanged": true,
+        "branchUnchanged": true,
+        "indexUnchanged": true,
+        "statusUnchanged": true
+      },
+      "glyphvisualizer": {
+        "head": "d0adb9c7e98bd888110da7edcd1997ebb29ca4db",
+        "branch": "master",
+        "comparedEntries": 236,
+        "headUnchanged": true,
+        "branchUnchanged": true,
+        "indexUnchanged": true,
+        "statusUnchanged": true
+      },
+      "beastlocator": {
+        "head": "bc8589756a58b0637cca35eb1ac6042c2577d66c",
+        "branch": "develop",
+        "comparedEntries": 143,
+        "headUnchanged": true,
+        "branchUnchanged": true,
+        "indexUnchanged": true,
+        "statusUnchanged": true
+      }
+    },
+    "comparedReadOnlyEntries": 1004,
+    "goldCoreUnchanged": true,
+    "readmeUnchanged": true,
+    "existingPublicEntryPointsUnchanged": true,
+    "updateModelsAndMarkdownUnchanged": true,
+    "manifestUnchanged": true,
+    "headUnchanged": true,
+    "indexUnchanged": true
+  },
+  "unverified": [
+    "API26-35 for this UI revision",
+    "Physical devices",
+    "Actual TalkBack interaction",
+    "All Dynamic Color wallpapers and host fonts/content",
+    "Real self-update installation",
+    "New Goldy JitPack artifacts"
+  ]
+}

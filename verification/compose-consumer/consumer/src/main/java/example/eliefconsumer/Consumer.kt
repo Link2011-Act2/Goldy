@@ -2,6 +2,7 @@ package example.eliefconsumer
 
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import jp.linkserver.goldy.*
 import jp.linkserver.goldy.compose.*
@@ -22,8 +23,13 @@ fun Consumer(state: GoldyState, transfer: UpdateTransferState, back: () -> Unit,
 @Composable
 fun CustomizedConsumer(state: UpdateUiState, back: () -> Unit) {
     MaterialTheme {
+        CompositionLocalProvider(LocalUpdateCardStyle provides UpdateCardStyle(
+            containerColor = MaterialTheme.colorScheme.surfaceContainerLowest,
+            shape = MaterialTheme.shapes.large
+        )) {
         UpdateOverviewScreen(state, back, {}, {},
             strings = UpdateStrings(title = "更新内容", back = "戻る"),
             presentation = UpdatePresentation(versionLabel = { it.tag.removePrefix("v") }, historyChannelLabel = { "リリース" }))
+        }
     }
 }

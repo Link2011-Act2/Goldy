@@ -8,6 +8,8 @@ lifecycleRuntimeKtx = "2.11.0"
 activityCompose = "1.13.0"
 kotlin = "2.2.10"
 composeBom = "2026.02.01"
+demoCompose = "1.12.0"
+pyrite = "508b1cf5131679fee7581acbc7ea55a365b6ff2c"
 
 markwon = "4.6.2"
 material3Expressive = "1.5.0-beta01"
@@ -36,6 +38,14 @@ kotlinx-coroutines-test = { group = "org.jetbrains.kotlinx", name = "kotlinx-cor
 json = { group = "org.json", name = "json", version.ref = "json" }
 
 androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation" }
+androidx-compose-animation = { group = "androidx.compose.animation", name = "animation" }
+pyrite = { group = "com.github.Link2011-Act2", name = "Pyrite", version.ref = "pyrite" }
+demo-compose-ui = { group = "androidx.compose.ui", name = "ui", version.ref = "demoCompose" }
+demo-compose-graphics = { group = "androidx.compose.ui", name = "ui-graphics", version.ref = "demoCompose" }
+demo-compose-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview", version.ref = "demoCompose" }
+demo-compose-tooling = { group = "androidx.compose.ui", name = "ui-tooling", version.ref = "demoCompose" }
+demo-compose-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4", version.ref = "demoCompose" }
+demo-compose-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest", version.ref = "demoCompose" }
 markwon-core = { group = "io.noties.markwon", name = "core", version.ref = "markwon" }
 markwon-tables = { group = "io.noties.markwon", name = "ext-tables", version.ref = "markwon" }
 androidx-compose-material3-expressive = { group = "androidx.compose.material3", name = "material3", version.ref = "material3Expressive" }

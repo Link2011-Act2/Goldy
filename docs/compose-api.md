@@ -65,7 +65,7 @@ Elief compiles against the existing Compose BOM 2026.02.01 (Compose UI 1.10.4, s
 
 ## Standard layout and display customization
 
-The standard screen uses an arrow IconButton (`UpdateStrings.back` is its accessibility description), a horizontal version/channel row, a bordered surfaceContainerHigh notes surface, and one saveable expansion control for the whole intermediate history. History cards show their version and channel. Content and docked actions are centered with an 840dp maximum width.
+The standard screen uses an arrow IconButton (`UpdateStrings.back` is its accessibility description), a horizontal version/channel row, a filled theme surface for notes, and one saveable expansion control for the whole intermediate history. History cards show their version and channel. Content and docked actions are centered with an 840dp maximum width.
 
 Actions are docked below the scroll at ordinary sizes. At fontScale >= 1.5 or available height < 480dp, including reduced IME space, actions join the same scroll so they cannot crowd out the content. The docked region is bounded to 40% of the available height and can itself scroll for long permission/error messages. Navigation-bar insets, IME padding and Scaffold content insets are applied without a fixed spacer. These are layout choices, not an operation/installation policy.
 
@@ -88,6 +88,27 @@ UpdateOverviewScreen(
 ```
 
 `UpdatePresentation.backIcon` optionally replaces the decorative icon; its surrounding IconButton still owns the back event and description. `channelLabel` continues to control the selected release's channel. Channel chips are noninteractive labels. Display formatters never mutate GitHubRelease, comparison inputs or APK version binding. The host still owns system-back navigation, coroutine scope, file lifetime and all installer actions.
+
+### Host card roles and Pyrite
+
+Elief uses the host typography without forcing a bold version label. Cards use 22dp inner padding; history uses the official expand/shrink and fade animations. The main action has a 56dp minimum height. No proprietary font or palette is bundled.
+
+`LocalUpdateCardStyle` optionally bridges a host's card color and shape without changing ColorScheme roles or either UpdateOverviewScreen overload. Unspecified values use `surfaceContainerHigh` and `MaterialTheme.shapes.large`. For example, inside the host theme:
+
+```kotlin
+CompositionLocalProvider(
+    LocalUpdateCardStyle provides UpdateCardStyle(
+        containerColor = MaterialTheme.colorScheme.surfaceContainerLowest,
+        shape = MaterialTheme.shapes.large
+    )
+) {
+    UpdateOverviewScreen(ui, navigateBack, openApprovedWebUrl, onUpdateAction)
+}
+```
+
+Goldy Demo alone depends on public Pyrite SHA `508b1cf5131679fee7581acbc7ea55a365b6ff2c`. It uses real PyriteTheme/PyriteFonts and a 22dp card shape. M3E light bridges surfaceContainerLowest; M3E dark and Nothing use surfaceContainerHigh, matching Pyrite's card implementation. Nothing keeps Pyrite's monochrome primary and ignores Dynamic Color. A separate Style reference tab renders public Pyrite cards directly. Standard M3 remains available by clearing both style chips.
+
+Demo aligns its UI, tooling and test artifacts to Pyrite's Compose 1.12.0 / Material3 1.5.0-beta01. Elief keeps its existing BOM and stable Material3 1.4.0 baseline, adds only official Compose Animation, and does not depend on Pyrite. Public API compatibility and stable consumer verification are recorded separately in the style review.
 
 ## Markdown trust boundary
 

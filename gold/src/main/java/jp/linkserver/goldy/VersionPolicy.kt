@@ -1,13 +1,12 @@
 package jp.linkserver.goldy
 
-import jp.linkserver.goldy.internal.GlyphRules
-import jp.linkserver.goldy.internal.SchedulerRules
 import jp.linkserver.goldy.internal.compareShutUpVersions
+import jp.linkserver.goldy.internal.commonReleaseChannel
 import java.util.Locale
 
 /**
  * Release ordering only. Equality here MUST NOT be used to authenticate an APK versionName.
- * Legacy policies intentionally preserve permissive parsing and ignored revision behavior.
+ * Common ordering preserves ShutUp's natural suffix ordering, including explicit rev tokens.
  */
 interface VersionPolicy {
     fun compare(left: String, right: String, leftPrerelease: Boolean = false, rightPrerelease: Boolean = false): Int?
@@ -31,19 +30,15 @@ object VersionPolicies {
         }
     }
 
-    val Standard: VersionPolicy = ShutUp
-
-    val NittcScheduler: VersionPolicy = object : VersionPolicy {
-        override fun compare(left: String, right: String, leftPrerelease: Boolean, rightPrerelease: Boolean): Int =
-            SchedulerRules.compare(left, right, leftPrerelease, rightPrerelease)
+    /** Shared by all four presets. GitHub prerelease flags never override tag ordering. */
+    val Common: VersionPolicy = object : VersionPolicy {
+        override fun compare(left: String, right: String, leftPrerelease: Boolean, rightPrerelease: Boolean): Int? =
+            compareShutUpVersions(left, right)
         override fun channel(version: String, prerelease: Boolean): ReleaseChannel =
-            ReleaseChannel.valueOf(SchedulerRules.channel(version, prerelease))
+            commonReleaseChannel(version)
     }
-
-    val GlyphBarty: VersionPolicy = object : VersionPolicy {
-        override fun compare(left: String, right: String, leftPrerelease: Boolean, rightPrerelease: Boolean): Int =
-            GlyphRules.compare(left, right)
-        override fun channel(version: String, prerelease: Boolean): ReleaseChannel =
-            ReleaseChannel.valueOf(GlyphRules.channel(version))
-    }
+    val Standard: VersionPolicy = Common
+    val NittcScheduler: VersionPolicy = Common
+    val GlyphBarty: VersionPolicy = Common
+    val BeastLocator: VersionPolicy = Common
 }

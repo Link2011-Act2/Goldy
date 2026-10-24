@@ -131,6 +131,13 @@ class Goldy internal constructor(
         }
     }
 
+    /** Re-show a temporarily hidden banner; does not reset ignored versions or notification options. */
+    suspend fun showBanner(): Unit = stateMutex.withLock {
+        load()
+        hiddenBannerTag = null
+        publish(fromCache = true)
+    }
+
     suspend fun resetIgnoredVersions(): Unit = withContext(Dispatchers.IO) {
         stateMutex.withLock {
             load()
@@ -191,6 +198,16 @@ class Goldy internal constructor(
     companion object {
         /** Reads actual package metadata; never consults the library's BuildConfig. */
         fun create(context: Context, config: GoldyConfig, store: UpdateStateStore? = null): Goldy {
+            return createWithSource(context, config, GitHubReleaseClient(config)::fetch, store)
+        }
+
+        /**
+         * Metadata source injection for offline showcases and host adapters. Metadata remains
+         * untrusted: repository URLs, selection, and every separate APK/installer check still apply.
+         * No request runs until check(); cancellation propagates to the source.
+         */
+        fun createWithSource(context: Context, config: GoldyConfig,
+            fetchCatalog: suspend () -> ReleaseCatalog, store: UpdateStateStore? = null): Goldy {
             val app = context.applicationContext
             val info = if (Build.VERSION.SDK_INT >= 33) app.packageManager.getPackageInfo(
                 app.packageName, android.content.pm.PackageManager.PackageInfoFlags.of(0)
@@ -201,8 +218,7 @@ class Goldy internal constructor(
                 @Suppress("DEPRECATION") info.versionCode.toLong()
             }
             val installed = InstalledVersion(requireNotNull(info.versionName), code)
-            val client = GitHubReleaseClient(config)
-            return Goldy(config, installed, store ?: PreferencesUpdateStateStore(app, config.repository), client::fetch)
+            return Goldy(config, installed, store ?: PreferencesUpdateStateStore(app, config.repository), fetchCatalog)
         }
     }
 }

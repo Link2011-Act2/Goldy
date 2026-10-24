@@ -1,0 +1,66 @@
+{
+  "source": "Local repository tags and current Gradle appVersionName, observed 2026-10-24",
+  "versions": {
+    "shutup": [
+      "0.0.0-IntDev",
+      "v1.0.0-Release",
+      "v1.0.1-Release",
+      "v1.1.0-Release",
+      "1.1.1-IntDev"
+    ],
+    "schedulernittc": [
+      "v0.9.0-Beta",
+      "v0.9.1-Beta",
+      "v0.9.2-Beta",
+      "v0.9.3-Beta",
+      "v0.9.4-Beta",
+      "v0.9.5-Beta",
+      "v0.9.6-Beta",
+      "v1.0.0-RC0",
+      "v1.0.0-RC1",
+      "v1.0.0-RC2",
+      "v1.0.0-RC3",
+      "v1.0.0-RC4",
+      "v1.0.0-RC5",
+      "v1.0.0-RC6",
+      "v1.0.0-Release",
+      "v1.1.0-Release",
+      "v1.1.1-Release",
+      "1.2.0-IntDev"
+    ],
+    "glyphvisualizer": [
+      "v1.0.0-Release",
+      "v1.1.0-Release",
+      "v1.1.5-IntDev",
+      "v1.1.6-IntDev",
+      "v1.2.0-IntDev",
+      "v1.2.0-Release",
+      "v1.2.1-IntDev",
+      "v1.2.2-IntDev",
+      "v1.3.0-IntDev",
+      "v1.3.0-Release",
+      "v1.3.1-Release",
+      "v2.0.0-Release",
+      "v2.0.1-Release",
+      "v2.1.0-Release",
+      "2.1.1-IntDev_rev0"
+    ],
+    "beastlocator": [
+      "v0.9.0-Beta",
+      "v0.9.1-Beta",
+      "v0.9.2-Beta",
+      "v0.9.3-Beta",
+      "v0.9.4-Beta",
+      "v0.9.5-Beta",
+      "v1.0.0-RC1",
+      "v1.2.4-IntDev",
+      "1.0.0-RC1"
+    ]
+  },
+  "sourceHeads": {
+    "shutup": "1a18497cfbe62eac20ecf3ba8264cb8daf163fac",
+    "schedulernittc": "9fad0402e268902bbfbea485ca216218c17afdf1",
+    "glyphvisualizer": "d0adb9c7e98bd888110da7edcd1997ebb29ca4db",
+    "beastlocator": "bc8589756a58b0637cca35eb1ac6042c2577d66c"
+  }
+}

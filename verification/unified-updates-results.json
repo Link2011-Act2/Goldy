@@ -1,0 +1,176 @@
+{
+  "date": "2026-10-24",
+  "baseline": "0d8999160ec8d0bb0fc97580ff23ce4db4b000a5",
+  "jvm": {
+    "gold": {
+      "tests": 119,
+      "skipped": 0,
+      "errors": 0,
+      "failures": 0
+    },
+    "elief": {
+      "tests": 17,
+      "skipped": 0,
+      "errors": 0,
+      "failures": 0
+    },
+    "app": {
+      "tests": 6,
+      "skipped": 0,
+      "errors": 0,
+      "failures": 0
+    }
+  },
+  "lint": {
+    "gold": {
+      "errors": 0,
+      "warnings": 2
+    },
+    "elief": {
+      "errors": 0,
+      "warnings": 0
+    },
+    "app": {
+      "errors": 0,
+      "warnings": 9
+    }
+  },
+  "artifacts": {
+    "gold/build/outputs/aar/gold-release.aar": {
+      "bytes": 270388,
+      "sha256": "7b1c01c4ffbfc954f21de5bc48b016d2169b40e46dc2709b48b13c343819078c"
+    },
+    "elief/build/outputs/aar/elief-release.aar": {
+      "bytes": 110579,
+      "sha256": "11a7d9524b83c19caa1606ce7dc8c977736623bdebe21a39a973ac2011d70d94"
+    },
+    "app/build/outputs/apk/debug/app-debug.apk": {
+      "bytes": 13825704,
+      "sha256": "f4648588e12dce1d32fabe95bd6f8532a739986aa3124ed494c2a193ba4cf354"
+    },
+    "app/build/outputs/apk/release/app-release-unsigned.apk": {
+      "bytes": 1520222,
+      "sha256": "bf43d5572e79ea164aa3731bb7120ee9048b2f5b56276b75cebc5ef5f6c577e5"
+    }
+  },
+  "apiCompatibility": {
+    "passed": true,
+    "modules": [
+      {
+        "module": "gold",
+        "baseline": "gold-0d8999160ec8d0bb0fc97580ff23ce4db4b000a5.aar",
+        "publicTypes": 103,
+        "originalDescriptors": 733,
+        "missingDescriptors": [],
+        "retained": true
+      },
+      {
+        "module": "elief",
+        "baseline": "elief-0d8999160ec8d0bb0fc97580ff23ce4db4b000a5.aar",
+        "publicTypes": 22,
+        "originalDescriptors": 178,
+        "missingDescriptors": [],
+        "retained": true
+      }
+    ]
+  },
+  "ui": {
+    "api": 36,
+    "device": "emulator-5588",
+    "widthDp": 320,
+    "fontScale": 1.0,
+    "uniqueCasesPassed": 36,
+    "batch": {
+      "cause": "System UI ANR dialog covered the input field",
+      "tests": 36,
+      "passed": 35,
+      "log": "unified-updates-api36-320dp.txt",
+      "failed": 1
+    },
+    "imeRecovery": {
+      "tests": 1,
+      "passed": 1,
+      "conditionsRelaxed": false,
+      "log": "unified-updates-api36-ime-recovered.txt"
+    },
+    "font180": {
+      "tests": 14,
+      "passed": 14,
+      "log": "unified-updates-api36-font180.txt"
+    },
+    "wide": {
+      "tests": 2,
+      "passed": 2,
+      "widthDp": 1000,
+      "log": "unified-updates-api36-wide.txt"
+    }
+  },
+  "localConsumers": {
+    "gold": "passed; no Compose/Markwon/Pyrite",
+    "elief": "passed; transitive Gold; stable Material3 1.4.0; no Pyrite"
+  },
+  "jitpack": {
+    "status": "not yet run; exact SHA available only after commit/push"
+  },
+  "limits": [
+    "API26-35 and physical/OEM devices not exercised in this change",
+    "TalkBack interaction not exercised",
+    "Actual APK installation completion not exercised",
+    "Real GitHub live fetch not repeated; HTTP client unchanged",
+    "Beast ABI selector, APK binding verification, settings migration and native UI integration remain host adoption work",
+    "Forward signer rotation unsupported; full current signer set remains required"
+  ],
+  "androidSecurity": {
+    "modes": [
+      "permission",
+      "installer",
+      "cleanup",
+      "provider-disabled"
+    ],
+    "checksPassed": 14,
+    "installButtonPressed": false,
+    "newSigningKeysCreated": false,
+    "api": 36
+  },
+  "r8": {
+    "mappingPresent": true,
+    "newViewModelRetained": true,
+    "releaseBuildPassed": true
+  },
+  "securitySourceAudit": {
+    "protectedGoldMainFiles": 16,
+    "sourceUnchanged": true,
+    "baseline": "0d8999160ec8d0bb0fc97580ff23ce4db4b000a5",
+    "paths": [
+      "gold/src/main/AndroidManifest.xml",
+      "gold/src/main/java/jp/linkserver/goldy/AndroidApkInspector.kt",
+      "gold/src/main/java/jp/linkserver/goldy/ApkDownloader.kt",
+      "gold/src/main/java/jp/linkserver/goldy/ApkInstaller.kt",
+      "gold/src/main/java/jp/linkserver/goldy/ApkPolicy.kt",
+      "gold/src/main/java/jp/linkserver/goldy/GitHubReleaseClient.kt",
+      "gold/src/main/java/jp/linkserver/goldy/GitHubReleaseParser.kt",
+      "gold/src/main/java/jp/linkserver/goldy/GitHubRepository.kt",
+      "gold/src/main/java/jp/linkserver/goldy/GoldyFileProvider.kt",
+      "gold/src/main/java/jp/linkserver/goldy/InstallFiles.kt",
+      "gold/src/main/java/jp/linkserver/goldy/Models.kt",
+      "gold/src/main/java/jp/linkserver/goldy/PreferencesUpdateStateStore.kt",
+      "gold/src/main/java/jp/linkserver/goldy/ReleaseSelector.kt",
+      "gold/src/main/java/jp/linkserver/goldy/UpdateStateStore.kt",
+      "gold/src/main/res/xml/goldy_install_paths.xml",
+      "gold/src/main/resources/META-INF/goldy/LICENSE"
+    ]
+  },
+  "readOnlyScope": {
+    "writesByThisTask": false,
+    "externalChangesObserved": [
+      "glyphvisualizer"
+    ],
+    "unchangedAtAudit": [
+      "shutup",
+      "schedulernittc",
+      "beastlocator",
+      "pyrite"
+    ],
+    "externalChangesPreserved": true
+  }
+}

@@ -1,0 +1,14 @@
+INSTRUMENTATION_RESULT: result=PASS: real PackageManager single/multiple signer extraction; foreign and partial signer sets rejected
+PASS: real tampered signed APK rejected
+PASS: host FileProvider coexists; Goldy URI excludes host files
+PASS: staged APK remains readable after original deletion; writes denied
+PASS: another UID cannot read without a grant
+PASS: another UID gets temporary read only
+PASS: host launch exceptions classified; ambiguous failure retains APK
+PASS: explicit release revokes/removes shared APK
+PASS: mutation after prepare rejected again at launch AND provider open
+PASS: deleted source rejected
+PASS: system installer Activity launched with only URI read grant; handed-off file retained; install success NOT inferred
+retained URI: content://jp.linkserver.goldy.test.goldy.fileprovider/goldy_install/7b8bb3b1-a0e8-43d4-b21c-a00115368b08.apk
+INSTRUMENTATION_RESULT: sdk=36
+INSTRUMENTATION_CODE: 0

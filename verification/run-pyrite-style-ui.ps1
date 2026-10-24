@@ -42,6 +42,7 @@ try {
     if ($TestClasses.Contains('DemoScreenTest')) { $paths['phase-2-6'] = $true }
     if ($TestClasses.Contains('EliefLayoutTest')) { $paths['elief-ui-review'] = $true }
     if ($TestClasses.Contains('PyriteStyleTest')) { $paths['pyrite-style-review'] = $true }
+    if ($TestClasses.Contains('NotificationScreenTest')) { $paths['unified-updates'] = $true }
     foreach ($path in $paths.Keys) {
         Invoke-Adb @('pull',"/sdcard/Android/data/jp.linkserver.projectgoldy/files/$path",$destination)
     }

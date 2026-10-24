@@ -33,3 +33,13 @@ fun CustomizedConsumer(state: UpdateUiState, back: () -> Unit) {
         }
     }
 }
+
+/** All notification operations stay with the host, including navigation and persistence. */
+@Composable
+fun Notifications(state: GoldyState, check: () -> Unit, details: (UpdateCandidate) -> Unit,
+                  hide: () -> Unit, ignore: (String) -> Unit, dismiss: () -> Unit) {
+    UpdateNotificationBanner(state, details, hide)
+    UpdateNotificationIcon(state, details)
+    UpdateCheckDialog(state, check, details, ignore, dismiss,
+        strings = UpdateNotificationStrings(title = "更新確認"))
+}

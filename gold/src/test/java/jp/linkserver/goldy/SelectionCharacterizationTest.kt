@@ -36,12 +36,12 @@ class SelectionCharacterizationTest {
     @Test fun schedulerCandidateAndNotesMatchFrozenImplementation() {
         for (tags in catalogs) for (current in installed) for (preview in listOf(false, true)) {
             val releases = tags.mapIndexed { index, tag -> release(tag, "Beta" in tag || "IntDev" in tag, (index * 100).toLong()) }
-            val effectivePreview = preview && VersionPolicies.NittcScheduler.channel(current) == ReleaseChannel.IntDev
+            val effectivePreview = preview && legacySchedulerPolicy.channel(current) == ReleaseChannel.IntDev
             val old = oldSchedulerSelect(releases.map { OldSchedulerUpdate(it.tag,
-                VersionPolicies.NittcScheduler.channel(it.tag, it.prerelease).name,
+                legacySchedulerPolicy.channel(it.tag, it.prerelease).name,
                 it.notes, it.url, null, null, it.prerelease) }, current, effectivePreview)
             val outcome = ReleaseSelector.select(ReleaseCatalog(releases), InstalledVersion(current, 1),
-                UpdatePolicies.nittcScheduler(), RuntimeOptions(developer = DeveloperOptions(preview)))
+                UpdatePolicies.nittcScheduler().copy(versions = legacySchedulerPolicy), RuntimeOptions(developer = DeveloperOptions(preview)))
             val actual = (outcome as? CheckOutcome.Available)?.update
             val label = tags.toString() + " from " + current + " preview=" + preview
             assertEquals(label, old?.tagName, actual?.release?.tag)

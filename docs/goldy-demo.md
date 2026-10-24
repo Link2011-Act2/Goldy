@@ -4,6 +4,8 @@
 
 ## 画面
 
+- **Notifications**：通信・APKなしの通知Showcase。実際のGold state/storeで一時hide、tag無視、再表示、cache復元、失敗、取消を再現し、Eliefのbanner・badge・確認dialogから既存詳細画面へ進みます。詳細は [通知API](update-notifications.md)。
+
 - **UI Showcase**：従来のオフラインfixture。更新あり／なし、既知・未知サイズのダウンロード、失敗、キャンセル、権限要求、APKなし、空ノート、引き渡し、確認中、信頼できないMarkdownを表示します。ダウンロードやインストールはシミュレーションです。
 - **Live Demo**：公開の `Link2011-Act2/ShutUp`、`Link2011-Act2/NITTC_Scheduler`、`Link2011-Act2/GlyphBarty` を選び、Fetch releasesで通信します。Goldの `GitHubReleaseClient`、各アプリ用 `UpdatePolicies`、`ReleaseSelector` を使用します。比較用バージョンは初期値 `0.0.0-Release` の入力例で、他アプリのインストール済みバージョンではありません。タグ、チャンネル、prerelease、公開日時、ノート、asset名・サイズ・公開digestを閲覧できます。**他アプリのAPKを取得・インストールする操作はありません。** 表示したassetは未検証のメタデータです。
 - **Update Demo**：自身の実際のpackage、versionName、versionCode、現在の署名証明書SHA-256、インストール許可を表示します。Check Demo updateでGoldyの配布を確認します。Goldの `Goldy`、`ApkDownloader`、`AndroidApkInspector`、`ApkInstaller` とEliefの画面を使用します。

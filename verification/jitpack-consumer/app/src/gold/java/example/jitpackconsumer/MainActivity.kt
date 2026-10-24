@@ -6,8 +6,11 @@ import jp.linkserver.goldy.*
 class MainActivity : Activity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val goldy = Goldy.create(this, GoldyConfig(GitHubRepository("Link2011-Act2", "Goldy"), UpdatePolicies.nittcScheduler()))
+        val goldy = Goldy.createWithSource(this,
+            GoldyConfig(GitHubRepository("Link2011-Act2", "Goldy"), UpdatePolicies.beastLocator()),
+            { ReleaseCatalog(emptyList()) })
         val installer = ApkInstaller.create(this)
-        setContentView(TextView(this).apply { text = "${goldy.state.value} / ${installer.permissionStatus()}" })
+        setContentView(TextView(this).apply { text = "${goldy.state.value} / ${installer.permissionStatus()} / " +
+            VersionPolicies.Common.compare("1.0-IntDev_rev2", "1.0-IntDev_rev10") })
     }
 }

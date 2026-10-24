@@ -1,4 +1,4 @@
-// Derived from the MIT-licensed app implementations; see META-INF/goldy/LICENSE and NOTICE.
+// Frozen legacy oracles only. Production uses ShutUp ordering for every app.
 package jp.linkserver.goldy.internal
 
 import java.util.Locale

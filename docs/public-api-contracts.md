@@ -20,6 +20,15 @@ public class; it is not a general host storage API.
 | InstallRequest / pendingRequests | Persisted lease; restore after process death; storage/corrupt-record errors propagate without deleting potentially active files |
 | ApkInstaller.release | Explicit host confirmation that URI is unused; revokes read permission and deletes lease/file; IO/storage errors propagate; no timer or lifecycle auto-release |
 | UpdateOverviewScreen / ReleaseNotes | Stateless operations and host callbacks; selected-release saveable scroll/history; host retains jobs/files and handles system back |
+| UpdateNotificationBanner / Icon / UpdateCheckDialog | Host-owned navigation/check/hide/ignore callbacks; notificationUpdate controls automatic entries, availableUpdate preserves manual access; no network on composition |
+| Goldy.showBanner | Clears only the session's hidden-banner tag; ignored tags and notification options remain intact |
+| Goldy.createWithSource | Additive metadata-only injection; actual installed identity, repository validation and separate APK checks remain; source executes on IO and must propagate cancellation |
+
+All four UpdatePolicies presets now use VersionPolicies.Common (the unchanged
+ShutUp comparator). Existing policy getters and factory signatures remain.
+Scheduler/Glyph legacy ordering changes intentionally; policy IDs invalidate
+old comparison-dependent caches while retaining ignores. See
+[the comparison and migration report](four-app-updater-comparison.md).
 
 The sample and compiled host example synchronously claim operations on Main
 before launching coroutines. Updating MutableStateFlow from progress IO is safe;

@@ -40,6 +40,7 @@ class MainActivity : ComponentActivity() {
         model = ViewModelProvider(this)[FixtureUpdateViewModel::class.java]
         val live = ViewModelProvider(this)[LiveDemoViewModel::class.java]
         val update = ViewModelProvider(this)[DemoUpdateViewModel::class.java]
+        val notifications = ViewModelProvider(this)[NotificationDemoViewModel::class.java]
         updateModel = update
         setContent { SampleApp(model, live, update,
             onOpenUrl = { url ->
@@ -51,6 +52,7 @@ class MainActivity : ComponentActivity() {
             },
             onInstall = { lifecycleScope.launch { update.install(::startActivity) } },
             onResumePending = { request -> lifecycleScope.launch { update.resumePending(request, ::startActivity) } },
+            notifications = notifications,
             onPermission = {
                 try { startActivity(update.settingsIntent()) } catch (_: Exception) { update.navigationFailed() }
             }) }
@@ -65,7 +67,8 @@ internal fun SampleApp(
     onOpenUrl: (String) -> Unit = {},
     onInstall: () -> Unit = {},
     onResumePending: (jp.linkserver.goldy.InstallRequest) -> Unit = {},
-    onPermission: () -> Unit = {}
+    onPermission: () -> Unit = {},
+    notifications: NotificationDemoViewModel? = null
 ) {
     var mode by rememberSaveable { mutableIntStateOf(0) }
     val context = LocalContext.current
@@ -80,7 +83,7 @@ internal fun SampleApp(
         Surface {
             Column(Modifier.fillMaxSize().statusBarsPadding()) {
                 Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(horizontal = 8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    listOf("UI Showcase", "Live Demo", "Update Demo", "Style reference").forEachIndexed { index, name ->
+                    listOf("UI Showcase", "Live Demo", "Update Demo", "Style reference", "Notifications").forEachIndexed { index, name ->
                         FilterChip(mode == index, { mode = index }, { Text(name) })
                     }
                 }
@@ -100,6 +103,7 @@ internal fun SampleApp(
                 when (mode) {
                 1 -> live?.let { LiveDemoScreen(it, onOpenUrl) }
                 3 -> StyleReferenceScreen { mode = 0 }
+                4 -> notifications?.let { NotificationShowcase(it) }
                 2 -> update?.let { UpdateDemoScreen(it, { mode = 0 }, onOpenUrl, onInstall, onResumePending, onPermission) }
                 else -> UpdateOverviewScreen(model.state,
                     onBack = { model.event = "Back requested by host" },

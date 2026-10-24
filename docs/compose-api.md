@@ -1,5 +1,9 @@
 # Elief Compose UI
 
+The new banner, badge and manual-check dialog APIs are documented in
+[update-notifications.md](update-notifications.md). They require the new verified
+revision listed there; older README coordinates do not contain these additions.
+
 Elief is the optional Android UI module `:elief`, minSdk 26. Use the verified public JitPack coordinate in the [README](../README.md); `jp.linkserver.goldy:elief:0.1.0-SNAPSHOT` is only the local publication fixture. It exports Gold transitively. The host applies the Kotlin Compose plugin and enables Compose. No Pyrite dependency or theme is required.
 
 ## Display and events

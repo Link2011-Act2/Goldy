@@ -1,6 +1,8 @@
 // Derived from the MIT-licensed app implementations; see META-INF/goldy/LICENSE and NOTICE.
 package jp.linkserver.goldy.internal
 
+import jp.linkserver.goldy.ReleaseChannel
+
 private data class ReleaseVersion(val numbers: List<Long>, val suffix: List<String>)
 
 private fun parseReleaseVersion(value: String): ReleaseVersion? {
@@ -49,4 +51,21 @@ internal fun compareShutUpVersions(remoteTag: String, installedVersion: String):
         if (result != 0) return result
     }
     return remote.suffix.size.compareTo(installed.suffix.size)
+}
+
+/** Display classification only. Parsing/ordering above is unchanged from ShutUp. */
+internal fun commonReleaseChannel(value: String): ReleaseChannel {
+    val parsed = parseReleaseVersion(value) ?: return ReleaseChannel.Unknown
+    val rawSuffix = value.trim().substringBefore('+').substringAfter('-', "")
+    if (rawSuffix.equals("stable", true)) return ReleaseChannel.Stable
+    if (rawSuffix.isNotEmpty() && parsed.suffix.isEmpty() && !rawSuffix.equals("release", true)) return ReleaseChannel.Unknown
+    return when (parsed.suffix.firstOrNull()) {
+        null, "release" -> ReleaseChannel.Release
+        "stable" -> ReleaseChannel.Stable
+        "intdev", "internal" -> ReleaseChannel.IntDev
+        "alpha" -> ReleaseChannel.Alpha
+        "beta" -> ReleaseChannel.Beta
+        "rc" -> ReleaseChannel.Rc
+        else -> ReleaseChannel.Unknown
+    }
 }

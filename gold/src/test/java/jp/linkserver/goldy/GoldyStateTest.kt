@@ -6,6 +6,44 @@ import org.junit.Assert.*
 import org.junit.Test
 
 class GoldyStateTest {
+    @Test fun explicitBannerRestoreNeverResetsPersistentIgnoreOrNotificationOptions() = runTest {
+        val store = InMemoryUpdateStateStore()
+        val goldy = updater(store)
+        goldy.check(); goldy.hideBanner()
+        goldy.ignoreVersion("v2.0"); goldy.showBanner()
+        assertNull(goldy.state.value.notificationUpdate)
+        assertFalse(goldy.state.value.showBanner)
+        goldy.resetIgnoredVersions()
+        assertTrue(goldy.state.value.showBanner)
+        goldy.hideBanner(); goldy.ignoreVersion("v2.0"); goldy.resetIgnoredVersions()
+        assertNotNull(goldy.state.value.notificationUpdate)
+        assertFalse(goldy.state.value.showBanner)
+        goldy.showBanner()
+        assertTrue(goldy.state.value.showBanner)
+        goldy.updateOptions(RuntimeOptions(notificationsEnabled = false)); goldy.showBanner()
+        assertFalse(goldy.state.value.showBanner)
+        assertNotNull(goldy.state.value.availableUpdate)
+    }
+
+    @Test fun commonPolicyMigrationInvalidatesOldCacheWithoutDeletingIgnoredVersions() = runTest {
+        val cache = UpdateCache(testRepository, "nittc-scheduler-v1", installed, installed.name, false,
+            ReleaseCatalog(listOf(release("v2.0"))), clock)
+        val store = InMemoryUpdateStateStore(StoredUpdateState(cache, setOf("v2.0")))
+        val goldy = updater(store, config = config.copy(policy = UpdatePolicies.nittcScheduler()))
+        goldy.restoreCachedState()
+        assertNull(goldy.state.value.availableUpdate)
+        goldy.check(CheckTrigger.Manual)
+        assertNotNull(goldy.state.value.availableUpdate)
+        assertNull(goldy.state.value.notificationUpdate)
+        assertEquals(setOf("v2.0"), store.read().ignoredTags)
+    }
+
+    @Test fun customMetadataSourceCannotPublishAnotherRepositoryOrUnsafeAsset() = runTest {
+        val unsafe = release("v2.0").copy(url = "https://github.com/attacker/other/releases/tag/v2.0")
+        val goldy = updater { ReleaseCatalog(listOf(unsafe)) }
+        assertTrue(goldy.check(CheckTrigger.Manual) is CheckOutcome.Failure)
+        assertNull(goldy.state.value.availableUpdate)
+    }
     private val config = GoldyConfig(testRepository, policy = UpdatePolicies.shutUp())
     private val installed = InstalledVersion("1.0-Release", 1)
     private var clock = 100_000L

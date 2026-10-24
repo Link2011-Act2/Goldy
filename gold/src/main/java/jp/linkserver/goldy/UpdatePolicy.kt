@@ -31,16 +31,16 @@ data class UpdatePolicy(
 }
 
 object UpdatePolicies {
-    val Standard: UpdatePolicy = UpdatePolicy("standard-v1")
+    val Standard: UpdatePolicy = UpdatePolicy("standard-shutup-v2")
 
     fun shutUp(): UpdatePolicy = Standard.copy(
-        id = "shutup-v1", versions = VersionPolicies.ShutUp,
+        id = "shutup-common-v2", versions = VersionPolicies.Common,
         feed = ReleaseFeed.ListReleases(100, 1), publicationTieBreak = false,
         intermediateNotesIncludeEquivalentVersions = true
     )
 
     fun nittcScheduler(): UpdatePolicy = UpdatePolicy(
-        id = "nittc-scheduler-v1", versions = VersionPolicies.NittcScheduler,
+        id = "nittc-scheduler-common-v2", versions = VersionPolicies.Common,
         channels = ChannelPolicy.AllPublished, feed = ReleaseFeed.ListReleases(30, 1),
         releaseFilter = { !it.tag.startsWith("ai-runtime-", true) },
         allowNameAsTag = true, developerSelection = SelectionMode.HighestVersion,
@@ -48,11 +48,19 @@ object UpdatePolicies {
     )
 
     fun glyphBarty(): UpdatePolicy = UpdatePolicy(
-        id = "glyph-barty-v1", versions = VersionPolicies.GlyphBarty,
+        id = "glyph-barty-common-v2", versions = VersionPolicies.Common,
         channels = ChannelPolicy.AllPublished, feed = ReleaseFeed.Latest,
         allowNameAsTag = true, intermediateNotes = false,
         developerSelection = SelectionMode.GitHubLatest,
         previewBypassesDismissal = true, publicationTieBreak = false
+    )
+
+    /** Beast's feed/selection rules, with common ShutUp ordering; no Scheduler runtime exclusion. */
+    fun beastLocator(): UpdatePolicy = UpdatePolicy(
+        id = "beastlocator-common-v1", versions = VersionPolicies.Common,
+        channels = ChannelPolicy.AllPublished, feed = ReleaseFeed.ListReleases(30, 1),
+        allowNameAsTag = true, developerSelection = SelectionMode.HighestVersion,
+        previewBypassesInterval = true, publicationTieBreak = false
     )
 }
 

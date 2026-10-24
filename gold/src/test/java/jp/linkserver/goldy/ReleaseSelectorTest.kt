@@ -57,9 +57,9 @@ class ReleaseSelectorTest {
         }
     }
 
-    @Test fun tiesPreserveResponseOrderInCompatibilityPolicies() {
+    @Test fun commonOrderingResolvesFormerGlyphBuildNumberTies() {
         val releases = listOf(release("v1.0-Beta2", published = 100), release("v1.0-Beta10", published = 200))
-        assertEquals("v1.0-Beta2", outcomeTag(select(releases, "0.0", UpdatePolicies.glyphBarty().copy(feed = ReleaseFeed.ListReleases()))))
+        assertEquals("v1.0-Beta10", outcomeTag(select(releases, "0.0", UpdatePolicies.glyphBarty().copy(feed = ReleaseFeed.ListReleases()))))
         assertEquals("v1.0-Beta10", outcomeTag(select(releases, "0.0-IntDev", UpdatePolicies.nittcScheduler())))
     }
 

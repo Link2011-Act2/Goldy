@@ -14,9 +14,13 @@ class Consumer(context: Context) {
         GitHubRepository("Link2011-Act2", "GlyphBarty"), UpdatePolicies.glyphBarty(),
         initialOptions = RuntimeOptions(automaticChecksEnabled = false)))
     val state: StateFlow<GoldyState> = shutUp.state
+    val beast = Goldy.create(context, GoldyConfig(
+        GitHubRepository("Link2011-Act2", "BeastLocator"), UpdatePolicies.beastLocator()))
+    val commonComparison = VersionPolicies.Common.compare("1.0-IntDev_rev2", "1.0-IntDev_rev10")
 
     suspend fun checkManually(): CheckOutcome = shutUp.check(CheckTrigger.Manual)
     suspend fun ignore(tag: String) = shutUp.ignoreVersion(tag)
+    suspend fun showBanner() = shutUp.showBanner()
 }
 
 // Download policy compilation against only the published AAR.

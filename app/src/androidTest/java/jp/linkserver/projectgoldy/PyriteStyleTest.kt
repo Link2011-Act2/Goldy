@@ -21,7 +21,8 @@ import org.junit.Test
 import java.io.File
 
 class PyriteStyleTest {
-    @get:Rule val rule = createAndroidComposeRule<MainActivity>()
+    @get:Rule(order = 0) val appearance = IsolatedDemoAppearance()
+    @get:Rule(order = 1) val rule = createAndroidComposeRule<MainActivity>()
 
     private data class Variant(val name: String, val nothing: Boolean = false, val dark: Boolean = false, val dynamic: Boolean = false)
     private val variants = listOf(
@@ -38,7 +39,7 @@ class PyriteStyleTest {
         var reference by mutableStateOf(false)
         var colors = MaterialRoles()
         rule.activity.setContent {
-            DemoTheme(!variant.nothing, variant.nothing, variant.dark, variant.dynamic, false) {
+            DemoTheme(if (variant.nothing) DemoStyle.Nothing else DemoStyle.Material3Expressive, variant.dark, variant.dynamic, false) {
                 val scheme = MaterialTheme.colorScheme
                 colors = MaterialRoles(scheme.surface, LocalUpdateCardStyle.current.containerColor, scheme.onSurface,
                     scheme.onSurfaceVariant, scheme.primary, scheme.onPrimary, scheme.errorContainer, scheme.onErrorContainer)
@@ -89,11 +90,11 @@ class PyriteStyleTest {
     }
 
     @Test fun demoStyleSwitchAndRecreationPreserveHistory() {
-        rule.onNodeWithText("Expressive", useUnmergedTree = true).performScrollTo().performClick()
+        rule.chooseDemoStyle(DemoStyle.Material3Expressive)
         rule.onNodeWithTag("history-toggle").performScrollTo().performClick()
         rule.onNodeWithTag("history-19").performScrollTo().assertIsDisplayed()
         rule.onNodeWithText("Dynamic").performScrollTo().performClick().assertIsSelected()
-        rule.onNodeWithText("Nothing", useUnmergedTree = true).performScrollTo().performClick()
+        rule.chooseDemoStyle(DemoStyle.Nothing)
         rule.onNodeWithTag("history-toggle").assert(SemanticsMatcher.expectValue(SemanticsProperties.StateDescription, "Hide notes"))
         rule.onNodeWithTag("history-19").performScrollTo().assertIsDisplayed()
         val before = scrollOffset()
@@ -104,7 +105,7 @@ class PyriteStyleTest {
         rule.onNodeWithText("Dynamic").performScrollTo().assertIsNotEnabled()
         rule.onNodeWithText("Dynamic").assertIsNotSelected()
         capture("nothing-demo-restored")
-        rule.onNodeWithText("Expressive", useUnmergedTree = true).performScrollTo().performClick()
+        rule.chooseDemoStyle(DemoStyle.Material3Expressive)
         rule.onNodeWithText("Dynamic").performScrollTo().assertIsEnabled().assertIsSelected()
         rule.onNodeWithTag("history-toggle").assert(SemanticsMatcher.expectValue(SemanticsProperties.StateDescription, "Hide notes"))
     }
@@ -114,7 +115,7 @@ class PyriteStyleTest {
         var state by mutableStateOf(fixture(0))
         var action: UpdateAction? = null
         rule.activity.setContent {
-            DemoTheme(false, true, dark, false, false) { UpdateOverviewScreen(state, {}, {}, { action = it }) }
+            DemoTheme(DemoStyle.Nothing, dark, false, false) { UpdateOverviewScreen(state, {}, {}, { action = it }) }
         }
         for (isDark in listOf(false, true)) {
             rule.runOnIdle { dark = isDark; state = fixture(2) }
@@ -143,7 +144,7 @@ class PyriteStyleTest {
     }
 
     @Test fun actualPyriteReferenceActionRestoresWithoutStartingATransfer() {
-        rule.onNodeWithText("Nothing", useUnmergedTree = true).performScrollTo().performClick()
+        rule.chooseDemoStyle(DemoStyle.Nothing)
         rule.onNodeWithText("Style reference").performScrollTo().performClick()
         rule.onNodeWithText("Preview action").performScrollTo().performClick()
         rule.onNodeWithText("Preview actions: 1").performScrollTo().assertIsDisplayed()

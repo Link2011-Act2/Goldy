@@ -136,11 +136,19 @@ language/API is 2.2 and the libraries target JVM 11. Set `JAVA_HOME` and
 ./gradlew :gold:testDebugUnitTest :elief:testDebugUnitTest :gold:lintRelease :elief:lintRelease :app:assembleRelease
 ```
 
-The Compose fixture sample supports light/dark, standard/Expressive, API31+
-dynamic colors and a custom-font example. It does not download or install APKs.
-Phase 2-4 UI records cover 320dp, font scale 1.8, back, retry, duplicate events,
-Activity recreation and Markdown trust boundaries. See the
-[Phase 2-4 report](docs/phase-2-4-compose-report.md).
+Goldy Demo (`:app`) offers an exclusive style picker: Material 3 Expressive
+(first-launch default), Nothing, or standard Material 3. Style, light/dark,
+API31+ dynamic colors and the custom-font example persist across restarts.
+Nothing keeps its monochrome palette while retaining the dynamic-color setting
+for the other styles. Only the Demo depends on Pyrite; Elief continues to inherit
+the host MaterialTheme and optional UpdateCardStyle.
+
+UI Showcase uses offline fixtures. Live Demo reads public release metadata;
+Update Demo exercises Gold's self-update APIs only after explicit user actions
+and requires a separately prepared, correctly signed Demo release. Demo APKs
+are not JitPack artifacts. See [Goldy Demo](docs/goldy-demo.md),
+[style selection verification](docs/demo-style-selection.md), and
+[Elief/Pyrite design verification](docs/pyrite-style-review.md).
 
 ## Limits and license
 

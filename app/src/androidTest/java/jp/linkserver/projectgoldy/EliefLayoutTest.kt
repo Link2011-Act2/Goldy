@@ -20,7 +20,8 @@ import org.junit.Test
 import java.io.File
 
 class EliefLayoutTest {
-    @get:Rule val rule = createAndroidComposeRule<MainActivity>()
+    @get:Rule(order = 0) val appearance = IsolatedDemoAppearance()
+    @get:Rule(order = 1) val rule = createAndroidComposeRule<MainActivity>()
 
     private fun screen(state: UpdateUiState = fixture(0), heightLimited: Boolean = false) {
         rule.activity.setContent {

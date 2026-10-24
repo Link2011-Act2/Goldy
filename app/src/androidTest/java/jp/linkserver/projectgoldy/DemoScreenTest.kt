@@ -13,7 +13,8 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class DemoScreenTest {
-    @get:Rule val rule = createAndroidComposeRule<MainActivity>()
+    @get:Rule(order = 0) val appearance = IsolatedDemoAppearance()
+    @get:Rule(order = 1) val rule = createAndroidComposeRule<MainActivity>()
 
     @Test fun liveIsMetadataOnlyAndNavigationSurvivesRecreation() {
         rule.onNodeWithText("Live Demo").performScrollTo().performClick()

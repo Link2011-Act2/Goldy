@@ -1,6 +1,6 @@
 # Elief Compose UI
 
-Elief is the optional Android UI artifact `jp.linkserver.goldy:elief:0.1.0-SNAPSHOT` (module `:elief`), minSdk 26. It exports Gold transitively. The host applies the Kotlin Compose plugin and enables Compose. No Pyrite dependency or theme is required.
+Elief is the optional Android UI module `:elief`, minSdk 26. Use the verified public JitPack coordinate in the [README](../README.md); `jp.linkserver.goldy:elief:0.1.0-SNAPSHOT` is only the local publication fixture. It exports Gold transitively. The host applies the Kotlin Compose plugin and enables Compose. No Pyrite dependency or theme is required.
 
 ## Display and events
 
@@ -106,7 +106,7 @@ CompositionLocalProvider(
 }
 ```
 
-Goldy Demo alone depends on public Pyrite SHA `508b1cf5131679fee7581acbc7ea55a365b6ff2c`. It uses real PyriteTheme/PyriteFonts and a 22dp card shape. M3E light bridges surfaceContainerLowest; M3E dark and Nothing use surfaceContainerHigh, matching Pyrite's card implementation. Nothing keeps Pyrite's monochrome primary and ignores Dynamic Color. A separate Style reference tab renders public Pyrite cards directly. Standard M3 remains available by clearing both style chips.
+Goldy Demo alone depends on public Pyrite SHA `508b1cf5131679fee7581acbc7ea55a365b6ff2c`. It uses real PyriteTheme/PyriteFonts and a 22dp card shape. M3E light bridges surfaceContainerLowest; M3E dark and Nothing use surfaceContainerHigh, matching Pyrite's card implementation. Nothing keeps Pyrite's monochrome primary and ignores Dynamic Color. A separate Style reference tab renders public Pyrite cards directly. The exclusive Style picker offers Material 3 Expressive (default), Nothing, and standard Material 3. Style, light/dark, dynamic-color preference and the custom-font choice persist in Demo-only settings. Nothing displays Dynamic as disabled/off without discarding the preference for the other styles.
 
 Demo aligns its UI, tooling and test artifacts to Pyrite's Compose 1.12.0 / Material3 1.5.0-beta01. Elief keeps its existing BOM and stable Material3 1.4.0 baseline, adds only official Compose Animation, and does not depend on Pyrite. Public API compatibility and stable consumer verification are recorded separately in the style review.
 
@@ -118,7 +118,7 @@ The Markdown view is text-selectable and uses native accessibility. Markdown tab
 
 ## Offline sample
 
-`:app` is Goldy Demo. Its UI Showcase retains the offline fixtures, light/dark, standard/Expressive, API31+ dynamic colors and a monospace custom-font example. Horizontally scroll the theme/scenario chips to access every option. Showcase actions never download or install an APK. Separate Live Demo and self Update Demo modes use real Gold APIs only after explicit user actions; see [Goldy Demo](goldy-demo.md) for distribution rules, file lifetime and safe local test instructions.
+`:app` is Goldy Demo. Its UI Showcase retains the offline fixtures, all three styles, light/dark, API31+ dynamic colors and a monospace custom-font example. Horizontally scroll the settings/scenario rows to access every option; the Style dialog offers one selected radio option and scrolls vertically when needed. Showcase actions never download or install an APK. Separate Live Demo and self Update Demo modes use real Gold APIs only after explicit user actions; see [Goldy Demo](goldy-demo.md) for distribution rules, file lifetime and safe local test instructions.
 
 ## App adoption (separate approval required)
 

@@ -11,10 +11,17 @@ import androidx.lifecycle.lifecycleScope
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
+import androidx.compose.foundation.selection.selectable
+import androidx.compose.foundation.selection.selectableGroup
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.testTag
+import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import jp.linkserver.goldy.compose.UpdateOverviewScreen
 import kotlinx.coroutines.launch
@@ -50,7 +57,6 @@ class MainActivity : ComponentActivity() {
     }
 }
 
-@OptIn(ExperimentalMaterial3ExpressiveApi::class)
 @Composable
 internal fun SampleApp(
     model: FixtureUpdateViewModel,
@@ -62,11 +68,14 @@ internal fun SampleApp(
     onPermission: () -> Unit = {}
 ) {
     var mode by rememberSaveable { mutableIntStateOf(0) }
-    var dark by rememberSaveable { mutableStateOf(false) }
-    var expressive by rememberSaveable { mutableStateOf(false) }
-    var nothing by rememberSaveable { mutableStateOf(false) }
-    var dynamic by rememberSaveable { mutableStateOf(false) }
-    var customFont by rememberSaveable { mutableStateOf(false) }
+    val context = LocalContext.current
+    val preferences = remember(context) { DemoAppearancePreferences(context) }
+    var appearance by remember(preferences) { mutableStateOf(preferences.load()) }
+    var stylePicker by rememberSaveable { mutableStateOf(false) }
+    fun changeAppearance(value: DemoAppearance) {
+        appearance = value
+        preferences.save(value)
+    }
     val content: @Composable () -> Unit = {
         Surface {
             Column(Modifier.fillMaxSize().statusBarsPadding()) {
@@ -76,11 +85,13 @@ internal fun SampleApp(
                     }
                 }
                 Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(horizontal = 8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    FilterChip(dark, { dark = !dark }, { Text("Dark") })
-                    FilterChip(expressive, { expressive = !expressive; nothing = false }, { Text("Expressive") })
-                    FilterChip(nothing, { nothing = !nothing; expressive = false }, { Text("Nothing") })
-                    FilterChip(dynamic && !nothing, { dynamic = !dynamic }, { Text("Dynamic") }, enabled = Build.VERSION.SDK_INT >= 31 && !nothing)
-                    FilterChip(customFont, { customFont = !customFont }, { Text("Custom font") })
+                    AssistChip(onClick = { stylePicker = true }, label = { Text("Style: ${appearance.style.label}") },
+                        modifier = Modifier.testTag("demo-style-picker"))
+                    FilterChip(appearance.dark, { changeAppearance(appearance.copy(dark = !appearance.dark)) }, { Text("Dark") })
+                    FilterChip(appearance.dynamic && appearance.style != DemoStyle.Nothing,
+                        { changeAppearance(appearance.copy(dynamic = !appearance.dynamic)) }, { Text("Dynamic") },
+                        enabled = Build.VERSION.SDK_INT >= 31 && appearance.style != DemoStyle.Nothing)
+                    FilterChip(appearance.customFont, { changeAppearance(appearance.copy(customFont = !appearance.customFont)) }, { Text("Custom font") })
                 }
                 if (mode == 0) Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(horizontal = 8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     scenarioNames.forEachIndexed { index, label -> FilterChip(model.scenario == index, { model.select(index) }, { Text(label) }) }
@@ -101,6 +112,28 @@ internal fun SampleApp(
                 }
             }
         }
+        if (stylePicker) AlertDialog(
+            onDismissRequest = { stylePicker = false },
+            title = { Text("UI style") },
+            text = {
+                Column(Modifier.selectableGroup().verticalScroll(rememberScrollState())) {
+                    DemoStyle.entries.forEach { style ->
+                        Row(Modifier.fillMaxWidth().heightIn(min = 56.dp)
+                            .testTag("demo-style-${style.name}")
+                            .selectable(selected = appearance.style == style, role = Role.RadioButton, onClick = {
+                                changeAppearance(appearance.copy(style = style))
+                                stylePicker = false
+                            }).padding(vertical = 8.dp),
+                            verticalAlignment = Alignment.CenterVertically) {
+                            RadioButton(selected = appearance.style == style, onClick = null)
+                            Spacer(Modifier.width(12.dp))
+                            Text(style.label, style = MaterialTheme.typography.bodyLarge)
+                        }
+                    }
+                }
+            },
+            confirmButton = { TextButton(onClick = { stylePicker = false }) { Text("Close") } }
+        )
     }
-    DemoTheme(expressive, nothing, dark, dynamic, customFont, content)
+    DemoTheme(appearance.style, appearance.dark, appearance.dynamic, appearance.customFont, content)
 }

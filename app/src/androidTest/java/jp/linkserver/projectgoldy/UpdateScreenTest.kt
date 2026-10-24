@@ -21,7 +21,8 @@ import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
 class UpdateScreenTest {
-    @get:Rule val rule = createAndroidComposeRule<MainActivity>()
+    @get:Rule(order = 0) val appearance = IsolatedDemoAppearance()
+    @get:Rule(order = 1) val rule = createAndroidComposeRule<MainActivity>()
     private fun select(index: Int) = rule.runOnIdle { rule.activity.model.select(index) }
 
     @Test fun updateBackAndReleaseCallbacks() {
@@ -91,12 +92,13 @@ class UpdateScreenTest {
         assertEquals(before, after, 2f)
     }
     @Test fun hostFontAndThemes() {
+        rule.chooseDemoStyle(DemoStyle.Material3)
         var originalTypeface: android.graphics.Typeface? = null
         rule.runOnIdle { originalTypeface = textViews(rule.activity.window.decorView).first { it.text.toString().contains("A little more clarity") }.typeface }
         capture("light")
         rule.onNodeWithText("Dark", useUnmergedTree = true).performScrollTo().performClick()
         capture("dark")
-        rule.onNodeWithText("Expressive", useUnmergedTree = true).performScrollTo().performClick()
+        rule.chooseDemoStyle(DemoStyle.Material3Expressive)
         capture("expressive-dark")
         rule.onNodeWithText("Dark", useUnmergedTree = true).performScrollTo().performClick()
         capture("expressive-light")

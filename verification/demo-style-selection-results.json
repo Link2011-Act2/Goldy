@@ -1,0 +1,180 @@
+{
+  "date": "2026-10-24",
+  "nothingDynamicBehavior": "Disabled and shown off, preserving preference for other styles",
+  "jvm": {
+    "app": {
+      "errors": 0,
+      "failures": 0,
+      "tests": 6
+    },
+    "libraries": "Unchanged; previous verification retained, not rerun"
+  },
+  "r8": {
+    "releaseOptimization": true,
+    "api": 36,
+    "widthDp": 1000,
+    "result": "passed",
+    "variants": [
+      {
+        "dark": false,
+        "dynamicPreferenceRetained": true,
+        "style": "Material 3 Expressive",
+        "controlsVisible": true,
+        "customFontRestored": true,
+        "restoredAfterProcessStop": true
+      },
+      {
+        "dark": true,
+        "dynamicPreferenceRetained": true,
+        "style": "Material 3 Expressive",
+        "controlsVisible": true,
+        "customFontRestored": true,
+        "restoredAfterProcessStop": true
+      },
+      {
+        "dark": false,
+        "dynamicPreferenceRetained": true,
+        "style": "Nothing風",
+        "controlsVisible": true,
+        "customFontRestored": true,
+        "restoredAfterProcessStop": true
+      },
+      {
+        "dark": true,
+        "dynamicPreferenceRetained": true,
+        "style": "Nothing風",
+        "controlsVisible": true,
+        "customFontRestored": true,
+        "restoredAfterProcessStop": true
+      },
+      {
+        "dark": false,
+        "dynamicPreferenceRetained": true,
+        "style": "通常Material 3",
+        "controlsVisible": true,
+        "customFontRestored": true,
+        "restoredAfterProcessStop": true
+      },
+      {
+        "dark": true,
+        "dynamicPreferenceRetained": true,
+        "style": "通常Material 3",
+        "controlsVisible": true,
+        "customFontRestored": true,
+        "restoredAfterProcessStop": true
+      }
+    ],
+    "signing": "Existing debug key; ignored smoke copy only",
+    "installActionInvoked": false,
+    "device": "emulator-5556"
+  },
+  "screenshots": {
+    "visualReview": "All 18 screenshots reviewed; readable controls, host colors, and system bar contrast retained",
+    "standard": "build/demo-style-selection/standard/demo-style-selection",
+    "r8": "build/demo-style-selection/r8-1.png through r8-6.png",
+    "font18": "build/demo-style-selection/font18/demo-style-selection"
+  },
+  "task": "Goldy Demo exclusive style selection",
+  "limitations": [
+    "Physical devices and API26-35 not tested in this change",
+    "TalkBack interaction not exercised",
+    "Not every wallpaper/device dynamic palette tested",
+    "Actual APK self-update not exercised",
+    "Demo settings row scrolls horizontally at narrow widths",
+    "Library JVM and independent consumer not rerun because producer code and dependencies are unchanged"
+  ],
+  "defaultStyle": "Material3Expressive",
+  "builds": {
+    "releaseR8": "passed",
+    "debug": "passed",
+    "androidTest": "passed",
+    "log": "build/demo-style-selection/final-build-lint.txt"
+  },
+  "preservation": {
+    "eliefUnchanged": true,
+    "indexUnchanged": true,
+    "readOnlyEntriesChecked": 1004,
+    "initialGoldyStatus": "clean",
+    "evidence": "build/demo-style-selection/preservation-after.json",
+    "goldUnchanged": true,
+    "manifestUnchanged": true,
+    "headUnchanged": true,
+    "gradleDependenciesUnchanged": true,
+    "readOnlyRepositoriesUnchanged": [
+      "Pyrite",
+      "ShutUp",
+      "NITTC Scheduler",
+      "GlyphVisualizer",
+      "BeastLocator"
+    ],
+    "readmeUnchanged": true,
+    "libraryPublicApiUnchanged": true
+  },
+  "storage": "Demo-only SharedPreferences; enum name, not ordinal",
+  "storedSettings": [
+    "style",
+    "dark",
+    "dynamic",
+    "customFont"
+  ],
+  "branch": "master",
+  "pushed": false,
+  "jitPackRepublished": false,
+  "baseCommit": "f3f42e8c666ac2447156640016cf1e828974407b",
+  "lint": {
+    "debug": {
+      "newWarnings": 0,
+      "errors": 0,
+      "warnings": 9
+    },
+    "release": {
+      "newWarnings": 0,
+      "errors": 0,
+      "warnings": 9
+    }
+  },
+  "styleOptions": [
+    "Material 3 Expressive",
+    "Nothing風",
+    "通常Material 3"
+  ],
+  "ui": {
+    "freshActivityRestoration": true,
+    "standard": {
+      "failures": 0,
+      "log": "build/demo-style-selection/standard/instrumentation.txt",
+      "tests": 29
+    },
+    "api": 36,
+    "lightDarkAllThreeStyles": true,
+    "finalPreferences": {
+      "failures": 0,
+      "log": "build/demo-style-selection/ui-final-prefs-run.txt",
+      "tests": 3
+    },
+    "widthDp": 320,
+    "dynamicAndFontRetained": true,
+    "heightDp": 640,
+    "historyAndScrollRetained": true,
+    "activityRecreation": true,
+    "font18": {
+      "failures": 0,
+      "log": "build/demo-style-selection/font18/instrumentation.txt",
+      "tests": 10
+    },
+    "exclusiveSelection": true
+  },
+  "apks": {
+    "debug": {
+      "bytes": 13427389,
+      "sha256": "fb0e8522b86bdd9bd9b6e17464019925fce7b5a3fe37d28e18ffe88423bc7398",
+      "path": "app/build/outputs/apk/debug/app-debug.apk"
+    },
+    "releaseUnsigned": {
+      "bytes": 1519118,
+      "sha256": "5690c15b7070d9a61be2b78e6c6904a105b3b3cd26bbdcd1258e3fe76061d88b",
+      "path": "app/build/outputs/apk/release/app-release-unsigned.apk"
+    }
+  },
+  "committed": false
+}

@@ -1,14 +1,17 @@
 # Goldy Demo（Phase 2-6）
 
-既存 `:app` を実行可能なDemoへ拡張しています。GoldはCore、EliefはCompose UIです。Demoは両モジュールの公開APIだけを使用し、Pyriteには依存しません。ライブラリ公開APIとJitPack設定は変更していません。
+既存 `:app` を実行可能なDemoへ拡張しています。GoldはCore、EliefはCompose UIです。更新処理と表示には両モジュールの公開APIを使用します。Demoだけが公開Pyrite SHA `508b1cf5131679fee7581acbc7ea55a365b6ff2c` に依存し、実際のPyriteThemeを適用します。Gold/EliefにPyriteの依存はありません。JitPackの配布対象はGold/Eliefだけで、Demo APKは含みません。
 
 ## 画面
 
 - **UI Showcase**：従来のオフラインfixture。更新あり／なし、既知・未知サイズのダウンロード、失敗、キャンセル、権限要求、APKなし、空ノート、引き渡し、確認中、信頼できないMarkdownを表示します。ダウンロードやインストールはシミュレーションです。
 - **Live Demo**：公開の `Link2011-Act2/ShutUp`、`Link2011-Act2/NITTC_Scheduler`、`Link2011-Act2/GlyphBarty` を選び、Fetch releasesで通信します。Goldの `GitHubReleaseClient`、各アプリ用 `UpdatePolicies`、`ReleaseSelector` を使用します。比較用バージョンは初期値 `0.0.0-Release` の入力例で、他アプリのインストール済みバージョンではありません。タグ、チャンネル、prerelease、公開日時、ノート、asset名・サイズ・公開digestを閲覧できます。**他アプリのAPKを取得・インストールする操作はありません。** 表示したassetは未検証のメタデータです。
 - **Update Demo**：自身の実際のpackage、versionName、versionCode、現在の署名証明書SHA-256、インストール許可を表示します。Check Demo updateでGoldyの配布を確認します。Goldの `Goldy`、`ApkDownloader`、`AndroidApkInspector`、`ApkInstaller` とEliefの画面を使用します。
+- **Style reference**：実際のPyriteのカード・操作コンポーネントを同じテーマ内で比較します。更新処理は開始しません。
 
-テーマ操作は全画面共通です。DarkでLight/Dark、Expressiveで通常M3/M3 Expressive、DynamicでAPI31以降のDynamic Color、Custom fontで等幅フォント例を切り替えます。横にスクロールすると隠れた選択肢を操作できます。選択中の画面とテーマはsaveable、通信・転送とLiveのセッションキャッシュはViewModelでActivity再生成を越えて保持します。
+テーマ操作は全画面共通です。Styleから **Material 3 Expressive（初回の既定値）／Nothing風／通常Material 3** を排他的に選択します。DarkでLight/Dark、DynamicでAPI31以降のDynamic Color、Custom fontで等幅フォント例を切り替えます。Nothing風ではDynamicをOFF/無効表示にし、他スタイルへ戻ると以前の設定を復元します。Nothing専有フォントは同梱しません。
+
+スタイル・明暗・Dynamic Color・フォントはDemo専用設定としてプロセス終了後も保持します。選択画面と履歴・スクロールの表示状態はsaveable、通信・転送とLiveのセッションキャッシュはViewModelでActivity再生成を越えて保持します。設定行は横スクロール、スタイル選択ダイアログは必要に応じて縦スクロールできます。詳細は[スタイル選択の検証](demo-style-selection.md)を参照してください。
 
 ## 通信・キャッシュ
 

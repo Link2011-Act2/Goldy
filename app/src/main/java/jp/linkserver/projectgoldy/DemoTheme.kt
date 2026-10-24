@@ -19,7 +19,7 @@ import jp.linkserver.pyrite.theme.PyriteTheme
 /** The host bridges Pyrite's private card roles without changing Elief's dependencies or palette. */
 @Composable
 internal fun DemoTheme(
-    expressive: Boolean, nothing: Boolean, dark: Boolean, dynamic: Boolean, customFont: Boolean,
+    style: DemoStyle, dark: Boolean, dynamic: Boolean, customFont: Boolean,
     content: @Composable () -> Unit
 ) {
     val activity = LocalActivity.current
@@ -35,7 +35,8 @@ internal fun DemoTheme(
     val currentContent = rememberUpdatedState(content)
     val stableContent = remember { movableContentOf { currentContent.value() } }
     val family = if (customFont) FontFamily.Monospace else null
-    if (expressive || nothing) {
+    val nothing = style == DemoStyle.Nothing
+    if (style != DemoStyle.Material3) {
         PyriteTheme(fonts = PyriteFonts(title = family, accent = family, body = family),
             style = if (nothing) PyriteStyle.Nothing else PyriteStyle.Material3Expressive,
             darkTheme = dark, dynamicColor = dynamic && !nothing) {

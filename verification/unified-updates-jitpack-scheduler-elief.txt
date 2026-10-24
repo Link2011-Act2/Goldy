@@ -1,0 +1,10 @@
+> Task :app:verifyPublishedDependencies
+Verified JitPack artifacts: com.github.Link2011-Act2.Goldy:elief:189092a7b9a142e5d432017b5b9ce71404a5758b, com.github.Link2011-Act2.Goldy:gold:189092a7b9a142e5d432017b5b9ce71404a5758b
+> Task :app:verifyPublishedSources
+Verified independent Maven sources classifier: elief-189092a7b9a142e5d432017b5b9ce71404a5758b-sources.jar
+> Task :app:lintRelease
+> Task :app:minifyReleaseWithR8
+> Task :app:assembleRelease
+> Task :app:verifyHostManifest
+Verified merged manifest and host/Gold provider coexistence for scheduler/elief
+BUILD SUCCESSFUL in 3m 50s

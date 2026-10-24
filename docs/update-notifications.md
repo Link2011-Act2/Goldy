@@ -2,6 +2,14 @@
 
 Phase 1〜4で追加したAPIです。導入にはこの変更を含む検証済みコミットを使用してください。READMEに残る以前の公開SHAには新APIが含まれません。公開検証の座標と結果は [unified-updates-verification.md](unified-updates-verification.md) に記録します。
 
+2026-10-25の独立Consumer検証済み実装は `189092a7b9a142e5d432017b5b9ce71404a5758b` です。通常のJitPackリポジトリ設定を使用し、CoreのみならGold、Compose UIを使う場合はGoldを推移依存するEliefを指定します。
+
+```kotlin
+implementation("com.github.Link2011-Act2.Goldy:gold:189092a7b9a142e5d432017b5b9ce71404a5758b")
+// Compose UIを使う場合はこちら。上のGold指定は省略できます。
+implementation("com.github.Link2011-Act2.Goldy:elief:189092a7b9a142e5d432017b5b9ce71404a5758b")
+```
+
 ## 責務と状態
 
 4アプリ用 `UpdatePolicies.shutUp()/nittcScheduler()/glyphBarty()/beastLocator()` はShutUpを正本とする `VersionPolicies.Common` を使用します。比較とchannel許可・feed・APK選択・tag binding・package/signer/versionCode検査は別契約です。比較の同値性をAPK本人性に利用しないでください。仕様差は [比較レポート](four-app-updater-comparison.md) を参照してください。

@@ -1,6 +1,6 @@
 # Phase 1〜4：共通比較・更新通知UIの検証
 
-2026-10-24。開始HEADは `0d8999160ec8d0bb0fc97580ff23ce4db4b000a5`、master、cleanでした。既存の公開実装を継続し、更新エンジン・詳細画面の作り直しは行っていません。
+調査・ローカル検証は2026-10-24、公開Consumerの最終確認は2026-10-25。開始HEADは `0d8999160ec8d0bb0fc97580ff23ce4db4b000a5`、master、cleanでした。既存の公開実装を継続し、更新エンジン・詳細画面の作り直しは行っていません。
 
 ## 成果物
 
@@ -66,7 +66,28 @@ APKはローカル検証生成物で、Git/JitPack/GitHub Releaseへ配布しま
 
 ## 公開検証
 
-ローカル検証は完了しました。JitPack検証はこの変更を含むコミットを通常Pushした後、その正確なSHAで実施し、本節へ結果・座標を追記します。過去の公開SHAを新APIの検証結果として流用しません。
+実装コミット **`189092a7b9a142e5d432017b5b9ce71404a5758b`** をGitHub masterへ通常Pushし、同じ正確なSHAでJitPackの成功を確認しました。[公開build.log](https://jitpack.io/com/github/Link2011-Act2/Goldy/189092a7b9a142e5d432017b5b9ce71404a5758b/build.log)、[成果物・Consumer検証JSON](../verification/unified-updates-jitpack-results.json) を参照してください。JitPack APIはstatus=ok、commit一致、private=false、JDK21、modules=gold/eliefを返しました。タグ・Release・Demo APKの公開は行っていません。
+
+確定座標：
+
+```kotlin
+implementation("com.github.Link2011-Act2.Goldy:gold:189092a7b9a142e5d432017b5b9ce71404a5758b")
+implementation("com.github.Link2011-Act2.Goldy:elief:189092a7b9a142e5d432017b5b9ce71404a5758b")
+```
+
+ComposeではEliefだけで同じSHAのGoldが入ります。両モジュールのAAR/POM/Gradle metadata/sources JAR、計8成果物を実際に取得しました。POMとmetadataのGold推移依存、variantのサイズ/checksum、sourcesのLICENSE/NOTICEを検証しました。公開sourceはGold 17件、Elief 8件すべてがローカルsourceと改行正規化後に一致し、AAR内LICENSE/NOTICEも一致しました。ローカルSNAPSHOT、Pyrite、Demoの依存・クラスの混入はありません。
+
+| JitPackのみから取得する独立Consumer | Release / R8 | lint errors / warnings | APK bytes | ログ |
+|---|---|---|---:|---|
+| Gold、Gradle metadata | 成功 | 0 / 3 | 79,226 | [結果](../verification/unified-updates-jitpack-scheduler-gold.txt) |
+| Elief、Gradle metadata | 成功 | 0 / 1 | 1,110,428 | [結果](../verification/unified-updates-jitpack-scheduler-elief.txt) |
+| Elief、POMのみ | 成功 | 0 / 1 | 1,110,428 | [結果](../verification/unified-updates-jitpack-scheduler-elief-pom.txt) |
+
+Consumerは独立したGradleルートで、Goldy groupに対してJitPackをexclusive指定し、一般依存にGoogle/Maven Centralを使います。producer project、includeBuild、mavenLocal、ローカルMavenは参照しません。新しい共通比較・metadata source factory・通知3コンポーネントを含むホストがコンパイルされ、R8 mapping上でもホストActivityの存在を確認しました。Eliefはstable M3 1.4.0、Gold単体にはCompose/Markwonなし、両方にPyriteなし。ManifestマージではホストFileProviderとGold providerの共存・非exported・限定URI grantを検証し、インストール権限をライブラリが強制追加しないことも確認しました。
+
+公開AARのサイズはGold **270,376 bytes**、Elief **110,519 bytes**、sourcesは各31,236 / 13,107 bytesです。ローカルZIPとの完全バイト再現性は主張しません。Goldの144 classはバイト一致しましたが、Eliefでは29 class中2件（UpdateNotificationsKt / UpdateScreenLayoutKt）でCompose生成コードの差がありました。ソース一致・API契約・公開物のConsumer成功とは別に記録しています。公開AARそのもののランタイムUI試験を実施したという主張もしません。
+
+最終記録の追加はドキュメント・検証資料のみです。上記SHAの成功済みビルドを繰り返さず、導入座標は実際に取得・Consumer検証した実装コミットへ固定します。
 
 ## 保護と制限
 

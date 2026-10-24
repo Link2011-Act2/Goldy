@@ -110,7 +110,13 @@
     "elief": "passed; transitive Gold; stable Material3 1.4.0; no Pyrite"
   },
   "jitpack": {
-    "status": "not yet run; exact SHA available only after commit/push"
+    "consumerVariants": 3,
+    "details": "unified-updates-jitpack-results.json",
+    "status": "passed",
+    "artifacts": 8,
+    "implementationCommit": "189092a7b9a142e5d432017b5b9ce71404a5758b",
+    "buildLog": "https://jitpack.io/com/github/Link2011-Act2/Goldy/189092a7b9a142e5d432017b5b9ce71404a5758b/build.log",
+    "allReleaseR8AndLintPassed": true
   },
   "limits": [
     "API26-35 and physical/OEM devices not exercised in this change",
@@ -172,5 +178,6 @@
       "pyrite"
     ],
     "externalChangesPreserved": true
-  }
+  },
+  "completedDate": "2026-10-25"
 }

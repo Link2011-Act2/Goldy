@@ -1,0 +1,282 @@
+{
+  "task": "Goldy final UI implementation publication",
+  "date": "2026-10-24",
+  "verifiedImplementationCommit": "25241039038aa1b6ebf38258b374f662649f7dd1",
+  "branch": "master",
+  "repository": "https://github.com/Link2011-Act2/Goldy",
+  "normalPushConfirmed": true,
+  "coordinates": {
+    "gold": "com.github.Link2011-Act2.Goldy:gold:25241039038aa1b6ebf38258b374f662649f7dd1",
+    "elief": "com.github.Link2011-Act2.Goldy:elief:25241039038aa1b6ebf38258b374f662649f7dd1"
+  },
+  "jitpackBuildUrl": "https://jitpack.io/com/github/Link2011-Act2/Goldy/25241039038aa1b6ebf38258b374f662649f7dd1/build.log",
+  "artifacts": {
+    "version": "25241039038aa1b6ebf38258b374f662649f7dd1",
+    "commit": "25241039038aa1b6ebf38258b374f662649f7dd1",
+    "status": "ok",
+    "artifacts": [
+      {
+        "module": "gold",
+        "file": "gold-25241039038aa1b6ebf38258b374f662649f7dd1.aar",
+        "url": "https://jitpack.io/com/github/Link2011-Act2/Goldy/gold/25241039038aa1b6ebf38258b374f662649f7dd1/gold-25241039038aa1b6ebf38258b374f662649f7dd1.aar",
+        "bytes": 280396,
+        "sha256": "2591539FA553D171A5C7ABD5826F5B967EA258BB4F1B2B5D23E5BDAD372F0159"
+      },
+      {
+        "module": "gold",
+        "file": "gold-25241039038aa1b6ebf38258b374f662649f7dd1.pom",
+        "url": "https://jitpack.io/com/github/Link2011-Act2/Goldy/gold/25241039038aa1b6ebf38258b374f662649f7dd1/gold-25241039038aa1b6ebf38258b374f662649f7dd1.pom",
+        "bytes": 1725,
+        "sha256": "13BD088B57B7346748090AB61DB6FB32A8982DCE63C10E2EF8700F6EDB21B0C7"
+      },
+      {
+        "module": "gold",
+        "file": "gold-25241039038aa1b6ebf38258b374f662649f7dd1-sources.jar",
+        "url": "https://jitpack.io/com/github/Link2011-Act2/Goldy/gold/25241039038aa1b6ebf38258b374f662649f7dd1/gold-25241039038aa1b6ebf38258b374f662649f7dd1-sources.jar",
+        "bytes": 32304,
+        "sha256": "D369437C1A166A0BAA59150E9F1AE12D992576C6BC09A796C30BDE3ACCC870C9"
+      },
+      {
+        "module": "gold",
+        "file": "gold-25241039038aa1b6ebf38258b374f662649f7dd1.module",
+        "url": "https://jitpack.io/com/github/Link2011-Act2/Goldy/gold/25241039038aa1b6ebf38258b374f662649f7dd1/gold-25241039038aa1b6ebf38258b374f662649f7dd1.module",
+        "bytes": 3425,
+        "sha256": "DC81F929DD7AEEFB8E14FC58D8A2A636B251A3C4089F7281B3456160CA445069"
+      },
+      {
+        "module": "elief",
+        "file": "elief-25241039038aa1b6ebf38258b374f662649f7dd1.aar",
+        "url": "https://jitpack.io/com/github/Link2011-Act2/Goldy/elief/25241039038aa1b6ebf38258b374f662649f7dd1/elief-25241039038aa1b6ebf38258b374f662649f7dd1.aar",
+        "bytes": 85900,
+        "sha256": "4C76EB898502DC6DCDDAA2A73E9010A53A600EA42682EE1F9AC02273E4D01728"
+      },
+      {
+        "module": "elief",
+        "file": "elief-25241039038aa1b6ebf38258b374f662649f7dd1.pom",
+        "url": "https://jitpack.io/com/github/Link2011-Act2/Goldy/elief/25241039038aa1b6ebf38258b374f662649f7dd1/elief-25241039038aa1b6ebf38258b374f662649f7dd1.pom",
+        "bytes": 2726,
+        "sha256": "A7F60747FC7B86E1FA1AC1C1BB0E8D6C03D5CCF89C024950A53AF16DE6528D9E"
+      },
+      {
+        "module": "elief",
+        "file": "elief-25241039038aa1b6ebf38258b374f662649f7dd1-sources.jar",
+        "url": "https://jitpack.io/com/github/Link2011-Act2/Goldy/elief/25241039038aa1b6ebf38258b374f662649f7dd1/elief-25241039038aa1b6ebf38258b374f662649f7dd1-sources.jar",
+        "bytes": 10528,
+        "sha256": "00D3F515C8CCC97BB1B1252C348A8A7C50849D48D2797E49B17E3E50E6F61816"
+      },
+      {
+        "module": "elief",
+        "file": "elief-25241039038aa1b6ebf38258b374f662649f7dd1.module",
+        "url": "https://jitpack.io/com/github/Link2011-Act2/Goldy/elief/25241039038aa1b6ebf38258b374f662649f7dd1/elief-25241039038aa1b6ebf38258b374f662649f7dd1.module",
+        "bytes": 4968,
+        "sha256": "764EA601A0F01ACF0F54EBAEAC71885D36C11669EBB658D8B6C7F7E4472E2861"
+      }
+    ]
+  },
+  "publishedSourceAndLicenseAudit": {
+    "passed": true,
+    "version": "25241039038aa1b6ebf38258b374f662649f7dd1",
+    "modules": [
+      {
+        "noLocalOrPyriteDependency": true,
+        "classesMatchLocal": false,
+        "localClassesSha256": "4dccff5b87bee1762fd4a3c55794d19920ac907b6f6795e06a2034eb5fb3a435",
+        "aarLicenseAndNoticeMatch": true,
+        "sourceLicenseAndNoticeMatch": true,
+        "matchedKotlinSources": 18,
+        "publishedClassesSha256": "3019aa8b35f96d86ff1410c1d64218e9cc964184bcc9709c38d813c09d69d599",
+        "noDemoOrPyriteClasses": true,
+        "module": "gold"
+      },
+      {
+        "noLocalOrPyriteDependency": true,
+        "classesMatchLocal": false,
+        "localClassesSha256": "3863fd9dceff88000ebed7c8dc7e4c83bc6dde8aceb08c1016e6a7a28dc849b7",
+        "aarLicenseAndNoticeMatch": true,
+        "sourceLicenseAndNoticeMatch": true,
+        "matchedKotlinSources": 7,
+        "publishedClassesSha256": "6d22ce399c0bd418b63a5446a898f7b16d4a1790f43f4e4f473aded75c2574b4",
+        "noDemoOrPyriteClasses": true,
+        "module": "elief"
+      }
+    ]
+  },
+  "compiledClassComparison": [
+    {
+      "differentClasses": [],
+      "localClassCount": 147,
+      "publishedClassCount": 147,
+      "classBytesMatch": true,
+      "module": "gold"
+    },
+    {
+      "differentClasses": [
+        "jp/linkserver/goldy/compose/UpdateScreenLayoutKt.class"
+      ],
+      "localClassCount": 26,
+      "publishedClassCount": 26,
+      "classBytesMatch": false,
+      "module": "elief"
+    }
+  ],
+  "publishedEliefPublicApi": {
+    "publicSignaturesMatchLocal": true,
+    "missingSignatures": 0,
+    "version": "25241039038aa1b6ebf38258b374f662649f7dd1",
+    "eliefClassesChecked": 26
+  },
+  "previousApiCompatibility": {
+    "retained": true,
+    "missingDescriptors": 0,
+    "originalTypes": 16,
+    "originalDescriptors": 147,
+    "record": "verification/pyrite-style-results.json"
+  },
+  "localVerification": {
+    "demoApksMatchPriorUiVerification": true,
+    "apks": {
+      "debug": {
+        "bytes": 13427389,
+        "sha256": "fb0e8522b86bdd9bd9b6e17464019925fce7b5a3fe37d28e18ffe88423bc7398",
+        "path": "app/build/outputs/apk/debug/app-debug.apk"
+      },
+      "releaseUnsigned": {
+        "bytes": 1519118,
+        "sha256": "5690c15b7070d9a61be2b78e6c6904a105b3b3cd26bbdcd1258e3fe76061d88b",
+        "path": "app/build/outputs/apk/release/app-release-unsigned.apk"
+      }
+    },
+    "releaseR8Build": "passed",
+    "lintDebug": {
+      "warnings": 9,
+      "errors": 0
+    },
+    "independentComposeConsumer": "passed, stable M3 1.4.0, both overloads and UpdateCardStyle; no Pyrite",
+    "logs": [
+      "build/ui-publication/preflight-build.txt",
+      "build/ui-publication/preflight-consumer.txt"
+    ],
+    "testApkBuild": "passed",
+    "eliefJvm": 12,
+    "goldJvm": 103,
+    "demoJvm": 6,
+    "debugBuild": "passed",
+    "failures": 0,
+    "lintRelease": {
+      "warnings": 9,
+      "errors": 0
+    }
+  },
+  "reusedUiVerification": {
+    "record": "verification/demo-style-selection-results.json",
+    "reason": "Demo/test implementation unchanged; Debug/Release APK hashes equal verified artifacts",
+    "r8RuntimeVariants": 6,
+    "finalSettingTests": 3,
+    "font18Tests": 10,
+    "api": 36,
+    "failures": 0,
+    "standardTests": 29
+  },
+  "independentJitpackConsumers": [
+    {
+      "version": "25241039038aa1b6ebf38258b374f662649f7dd1",
+      "feature": "gold",
+      "host": "scheduler",
+      "expressive": false,
+      "pomOnly": false,
+      "apkBytes": 80190,
+      "apkSha256": "753ADFFAA65E3DBFB7F55DC1FA673397ECE2FEFFFC41D2BDB80A42C5DFDDDECC",
+      "r8Mapping": true,
+      "hostActivityCompiled": true,
+      "lintErrors": 0,
+      "lintWarnings": 2,
+      "passed": true
+    },
+    {
+      "version": "25241039038aa1b6ebf38258b374f662649f7dd1",
+      "feature": "elief",
+      "host": "scheduler",
+      "expressive": false,
+      "pomOnly": false,
+      "apkBytes": 1056680,
+      "apkSha256": "BDF0A030059F93DF910147FA6E7E319A2B9FAFFC85A755ABA0AFA6950B90CB06",
+      "r8Mapping": true,
+      "hostActivityCompiled": true,
+      "lintErrors": 0,
+      "lintWarnings": 1,
+      "passed": true
+    },
+    {
+      "version": "25241039038aa1b6ebf38258b374f662649f7dd1",
+      "feature": "elief",
+      "host": "scheduler",
+      "expressive": false,
+      "pomOnly": true,
+      "apkBytes": 1056680,
+      "apkSha256": "0EF903A962FCBDDAF7E707C991CC118B517E5875A11DCB9688F93E37EA518F1C",
+      "r8Mapping": true,
+      "hostActivityCompiled": true,
+      "lintErrors": 0,
+      "lintWarnings": 1,
+      "passed": true
+    }
+  ],
+  "consumerIsolation": {
+    "includeBuild": false,
+    "producerProject": false,
+    "goldyExclusiveRepository": "https://jitpack.io",
+    "localMavenRepository": false,
+    "sourceClassifierResolved": true,
+    "mavenLocal": false,
+    "transitiveGoldSameSha": true,
+    "providerCoexistenceVerified": true
+  },
+  "security": {
+    "signaturePackageVersionCodeReleaseBindingUnchanged": true,
+    "goldCompiledClassesMatchLocal": true,
+    "fileProviderAndLeaseContractsUnchanged": true,
+    "goldUnchangedSinceVerifiedCommit": "6ddf8fd93451cdc92d859c68728d873652c65800",
+    "actualInstallCompletionClaimed": false
+  },
+  "style": {
+    "firstLaunch": "Material 3 Expressive",
+    "eliefTheme": "Host MaterialTheme and optional UpdateCardStyle; no required Pyrite/M3E",
+    "persistentSettings": [
+      "style",
+      "dark",
+      "dynamic",
+      "customFont"
+    ],
+    "choices": [
+      "Material 3 Expressive",
+      "Nothing風",
+      "通常Material 3"
+    ],
+    "exclusiveSelection": true,
+    "nothingDynamic": "Displayed off/disabled; preference retained"
+  },
+  "scope": {
+    "existingCommitsRewritten": false,
+    "demoApkPublished": false,
+    "forcePush": false,
+    "githubReleaseCreated": false,
+    "readOnlyRepositories": [
+      "ShutUp",
+      "NITTC Scheduler",
+      "Glyph Barty",
+      "BeastLocator",
+      "Pyrite"
+    ],
+    "tagsCreated": false
+  },
+  "limitations": [
+    "The current UI has not been exercised on physical devices or API26-35",
+    "TalkBack interaction has not been exercised",
+    "Dynamic Color is not tested with every wallpaper/device palette",
+    "Actual APK self-update completion is unverified; HandedOff only means installer handoff",
+    "Demo settings row scrolls horizontally at narrow widths",
+    "Existing apps are not yet migrated; their settings/cache and installer lease integration need Phase 3 validation"
+  ],
+  "phase3ShutUpReady": true,
+  "recordScope": "Pins implementation revision. Documentation-only successor has identical library/Demo sources and is checked separately as final master."
+}

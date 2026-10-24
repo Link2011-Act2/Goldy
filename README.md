@@ -7,10 +7,13 @@ transitively and uses the host's Material theme and typography.
 
 ## Installation
 
-Verified JitPack version **6ddf8fd934** builds commit
-`6ddf8fd93451cdc92d859c68728d873652c65800`.
-The [public build log](https://jitpack.io/com/github/Link2011-Act2/Goldy/6ddf8fd934/build.log)
-and an independent R8 consumer were checked against the downloaded AARs/POMs.
+Verified UI library revision: `25241039038aa1b6ebf38258b374f662649f7dd1`.
+The [public build log](https://jitpack.io/com/github/Link2011-Act2/Goldy/25241039038aa1b6ebf38258b374f662649f7dd1/build.log)
+and independent Gold/Elief R8 consumers were checked against the downloaded
+AARs, POMs, Gradle metadata and sources. Elief also passed POM-only resolution.
+See [UI publication verification](docs/ui-publication.md). These coordinates
+pin the verified implementation; later documentation-only commits keep the
+same library and Demo sources.
 
 In `settings.gradle.kts`:
 
@@ -30,13 +33,13 @@ dependencyResolutionManagement {
 For Core only:
 
 ```kotlin
-implementation("com.github.Link2011-Act2.Goldy:gold:6ddf8fd934")
+implementation("com.github.Link2011-Act2.Goldy:gold:25241039038aa1b6ebf38258b374f662649f7dd1")
 ```
 
 For Compose UI, use Elief; it brings the same commit's Gold transitively:
 
 ```kotlin
-implementation("com.github.Link2011-Act2.Goldy:elief:6ddf8fd934")
+implementation("com.github.Link2011-Act2.Goldy:elief:25241039038aa1b6ebf38258b374f662649f7dd1")
 ```
 
 Consumers need compileSdk 37 or newer. Elief uses stable Material3 1.4.0 through

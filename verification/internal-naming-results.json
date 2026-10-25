@@ -179,11 +179,19 @@
   "uiRegression": "18 Elief JVM tests passed, including default history label equivalence; full device UI suite not repeated for this naming-only change",
   "priorDeviceEvidence": "unified-updates-results.json (historical evidence only, not a run for this refactor)",
   "jitpack": {
-    "status": "pending exact pushed implementation commit"
+    "status": "passed",
+    "implementationCommit": "f7c13187c11be48b85421a35b7e693636b13ddda",
+    "artifacts": 8,
+    "consumerVariants": 3,
+    "allReleaseR8AndLintPassed": true,
+    "publishedApiAndOldClientPassed": true,
+    "details": "internal-naming-jitpack-results.json"
   },
   "limits": [
     "No new emulator/device UI run; default-label regression is JVM-tested",
     "API26/OEM runtime and actual installation completion not repeated; APK/installer source unchanged",
     "Existing lint warnings: Gold 2, Demo 9; zero errors"
-  ]
+  ],
+  "implementationCommit": "f7c13187c11be48b85421a35b7e693636b13ddda",
+  "push": "master advanced normally from ec80320624210a8f85b98476edec92ebc55cbbcd to f7c13187c11be48b85421a35b7e693636b13ddda"
 }

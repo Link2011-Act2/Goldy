@@ -21,6 +21,22 @@ equivalence are unchanged. IntDev2 versus IntDev_rev2 and absent versus explicit
 rev0 retain their existing ordering. VersionPolicy.kt only changes import/calls.
 No candidate selection, notification, APK identity, download or install rule changed.
 
+## Changed files
+
+- `gold/src/main/java/jp/linkserver/goldy/internal/ReleaseVersions.kt`
+- `gold/src/main/java/jp/linkserver/goldy/internal/ShutUpVersions.kt`
+- `gold/src/main/java/jp/linkserver/goldy/VersionPolicy.kt`
+- `elief/src/main/java/jp/linkserver/goldy/compose/UpdatePresentation.kt`
+- `elief/src/test/java/jp/linkserver/goldy/compose/UpdatePresentationTest.kt`
+- `app/src/main/java/jp/linkserver/projectgoldy/NotificationDemo.kt`
+- `verification/consumer/consumer/src/test/java/example/goldyconsumer/ConsumerTest.kt`
+- `verification/verify-version-binary-compatibility.py`
+- `verification/internal-naming-results.json`
+- `verification/internal-naming-jitpack-results.json`
+- `docs/public-api-contracts.md`
+- `docs/compose-api.md`
+- `docs/internal-naming-review.md`
+
 ## JVM and public API
 
 `ShutUpVersionsKt.compareShutUpVersions(String,String): Integer` and
@@ -68,7 +84,46 @@ python verification/verify-version-binary-compatibility.py --baseline-dir <18909
 
 Machine results: [internal-naming-results.json](../verification/internal-naming-results.json).
 Local logs and javap/client output: ignored `build/internal-naming/`.
-Exact pushed-SHA JitPack results will be recorded after publication verification.
+## Push and exact-SHA JitPack verification
+
+Implementation commit: `f7c13187c11be48b85421a35b7e693636b13ddda`.
+Normal master push succeeded from ec80320; no force push or commit rewriting.
+JitPack reported status `ok` and the exact same full SHA. Both modules' AAR, POM,
+Gradle metadata and sources JAR were actually downloaded (8 artifacts).
+
+Verified coordinates:
+
+```kotlin
+implementation("com.github.Link2011-Act2.Goldy:gold:f7c13187c11be48b85421a35b7e693636b13ddda")
+implementation("com.github.Link2011-Act2.Goldy:elief:f7c13187c11be48b85421a35b7e693636b13ddda")
+```
+
+[Successful build log](https://jitpack.io/com/github/Link2011-Act2/Goldy/f7c13187c11be48b85421a35b7e693636b13ddda/build.log).
+[Artifact and Consumer records](../verification/internal-naming-jitpack-results.json).
+
+All 18 Gold and 8 Elief Kotlin sources match the pushed implementation; AAR and
+sources LICENSE/NOTICE match. POM/metadata reference the same-SHA public Gold from
+Elief, without local/SNAPSHOT/Pyrite/Demo dependencies. Public AARs also retain all
+739/237 descriptors; the old compiled client matches all 4,096/64 results.
+Gold class bytes match local output. Two Elief Compose-containing facade classes
+differ in bytecode across build environments, as in the baseline publication;
+sources and JVM descriptors match. Bit-identical Elief compilation is not claimed.
+
+| External Consumer, JitPack only for Goldy | Release/R8/lint | APK bytes | Lint warnings/errors |
+|---|---|---:|---|
+| Gold, Gradle metadata | Passed | 79,226 | 3 / 0 |
+| Elief and transitive Gold, Gradle metadata | Passed | 1,110,428 | 1 / 0 |
+| Elief and transitive Gold, POM only | Passed | 1,110,428 | 1 / 0 |
+
+Each Consumer uses no producer project, includeBuild or local Maven. Gold has no
+Compose/Markwon/Pyrite dependency; Elief resolves matching Gold. Host manifest and
+provider coexistence checks pass. Public AAR sizes: Gold 271,165 bytes, Elief
+110,512 bytes. Local Demo Release APK: 1,520,222 bytes (not distributed).
+
+The subsequent reporting commit changes only this review and verification JSON.
+The coordinates above deliberately identify the actual tested implementation SHA;
+no older SHA is represented as containing the rename.
+
 
 ## Protected names and limits
 

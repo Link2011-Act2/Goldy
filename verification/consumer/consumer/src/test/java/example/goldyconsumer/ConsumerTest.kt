@@ -9,7 +9,7 @@ class ConsumerTest {
     @Test fun allThreePoliciesAreUsableFromAnIndependentArtifact() {
         assertTrue(VersionPolicies.ShutUp.compare("1.0-Beta10", "1.0-Beta2")!! > 0)
         assertTrue(VersionPolicies.NittcScheduler.compare("1.0-Beta10", "1.0-Beta2")!! > 0)
-        assertEquals(0, VersionPolicies.GlyphBarty.compare("1.0-Beta10", "1.0-Beta2"))
+        assertTrue(VersionPolicies.GlyphBarty.compare("1.0-Beta10", "1.0-Beta2")!! > 0)
         assertEquals(ReleaseFeed.Latest, UpdatePolicies.glyphBarty().feed)
     }
 

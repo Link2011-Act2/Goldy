@@ -73,7 +73,7 @@ The standard screen uses an arrow IconButton (`UpdateStrings.back` is its access
 
 Actions are docked below the scroll at ordinary sizes. At fontScale >= 1.5 or available height < 480dp, including reduced IME space, actions join the same scroll so they cannot crowd out the content. The docked region is bounded to 40% of the available height and can itself scroll for long permission/error messages. Navigation-bar insets, IME padding and Scaffold content insets are applied without a fixed spacer. These are layout choices, not an operation/installation policy.
 
-The original `UpdateOverviewScreen` signature is retained. A separate overload requires `presentation`; existing calls remain unambiguous. Other state, strings, Markdown and adapter signatures are unchanged. Defaults preserve the raw version tag on screen. To remove `v` only for display, or localize history channels:
+The original `UpdateOverviewScreen` signature is retained. A separate overload requires `presentation`; existing calls remain unambiguous. Other state, strings, Markdown and adapter signatures are unchanged. Defaults preserve the raw version tag on screen and classify history channels with `VersionPolicies.Common`. This has the same behavior as the retained `NittcScheduler` alias. To remove `v` only for display, or localize history channels:
 
 ```kotlin
 UpdateOverviewScreen(

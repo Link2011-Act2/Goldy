@@ -84,7 +84,7 @@ class NotificationDemoViewModel(application: Application) : AndroidViewModel(app
 }
 
 private fun notificationRelease(id: Long, tag: String) = GitHubRelease(id, tag,
-    notes = "## Offline notification showcase\n\nShutUp ordering compares rev2 before rev10.\n\n- Hiding only affects the banner.\n- Ignoring only affects notifications.\n- Manual details stay available.",
+    notes = "## Offline notification showcase\n\nCommon version ordering compares rev2 before rev10.\n\n- Hiding only affects the banner.\n- Ignoring only affects notifications.\n- Manual details stay available.",
     url = "https://github.com/Link2011-Act2/Goldy/releases/tag/$tag", prerelease = "IntDev" in tag)
 
 @Composable

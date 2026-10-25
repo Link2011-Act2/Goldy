@@ -10,7 +10,7 @@ import jp.linkserver.goldy.VersionPolicies
 class UpdatePresentation(
     val versionLabel: (GitHubRelease) -> String = { it.tag },
     val historyChannelLabel: (GitHubRelease) -> String = {
-        VersionPolicies.NittcScheduler.channel(it.tag, it.prerelease).name
+        VersionPolicies.Common.channel(it.tag, it.prerelease).name
     },
     /** Decorative icon; the surrounding IconButton supplies UpdateStrings.back as its description. */
     val backIcon: @Composable () -> Unit = {

@@ -1,6 +1,6 @@
 package jp.linkserver.goldy
 
-import jp.linkserver.goldy.internal.compareShutUpVersions
+import jp.linkserver.goldy.internal.compareReleaseVersions
 import jp.linkserver.goldy.internal.commonReleaseChannel
 import java.util.Locale
 
@@ -16,7 +16,7 @@ interface VersionPolicy {
 object VersionPolicies {
     val ShutUp: VersionPolicy = object : VersionPolicy {
         override fun compare(left: String, right: String, leftPrerelease: Boolean, rightPrerelease: Boolean): Int? =
-            compareShutUpVersions(left, right)
+            compareReleaseVersions(left, right)
 
         override fun channel(version: String, prerelease: Boolean): ReleaseChannel {
             val suffix = version.substringAfter('-', "").lowercase(Locale.US)
@@ -33,7 +33,7 @@ object VersionPolicies {
     /** Shared by all four presets. GitHub prerelease flags never override tag ordering. */
     val Common: VersionPolicy = object : VersionPolicy {
         override fun compare(left: String, right: String, leftPrerelease: Boolean, rightPrerelease: Boolean): Int? =
-            compareShutUpVersions(left, right)
+            compareReleaseVersions(left, right)
         override fun channel(version: String, prerelease: Boolean): ReleaseChannel =
             commonReleaseChannel(version)
     }

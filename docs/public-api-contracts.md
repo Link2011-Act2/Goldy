@@ -30,6 +30,14 @@ Scheduler/Glyph legacy ordering changes intentionally; policy IDs invalidate
 old comparison-dependent caches while retaining ignores. See
 [the comparison and migration report](four-app-updater-comparison.md).
 
+The canonical internal implementation is `ReleaseVersions.kt` /
+`compareReleaseVersions`. `ShutUpVersionsKt.compareShutUpVersions` and
+`ShutUpVersionsKt.commonReleaseChannel` remain thin JVM forwarding entries for
+previously compiled clients. The algorithm, app presets, public VersionPolicies
+getters and persisted policy IDs are unchanged. Elief uses Common for its default
+history channel labels, which remains identical to the NittcScheduler alias.
+See [the naming and binary compatibility review](internal-naming-review.md).
+
 The sample and compiled host example synchronously claim operations on Main
 before launching coroutines. Updating MutableStateFlow from progress IO is safe;
 View/Activity operations must be dispatched to Main. Production hosts supply

@@ -1,0 +1,189 @@
+{
+  "date": "2026-10-25",
+  "startingHead": "ec80320624210a8f85b98476edec92ebc55cbbcd",
+  "baseline": "189092a7b9a142e5d432017b5b9ce71404a5758b",
+  "jvm": {
+    "gold": {
+      "tests": 119,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "elief": {
+      "tests": 18,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "app": {
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "oldConsumer": {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "apiCompatibility": {
+    "passed": true,
+    "modules": [
+      {
+        "module": "gold",
+        "baseline": "gold-189092a7b9a142e5d432017b5b9ce71404a5758b.aar",
+        "publicTypes": 103,
+        "originalDescriptors": 739,
+        "missingDescriptors": [],
+        "retained": true
+      },
+      {
+        "module": "elief",
+        "baseline": "elief-189092a7b9a142e5d432017b5b9ce71404a5758b.aar",
+        "publicTypes": 25,
+        "originalDescriptors": 237,
+        "missingDescriptors": [],
+        "retained": true
+      }
+    ]
+  },
+  "internalBinaryCompatibility": {
+    "passed": true,
+    "baselineCommit": "189092a7b9a142e5d432017b5b9ce71404a5758b",
+    "algorithmSourceUnchanged": true,
+    "legacyFacade": "jp.linkserver.goldy.internal.ShutUpVersionsKt",
+    "retainedInternalMethods": 2,
+    "clientCompiledAgainst": "baseline AAR",
+    "newRuntimeUsesBaselineGold": false,
+    "corpusVersions": 64,
+    "exactPairComparisons": 4096,
+    "exactChannelComparisons": 64
+  },
+  "lintRelease": {
+    "gold": {
+      "Error": 0,
+      "Fatal": 0,
+      "Warning": 2
+    },
+    "elief": {
+      "Error": 0,
+      "Fatal": 0,
+      "Warning": 0
+    },
+    "app": {
+      "Error": 0,
+      "Fatal": 0,
+      "Warning": 9
+    }
+  },
+  "demoDebugReleaseAndR8": true,
+  "localConsumers": {
+    "gold": "Release build, 4 JVM tests, exact AAR hash, coroutines transitive, no UI/Pyrite",
+    "elief": "Release build, exact Gold/Elief AAR hashes, transitive Gold, stable Material3 1.4.0, no Pyrite"
+  },
+  "artifacts": {
+    "gold/build/outputs/aar/gold-release.aar": {
+      "bytes": 271176,
+      "sha256": "31801db17927c22f501652fd5cb71708e8a1ec9f3f1296b86c3af66ae5c5308a"
+    },
+    "elief/build/outputs/aar/elief-release.aar": {
+      "bytes": 110570,
+      "sha256": "d4eef988c5b2075e0bdaecfd102dd2f48d14da76d1beef708369ac901bfd8d6d"
+    },
+    "app/build/outputs/apk/debug/app-debug.apk": {
+      "bytes": 13825704,
+      "sha256": "73a1a3138696545fd2e455925767091d9971b2108469cc0183cac70e8289c529"
+    },
+    "app/build/outputs/apk/release/app-release-unsigned.apk": {
+      "bytes": 1520222,
+      "sha256": "624d1dd76f1d53ac25a994d302e03639eb08cf65dd91f276da1e48c92acf09ca"
+    }
+  },
+  "protectedFilesUnchanged": 69,
+  "protectedPaths": [
+    "LICENSE",
+    "NOTICE",
+    "README.md",
+    "app/build.gradle.kts",
+    "build.gradle.kts",
+    "elief/build.gradle.kts",
+    "elief/src/main/AndroidManifest.xml",
+    "elief/src/main/java/jp/linkserver/goldy/compose/ReleaseNotes.kt",
+    "elief/src/main/java/jp/linkserver/goldy/compose/UpdateCardStyle.kt",
+    "elief/src/main/java/jp/linkserver/goldy/compose/UpdateNotifications.kt",
+    "elief/src/main/java/jp/linkserver/goldy/compose/UpdateOverviewScreen.kt",
+    "elief/src/main/java/jp/linkserver/goldy/compose/UpdateScreenLayout.kt",
+    "elief/src/main/java/jp/linkserver/goldy/compose/UpdateStrings.kt",
+    "elief/src/main/java/jp/linkserver/goldy/compose/UpdateUiState.kt",
+    "elief/src/main/res/drawable/elief_arrow_back.xml",
+    "elief/src/main/res/drawable/elief_close.xml",
+    "elief/src/main/res/drawable/elief_expand_more.xml",
+    "elief/src/main/res/drawable/elief_update.xml",
+    "elief/src/main/resources/META-INF/elief/LICENSE",
+    "elief/src/main/resources/META-INF/elief/NOTICE",
+    "gold/build.gradle.kts",
+    "gold/src/main/AndroidManifest.xml",
+    "gold/src/main/java/jp/linkserver/goldy/AndroidApkInspector.kt",
+    "gold/src/main/java/jp/linkserver/goldy/ApkDownloader.kt",
+    "gold/src/main/java/jp/linkserver/goldy/ApkInstaller.kt",
+    "gold/src/main/java/jp/linkserver/goldy/ApkPolicy.kt",
+    "gold/src/main/java/jp/linkserver/goldy/GitHubReleaseClient.kt",
+    "gold/src/main/java/jp/linkserver/goldy/GitHubReleaseParser.kt",
+    "gold/src/main/java/jp/linkserver/goldy/GitHubRepository.kt",
+    "gold/src/main/java/jp/linkserver/goldy/Goldy.kt",
+    "gold/src/main/java/jp/linkserver/goldy/GoldyFileProvider.kt",
+    "gold/src/main/java/jp/linkserver/goldy/InstallFiles.kt",
+    "gold/src/main/java/jp/linkserver/goldy/Models.kt",
+    "gold/src/main/java/jp/linkserver/goldy/PreferencesUpdateStateStore.kt",
+    "gold/src/main/java/jp/linkserver/goldy/ReleaseSelector.kt",
+    "gold/src/main/java/jp/linkserver/goldy/UpdatePolicy.kt",
+    "gold/src/main/java/jp/linkserver/goldy/UpdateStateStore.kt",
+    "gold/src/main/res/xml/goldy_install_paths.xml",
+    "gold/src/main/resources/META-INF/goldy/LICENSE",
+    "gold/src/main/resources/META-INF/goldy/NOTICE",
+    "gold/src/test/java/jp/linkserver/goldy/ApkDownloadTest.kt",
+    "gold/src/test/java/jp/linkserver/goldy/ApkIdentityFixtureTest.kt",
+    "gold/src/test/java/jp/linkserver/goldy/ApkRevalidationTest.kt",
+    "gold/src/test/java/jp/linkserver/goldy/ApkVerifierTest.kt",
+    "gold/src/test/java/jp/linkserver/goldy/ArchiveSigningFlagsTest.kt",
+    "gold/src/test/java/jp/linkserver/goldy/CacheJsonTest.kt",
+    "gold/src/test/java/jp/linkserver/goldy/CommonVersionPolicyTest.kt",
+    "gold/src/test/java/jp/linkserver/goldy/Fixtures.kt",
+    "gold/src/test/java/jp/linkserver/goldy/GitHubReleaseClientTest.kt",
+    "gold/src/test/java/jp/linkserver/goldy/GoldyStateTest.kt",
+    "gold/src/test/java/jp/linkserver/goldy/LegacyPolicies.kt",
+    "gold/src/test/java/jp/linkserver/goldy/PreferencesUpdateStateStoreTest.kt",
+    "gold/src/test/java/jp/linkserver/goldy/ReleaseSelectorTest.kt",
+    "gold/src/test/java/jp/linkserver/goldy/SelectionCharacterizationTest.kt",
+    "gold/src/test/java/jp/linkserver/goldy/VersionCharacterizationTest.kt",
+    "gold/src/test/java/jp/linkserver/goldy/internal/LegacyVersionRules.kt",
+    "gold/src/test/java/jp/linkserver/goldy/legacy/glyph/Rules.kt",
+    "gold/src/test/java/jp/linkserver/goldy/legacy/scheduler/Rules.kt",
+    "gold/src/test/java/jp/linkserver/goldy/legacy/shutup/ReleaseChannel.kt",
+    "gold/src/test/java/jp/linkserver/goldy/legacy/shutup/ReleaseVersion.kt",
+    "gold/src/test/java/jp/linkserver/goldy/legacy/shutup/Selection.kt",
+    "gold/src/test/resources/four-app-versions.json",
+    "gold/src/test/resources/legacy-source-hashes.txt",
+    "gold/src/test/resources/release-apk-identity.json",
+    "gradle/gradle-daemon-jvm.properties",
+    "gradle/libs.versions.toml",
+    "gradle/wrapper/gradle-wrapper.jar",
+    "gradle/wrapper/gradle-wrapper.properties",
+    "settings.gradle.kts"
+  ],
+  "nonGoldyRepositoriesWritten": false,
+  "algorithmChanged": false,
+  "publicApiRemoved": false,
+  "uiRegression": "18 Elief JVM tests passed, including default history label equivalence; full device UI suite not repeated for this naming-only change",
+  "priorDeviceEvidence": "unified-updates-results.json (historical evidence only, not a run for this refactor)",
+  "jitpack": {
+    "status": "pending exact pushed implementation commit"
+  },
+  "limits": [
+    "No new emulator/device UI run; default-label regression is JVM-tested",
+    "API26/OEM runtime and actual installation completion not repeated; APK/installer source unchanged",
+    "Existing lint warnings: Gold 2, Demo 9; zero errors"
+  ]
+}

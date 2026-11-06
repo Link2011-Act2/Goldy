@@ -72,7 +72,9 @@ class NotificationScreenTest {
         assertTrue(model().engine.state.value.lastOutcome is CheckOutcome.Failure)
         assertNotNull(model().engine.state.value.availableUpdate)
         rule.onNodeWithTag("goldy-notification-icon").performScrollTo().performClick()
-        rule.onNodeWithTag("goldy-notification-check").performScrollTo().assertIsEnabled()
+        rule.onNodeWithTag("goldy-notification-check").assertDoesNotExist()
+        rule.onNodeWithTag("goldy-notification-recheck").performScrollTo().assertIsEnabled()
+            .assertContentDescriptionEquals("Retry check")
         rule.onNodeWithTag("goldy-notification-details").performScrollTo().assertIsDisplayed()
         capture("cached-failure-dialog", dialog = true)
         button("Not now").performClick()
@@ -118,10 +120,18 @@ class NotificationScreenTest {
                 rule.onNodeWithTag("goldy-notification-banner").performScrollTo().assertIsDisplayed()
                 capture("${style.name}-$dark-banner")
                 rule.onNodeWithTag("goldy-notification-icon").performScrollTo().performClick()
-                rule.onNodeWithTag("goldy-notification-check").performScrollTo().assertIsDisplayed()
+                rule.onNodeWithTag("goldy-notification-check").assertDoesNotExist()
+                rule.onNodeWithTag("goldy-notification-recheck").performScrollTo().assertIsDisplayed()
+                    .assertContentDescriptionEquals("Check for updates")
                 rule.onNodeWithTag("goldy-notification-ignore").performScrollTo().assertIsDisplayed()
                 rule.onNodeWithTag("goldy-notification-details").performScrollTo().assertIsDisplayed()
                 capture("${style.name}-$dark-dialog", dialog = true)
+                rule.onNodeWithTag("goldy-notification-details").performClick()
+                rule.onNodeWithTag("demo-screen-notification-details").assertIsDisplayed()
+                rule.onNodeWithTag("latest-release-notes").performScrollTo().assertIsDisplayed()
+                capture("${style.name}-$dark-details")
+                rule.onNodeWithContentDescription("Back").performClick()
+                rule.onNodeWithTag("notification-manual-check").performScrollTo().performClick()
                 button("Not now").performClick()
             }
         }
@@ -156,16 +166,58 @@ class NotificationScreenTest {
                 }
                 if (visible) UpdateCheckDialog(GoldyState(candidate, candidate), { checks++ }, { open++ },
                     { ignored = it }, { visible = false },
-                    strings = UpdateNotificationStrings(title = "ホスト更新", openDetails = "詳細を表示"), icon = { Text("◎") })
+                    strings = UpdateNotificationStrings(title = "ホスト更新", openDetails = "詳細を表示", check = "再確認"), icon = { Text("◎") })
             }
         }
         rule.onNodeWithText("ホスト更新").assertIsDisplayed()
-        rule.onNodeWithTag("goldy-notification-check").performScrollTo().performClick()
+        rule.onNodeWithTag("goldy-notification-check").assertDoesNotExist()
+        rule.onNodeWithTag("goldy-notification-recheck").performScrollTo().assertContentDescriptionEquals("再確認").performClick()
         rule.onNodeWithTag("goldy-notification-details").performScrollTo().performClick()
         rule.onNodeWithTag("goldy-notification-ignore").performScrollTo().performClick()
         assertEquals(1, checks); assertEquals(1, open); assertEquals(candidate.release.tag, ignored)
         button("Not now").performClick()
         rule.onNodeWithTag("goldy-update-check-dialog").assertDoesNotExist()
+    }
+
+    @Test fun idleCheckIsPrimaryAndCheckingDisablesDuplicateOperations() {
+        open(); button("Slow check").performClick()
+        button("Manual update check").performClick()
+        rule.onNodeWithText("Check for a new version.").assertIsDisplayed()
+        rule.onNodeWithTag("goldy-notification-recheck").assertDoesNotExist()
+        rule.onNodeWithTag("goldy-notification-check").performScrollTo().performClick()
+        rule.waitUntil(5_000) { model().engine.state.value.checking }
+        rule.onNodeWithTag("goldy-notification-check").assertIsNotEnabled().performClick()
+        rule.onNodeWithText("Checking for updates…").performScrollTo().assertIsDisplayed()
+        assertEquals(1, model().checks)
+        rule.activityRule.scenario.recreate()
+        rule.onNodeWithTag("goldy-update-check-dialog").assertIsDisplayed()
+        rule.onNodeWithTag("goldy-notification-check").performScrollTo().assertIsNotEnabled()
+        assertEquals(1, model().checks)
+        rule.runOnIdle { model().cancelCheck() }; settled()
+        rule.onNodeWithTag("goldy-notification-check").assertIsEnabled()
+    }
+
+    @Test fun recheckIsSecondaryAndRetainsCandidateWhileChecking() {
+        open(); check()
+        val candidate = model().engine.state.value.availableUpdate
+        val before = model().checks
+        button("Slow check").performClick()
+        button("Manual update check").performClick()
+        rule.onNodeWithTag("goldy-notification-check").assertDoesNotExist()
+        rule.onNodeWithText("Check for updates").assertDoesNotExist()
+        rule.onNodeWithTag("goldy-notification-details").performScrollTo().assertIsEnabled()
+        rule.onNodeWithTag("goldy-notification-recheck").performScrollTo().performClick()
+        rule.waitUntil(5_000) { model().engine.state.value.checking }
+        rule.onNodeWithTag("goldy-notification-recheck").assertIsNotEnabled().performClick()
+        assertEquals(before + 1, model().checks)
+        assertEquals(candidate, model().engine.state.value.availableUpdate)
+        rule.onNodeWithTag("goldy-notification-details").performScrollTo().assertIsEnabled().performClick()
+        rule.onNodeWithTag("demo-screen-notification-details").assertIsDisplayed()
+        assertEquals(candidate, model().selected)
+        rule.runOnIdle { model().cancelCheck() }; settled()
+        rule.onNodeWithContentDescription("Back").performClick()
+        rule.onNodeWithTag("notification-showcase").assertIsDisplayed()
+        assertEquals(candidate, model().engine.state.value.availableUpdate)
     }
 
     private fun capture(name: String, dialog: Boolean = false) {

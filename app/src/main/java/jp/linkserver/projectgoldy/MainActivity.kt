@@ -24,6 +24,7 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.semantics.Role
 import androidx.compose.ui.unit.dp
 import jp.linkserver.goldy.compose.UpdateOverviewScreen
+import jp.linkserver.pyrite.screen.PyriteScreenTransition
 import kotlinx.coroutines.launch
 
 class MainActivity : ComponentActivity() {
@@ -70,7 +71,9 @@ internal fun SampleApp(
     onPermission: () -> Unit = {},
     notifications: NotificationDemoViewModel? = null
 ) {
-    var mode by rememberSaveable { mutableIntStateOf(0) }
+    var routeKey by rememberSaveable { mutableStateOf(DemoDestination.Showcase.key) }
+    val destination = DemoDestination.fromKey(routeKey)
+    fun navigate(screen: DemoDestination) { routeKey = screen.key }
     val context = LocalContext.current
     val preferences = remember(context) { DemoAppearancePreferences(context) }
     var appearance by remember(preferences) { mutableStateOf(preferences.load()) }
@@ -84,7 +87,7 @@ internal fun SampleApp(
             Column(Modifier.fillMaxSize().statusBarsPadding()) {
                 Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(horizontal = 8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
                     listOf("UI Showcase", "Live Demo", "Update Demo", "Style reference", "Notifications").forEachIndexed { index, name ->
-                        FilterChip(mode == index, { mode = index }, { Text(name) })
+                        FilterChip(destination.tab == index, { navigate(DemoDestination.entries[index]) }, { Text(name) })
                     }
                 }
                 Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(horizontal = 8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
@@ -96,23 +99,49 @@ internal fun SampleApp(
                         enabled = Build.VERSION.SDK_INT >= 31 && appearance.style != DemoStyle.Nothing)
                     FilterChip(appearance.customFont, { changeAppearance(appearance.copy(customFont = !appearance.customFont)) }, { Text("Custom font") })
                 }
-                if (mode == 0) Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(horizontal = 8.dp), horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                    scenarioNames.forEachIndexed { index, label -> FilterChip(model.scenario == index, { model.select(index) }, { Text(label) }) }
+                BackHandler {
+                    when (destination) {
+                        DemoDestination.NotificationDetails -> navigate(DemoDestination.Notifications)
+                        DemoDestination.Showcase -> model.event = "Back requested by host"
+                        else -> navigate(DemoDestination.Showcase)
+                    }
                 }
-                BackHandler { if (mode == 0) model.event = "Back requested by host" else mode = 0 }
-                when (mode) {
-                1 -> live?.let { LiveDemoScreen(it, onOpenUrl) }
-                3 -> StyleReferenceScreen { mode = 0 }
-                4 -> notifications?.let { NotificationShowcase(it) }
-                2 -> update?.let { UpdateDemoScreen(it, { mode = 0 }, onOpenUrl, onInstall, onResumePending, onPermission) }
-                else -> UpdateOverviewScreen(model.state,
-                    onBack = { model.event = "Back requested by host" },
-                    onOpenUrl = { model.event = "Host received link: " + it },
-                    onAction = model::action,
-                    header = { Column {
-                        Text("Goldy Demo · offline UI Showcase", style = MaterialTheme.typography.titleMedium)
-                        Text(model.event, style = MaterialTheme.typography.labelMedium)
-                    } })
+                PyriteScreenTransition(targetState = destination, direction = ::demoNavigationDirection,
+                    modifier = Modifier.weight(1f), contentKey = { it.key }) { screen ->
+                    Box(Modifier.fillMaxSize().testTag("demo-screen-${screen.key}")) {
+                        when (screen) {
+                            DemoDestination.Live -> live?.let { LiveDemoScreen(it, onOpenUrl) }
+                            DemoDestination.StyleReference -> StyleReferenceScreen { navigate(DemoDestination.Showcase) }
+                            DemoDestination.Notifications -> notifications?.let { model ->
+                                NotificationShowcase(model) { candidate ->
+                                    model.open(candidate)
+                                    navigate(DemoDestination.NotificationDetails)
+                                }
+                            }
+                            DemoDestination.NotificationDetails -> notifications?.let {
+                                NotificationDetails(it) { navigate(DemoDestination.Notifications) }
+                            }
+                            DemoDestination.Update -> update?.let {
+                                UpdateDemoScreen(it, { navigate(DemoDestination.Showcase) }, onOpenUrl, onInstall, onResumePending, onPermission)
+                            }
+                            DemoDestination.Showcase -> Column {
+                                Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(horizontal = 8.dp),
+                                    horizontalArrangement = Arrangement.spacedBy(8.dp)) {
+                                    scenarioNames.forEachIndexed { index, label ->
+                                        FilterChip(model.scenario == index, { model.select(index) }, { Text(label) })
+                                    }
+                                }
+                                UpdateOverviewScreen(model.state,
+                                    onBack = { model.event = "Back requested by host" },
+                                    onOpenUrl = { model.event = "Host received link: " + it },
+                                    onAction = model::action, modifier = Modifier.weight(1f),
+                                    header = { Column {
+                                        Text("Goldy Demo · offline UI Showcase", style = MaterialTheme.typography.titleMedium)
+                                        Text(model.event, style = MaterialTheme.typography.labelMedium)
+                                    } })
+                            }
+                        }
+                    }
                 }
             }
         }

@@ -128,12 +128,15 @@ fun UpdateCheckDialog(
                     color = if (state.lastOutcome is CheckOutcome.Failure) MaterialTheme.colorScheme.error
                         else MaterialTheme.colorScheme.onSurfaceVariant)
                 if (state.checking) LinearProgressIndicator(Modifier.fillMaxWidth())
-                if (update != null) Text(update.release.tag, style = MaterialTheme.typography.titleMedium)
-                if (state.fromCache && update != null) Text(strings.cached, style = MaterialTheme.typography.labelMedium)
-                Button(onClick = onCheck, enabled = !state.checking,
-                    modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("goldy-notification-check")) {
-                    Text(if (state.lastOutcome is CheckOutcome.Failure) strings.retry else strings.check)
+                if (update != null) Row(Modifier.fillMaxWidth(), verticalAlignment = Alignment.CenterVertically) {
+                    Text(update.release.tag, Modifier.weight(1f), style = MaterialTheme.typography.titleMedium)
+                    IconButton(onClick = onCheck, enabled = !state.checking,
+                        modifier = Modifier.testTag("goldy-notification-recheck")) {
+                        Icon(painterResource(R.drawable.elief_refresh),
+                            contentDescription = if (state.lastOutcome is CheckOutcome.Failure) strings.retry else strings.check)
+                    }
                 }
+                if (state.fromCache && update != null) Text(strings.cached, style = MaterialTheme.typography.labelMedium)
                 if (update != null) {
                     Button(onClick = { onOpenDetails(update) }, modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp)
                         .testTag("goldy-notification-details")) {
@@ -141,6 +144,11 @@ fun UpdateCheckDialog(
                     }
                     OutlinedButton(onClick = { onIgnoreVersion(update.release.tag) },
                         modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("goldy-notification-ignore")) { Text(strings.ignoreVersion) }
+                } else {
+                    Button(onClick = onCheck, enabled = !state.checking,
+                        modifier = Modifier.fillMaxWidth().heightIn(min = 48.dp).testTag("goldy-notification-check")) {
+                        Text(if (state.lastOutcome is CheckOutcome.Failure) strings.retry else strings.check)
+                    }
                 }
             }
         },

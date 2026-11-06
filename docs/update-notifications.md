@@ -48,6 +48,8 @@ if (showDialog) {
 
 BannerはshowBannerとnotificationUpdate、IconはnotificationUpdate、DialogはavailableUpdateを参照します。したがってbannerをhideしてもbadgeは残り、ignoreしても設定画面の手動dialogから詳細を確認できます。Dialogの表示自体がネットワーク通信を開始することはありません。
 
+候補がない場合はCheck for updates（失敗後はRetry check）を主ボタンとして表示します。`availableUpdate` がある場合はView updateを主ボタンにし、再確認はバージョン横のIconButtonに切り替えます。アイコンのcontentDescriptionには既存の `strings.check`／`strings.retry` を使い、checking中はどちらの確認操作も無効にします。無視済みの候補や、直近のFailureと併存するキャッシュ候補も詳細閲覧の対象です。失敗・制限・確認中の状況表示は維持し、Elief自身がキャッシュを消去したり再確認を開始したりすることはありません。
+
 Eliefはcallbackだけ通知し、画面遷移・scope・通信・永続設定・インストーラーを所有しません。Dialogのcheck操作はchecking中無効になりますが、ホストVMでもlaunch前の同期claimで二重操作を防いでください。手動checkは `Goldy.check(CheckTrigger.Manual)` を呼び、HTTP retry制約は迂回しません。GoldのCancellationExceptionを握りつぶさないでください。
 
 色・Typography・ShapesはホストMaterialThemeに従います。Bannerは `LocalUpdateCardStyle` のcontainer/shape、残りはMaterialThemeの役割色を使用します。`UpdateNotificationStrings` で全表示文言、各 `icon` composable slotでアイコンを差し替えられます。modifierはホストの配置・幅・追加gestureに使います。Pyriteの必須依存も独自フォントもありません。Nothingのprimaryはホストのモノクロ設定に従い、独自の赤いアクセントを追加しません。

@@ -15,6 +15,14 @@
 
 スタイル・明暗・Dynamic Color・フォントはDemo専用設定としてプロセス終了後も保持します。選択画面と履歴・スクロールの表示状態はsaveable、通信・転送とLiveのセッションキャッシュはViewModelでActivity再生成を越えて保持します。設定行は横スクロール、スタイル選択ダイアログは必要に応じて縦スクロールできます。詳細は[スタイル選択の検証](demo-style-selection.md)を参照してください。
 
+## 画面遷移
+
+Demoだけが既存Pyrite SHA `508b1cf5131679fee7581acbc7ea55a365b6ff2c` の公開 `PyriteScreenTransition` を使用します。全5タブとNotificationsの詳細画面を単一の遷移ホストで描画します。タブ順はUI Showcase → Live Demo → Update Demo → Style reference → Notificationsで、順方向はForward、逆はBackwardです。Notifications → 詳細はForward、詳細 → NotificationsはBackwardです。方向はPyriteから渡される実際のinitial/targetから決めるため、途中で別タブや戻る操作が入ってもグローバルな方向フラグを流用しません。
+
+幅の1/5の水平slide・fade・標準springはPyriteの実装をそのまま使用し、独自のduration/easingやNavigation Composeを追加しません。content lambdaの画面キーで描画し、Stringの安定キーをAnimatedContentとSaveableStateHolderに共有します。画面ごとのスクロール・展開・dialogなどのsaveable状態、ViewModelの選択・通信状態はタブ移動とActivity再生成を越えて保持します。戻る処理はホストに集約し、詳細コンポーネントはBackHandlerを登録しません。
+
+詳細で表示する候補はホストViewModelに固定し、戻る際にすぐ消さず退場アニメーション中も描画できるようにします。次の明示的な詳細選択時に置き換えます。これはメタデータだけで、APKやインストーラーの寿命管理には関わりません。Notificationsのfixture/storeは従来どおりプロセス内のみで、プロセス死亡後の候補・通信状態の復元は保証しません。Gold/Elief自体はPyriteにもDemoのナビゲーションにも依存しません。
+
 ## 通信・キャッシュ
 
 起動時のネットワーク通信、バックグラウンド更新、PATの埋め込みはありません。Liveの取得成功・通信中・失敗・キャンセル・HTTPアクセス制限と、利用可能な再試行日時を表示します。失敗しても直前の成功結果を破棄しません。Liveのキャッシュはメモリー内で、プロセス終了後は再取得が必要です。Goldクライアントが使うETag/304の有無は公開APIでは区別できないため、「必ずネットワークから全件取得した」とは表示しません。

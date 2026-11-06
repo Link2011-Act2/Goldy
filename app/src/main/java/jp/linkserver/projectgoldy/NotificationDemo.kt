@@ -62,7 +62,6 @@ class NotificationDemoViewModel(application: Application) : AndroidViewModel(app
         event = "New Gold session restored from the in-memory store without fetching"
     }
     fun open(candidate: UpdateCandidate) { selected = candidate }
-    fun back() { selected = null }
     fun link(url: String) { event = "Fixture URL callback only: $url" }
     fun cancelCheck() {
         if (engine.state.value.checking) {
@@ -88,16 +87,9 @@ private fun notificationRelease(id: Long, tag: String) = GitHubRelease(id, tag,
     url = "https://github.com/Link2011-Act2/Goldy/releases/tag/$tag", prerelease = "IntDev" in tag)
 
 @Composable
-internal fun NotificationShowcase(model: NotificationDemoViewModel) {
+internal fun NotificationShowcase(model: NotificationDemoViewModel, onOpenDetails: (UpdateCandidate) -> Unit) {
     val state by model.engine.state.collectAsState()
     var prompt by rememberSaveable { mutableStateOf(false) }
-    val selected = model.selected
-    if (selected != null) {
-        androidx.activity.compose.BackHandler { model.back() }
-        UpdateOverviewScreen(state.copy(availableUpdate = selected).toUpdateUiState(), model::back,
-            model::link, {}, header = { Text("Offline notification details · no APK is supplied") })
-        return
-    }
     Column(Modifier.fillMaxSize().navigationBarsPadding().verticalScroll(rememberScrollState())
         .padding(16.dp).testTag("notification-showcase"), verticalArrangement = Arrangement.spacedBy(12.dp)) {
         Text("Notification showcase", style = MaterialTheme.typography.headlineSmall)
@@ -109,7 +101,7 @@ internal fun NotificationShowcase(model: NotificationDemoViewModel) {
         }
         Text("Checks: ${model.checks}", Modifier.testTag("notification-check-count"))
         Text(if (state.availableUpdate == null) "No available update" else "Available: ${state.availableUpdate!!.release.tag}")
-        UpdateNotificationBanner(state, model::open, model::hide)
+        UpdateNotificationBanner(state, onOpenDetails, model::hide)
         Row {
             UpdateNotificationIcon(state, { prompt = true })
             Button(onClick = { prompt = true }, modifier = Modifier.testTag("notification-manual-check")) {
@@ -128,6 +120,16 @@ internal fun NotificationShowcase(model: NotificationDemoViewModel) {
             color = MaterialTheme.colorScheme.error)
     }
     if (prompt) UpdateCheckDialog(state, model::check,
-        onOpenDetails = { candidate -> prompt = false; model.open(candidate) },
+        onOpenDetails = { candidate -> prompt = false; onOpenDetails(candidate) },
         onIgnoreVersion = model::ignore, onDismiss = { prompt = false })
+}
+
+@Composable
+internal fun NotificationDetails(model: NotificationDemoViewModel, onBack: () -> Unit) {
+    val state by model.engine.state.collectAsState()
+    // Keep pinned metadata on back so Pyrite can still draw the outgoing details screen.
+    // It owns no file or operation and is replaced on the next explicit selection.
+    val selected = model.selected
+    UpdateOverviewScreen(state.copy(availableUpdate = selected).toUpdateUiState(), onBack,
+        model::link, {}, header = { Text("Offline notification details · no APK is supplied") })
 }

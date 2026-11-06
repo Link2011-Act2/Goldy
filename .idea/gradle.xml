@@ -10,6 +10,8 @@
           <set>
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/app" />
+            <option value="$PROJECT_DIR$/elief" />
+            <option value="$PROJECT_DIR$/gold" />
           </set>
         </option>
       </GradleProjectSettings>

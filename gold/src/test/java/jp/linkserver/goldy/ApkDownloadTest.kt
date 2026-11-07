@@ -39,7 +39,11 @@ class ApkDownloadTest {
         try { block(); fail("Expected " + reason) } catch (e: ApkException) { assertEquals(reason, e.reason) }
     }
     private fun temp() = Files.createTempDirectory("goldy-test").toFile()
-    private fun assertEmpty(dir: File) { assertTrue(dir.listFiles().isNullOrEmpty()); dir.delete() }
+    private fun assertEmpty(dir: File) {
+        assertTrue(dir.listFiles().orEmpty().filter { it.name != ".transfer.lock" }.isEmpty())
+        File(dir, ".transfer.lock").takeIf { it.exists() }?.let { assertTrue(it.delete()) }
+        assertTrue(dir.delete())
+    }
 
     @Test fun successDigestAndProgress() = runBlocking {
         val dir = temp(); val response = response(); val events = mutableListOf<ApkProgress>()

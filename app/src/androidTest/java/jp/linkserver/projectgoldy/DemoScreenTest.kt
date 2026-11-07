@@ -53,9 +53,10 @@ class DemoScreenTest {
     @Test fun explicitCancelledFixtureCanRetryWithoutNetwork() {
         rule.runOnIdle { rule.activity.model.select(11) }
         rule.onNodeWithText("Download cancelled.").performScrollTo().assertIsDisplayed()
-        rule.onNodeWithText("Try again").performScrollTo().performClick()
+        rule.onNodeWithText("Download APK").performScrollTo().assertIsEnabled().performClick()
         rule.runOnIdle { assertTrue(rule.activity.model.state.transfer is UpdateTransferState.Downloading) }
         rule.onNodeWithText("Cancel download").performScrollTo().performClick()
+        rule.runOnIdle { assertEquals(UpdateTransferState.Cancelled,rule.activity.model.state.transfer) }
     }
 
     private fun capture(name: String) {

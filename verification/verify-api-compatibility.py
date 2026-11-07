@@ -1,7 +1,9 @@
 """Check retained public JVM descriptors against previously published AARs.
 
 Internal packages, Kotlin coroutine/lambda classes and anonymous implementations
-are excluded. New public descriptors are allowed; behavioral policy changes
+are excluded. Kotlin access$ bridges to private members are implementation
+details (never source-level public APIs); report their removal separately.
+New public descriptors are allowed; behavioral policy changes
 require separate characterization tests.
 """
 import argparse
@@ -52,10 +54,39 @@ for module in ("gold", "elief"):
                 previous = line.strip()
         return values
 
-    old, new = descriptors("before"), descriptors("after")
+    raw_old, raw_new = descriptors("before"), descriptors("after")
+    def private_bridges(label, values):
+        # Confirm the JVM flag; a public API is never excluded merely by its name.
+        owners = sorted({value[0] for value in values if re.search(r"\baccess\$[^ (]+\(",value[1])})
+        if not owners:
+            return set()
+        run = subprocess.run([str(javap), "-classpath", str(jars[label]), "-public", "-v", *owners],
+                             capture_output=True, text=True, check=True)
+        (args.output_dir / f"{module}-{label}-bridge-flags.txt").write_text(run.stdout, encoding="utf-8")
+        bridges = set()
+        owner = method = descriptor = ""
+        for line in run.stdout.splitlines():
+            header = re.search(r"^public .*?\b(?:class|interface) ([^ <{]+)",line)
+            if header:
+                owner = header.group(1)
+            stripped = line.strip()
+            if stripped.startswith("public ") and "(" in stripped:
+                method = stripped; descriptor = ""
+            elif stripped.startswith("descriptor:"):
+                descriptor = stripped
+            elif stripped.startswith("flags:"):
+                if "ACC_SYNTHETIC" in stripped and re.search(r"\baccess\$[^ (]+\(",method):
+                    bridges.add((owner,method,descriptor))
+                method = descriptor = ""
+        return bridges & values
+    old_bridges = private_bridges("before",raw_old)
+    new_bridges = private_bridges("after",raw_new)
+    old = raw_old - old_bridges
+    new = raw_new - new_bridges
     missing = sorted(old - new)
     records.append(dict(module=module, baseline=baseline[0].name, publicTypes=len(targets),
-                        originalDescriptors=len(old), missingDescriptors=missing, retained=not missing))
+                        originalDescriptors=len(old), missingDescriptors=missing, retained=not missing,
+                        removedPrivateCompilerBridges=sorted(old_bridges - raw_new)))
     assert old and not missing, records[-1]
 result = dict(passed=True, modules=records)
 (args.output_dir / "result.json").write_text(json.dumps(result, indent=2), encoding="utf-8")

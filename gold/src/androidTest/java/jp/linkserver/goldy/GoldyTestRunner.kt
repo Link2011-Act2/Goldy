@@ -211,15 +211,19 @@ class GoldyTestRunner : Instrumentation() {
         passed("PRODUCTION HttpURLConnection live GitHub HTTPS/CDN transfer, progress, size, SHA256, PackageManager parse; foreign package safely rejected")
         lines.add("progress callbacks=" + events.size + ", final bytes=" + events.last().bytes)
         var reached = false
+        val interrupted = ApkDownloader.create(context, config)
         coroutineScope {
         val transfer = launch(Dispatchers.Default) {
-            try { ApkDownloader.create(context, config).download(release) { if (it.bytes > 0) { reached = true; throw CancellationException("test cancellation") } } }
+            try { interrupted.download(release) { if (it.bytes > 0) { reached = true; throw CancellationException("test cancellation") } } }
             catch (_: CancellationException) { }
         }
         transfer.join(); check(reached)
         }
+        interrupted.savedProgress(release)?.let { check(it.bytes > 0 && it.bytes <= asset.size!!) }
+        interrupted.discardPartial(release)
+        check(File(context.filesDir, "goldy-transfers").listFiles().orEmpty().none { it.extension == "part" })
         check(File(context.cacheDir, "goldy-apks").listFiles().orEmpty().none { it.name.endsWith(".part") })
-        passed("real HTTPS transfer cancellation cleans .part")
+        passed("real HTTPS interruption followed by explicit cancel deletes its owned checkpoint")
         val broken = release.copy(assets = listOf(asset.copy(downloadUrl = repo.url + "/releases/download/v1.1.0-Release/missing-goldy-test.apk", name = "missing-goldy-test.apk")))
         try { ApkDownloader.create(context, config).download(broken); error("Missing asset accepted") }
         catch (error: ApkException) { check(error.reason == ApkFailure.Http && error.status == 404) }

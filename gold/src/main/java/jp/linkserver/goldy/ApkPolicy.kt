@@ -27,18 +27,28 @@ fun interface ApkVersionBinding {
 
 object ApkVersionBindings {
     val Exact = ApkVersionBinding { release, apk -> release.tag == apk.versionName }
-    /** Observed public APK syntax only; unsupported suffixes and aliases are rejected. */
-    private fun published(channels: String) = ApkVersionBinding { release, apk ->
-        release.tag.matches(Regex("v[0-9]+\\.[0-9]+\\.[0-9]+-(" + channels + ")")) &&
-            release.tag.removePrefix("v") == apk.versionName
+    /** Remove only one lowercase v immediately before a numeric version. All other bytes are identity. */
+    val Published = ApkVersionBinding { release, apk ->
+        val tag = release.tag
+        val name = if (tag.startsWith('v') && tag.getOrNull(1) in '0'..'9') tag.substring(1) else tag
+        // No whitespace, path components, empty segments, repeated v, or inferred channel aliases.
+        name.matches(Regex("V?[0-9]+(?:\\.[0-9]+)*(?:[-_+][A-Za-z0-9]+(?:[._+-][A-Za-z0-9]+)*)?")) &&
+            name.length <= 512 && name == apk.versionName
     }
-    val ShutUp = published("Release")
-    val NittcScheduler = published("Release|Beta|RC[0-9]+")
-    val GlyphBarty = published("Release")
+    val ShutUp = Published
+    val NittcScheduler = Published
+    val GlyphBarty = Published
+    val BeastLocator = Published
 }
 
 /** SHA-256 of each current signing certificate. History intersection is deliberately insufficient. */
-data class ApkSigners(val currentSha256: Set<String>, val multiple: Boolean)
+data class ApkSigners(val currentSha256: Set<String>, val multiple: Boolean) {
+    // Deliberately outside the primary constructor: retain constructor/copy/component JVM ABI.
+    // A copy or caller-created value carries no cryptographic rotation authority.
+    internal var authenticatedHistory: AuthenticatedSigningHistory? = null
+    /** Oldest to current, only when established by Android or verified APK signatures. */
+    val certificateHistorySha256: List<String> get() = authenticatedHistory?.certificates?.toList().orEmpty()
+}
 data class ApkMetadata(val packageName: String, val versionName: String, val versionCode: Long, val signers: ApkSigners)
 
 /** Implementations must authenticate the archive's signatures, not merely extract certificate bytes. */
@@ -69,7 +79,7 @@ object ApkVerifier {
         fun valid(s: ApkSigners): Boolean = s.currentSha256.isNotEmpty() &&
             s.currentSha256.all { it.matches(Regex("[0-9a-f]{64}")) } &&
             s.multiple == (s.currentSha256.size > 1)
-        if (!valid(apk.signers) || !valid(installed.signers) || apk.signers != installed.signers)
+        if (!valid(apk.signers) || !valid(installed.signers) || !acceptsSigningUpdate(installed.signers, apk.signers))
             throw ApkException(ApkFailure.SignerMismatch)
         if (installed.versionCode < 0 || apk.versionCode < installed.versionCode) throw ApkException(ApkFailure.VersionCodeTooLow)
         return apk

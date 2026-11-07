@@ -23,10 +23,13 @@ class ApkIdentityFixtureTest {
                 if (name != apk.versionName) assertFalse(name, binding.matches(release, apk.copy(versionName = name)))
         }
     }
-    @Test fun unconfirmedNamingRulesFailClosedInAppPolicies() {
+    @Test fun exactPublishedSuffixesAreAcceptedWithoutChannelWhitelistAndAliasesFailClosed() {
         for (binding in listOf(ApkVersionBindings.ShutUp, ApkVersionBindings.NittcScheduler, ApkVersionBindings.GlyphBarty)) {
-            for ((tag, name) in listOf("v2.1.0-Stable" to "2.1.0-Stable", "v2.1.0-IntDev" to "2.1.0-IntDev", "v2.1.0-Release_rev0" to "2.1.0-Release_rev0", "glyphbarty_v210release" to "2.1.0-Release", "scheduler_210" to "2.1.0-Release", "v2.1.0-Release-123" to "2.1.0-Release-123")) {
-                assertFalse(tag, binding.matches(release(tag), ApkMetadata("app", name, 1, ApkSigners(emptySet(), false))))
+            for ((tag, name) in listOf("v2.1.0-Stable" to "2.1.0-Stable", "v2.1.0-IntDev" to "2.1.0-IntDev", "v2.1.0-Release_rev0" to "2.1.0-Release_rev0", "v2.1.0-Release-123" to "2.1.0-Release-123")) {
+                assertTrue(tag, binding.matches(release(tag), ApkMetadata("app", name, 1, ApkSigners(emptySet(), false))))
+            }
+            for (tag in listOf("glyphbarty_v210release", "scheduler_210")) {
+                assertFalse(tag, binding.matches(release(tag), ApkMetadata("app", "2.1.0-Release", 1, ApkSigners(emptySet(), false))))
             }
         }
     }

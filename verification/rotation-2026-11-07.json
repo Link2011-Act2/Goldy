@@ -1,0 +1,292 @@
+{
+  "startedHead": "d4d9e1e9d561be9eccddda081385a5b8fa6f6157",
+  "recordedJst": "2026-11-07T11:36:19.682752+09:00",
+  "apksig": "9.4.1",
+  "unit": {
+    "gold": {
+      "tests": 129,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "elief": {
+      "tests": 18,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  },
+  "runtime": {
+    "28": {
+      "authenticatedInspection": true,
+      "osUpdateCases": 14,
+      "cases": [
+        {
+          "file": "a",
+          "expected": true,
+          "accepted": true
+        },
+        {
+          "file": "ab-denied",
+          "expected": false,
+          "accepted": false
+        },
+        {
+          "file": "b-unrelated",
+          "expected": false,
+          "accepted": false
+        },
+        {
+          "file": "ab-v3",
+          "expected": true,
+          "accepted": true
+        },
+        {
+          "file": "a",
+          "expected": false,
+          "accepted": false
+        },
+        {
+          "file": "abc-v3",
+          "expected": true,
+          "accepted": true
+        },
+        {
+          "file": "ab-v3",
+          "expected": false,
+          "accepted": false
+        },
+        {
+          "file": "tampered-lineage",
+          "expected": false,
+          "accepted": false
+        },
+        {
+          "file": "multi-ab",
+          "expected": true,
+          "accepted": true
+        },
+        {
+          "file": "multi-ab",
+          "expected": true,
+          "accepted": true
+        },
+        {
+          "file": "multi-ac",
+          "expected": false,
+          "accepted": false
+        },
+        {
+          "file": "ab-v3",
+          "expected": false,
+          "accepted": false
+        },
+        {
+          "file": "a",
+          "expected": true,
+          "accepted": true
+        },
+        {
+          "file": "ab-v31",
+          "expected": true,
+          "accepted": true
+        }
+      ]
+    },
+    "33": {
+      "authenticatedInspection": true,
+      "osUpdateCases": 14,
+      "cases": [
+        {
+          "file": "a",
+          "expected": true,
+          "accepted": true
+        },
+        {
+          "file": "ab-denied",
+          "expected": false,
+          "accepted": false
+        },
+        {
+          "file": "b-unrelated",
+          "expected": false,
+          "accepted": false
+        },
+        {
+          "file": "ab-v3",
+          "expected": true,
+          "accepted": true
+        },
+        {
+          "file": "a",
+          "expected": false,
+          "accepted": false
+        },
+        {
+          "file": "abc-v3",
+          "expected": true,
+          "accepted": true
+        },
+        {
+          "file": "ab-v3",
+          "expected": false,
+          "accepted": false
+        },
+        {
+          "file": "tampered-lineage",
+          "expected": false,
+          "accepted": false
+        },
+        {
+          "file": "multi-ab",
+          "expected": true,
+          "accepted": true
+        },
+        {
+          "file": "multi-ab",
+          "expected": true,
+          "accepted": true
+        },
+        {
+          "file": "multi-ac",
+          "expected": false,
+          "accepted": false
+        },
+        {
+          "file": "ab-v3",
+          "expected": false,
+          "accepted": false
+        },
+        {
+          "file": "a",
+          "expected": true,
+          "accepted": true
+        },
+        {
+          "file": "ab-v31",
+          "expected": true,
+          "accepted": true
+        }
+      ]
+    },
+    "36": {
+      "authenticatedInspection": true,
+      "osUpdateCases": 14,
+      "cases": [
+        {
+          "file": "a",
+          "expected": true,
+          "accepted": true
+        },
+        {
+          "file": "ab-denied",
+          "expected": false,
+          "accepted": false
+        },
+        {
+          "file": "b-unrelated",
+          "expected": false,
+          "accepted": false
+        },
+        {
+          "file": "ab-v3",
+          "expected": true,
+          "accepted": true
+        },
+        {
+          "file": "a",
+          "expected": false,
+          "accepted": false
+        },
+        {
+          "file": "abc-v3",
+          "expected": true,
+          "accepted": true
+        },
+        {
+          "file": "ab-v3",
+          "expected": false,
+          "accepted": false
+        },
+        {
+          "file": "tampered-lineage",
+          "expected": false,
+          "accepted": false
+        },
+        {
+          "file": "multi-ab",
+          "expected": true,
+          "accepted": true
+        },
+        {
+          "file": "multi-ab",
+          "expected": true,
+          "accepted": true
+        },
+        {
+          "file": "multi-ac",
+          "expected": false,
+          "accepted": false
+        },
+        {
+          "file": "ab-v3",
+          "expected": false,
+          "accepted": false
+        },
+        {
+          "file": "a",
+          "expected": true,
+          "accepted": true
+        },
+        {
+          "file": "ab-v31",
+          "expected": true,
+          "accepted": true
+        }
+      ]
+    }
+  },
+  "jvmSdkVerification": [
+    26,
+    27,
+    28,
+    29,
+    32,
+    33,
+    36
+  ],
+  "api26Runtime": "not yet verified; initial sdkmanager new CLI split package ID incorrectly; legacy official Java CLI attempt pending",
+  "abi": {
+    "passed": true,
+    "modules": [
+      {
+        "module": "gold",
+        "baseline": "gold-e1d9ecd88e75f28b855ecd568e2e675486d8750e.aar",
+        "publicTypes": 103,
+        "originalDescriptors": 739,
+        "missingDescriptors": [],
+        "retained": true
+      },
+      {
+        "module": "elief",
+        "baseline": "elief-e1d9ecd88e75f28b855ecd568e2e675486d8750e.aar",
+        "publicTypes": 25,
+        "originalDescriptors": 237,
+        "missingDescriptors": [],
+        "retained": true
+      }
+    ]
+  },
+  "binaryClient": {
+    "passed": true,
+    "legacyConstructorCopyComponentsEqualityAndToStringRetained": true,
+    "oldBytecodeRunsWithNewOnly": true
+  },
+  "debugReleaseAndDemoR8": true,
+  "publication": {
+    "status": "pending",
+    "adoptInShutUp": false
+  },
+  "sourceDocs": "docs/signature-rotation.md",
+  "privateReleaseKeysUsed": false
+}

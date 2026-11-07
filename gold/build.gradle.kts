@@ -26,6 +26,7 @@ kotlin {
 }
 
 dependencies {
+    implementation("com.android.tools.build:apksig:9.4.1")
     implementation(libs.androidx.core)
     api(libs.kotlinx.coroutines.core)
     testImplementation(libs.junit)

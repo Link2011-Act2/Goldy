@@ -25,6 +25,7 @@ class GoldyTestRunner : Instrumentation() {
         try {
             runBlocking {
                 when (arguments.getString("mode") ?: "installer") {
+                    "rotation" -> rotation()
                     "permission" -> permission()
                     "installer" -> installer()
                     "network" -> network()
@@ -49,6 +50,35 @@ class GoldyTestRunner : Instrumentation() {
         } catch (error: Throwable) {
             result.putString("result", lines.joinToString("\n")); result.putString("failure", error.stackTraceToString()); finish(1, result)
         }
+    }
+    private fun rotation() {
+        val sdk = android.os.Build.VERSION.SDK_INT
+        val inspector = AndroidApkInspector(context)
+        fun metadata(name: String) = inspector.inspect(File(context.filesDir, "rotation-fixtures/$name.apk"))
+            ?: error("Could not authenticate $name on API $sdk")
+        val a=metadata("a"); val ab=metadata("ab-v3"); val abc=metadata("abc-v3")
+        check(ApkVerifier.verifyInstalled(a,ab)==ab)
+        check(ApkVerifier.verifyInstalled(a,abc)==abc)
+        check(ApkVerifier.verifyInstalled(ab,abc)==abc)
+        if(sdk>=28) {
+            for (bad in listOf(metadata("a") to ab, metadata("b-unrelated") to a, metadata("ab-denied") to a)) {
+                try { ApkVerifier.verifyInstalled(bad.second,bad.first); error("Invalid rotation accepted") }
+                catch(e:ApkException) { check(e.reason==ApkFailure.SignerMismatch) }
+            }
+            check(ab.signers.certificateHistorySha256.size==2)
+        } else check(a.signers==ab.signers)
+        val targeted=metadata("ab-v31")
+        check((a.signers==targeted.signers)==(sdk<33))
+        check(ApkVerifier.verifyInstalled(a,targeted)==targeted)
+        val multi=metadata("multi-ab")
+        check(ApkVerifier.verifyInstalled(multi,metadata("multi-ab"))==multi)
+        for(bad in listOf(metadata("multi-ac"), ab)) {
+            try { ApkVerifier.verifyInstalled(multi,bad); error("Partial/multiple transition accepted") }
+            catch(e:ApkException) { check(e.reason==ApkFailure.SignerMismatch) }
+        }
+        check(inspector.inspect(File(context.filesDir,"rotation-fixtures/tampered.apk"))==null)
+        if(sdk>=28) check(inspector.inspect(File(context.filesDir,"rotation-fixtures/tampered-lineage.apk"))==null)
+        passed("real APK apksig/PackageManager agreement; v3/v3.1 effective signer; forward capability; reverse/missing capability/tampering/multiple mismatch rejection; API $sdk")
     }
     private fun receipt(): VerifiedApk {
         val inspector = AndroidApkInspector(context)

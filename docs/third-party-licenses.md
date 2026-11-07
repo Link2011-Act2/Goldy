@@ -11,6 +11,7 @@ dependency; Goldy Demo separately consumes the public Pyrite AAR.
 | Goldy, ShutUp comparator, Scheduler/ShutUp notification layout references | MIT | Root LICENSE, module META-INF LICENSE/NOTICE; source revisions in four-app-updater-comparison.md and historical phase-2-core-report.md |
 | Pyrite (Demo only), pinned to 508b1cf5131679fee7581acbc7ea55a365b6ff2c | MIT | Public AAR META-INF/pyrite/LICENSE/NOTICE.md and [Pyrite source](https://github.com/Link2011-Act2/Pyrite/tree/508b1cf5131679fee7581acbc7ea55a365b6ff2c) |
 | AndroidX, Compose, Material3, annotation, collection, lifecycle, startup, profileinstaller, arch.core, tracing, versionedparcelable, concurrent | Apache-2.0 | Published Maven POMs and [AndroidX source](https://android.googlesource.com/platform/frameworks/support/+/androidx-main/LICENSE.txt) |
+| Android apksig 9.4.1 (Gold runtime APK/Proof-of-Rotation verification) | Apache-2.0 | [AOSP apksig source and license](https://android.googlesource.com/platform/tools/apksig/+/refs/heads/main/LICENSE) |
 | Kotlin standard library and kotlinx.coroutines | Apache-2.0 | [Kotlin license](https://github.com/JetBrains/kotlin/blob/master/license/LICENSE.txt), [Coroutines license](https://github.com/Kotlin/kotlinx.coroutines/blob/master/LICENSE.txt) |
 | Markwon core / ext-tables 4.6.2 | Apache-2.0 | [Markwon license](https://github.com/noties/Markwon/blob/v4.6.2/LICENSE) |
 | commonmark / commonmark-ext-gfm-tables 0.13.0 | BSD-2-Clause | Published commonmark-parent POM and artifact license |

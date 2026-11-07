@@ -5,7 +5,10 @@ param(
     [switch]$Expressive,
     [switch]$PomOnly,
     [string]$JavaHome = $env:JAVA_HOME,
-    [string]$AndroidHome = $env:ANDROID_HOME
+    [string]$AndroidHome = $env:ANDROID_HOME,
+    [string]$OutputDirectory,
+    [switch]$RefreshDependencies,
+    [switch]$IncludeDebug
 )
 $ErrorActionPreference = 'Stop'
 if ($Feature -ne 'baseline' -and $GoldyVersion -notmatch '^[0-9a-f]{7,40}$') { throw 'Pass the actually pushed commit SHA.' }
@@ -16,9 +19,10 @@ $env:ANDROID_HOME = $AndroidHome
 $env:PATH = (Join-Path $JavaHome 'bin') + [IO.Path]::PathSeparator + $env:PATH
 $taskRoot = Split-Path $PSScriptRoot -Parent
 $taskSource = Join-Path $PSScriptRoot 'jitpack-consumer'
-$taskIsolated = Join-Path $taskRoot 'build/phase-2-5/isolated-consumer'
+$taskOutput = if ($OutputDirectory) { Join-Path $taskRoot $OutputDirectory } else { Join-Path $taskRoot 'build/phase-2-5' }
+$taskIsolated = Join-Path $taskOutput 'isolated-consumer'
 $taskLabel = "$HostProfile-$Feature" + $(if ($Expressive) { '-expressive' } else { '' }) + $(if ($PomOnly) { '-pom' } else { '' })
-$taskResults = Join-Path $taskRoot ('build/phase-2-5/consumers/' + $taskLabel)
+$taskResults = Join-Path $taskOutput ('consumers/' + $taskLabel)
 New-Item -ItemType Directory -Force -Path $taskIsolated,$taskResults | Out-Null
 foreach ($taskFile in Get-ChildItem -LiteralPath $taskSource -Recurse -File) {
     $taskRelative = [IO.Path]::GetRelativePath($taskSource,$taskFile.FullName)
@@ -35,6 +39,8 @@ $taskArgs = @(':app:assembleRelease',':app:verifyPublishedDependencies',':app:ve
 if ($GoldyVersion) { $taskArgs += "-PgoldyVersion=$GoldyVersion" }
 if ($Expressive) { $taskArgs += '-Pexpressive=true' }
 if ($PomOnly) { $taskArgs += '-PpomOnly=true' }
+if ($RefreshDependencies) { $taskArgs += @('--refresh-dependencies','--info','--no-daemon','--max-workers=2') }
+if ($IncludeDebug) { $taskArgs += @(':app:assembleDebug',':app:lintDebug') }
 Push-Location $taskIsolated
 try {
     & ./gradlew.bat @taskArgs *> (Join-Path $taskResults 'build.log')
@@ -51,8 +57,13 @@ try {
     [xml]$taskLint = Get-Content (Join-Path $taskIsolated 'app/build/reports/lint-results-release.xml') -Raw
     $taskLintErrors = @($taskLint.issues.issue | Where-Object severity -in @('Error','Fatal')).Count
     if ($taskLintErrors -ne 0) { throw 'Consumer lint has errors.' }
+    if ($IncludeDebug) {
+        [xml]$taskDebugLint = Get-Content (Join-Path $taskIsolated 'app/build/reports/lint-results-debug.xml') -Raw
+        if (@($taskDebugLint.issues.issue | Where-Object severity -in @('Error','Fatal')).Count -ne 0) { throw 'Consumer Debug lint has errors.' }
+    }
     [pscustomobject]@{version=$GoldyVersion;feature=$Feature;host=$HostProfile;expressive=[bool]$Expressive;pomOnly=[bool]$PomOnly;
         apkBytes=(Get-Item $taskApk).Length;apkSha256=(Get-FileHash $taskApk -Algorithm SHA256).Hash;r8Mapping=$true;
-        hostActivityCompiled=$true;lintErrors=$taskLintErrors;lintWarnings=@($taskLint.issues.issue | Where-Object severity -eq 'Warning').Count;passed=$true} |
+        hostActivityCompiled=$true;debugVerified=[bool]$IncludeDebug;refreshDependencies=[bool]$RefreshDependencies;
+        lintErrors=$taskLintErrors;lintWarnings=@($taskLint.issues.issue | Where-Object severity -eq 'Warning').Count;passed=$true} |
         ConvertTo-Json | Set-Content -Encoding utf8 (Join-Path $taskResults 'result.json')
 } finally { Pop-Location }

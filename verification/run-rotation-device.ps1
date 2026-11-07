@@ -9,6 +9,7 @@ function Invoke-Adb([string[]]$Arguments) {
     return $taskText
 }
 $taskSdk=(Invoke-Adb @('shell','getprop','ro.build.version.sdk')).Trim()
+$taskRotationAvailable=[int]$taskSdk -ge 28
 if((Invoke-Adb @('shell','getprop','sys.boot_completed')).Trim() -ne '1'){throw 'Emulator not booted'}
 Invoke-Adb @('install','-r','-t',(Join-Path $taskRoot 'gold/build/outputs/apk/androidTest/debug/gold-debug-androidTest.apk')) | Out-Null
 Invoke-Adb @('push',(Join-Path $taskRoot 'gold/src/test/resources/signatures'),'/data/local/tmp/goldy-rotation-fixtures') | Out-Null
@@ -28,13 +29,14 @@ function Test-Install([string]$Name,[bool]$Allowed) {
 }
 try {
     Test-Install 'a' $true
-    Test-Install 'ab-denied' $false
+    # API26/27 see the unchanged A v2 signer; future v3 PoR attributes grant no authority.
+    Test-Install 'ab-denied' (-not $taskRotationAvailable)
     Test-Install 'b-unrelated' $false
     Test-Install 'ab-v3' $true
-    Test-Install 'a' $false
+    Test-Install 'a' (-not $taskRotationAvailable)
     Test-Install 'abc-v3' $true
-    Test-Install 'ab-v3' $false
-    Test-Install 'tampered-lineage' $false
+    Test-Install 'ab-v3' (-not $taskRotationAvailable)
+    Test-Install 'tampered-lineage' (-not $taskRotationAvailable)
     Invoke-Adb @('uninstall','jp.linkserver.goldy.rotationfixture') | Out-Null
     Test-Install 'multi-ab' $true
     Test-Install 'multi-ab' $true

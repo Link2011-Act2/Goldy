@@ -7,13 +7,13 @@ transitively and uses the host's Material theme and typography.
 
 ## Installation
 
-Verified UI library revision: `e1d9ecd88e75f28b855ecd568e2e675486d8750e`.
-The [public build log](https://jitpack.io/com/github/Link2011-Act2/Goldy/e1d9ecd88e75f28b855ecd568e2e675486d8750e/build.log)
+Verified library revision: `af5f415db976f62f991369224cb236d272f0103a`.
+The [public build log](https://jitpack.io/com/github/Link2011-Act2/Goldy/af5f415db976f62f991369224cb236d272f0103a/build.log)
 and independent Gold/Elief R8 consumers were checked against the downloaded
 AARs, POMs, Gradle metadata and sources. Elief also passed POM-only resolution.
-See [latest publication verification](docs/publication-2026-11-06.md). These
-coordinates pin the verified implementation, including the improved update
-check dialog. The earlier [UI publication verification](docs/ui-publication.md)
+See [latest publication verification](docs/publication-2026-11-07.md). These
+coordinates pin authenticated forward signer rotation, strict published-version
+binding and the improved update check dialog. The earlier [UI publication verification](docs/ui-publication.md)
 remains a historical record.
 
 In `settings.gradle.kts`:
@@ -34,13 +34,13 @@ dependencyResolutionManagement {
 For Core only:
 
 ```kotlin
-implementation("com.github.Link2011-Act2.Goldy:gold:e1d9ecd88e75f28b855ecd568e2e675486d8750e")
+implementation("com.github.Link2011-Act2.Goldy:gold:af5f415db976f62f991369224cb236d272f0103a")
 ```
 
 For Compose UI, use Elief; it brings the same commit's Gold transitively:
 
 ```kotlin
-implementation("com.github.Link2011-Act2.Goldy:elief:e1d9ecd88e75f28b855ecd568e2e675486d8750e")
+implementation("com.github.Link2011-Act2.Goldy:elief:af5f415db976f62f991369224cb236d272f0103a")
 ```
 
 Consumers need compileSdk 37 or newer. Elief uses stable Material3 1.4.0 through
@@ -72,10 +72,13 @@ notification state without hiding the update detail candidate.
 | ShutUp | `UpdatePolicies.shutUp()` | `ApkSelectionPolicies.ShutUp` / `ApkVersionBindings.ShutUp` |
 | NITTC Scheduler | `UpdatePolicies.nittcScheduler()` | `ApkSelectionPolicies.NittcScheduler` / `ApkVersionBindings.NittcScheduler` |
 | Glyph Barty | `UpdatePolicies.glyphBarty()` | `ApkSelectionPolicies.GlyphBarty` / `ApkVersionBindings.GlyphBarty` |
+| BeastLocator | `UpdatePolicies.beastLocator()` | `ApkSelectionPolicies.Single` / `ApkVersionBindings.BeastLocator` |
 
 Ordering a version and authenticating the APK's release identity are separate
-checks. Unknown tag/version mappings are rejected. APK package, current signer
-set, versionCode, size and available digest are checked independently.
+checks. `Published` and the app bindings strip exactly one lowercase numeric
+version prefix `v`, then compare versionName exactly, without channel aliases.
+APK package, authenticated signing update, versionCode, size and available digest
+are checked independently. See [rotation and version identity](docs/signature-rotation.md).
 
 ## Compose UI
 
@@ -156,16 +159,20 @@ are not JitPack artifacts. See [Goldy Demo](docs/goldy-demo.md),
 
 ## Limits and license
 
-API26/27, API29-35, physical devices and OEM-specific installers have not been
-runtime-tested. Actual install completion is unverified; no silent installation
-or automatic signer rotation is supported. Coordination is within one process.
+API26, API28, API33 and API36 passed real signed-fixture inspection and OS update tests.
+API26 verifies unchanged v2 fallback identity; it does not support signer rotation.
+API27 and other API levels have JVM signature fixtures; runtime coverage is
+recorded in [verification results](verification/rotation-2026-11-07.json).
+Physical devices and OEM-specific installers remain untested. Forward rotation
+requires verified platform-specific PoR and installed-data capability; OS install
+completion remains separate from preflight and handoff. Coordination is within one process.
 ETag page cache is in memory, while the release catalog is persisted. Markdown
 parsing is synchronous and very wide tables need content-specific testing.
 HTML/images are not loaded and only absolute credential-free HTTP(S) links are
 delegated to the host. Host fonts and URL policy remain host responsibilities.
 
-The three existing applications have not been migrated. Their settings/cache
-adapters and application-specific restoration need testing during adoption.
+Scheduler, Glyph Barty and BeastLocator adoption is outside this change. Their
+settings/cache adapters and application-specific restoration need testing during adoption.
 
 MIT License; see [LICENSE](LICENSE), [NOTICE](NOTICE), and
 [third-party licenses](docs/third-party-licenses.md).

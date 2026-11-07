@@ -1,5 +1,7 @@
 Elief is the optional Compose UI module of Project Goldy.
 Notification layouts draw on the MIT-licensed NITTC Scheduler and ShutUp UI.
 Copyright (c) 2026 Azul1nk. MIT License; see the adjacent LICENSE.
+The embedded browser_updated icon is Material Symbols Outlined by Google,
+licensed under Apache License 2.0; see MaterialSymbols-APACHE-2.0.txt alongside this notice.
 Markwon, CommonMark, AndroidX, Kotlin and Coroutines are external dependencies,
 not shaded into this AAR. See docs/third-party-licenses.md in the source repository.

@@ -20,6 +20,7 @@ import androidx.compose.ui.draw.rotate
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.Shape
 import androidx.compose.ui.platform.LocalDensity
+import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.*
@@ -197,13 +198,19 @@ private fun TransferContent(state: UpdateUiState, s: UpdateStrings, action: (Upd
         }
         UpdateTransferState.PermissionRequired -> {
             Button(onClick = { action(UpdateAction.OpenInstallPermissionSettings) }, modifier = Modifier.primaryAction()) { Text(s.allowInstall) }
-            OutlinedButton(onClick = { action(UpdateAction.Install) }, modifier = Modifier.fillMaxWidth()) { Text(s.retry) }
             StatusText(s.permissionRequired)
         }
         UpdateTransferState.HandedOff -> StatusText(s.handedOff)
         is UpdateTransferState.Failed -> {
             transfer.retry?.let { retry ->
-                Button(onClick = { action(retry) }, enabled = retry != UpdateAction.Download || state.apkAvailable, modifier = Modifier.primaryAction()) { Text(s.retry) }
+                Button(onClick = { action(retry) }, enabled = retry != UpdateAction.Download || state.apkAvailable, modifier = Modifier.primaryAction()) {
+                    Text(when (retry) {
+                        UpdateAction.Download -> s.download
+                        UpdateAction.Install -> s.install
+                        UpdateAction.OpenInstallPermissionSettings -> s.allowInstall
+                        UpdateAction.CancelDownload -> s.cancel
+                    })
+                }
             }
             Surface(color = MaterialTheme.colorScheme.errorContainer, contentColor = MaterialTheme.colorScheme.onErrorContainer,
                 shape = MaterialTheme.shapes.medium, modifier = Modifier.fillMaxWidth().testTag("update-error")) {
@@ -212,7 +219,7 @@ private fun TransferContent(state: UpdateUiState, s: UpdateStrings, action: (Upd
             }
         }
         UpdateTransferState.Cancelled -> {
-            if (state.apkAvailable) Button(onClick = { action(UpdateAction.Download) }, modifier = Modifier.primaryAction()) { Text(s.retry) }
+            if (state.apkAvailable) Button(onClick = { action(UpdateAction.Download) }, modifier = Modifier.primaryAction()) { Text(s.download) }
             StatusText(s.cancelled)
         }
         UpdateTransferState.Idle -> if (state.apkAvailable) {
@@ -234,9 +241,10 @@ private fun updateCardShape(): Shape = LocalUpdateCardStyle.current.shape ?: Mat
 
 @Composable
 private fun DownloadProgress(progress: ApkProgress) {
-    val total = progress.total?.takeIf { it > 0L }
-    if (total == null) LinearProgressIndicator(Modifier.fillMaxWidth())
-    else LinearProgressIndicator(progress = { (progress.bytes.toDouble() / total).toFloat().coerceIn(0f, 1f) }, modifier = Modifier.fillMaxWidth())
-    Text(if (total == null) "${progress.bytes} B · #${progress.attempt}" else "${progress.bytes} / $total B · #${progress.attempt}",
+    val fraction = DownloadProgressFormatter.fraction(progress)
+    val locale = LocalConfiguration.current.locales[0] ?: java.util.Locale.getDefault()
+    if (fraction == null) LinearProgressIndicator(Modifier.fillMaxWidth())
+    else LinearProgressIndicator(progress = { fraction }, modifier = Modifier.fillMaxWidth())
+    Text(DownloadProgressFormatter.format(progress, locale),
         style = MaterialTheme.typography.labelMedium)
 }

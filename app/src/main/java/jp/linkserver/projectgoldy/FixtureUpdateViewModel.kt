@@ -25,6 +25,12 @@ class FixtureUpdateViewModel : ViewModel() {
         state = fixture(index)
     }
 
+    /** Offline counterpart of a host rechecking permission after returning from settings. */
+    fun permissionResult(allowed: Boolean) {
+        if (state.transfer == UpdateTransferState.PermissionRequired && allowed)
+            state = state.copy(transfer = UpdateTransferState.Ready)
+    }
+
     fun action(action: UpdateAction) {
         // Claim synchronously on Main, before launching: even two taps in one frame start one job.
         when (action) {

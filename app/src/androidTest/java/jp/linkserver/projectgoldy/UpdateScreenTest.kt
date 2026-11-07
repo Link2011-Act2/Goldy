@@ -47,14 +47,14 @@ class UpdateScreenTest {
     }
     @Test fun cancelUnknownLengthTransfer() {
         select(3)
-        rule.onNodeWithText("42000 B", substring = true).performScrollTo().assertIsDisplayed()
+        rule.onNodeWithText("42.00 KB").performScrollTo().assertIsDisplayed()
         rule.onNodeWithText("Cancel download").performScrollTo().performClick()
         rule.onNodeWithText("Download cancelled.").assertIsDisplayed()
     }
     @Test fun retryAndDuplicateTapGuard() {
         select(4)
         rule.onNodeWithText("Connection interrupted.", substring = true).performScrollTo().assertIsDisplayed()
-        rule.onNodeWithText("Try again").performScrollTo().performClick()
+        rule.onNodeWithText("Download APK").performScrollTo().performClick()
         rule.runOnIdle {
             // A second event delivered before recomposition must still be rejected by the host.
             rule.activity.model.action(UpdateAction.Download)
@@ -64,9 +64,13 @@ class UpdateScreenTest {
     }
     @Test fun permissionIsHostOwned() {
         select(5)
-        rule.onNodeWithText("Allow installation").performScrollTo().performClick()
+        rule.onNodeWithText("Try again").assertDoesNotExist()
+        rule.onNodeWithText("Open installer").assertDoesNotExist()
+        rule.onNodeWithText("Allow installation in settings").performScrollTo().performClick()
         rule.runOnIdle { assertEquals("Fixture permission guide · no settings Activity launched", rule.activity.model.event) }
-        rule.onNodeWithText("Try again").performScrollTo().performClick()
+        rule.runOnIdle { rule.activity.model.permissionResult(true) }
+        rule.onNodeWithText("Allow installation in settings").assertDoesNotExist()
+        rule.onNodeWithText("Open installer").performScrollTo().performClick()
         rule.runOnIdle { assertEquals(UpdateTransferState.HandedOff, rule.activity.model.state.transfer) }
         rule.onNodeWithText("Installer opened.", substring = true).performScrollTo().assertIsDisplayed()
         rule.onNodeWithText("Open installer").assertDoesNotExist()

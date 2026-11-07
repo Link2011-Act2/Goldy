@@ -132,6 +132,7 @@ internal object UrlAssetTransport : RangeAssetTransport {
         connection.connectTimeout = 15_000; connection.readTimeout = 30_000
         connection.setRequestProperty("User-Agent", userAgent)
         connection.setRequestProperty("Accept-Encoding", "identity")
+        connection.useCaches = false
         if (offset > 0) {
             connection.setRequestProperty("Range", "bytes=$offset-")
             validator?.let { connection.setRequestProperty("If-Range", it) }

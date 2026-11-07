@@ -35,11 +35,17 @@ class ResumeHttpServerTest {
             server.executor = executor
             server.createContext("/") { exchange ->
                 val range = exchange.requestHeaders.getFirst("Range")
-                if(mode == "redirect") {
+                if(mode.startsWith("redirect")) {
                     redirectRequests.add(Triple(exchange.requestURI.path,range,exchange.requestHeaders.getFirst("If-Range")))
                     if(exchange.requestURI.path == "/canonical") {
                         exchange.responseHeaders.set("Location","https://release-assets.githubusercontent.com/token-${++token}")
                         exchange.sendResponseHeaders(302,-1); exchange.close(); return@createContext
+                    }
+                    if(mode == "redirect-expired" && exchange.requestURI.path == "/token-2") {
+                        exchange.sendResponseHeaders(403,-1); exchange.close(); return@createContext
+                    }
+                    if(mode == "redirect-denied" && token >= 2) {
+                        exchange.sendResponseHeaders(403,-1); exchange.close(); return@createContext
                     }
                 }
                 requests.add(range to exchange.requestHeaders.getFirst("If-Range"))
@@ -77,7 +83,7 @@ class ResumeHttpServerTest {
         val transport = object : RangeAssetTransport {
             override fun open(url: String, userAgent: String) = openRange(url, userAgent, 0, null)
             override fun openRange(url: String, userAgent: String, offset: Long, validator: String?): AssetConnection {
-                val path = if(mode == "redirect") { if(url == asset.downloadUrl) "/canonical" else java.net.URI(url).path } else "/"
+                val path = if(mode.startsWith("redirect")) { if(url == asset.downloadUrl) "/canonical" else java.net.URI(url).path } else "/"
                 val endpoint = "http://127.0.0.1:${server.address.port}$path"
                 if(mode != "timeout") return UrlAssetTransport.openRange(endpoint,userAgent,offset,validator)
                 // Short test timeout on a real HTTP socket; production timeout remains 30 seconds.
@@ -252,6 +258,26 @@ class ResumeHttpServerTest {
             assertEquals(7L,h.downloader().savedProgress(h.release)!!.bytes)
             assertEquals(h.hash,h.downloader().download(h.release).sha256)
             assertEquals("bytes=7-",h.requests[1].first)
+        }
+    }
+    @Test fun expiredSignedCdnUrlRefreshesCanonicalWithoutLosingOffset() = runBlocking {
+        Harness("redirect-expired").use { h ->
+            h.interrupt()
+            assertEquals(h.hash,h.downloader().download(h.release).sha256)
+            assertEquals(listOf("/canonical","/token-1","/canonical","/token-2","/canonical","/token-3"),h.redirectRequests.map { it.first })
+            assertEquals(listOf(null,null,"bytes=7-","bytes=7-","bytes=7-","bytes=7-"),h.redirectRequests.map { it.second })
+            assertEquals(1,h.inspected)
+        }
+    }
+    @Test fun persistentCdnDenialStopsAfterOneRefreshAndRetainsUnverifiedPrefix() = runBlocking {
+        Harness("redirect-denied").use { h ->
+            h.interrupt()
+            try { h.downloader().download(h.release); fail("CDN denial") }
+            catch(error: ApkException) { assertEquals(ApkFailure.Http,error.reason); assertEquals(403,error.status) }
+            assertEquals(6,h.redirectRequests.size)
+            assertEquals(7L,h.downloader().savedProgress(h.release)!!.bytes)
+            assertEquals(0,h.inspected)
+            assertTrue(h.dir.listFiles()!!.none { it.extension == "apk" })
         }
     }
 }

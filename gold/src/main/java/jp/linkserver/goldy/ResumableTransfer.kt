@@ -35,10 +35,12 @@ internal class ResumableTransfer(private val config: ApkDownloadConfig, private 
                         var attempts = 0
                         var segments = 0
                         var fallbackUsed = false
+                        var refreshedRedirect = false
                         while (true) {
                             currentCoroutineContext().ensureActive()
                             attempts++
                             var keep = false
+                            var preserveDeniedCheckpoint = false
                             try {
                                 var url = asset.downloadUrl
                                 var redirects = 0
@@ -55,6 +57,15 @@ internal class ResumableTransfer(private val config: ApkDownloadConfig, private 
                                         ?: throw ApkException(ApkFailure.InvalidUrl)
                                     if (!AssetUrls.acceptsRedirect(next)) throw ApkException(ApkFailure.InvalidUrl)
                                     response.close(); url = next
+                                }
+                                if (redirects > 0 && response.status in setOf(401,403)) {
+                                    // A cached/expired signed CDN URL grants no authority. Refresh it once
+                                    // from GitHub, without treating denial as APK data or erasing the prefix.
+                                    preserveDeniedCheckpoint = true
+                                    if (!refreshedRedirect) {
+                                        refreshedRedirect = true; keep = true; continue
+                                    }
+                                    throw ApkException(ApkFailure.Http,response.status)
                                 }
                                 if (bytes > 0 && response.status == 416) {
                                     val declared = ResumeHttp.unsatisfiedTotal(response.header("Content-Range"))
@@ -158,7 +169,7 @@ internal class ResumableTransfer(private val config: ApkDownloadConfig, private 
                                 val retryable = error.reason == ApkFailure.Network || error.reason == ApkFailure.Http &&
                                     (error.status == 408 || error.status in 500..599)
                                 // Disk pressure must not erase an otherwise reusable checkpoint or spin retries.
-                                keep = retryable || error.reason == ApkFailure.Storage
+                                keep = retryable || error.reason == ApkFailure.Storage || preserveDeniedCheckpoint
                                 if (!retryable || attempts >= config.maxAttempts) throw error
                             } finally {
                                 synchronized(monitor) { active?.close(); active = null }

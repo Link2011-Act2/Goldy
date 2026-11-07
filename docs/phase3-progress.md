@@ -28,11 +28,12 @@ Implemented so far:
   downloader, appends via 206, checks cumulative progress and whole-file SHA-256,
   and verifies the inspector sees the complete bytes only.
 - ResumeHttpServerTest uses an actual loopback TCP/HTTP server and production
-  UrlAssetTransport. Sixteen cases cover disconnect/resume, 200 fallback, 416,
+  UrlAssetTransport. Eighteen cases cover disconnect/resume, 200 fallback, 416,
   weak ETag, Last-Modified, contradictory 206 responses, corruption and asset ID
   changes, HTTP timeouts, final digest mismatch after resume, explicit deletion,
   renewed redirect URLs with Range/If-Range forwarding, storage failure,
-  cancellation with retained bytes, injected connection timeout and
+  cancellation with retained bytes, injected connection timeout, expired CDN
+  authorization refresh/continued-denial retention and
   restoring HTTP total when asset size is unknown. APK inspection in JVM tests
   is a fixture and is not claimed as real Android signature verification.
 - Writer, savedProgress and explicit discard now share a cancellable OS file
@@ -61,7 +62,7 @@ Implemented so far:
   transfer tests pass on both APIs; 14 OS signature-rotation install cases pass
   per API. The API36 ShutUp permission/background/process/lease suite, 44 UI cases,
   and Goldy Demo's 22 narrow/font1.8 UI cases also pass.
-- Gold 155 / Elief 23 JVM tests pass without skips. Gold/Elief Debug and Release
+- Gold 157 / Elief 23 JVM tests pass without skips. Gold/Elief Debug and Release
   builds and Lint, Demo Debug/Release R8 and Lint pass. Lint has no errors;
   pre-existing dependency/KTX/catalog/style warnings remain.
 
@@ -85,6 +86,9 @@ prepare and launch revalidate again. HandedOff never means installation success.
 Canonical URLs are reopened each time, with allowlisted HTTPS redirects and
 Range/If-Range forwarding. A 200 truncates/restarts, a 206 is strictly validated,
 and a 416 permits only a bounded restart, never a completion shortcut.
+Signed CDN 401/403 responses permit one fresh canonical URL resolution; repeated
+denial fails and retains the unverified prefix. HTTP caches are disabled for
+these connections, so stale signed redirects cannot be reused as authority.
 Weak ETags cannot be used for If-Range; Last-Modified must satisfy the strong-date
 rule from [RFC 9110](https://www.rfc-editor.org/rfc/rfc9110.html#name-if-range).
 Android force-stop and vendor restrictions can prevent automatic execution;

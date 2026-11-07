@@ -1,0 +1,130 @@
+{
+  "sha": "e1d9ecd88e75f28b855ecd568e2e675486d8750e",
+  "startJst": "2026-11-06T22:08:36+09:00",
+  "publicationVerifiedJst": "2026-11-06T22:29:14+09:00",
+  "unitTestsRerun": true,
+  "modules": {
+    "gold": {
+      "tests": 119,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "lint": {
+        "debug": {
+          "errors": 0,
+          "warnings": 2
+        },
+        "release": {
+          "errors": 0,
+          "warnings": 2
+        }
+      }
+    },
+    "elief": {
+      "tests": 18,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "lint": {
+        "debug": {
+          "errors": 0,
+          "warnings": 0
+        },
+        "release": {
+          "errors": 0,
+          "warnings": 0
+        }
+      }
+    }
+  },
+  "api": {
+    "passed": true,
+    "modules": [
+      {
+        "module": "gold",
+        "baseline": "gold-25241039038aa1b6ebf38258b374f662649f7dd1.aar",
+        "publicTypes": 103,
+        "originalDescriptors": 733,
+        "missingDescriptors": [],
+        "retained": true
+      },
+      {
+        "module": "elief",
+        "baseline": "elief-25241039038aa1b6ebf38258b374f662649f7dd1.aar",
+        "publicTypes": 22,
+        "originalDescriptors": 178,
+        "missingDescriptors": [],
+        "retained": true
+      }
+    ]
+  },
+  "content": {
+    "passed": true,
+    "modules": [
+      {
+        "module": "gold",
+        "sourceFilesMatchHead": 18,
+        "publishedPublicJvmSignaturesMatchLocal": true
+      },
+      {
+        "module": "elief",
+        "sourceFilesMatchHead": 8,
+        "publishedPublicJvmSignaturesMatchLocal": true
+      }
+    ],
+    "oldCompiledClientRunsWithPublishedOnly": true,
+    "legacyShutUpPolicyBehaviorUnchanged": true,
+    "policyAliasBehaviorDifferenceLines": 44,
+    "behaviorNote": "Standard, NittcScheduler and GlyphBarty now use Common ordering/channel rules; this is not a binary linkage failure.",
+    "clientOutputLines": 211,
+    "baseline": "25241039038aa1b6ebf38258b374f662649f7dd1",
+    "version": "e1d9ecd88e75f28b855ecd568e2e675486d8750e"
+  },
+  "consumers": [
+    {
+      "version": "e1d9ecd88e75f28b855ecd568e2e675486d8750e",
+      "passed": true,
+      "r8": true,
+      "refreshDependencies": true,
+      "debug": true,
+      "release": true,
+      "lintErrors": 0,
+      "finishedJst": "2026-11-06T22:22:11.3645498+09:00",
+      "label": "shutup-elief"
+    },
+    {
+      "version": "e1d9ecd88e75f28b855ecd568e2e675486d8750e",
+      "passed": true,
+      "r8": true,
+      "refreshDependencies": true,
+      "debug": true,
+      "release": true,
+      "lintErrors": 0,
+      "finishedJst": "2026-11-06T22:26:32.3014533+09:00",
+      "label": "shutup-elief-expressive"
+    },
+    {
+      "version": "e1d9ecd88e75f28b855ecd568e2e675486d8750e",
+      "passed": true,
+      "r8": true,
+      "refreshDependencies": true,
+      "debug": true,
+      "release": true,
+      "lintErrors": 0,
+      "finishedJst": "2026-11-06T22:29:14.3277042+09:00",
+      "label": "shutup-elief-pom"
+    },
+    {
+      "version": "e1d9ecd88e75f28b855ecd568e2e675486d8750e",
+      "passed": true,
+      "r8": true,
+      "refreshDependencies": true,
+      "debug": true,
+      "release": true,
+      "lintErrors": 0,
+      "finishedJst": "2026-11-06T22:16:54.2625861+09:00",
+      "label": "shutup-gold"
+    }
+  ],
+  "workStoppedAtJst": "2026-11-06T22:59:19+09:00"
+}

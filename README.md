@@ -7,13 +7,14 @@ transitively and uses the host's Material theme and typography.
 
 ## Installation
 
-Verified UI library revision: `25241039038aa1b6ebf38258b374f662649f7dd1`.
-The [public build log](https://jitpack.io/com/github/Link2011-Act2/Goldy/25241039038aa1b6ebf38258b374f662649f7dd1/build.log)
+Verified UI library revision: `e1d9ecd88e75f28b855ecd568e2e675486d8750e`.
+The [public build log](https://jitpack.io/com/github/Link2011-Act2/Goldy/e1d9ecd88e75f28b855ecd568e2e675486d8750e/build.log)
 and independent Gold/Elief R8 consumers were checked against the downloaded
 AARs, POMs, Gradle metadata and sources. Elief also passed POM-only resolution.
-See [UI publication verification](docs/ui-publication.md). These coordinates
-pin the verified implementation; later documentation-only commits keep the
-same library and Demo sources.
+See [latest publication verification](docs/publication-2026-11-06.md). These
+coordinates pin the verified implementation, including the improved update
+check dialog. The earlier [UI publication verification](docs/ui-publication.md)
+remains a historical record.
 
 In `settings.gradle.kts`:
 
@@ -33,13 +34,13 @@ dependencyResolutionManagement {
 For Core only:
 
 ```kotlin
-implementation("com.github.Link2011-Act2.Goldy:gold:25241039038aa1b6ebf38258b374f662649f7dd1")
+implementation("com.github.Link2011-Act2.Goldy:gold:e1d9ecd88e75f28b855ecd568e2e675486d8750e")
 ```
 
 For Compose UI, use Elief; it brings the same commit's Gold transitively:
 
 ```kotlin
-implementation("com.github.Link2011-Act2.Goldy:elief:25241039038aa1b6ebf38258b374f662649f7dd1")
+implementation("com.github.Link2011-Act2.Goldy:elief:e1d9ecd88e75f28b855ecd568e2e675486d8750e")
 ```
 
 Consumers need compileSdk 37 or newer. Elief uses stable Material3 1.4.0 through

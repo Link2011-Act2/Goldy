@@ -92,60 +92,39 @@ internal fun UpdateDemoScreen(
     back: () -> Unit,
     open: (String) -> Unit,
     install: () -> Unit,
-    resume: (InstallRequest) -> Unit,
     permission: () -> Unit
 ) {
-    var releaseId by rememberSaveable { mutableStateOf<String?>(null) }
     var showDetails by rememberSaveable { mutableStateOf(false) }
-    releaseId?.let { id ->
-        AlertDialog(onDismissRequest = { releaseId = null }, title = { Text("Release installer file?") },
-            text = { Text("Close the Android installer and ensure every installer/URI reader has finished. Releasing now revokes URI access and deletes the staged APK. Returning to this app alone is not sufficient.") },
-            confirmButton = { TextButton(onClick = {
-                model.pending.firstOrNull { it.id == id }?.let(model::releaseAfterReadersFinished)
-                releaseId = null
-            }) { Text("All readers finished — release") } },
-            dismissButton = { TextButton(onClick = { releaseId = null }) { Text("Keep file") } })
-    }
-    UpdateOverviewScreen(model.ui, back, open, { action ->
+    val action: (UpdateAction) -> Unit = { action ->
         when (action) {
             UpdateAction.Download -> model.download()
             UpdateAction.CancelDownload -> model.cancel()
             UpdateAction.Install -> install()
             UpdateAction.OpenInstallPermissionSettings -> permission()
         }
-    }, header = {
+    }
+    val header: @Composable (UpdateUiState) -> Unit = {
         Column(verticalArrangement = Arrangement.spacedBy(12.dp)) {
             Text("Goldy Demo · self update", style = MaterialTheme.typography.titleLarge)
-            Text("Updates only Goldy Demo. Opening the installer does not confirm installation.")
-            model.identity?.let { identity ->
-                Text("${identity.packageName}\n${identity.versionName} · versionCode ${identity.versionCode}", Modifier.testTag("demo-identity"), style = MaterialTheme.typography.bodySmall)
-            }
+            model.identity?.let { Text(it.versionName, Modifier.testTag("demo-identity")) }
             Button(onClick = model::check, enabled = model.canCheck, modifier = Modifier.testTag("demo-check")) { Text("Check Demo update") }
             if (model.metadata.checking) OutlinedButton(onClick = model::cancel) { Text("Cancel check") }
-            Text("Install permission: ${model.permission}")
-            TextButton(onClick = permission, enabled = !model.busy) { Text("Installation source settings") }
-            Text("${if (model.metadata.fromCache) "Cached" else "Last fetched"}: ${model.metadata.lastSuccessMillis?.let(Instant::ofEpochMilli) ?: "never"}", style = MaterialTheme.typography.bodySmall)
             TextButton(onClick = { showDetails = !showDetails }) { Text(if (showDetails) "Hide signing / distribution details" else "Show signing / distribution details") }
             if (showDetails) {
+                Text("Install permission: ${model.permission}")
+                Text("${if (model.metadata.fromCache) "Cached" else "Last fetched"}: ${model.metadata.lastSuccessMillis?.let(Instant::ofEpochMilli) ?: "never"}", style = MaterialTheme.typography.bodySmall)
                 model.identity?.let { identity ->
                     Text("Signing certificate SHA-256:\n${identity.signers.currentSha256.sorted().joinToString("\n")}", style = MaterialTheme.typography.bodySmall)
                 }
                 Text("Distribution: ${DemoDistribution.repository.url}\nTag v<version>-Release · one goldy-demo-*.apk", style = MaterialTheme.typography.bodySmall)
             }
             if (model.restoring) CircularProgressIndicator()
-            if (model.restorationFailed) OutlinedButton(onClick = model::restore) { Text("Retry restoration") }
+            if (model.restorationFailed) OutlinedButton(onClick = model::restore) { Text("Load update information") }
             if (model.canDiscard) OutlinedButton(onClick = model::discardDownload) { Text("Discard verified download") }
-            model.pending.forEach { request ->
-                OutlinedCard(Modifier.fillMaxWidth()) {
-                    Column(Modifier.padding(12.dp), verticalArrangement = Arrangement.spacedBy(8.dp)) {
-                        Text("Retained installer request · ${request.metadata.versionName} (${request.metadata.versionCode})")
-                        Text("${request.metadata.packageName}\n${request.id}", style = MaterialTheme.typography.bodySmall)
-                        Text("Installation unconfirmed. The file is retained across Activity/process recreation.")
-                        OutlinedButton(onClick = { resume(request) }, enabled = !model.busy) { Text("Retry installer explicitly") }
-                        TextButton(onClick = { releaseId = request.id }, enabled = !model.busy) { Text("Release file after installer finishes…") }
-                    }
-                }
-            }
         }
-    })
+    }
+    val restored = model.restoredApk
+    if (restored != null) UpdateOverviewScreen(preparedApk = restored, transfer = model.transfer,
+        onBack = back, onAction = action, message = model.notice, header = header)
+    else UpdateOverviewScreen(model.ui, back, open, action, header = header)
 }

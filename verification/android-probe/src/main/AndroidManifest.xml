@@ -1,9 +1,13 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Explicit visibility for this disposable reader's known test host after replacement. -->
+    <queries><package android:name="jp.linkserver.goldy.test" /></queries>
     <application android:label="Goldy APK verification probe">
         <provider android:name="androidx.core.content.FileProvider" android:authorities="${applicationId}.host.fileprovider" android:exported="false" android:grantUriPermissions="true">
             <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/probe_host_paths" />
         </provider>
         <activity android:name=".UriProbeActivity" android:exported="true" android:theme="@android:style/Theme.NoDisplay" />
+        <activity android:name=".HeldUriReaderActivity" android:exported="true" android:theme="@android:style/Theme.Material.Light.NoActionBar" />
+        <activity android:name=".FreshUriReaderActivity" android:exported="true" android:theme="@android:style/Theme.Material.Light.NoActionBar" />
     </application>
     <instrumentation android:name=".ApkProbe" android:targetPackage="example.goldyprobe" />
 </manifest>

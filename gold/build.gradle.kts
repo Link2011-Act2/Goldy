@@ -3,6 +3,16 @@ plugins {
     `maven-publish`
 }
 
+// Real OS-update tests need two signed versions of the same test host. AGP parses the
+// versionCode before manifest placeholders, so supply a generated literal test manifest.
+val lifecycleTestManifest = tasks.register<Copy>("generateLifecycleTestManifest") {
+    val code = providers.gradleProperty("goldyTestVersionCode").getOrElse("1").toInt().also { require(it > 0) }
+    inputs.property("versionCode", code)
+    from("src/androidTest/AndroidManifest.xml")
+    into(layout.buildDirectory.dir("generated/lifecycleTestManifest"))
+    filter { line -> line.replace("android:versionCode=\"1\"", "android:versionCode=\"$code\"") }
+}
+
 android {
     namespace = "jp.linkserver.goldy"
     compileSdk = 37
@@ -16,6 +26,14 @@ android {
     }
     publishing { singleVariant("release") { withSourcesJar() } }
 }
+
+if (providers.gradleProperty("goldyTestVersionCode").isPresent) extensions.configure<com.android.build.api.dsl.LibraryExtension> {
+    sourceSets.getByName("androidTest").manifest.srcFile(lifecycleTestManifest.map {
+        it.destinationDir.resolve("AndroidManifest.xml")
+    })
+}
+tasks.matching { it.name == "mergeDebugAndroidTestManifest" || it.name == "mergeReleaseAndroidTestManifest" }
+    .configureEach { dependsOn(lifecycleTestManifest) }
 
 kotlin {
     compilerOptions {

@@ -26,6 +26,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.semantics.*
 import androidx.compose.ui.unit.dp
 import jp.linkserver.goldy.ApkProgress
+import jp.linkserver.goldy.ApkMetadata
 import jp.linkserver.goldy.GitHubRelease
 
 /** Display/events only; operation, verified file and installer ownership stays in the host. */
@@ -36,12 +37,22 @@ internal fun UpdateScreenLayout(
     modifier: Modifier, strings: UpdateStrings, channelLabel: String,
     loadingIndicator: @Composable () -> Unit, header: @Composable (UpdateUiState) -> Unit,
     presentation: UpdatePresentation
+) = UpdateScreenLayout(state, onBack, onOpenUrl, onAction, modifier, strings, channelLabel,
+    loadingIndicator, header, presentation, null)
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+internal fun UpdateScreenLayout(
+    state: UpdateUiState, onBack: () -> Unit, onOpenUrl: (String) -> Unit, onAction: (UpdateAction) -> Unit,
+    modifier: Modifier, strings: UpdateStrings, channelLabel: String,
+    loadingIndicator: @Composable () -> Unit, header: @Composable (UpdateUiState) -> Unit,
+    presentation: UpdatePresentation, preparedApk: ApkMetadata?
 ) {
     BoxWithConstraints(modifier.fillMaxSize().imePadding()) {
         val inlineActions = LocalDensity.current.fontScale >= 1.5f || maxHeight < 480.dp
         val maxActionsHeight = maxHeight * 0.4f
         // Layout adaptation must not reset the release's scroll/expansion state.
-        key(state.update?.release?.id) {
+        key(state.update?.release?.id ?: preparedApk) {
             val contentScroll = rememberScrollState()
             val actionsScroll = rememberScrollState()
             Scaffold(
@@ -55,7 +66,7 @@ internal fun UpdateScreenLayout(
                     })
                 },
                 bottomBar = {
-                    if (!inlineActions && state.update != null) {
+                    if (!inlineActions && (state.update != null || preparedApk != null)) {
                         Surface(color = MaterialTheme.colorScheme.surface) {
                             Column {
                                 HorizontalDivider(color = MaterialTheme.colorScheme.outlineVariant)
@@ -81,10 +92,11 @@ internal fun UpdateScreenLayout(
                             StatusText(strings.checking)
                         }
                         val candidate = state.update
-                        if (candidate == null) {
+                        if (candidate == null && preparedApk == null) {
                             if (!state.checking) Text(state.message ?: strings.noUpdate)
                         } else {
-                            VersionRow(presentation.versionLabel(candidate.release), channelLabel, prominent = true)
+                            VersionRow(candidate?.let { presentation.versionLabel(it.release) }
+                                ?: checkNotNull(preparedApk).versionName, channelLabel, prominent = true)
                             state.message?.let { Text(it) }
                             if (inlineActions) {
                                 Surface(shape = updateCardShape(), color = updateCardColor(),
@@ -94,17 +106,19 @@ internal fun UpdateScreenLayout(
                                     }
                                 }
                             }
-                            Text(strings.releaseNotes, Modifier.semantics { heading() },
-                                style = MaterialTheme.typography.titleSmall,
-                                color = MaterialTheme.colorScheme.primary)
-                            Surface(shape = updateCardShape(), color = updateCardColor(),
-                                modifier = Modifier.fillMaxWidth().testTag("latest-release-notes")) {
-                                ReleaseNotes(candidate.release.notes, onOpenUrl, Modifier.fillMaxWidth().padding(22.dp), strings.noNotes)
+                            if (candidate != null) {
+                                Text(strings.releaseNotes, Modifier.semantics { heading() },
+                                    style = MaterialTheme.typography.titleSmall,
+                                    color = MaterialTheme.colorScheme.primary)
+                                Surface(shape = updateCardShape(), color = updateCardColor(),
+                                    modifier = Modifier.fillMaxWidth().testTag("latest-release-notes")) {
+                                    ReleaseNotes(candidate.release.notes, onOpenUrl, Modifier.fillMaxWidth().padding(22.dp), strings.noNotes)
+                                }
+                                val history = candidate.intermediateReleases.distinctBy { it.id }
+                                if (history.isNotEmpty()) History(history, presentation, strings, onOpenUrl)
+                                if (!candidate.catalogComplete) Text(strings.incompleteHistory)
+                                if (state.apkAvailable) ReleaseLink(candidate.release, strings, onOpenUrl)
                             }
-                            val history = candidate.intermediateReleases.distinctBy { it.id }
-                            if (history.isNotEmpty()) History(history, presentation, strings, onOpenUrl)
-                            if (!candidate.catalogComplete) Text(strings.incompleteHistory)
-                            if (state.apkAvailable) ReleaseLink(candidate.release, strings, onOpenUrl)
                         }
                         Spacer(Modifier.height(8.dp))
                     }
@@ -120,7 +134,7 @@ private fun VersionRow(version: String, channel: String, prominent: Boolean = fa
         Text(version, Modifier.weight(1f),
             style = if (prominent) MaterialTheme.typography.headlineMedium else MaterialTheme.typography.titleSmall)
         // Noninteractive display chip: no no-op button in the accessibility tree.
-        Surface(shape = MaterialTheme.shapes.extraSmall, color = Color.Transparent,
+        if (channel.isNotBlank()) Surface(shape = MaterialTheme.shapes.extraSmall, color = Color.Transparent,
             contentColor = MaterialTheme.colorScheme.onSurfaceVariant,
             border = BorderStroke(1.dp, MaterialTheme.colorScheme.outlineVariant)) {
             Text(channel, Modifier.padding(horizontal = 10.dp, vertical = 5.dp), style = MaterialTheme.typography.labelMedium)
@@ -178,8 +192,8 @@ private fun StatusText(text: String) {
 @Composable
 private fun TransferContent(state: UpdateUiState, s: UpdateStrings, action: (UpdateAction) -> Unit,
                             open: (String) -> Unit, loading: @Composable () -> Unit) {
-    val release = state.update?.release ?: return
-    if (!state.apkAvailable && state.transfer == UpdateTransferState.Idle) {
+    val release = state.update?.release
+    if (!state.apkAvailable && state.transfer == UpdateTransferState.Idle && release != null) {
         Button(onClick = { if (safeWebUrl(release.url)) open(release.url) }, enabled = safeWebUrl(release.url), modifier = Modifier.primaryAction()) { Text(s.openRelease) }
         Text(s.noApk, style = MaterialTheme.typography.bodySmall)
         return
@@ -226,7 +240,7 @@ private fun TransferContent(state: UpdateUiState, s: UpdateStrings, action: (Upd
             Button(onClick = { action(UpdateAction.Download) }, enabled = !state.checking, modifier = Modifier.primaryAction()) { Text(s.download) }
         }
     }
-    if (!state.apkAvailable) ReleaseLink(release, s, open)
+    if (!state.apkAvailable && release != null) ReleaseLink(release, s, open)
 }
 
 private fun Modifier.primaryAction() = this.fillMaxWidth().heightIn(min = 56.dp)
@@ -242,7 +256,7 @@ private fun updateCardShape(): Shape = LocalUpdateCardStyle.current.shape ?: Mat
 @Composable
 private fun DownloadProgress(progress: ApkProgress) {
     val fraction = DownloadProgressFormatter.fraction(progress)
-    val locale = LocalConfiguration.current.locales[0] ?: java.util.Locale.getDefault()
+    val locale = LocalConfiguration.current.locales[0]
     if (fraction == null) LinearProgressIndicator(Modifier.fillMaxWidth())
     else LinearProgressIndicator(progress = { fraction }, modifier = Modifier.fillMaxWidth())
     Text(DownloadProgressFormatter.format(progress, locale),

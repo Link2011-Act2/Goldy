@@ -25,6 +25,8 @@ class GoldyTestRunner : Instrumentation() {
         try {
             runBlocking {
                 when (arguments.getString("mode") ?: "installer") {
+                    "maintenance-prepare" -> lines.addAll(InstallLifecycleChecks(context).prepare())
+                    "maintenance-verify" -> lines.addAll(InstallLifecycleChecks(context).verify(arguments.getString("id")!!))
                     "rotation" -> rotation()
                     "permission" -> permission()
                     "installer" -> installer()

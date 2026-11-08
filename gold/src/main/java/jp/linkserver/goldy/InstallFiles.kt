@@ -1,15 +1,31 @@
 package jp.linkserver.goldy
 
+import android.os.Build
+import android.system.Os
+import android.system.OsConstants
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
 import java.security.MessageDigest
+import java.nio.file.Files
+import java.nio.file.StandardCopyOption
 import kotlinx.coroutines.ensureActive
 import org.json.JSONArray
 import org.json.JSONObject
 import kotlin.coroutines.CoroutineContext
 
-internal data class InstallRecord(val id: String, val sha256: String, val size: Long, val metadata: ApkMetadata)
+internal data class InstallRecord(val id: String, val sha256: String, val size: Long, val metadata: ApkMetadata) {
+    // Body property keeps the existing constructor/component JVM signatures intact.
+    var lifecycle: InstallLifecycle = InstallLifecycle()
+}
+
+internal enum class InstallBacking { Retained, Installed, Obsolete }
+internal data class InstallLifecycle(
+    val backing: InstallBacking = InstallBacking.Retained,
+    val launchedFromCode: Long? = null,
+    val launchedFromUpdateTime: Long? = null,
+    val confirmedInstalled: Boolean = false
+)
 
 /** Persists handoff files outside cache; no age-based deletion of possibly active requests. */
 internal class InstallFiles(private val filesDir: File) {
@@ -48,8 +64,20 @@ internal class InstallFiles(private val filesDir: File) {
             val json = JSONObject().put("schema", 1).put("id", record.id).put("sha256", record.sha256).put("size", record.size)
                 .put("packageName", apk.packageName).put("versionName", apk.versionName).put("versionCode", apk.versionCode)
                 .put("multiple", apk.signers.multiple).put("signers", JSONArray(apk.signers.currentSha256.toList()))
+            val lifecycle = record.lifecycle
+            json.put("lifecycle", JSONObject().put("backing", lifecycle.backing.name)
+                .put("fromCode", lifecycle.launchedFromCode ?: JSONObject.NULL)
+                .put("fromUpdateTime", lifecycle.launchedFromUpdateTime ?: JSONObject.NULL)
+                .put("confirmed", lifecycle.confirmedInstalled))
             FileOutputStream(temporary).use { it.write(json.toString().toByteArray(Charsets.UTF_8)); it.fd.sync() }
-            if (!temporary.renameTo(recordFile(record.id))) throw IOException("Could not commit handoff record")
+            Files.move(temporary.toPath(), recordFile(record.id).toPath(),
+                StandardCopyOption.ATOMIC_MOVE, StandardCopyOption.REPLACE_EXISTING)
+            // Persist the directory entry before a caller removes a redundant backing copy.
+            // A sync failure propagates, so the original APK remains available for retry.
+            if (Build.VERSION.SDK_INT >= 26) {
+                val descriptor = Os.open(records.path, OsConstants.O_RDONLY, 0)
+                try { Os.fsync(descriptor) } finally { Os.close(descriptor) }
+            }
         } finally { temporary.delete() }
     }
     fun read(id: String): InstallRecord {
@@ -64,8 +92,17 @@ internal class InstallFiles(private val filesDir: File) {
         val certificates = (0 until signers.length()).map { signers.getString(it) }.toSet()
         require(certificates.size == signers.length())
         return InstallRecord(id, sha, size, ApkMetadata(json.getString("packageName"), json.getString("versionName"),
-            json.getLong("versionCode"), ApkSigners(certificates, json.getBoolean("multiple"))))
+            json.getLong("versionCode"), ApkSigners(certificates, json.getBoolean("multiple")))).also { record ->
+            json.optJSONObject("lifecycle")?.let { value ->
+                fun optionalLong(key: String): Long? = if(value.isNull(key)) null else value.getLong(key).also { require(it >= 0) }
+                record.lifecycle = InstallLifecycle(InstallBacking.valueOf(value.getString("backing")),
+                    optionalLong("fromCode"), optionalLong("fromUpdateTime"), value.getBoolean("confirmed"))
+            }
+        }
     }
+    fun ids(): List<String> = (records.listFiles() ?: emptyArray())
+        .map { it.name }.filter { it.endsWith(".json") && validId(it.removeSuffix(".json")) }
+        .map { it.removeSuffix(".json") }
     fun all(): List<InstallRecord> = (records.listFiles() ?: emptyArray())
         .filter { it.name.endsWith(".json") && validId(it.name.removeSuffix(".json")) }
         .map { read(it.name.removeSuffix(".json")) }

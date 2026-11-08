@@ -52,10 +52,9 @@ class MainActivity : ComponentActivity() {
                 } catch (_: Exception) { update.navigationFailed() }
             },
             onInstall = { lifecycleScope.launch { update.install(::startActivity) } },
-            onResumePending = { request -> lifecycleScope.launch { update.resumePending(request, ::startActivity) } },
             notifications = notifications,
             onPermission = {
-                try { startActivity(update.settingsIntent()) } catch (_: Exception) { update.navigationFailed() }
+                try { update.settingsIntent()?.let(::startActivity) } catch (_: Exception) { update.navigationFailed() }
             }) }
     }
 }
@@ -67,7 +66,6 @@ internal fun SampleApp(
     update: DemoUpdateViewModel? = null,
     onOpenUrl: (String) -> Unit = {},
     onInstall: () -> Unit = {},
-    onResumePending: (jp.linkserver.goldy.InstallRequest) -> Unit = {},
     onPermission: () -> Unit = {},
     notifications: NotificationDemoViewModel? = null
 ) {
@@ -122,7 +120,7 @@ internal fun SampleApp(
                                 NotificationDetails(it) { navigate(DemoDestination.Notifications) }
                             }
                             DemoDestination.Update -> update?.let {
-                                UpdateDemoScreen(it, { navigate(DemoDestination.Showcase) }, onOpenUrl, onInstall, onResumePending, onPermission)
+                                UpdateDemoScreen(it, { navigate(DemoDestination.Showcase) }, onOpenUrl, onInstall, onPermission)
                             }
                             DemoDestination.Showcase -> Column {
                                 Row(Modifier.fillMaxWidth().horizontalScroll(rememberScrollState()).padding(horizontal = 8.dp),

@@ -15,10 +15,17 @@ class MainActivity : ComponentActivity() {
         val release = GitHubRelease(1, "v1.0.0-Release", notes = "# Public consumer\n\n**Gold** and Elief.\n\n| A | B |\n| - | - |\n| Core | UI |", url = "https://github.com/Link2011-Act2/Goldy/releases/tag/v1.0.0-Release")
         val candidate = UpdateCandidate(release)
         val state = goldy.state.value.copy(availableUpdate = candidate, notificationUpdate = candidate, showBanner = true)
+        var preparedApk by mutableStateOf<ApkMetadata?>(null)
+        lifecycleScope.launch {
+            preparedApk = ApkInstaller.create(this@MainActivity).reconcileInstalledUpdates()
+                .pendingRequests.firstOrNull()?.metadata
+        }
         setContent { HostTheme {
             var prompt by remember { mutableStateOf(false) }
             var details by remember { mutableStateOf(false) }
-            if (details) UpdateOverviewScreen(state.toUpdateUiState(), { details = false }, {}, {})
+            if (details && preparedApk != null) UpdateOverviewScreen(preparedApk = checkNotNull(preparedApk),
+                transfer = UpdateTransferState.Ready, onBack = { details = false }, onAction = {})
+            else if (details) UpdateOverviewScreen(state.toUpdateUiState(), { details = false }, {}, {})
             else Column {
                 UpdateNotificationBanner(state, { details = true }, { lifecycleScope.launch { goldy.hideBanner() } })
                 UpdateNotificationIcon(state, { prompt = true })

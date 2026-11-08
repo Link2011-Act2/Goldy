@@ -81,6 +81,24 @@ class ApkInstaller private constructor(context: Context) {
                 val coroutine = currentCoroutineContext()
                 ApkRevalidator.verify(source, apk.metadata, apk.sha256, size, inspector, coroutine)
                 files.initialize()
+                // Reuse the same authenticated artifact instead of accumulating copies on retry.
+                for (id in files.ids()) {
+                    try {
+                        val previous = files.read(id)
+                        if (previous.sha256 != apk.sha256 || previous.size != size || previous.metadata != apk.metadata ||
+                            previous.lifecycle.backing == InstallBacking.Obsolete) continue
+                        val snapshot = installedApkSnapshot(context, inspector)
+                        ApkRevalidator.verify(resolveInstallSource(files, previous, snapshot), apk.metadata,
+                            apk.sha256, size, inspector, coroutine)
+                        val request = request(previous)
+                        installerIntent(request) ?: throw InstallOperationException(InstallFailure.NoInstaller)
+                        previous.lifecycle = previous.lifecycle.copy(launchedFromCode = null,
+                            launchedFromUpdateTime = null, confirmedInstalled = false)
+                        synchronized(InstallFiles.lock) { files.write(previous) }
+                        return@withContext InstallPreparation.Ready(request)
+                    } catch (cancel: CancellationException) { throw cancel }
+                    catch (_: Exception) { /* A damaged old artifact never authorizes the new one. */ }
+                }
                 val id = UUID.randomUUID().toString()
                 val partial = File(files.directory, id + ".part")
                 val target = files.apk(id)
@@ -134,8 +152,14 @@ class ApkInstaller private constructor(context: Context) {
                 checkProvider()
                 val record = synchronized(InstallFiles.lock) { files.read(request.id) }
                 if (request.uri != uri(record) || request.metadata != record.metadata) throw InstallOperationException(InstallFailure.InvalidFile)
-                ApkRevalidator.verify(files.apk(record.id), record.metadata, record.sha256, record.size, inspector, currentCoroutineContext())
-                installerIntent(request) ?: throw InstallOperationException(InstallFailure.NoInstaller)
+                val snapshot = installedApkSnapshot(context, inspector)
+                ApkRevalidator.verify(resolveInstallSource(files, record, snapshot), record.metadata, record.sha256,
+                    record.size, inspector, currentCoroutineContext())
+                val result = installerIntent(request) ?: throw InstallOperationException(InstallFailure.NoInstaller)
+                record.lifecycle = record.lifecycle.copy(launchedFromCode = snapshot.metadata.versionCode,
+                    launchedFromUpdateTime = snapshot.lastUpdateTime, confirmedInstalled = false)
+                synchronized(InstallFiles.lock) { files.write(record) }
+                result
             }
         } catch (error: CancellationException) { throw error
         } catch (error: Exception) { return@withLock InstallLaunchResult.Failed(classify(error)) }
@@ -155,6 +179,23 @@ class ApkInstaller private constructor(context: Context) {
      */
     suspend fun pendingRequests(): List<InstallRequest> = gate.withLock {
         withContext(Dispatchers.IO) { synchronized(InstallFiles.lock) { files.all().map(::request) } }
+    }
+
+    /** Reconcile real installed bytes. Never expires an uncertain install by age or revokes an active URI. */
+    suspend fun reconcileInstalledUpdates(): InstallReconciliation = reconcile(false)
+
+    internal suspend fun reconcileAfterPackageReplacement(): InstallReconciliation = reconcile(true)
+
+    private suspend fun reconcile(packageReplaced: Boolean): InstallReconciliation = gate.withLock {
+        withContext(Dispatchers.IO) {
+            val coroutine = currentCoroutineContext()
+            synchronized(InstallFiles.lock) {
+                val result = InstallMaintenance(files, installedApkSnapshot(context, inspector), inspector)
+                    .run(coroutine, packageReplaced)
+                InstallReconciliation(result.pending.map(::request), result.installed, result.obsolete,
+                    result.deferred, result.retainedBytes)
+            }
+        }
     }
 
     /** Explicitly call ONLY once no installer/reader needs this URI. Never call in a launch finally/onResume. */

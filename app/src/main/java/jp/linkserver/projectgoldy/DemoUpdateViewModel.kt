@@ -45,7 +45,7 @@ internal class DemoUpdateViewModel(app: Application) : AndroidViewModel(app) {
         private set
     var installing by mutableStateOf(false)
         private set
-    var notice by mutableStateOf("Not configured until a matching signed Demo APK is published. Check explicitly to query GitHub.")
+    var notice by mutableStateOf("Check for Goldy Demo updates.")
         private set
     var permission by mutableStateOf(installer.permissionStatus())
         private set
@@ -56,6 +56,7 @@ internal class DemoUpdateViewModel(app: Application) : AndroidViewModel(app) {
     val busy get() = restoring || installing || operation?.isActive == true
     val canCheck get() = !busy && !restorationFailed && pinned == null && verified == null && request == null
     val canDiscard get() = !busy && pinned != null && request == null
+    val restoredApk get() = request?.metadata.takeIf { pinned == null }
     val ui get() = metadata.copy(availableUpdate = pinned ?: metadata.availableUpdate).toUpdateUiState(
         DemoDistribution.policy.versions, DemoDistribution.selection, transfer, notice)
 
@@ -71,21 +72,48 @@ internal class DemoUpdateViewModel(app: Application) : AndroidViewModel(app) {
         viewModelScope.launch {
             try {
                 identity = withContext(Dispatchers.IO) { AndroidApkInspector(getApplication()).installed() }
-                pending = installer.pendingRequests()
+                pending = installer.reconcileInstalledUpdates().pendingRequests
+                request = pending.maxByOrNull { it.metadata.versionCode }
+                request?.let {
+                    transfer = if (installer.permissionStatus() == InstallPermission.Allowed)
+                        UpdateTransferState.Ready else UpdateTransferState.PermissionRequired
+                }
                 goldy.restoreCachedState()
-                if (pending.isNotEmpty()) notice = "Restored ${pending.size} installer request(s). Installation is unconfirmed."
+                if (pending.isNotEmpty()) notice = "Ready to install."
             } catch (cancel: CancellationException) { throw cancel
             } catch (_: Exception) {
                 restorationFailed = true
-                notice = "Could not restore identity/cache/installer requests. Retry restoration before continuing."
+                notice = "Could not load update information."
             }
             finally { restoring = false }
         }
     }
 
-    fun refreshPermission() { permission = installer.permissionStatus() }
-    fun settingsIntent(): Intent = installer.unknownSourcesSettingsIntent()
-    fun navigationFailed() { notice = "Android could not open the requested screen. No installation was confirmed." }
+    fun refreshPermission() {
+        permission = installer.permissionStatus()
+        if (busy) return
+        operation = viewModelScope.launch {
+            try {
+                pending = installer.reconcileInstalledUpdates().pendingRequests
+                val current = request
+                if (current != null && pending.none { it.id == current.id }) {
+                    request = null; pinned = null
+                    transfer = UpdateTransferState.Idle
+                    notice = "App is up to date."
+                } else if (current != null && (transfer == UpdateTransferState.HandedOff ||
+                    transfer == UpdateTransferState.PermissionRequired)) {
+                    transfer = if (permission == InstallPermission.Allowed) UpdateTransferState.Ready
+                        else UpdateTransferState.PermissionRequired
+                } else if (current == null && transfer == UpdateTransferState.PermissionRequired &&
+                    permission == InstallPermission.Allowed) transfer = UpdateTransferState.Ready
+            } catch (cancel: CancellationException) { throw cancel }
+            catch (_: Exception) { notice = "Could not load update information." }
+        }
+    }
+    fun settingsIntent(): Intent? = installer.unknownSourcesSettingsIntent().takeIf {
+        installer.permissionStatus() == InstallPermission.UserPermissionRequired
+    }
+    fun navigationFailed() { notice = "Could not open this screen." }
 
     fun check() {
         if (!canCheck) return
@@ -94,10 +122,10 @@ internal class DemoUpdateViewModel(app: Application) : AndroidViewModel(app) {
             try {
                 notice = when (val outcome = goldy.check(CheckTrigger.Manual)) {
                     CheckOutcome.NoPublishedReleases, CheckOutcome.NoEligibleRelease ->
-                        "Not configured: no eligible Goldy Demo APK release. No file has been downloaded."
+                        "No Goldy Demo update is available."
                     else -> comparisonText(outcome)
                 }
-            } catch (cancel: CancellationException) { notice = "Check cancelled. Cached information retained."; throw cancel }
+            } catch (cancel: CancellationException) { notice = "Update check cancelled."; throw cancel }
         }
     }
 
@@ -116,14 +144,14 @@ internal class DemoUpdateViewModel(app: Application) : AndroidViewModel(app) {
                     finally { progress.close(); collector.cancelAndJoin() }
                 }
                 transfer = UpdateTransferState.Ready
-                notice = "Verified this Demo's package, current signer, versionCode and release version. Not installed."
+                notice = "Ready to install."
             } catch (cancel: CancellationException) {
                 transfer = UpdateTransferState.Cancelled
                 throw cancel
             } catch (error: ApkException) {
-                transfer = UpdateTransferState.Failed("Download/verification rejected: ${error.reason}. No installer was opened.")
+                transfer = UpdateTransferState.Failed("Could not verify the update.")
             } catch (_: Exception) {
-                transfer = UpdateTransferState.Failed("Could not store or download the APK. No installer was opened.")
+                transfer = UpdateTransferState.Failed("Could not download the update.")
             }
         }
     }
@@ -155,27 +183,15 @@ internal class DemoUpdateViewModel(app: Application) : AndroidViewModel(app) {
         }
     }
 
-    suspend fun resumePending(value: InstallRequest, startActivity: (Intent) -> Unit) {
-        if (busy || verified != null || pending.none { it.id == value.id }) return
-        installing = true
-        request = value
-        transfer = UpdateTransferState.PreparingInstall
-        try { launchRequest(value, startActivity) }
-        finally {
-            installing = false
-            if (transfer == UpdateTransferState.PreparingInstall) transfer = UpdateTransferState.Ready
-        }
-    }
-
     private suspend fun launchRequest(value: InstallRequest, startActivity: (Intent) -> Unit) {
         when (val result = installer.launch(value, startActivity)) {
             InstallLaunchResult.HandedOff -> {
                 transfer = UpdateTransferState.HandedOff
-                notice = "Installer opened. Installation is UNCONFIRMED; returning here does not mean success."
+                notice = "Installer opened."
             }
             is InstallLaunchResult.PermissionRequired -> {
                 transfer = UpdateTransferState.PermissionRequired
-                notice = "Allow this Demo as an installation source, then retry explicitly."
+                notice = "Allow installation in settings."
             }
             is InstallLaunchResult.Failed -> installFailed(result.error)
         }
@@ -183,7 +199,7 @@ internal class DemoUpdateViewModel(app: Application) : AndroidViewModel(app) {
     }
 
     private fun installFailed(error: InstallError) {
-        notice = "Installer rejected: ${error.reason}" + (error.apkFailure?.let { " / $it" } ?: "")
+        notice = "Could not open the installer."
         transfer = UpdateTransferState.Failed(notice, UpdateAction.Install)
     }
 
@@ -195,24 +211,6 @@ internal class DemoUpdateViewModel(app: Application) : AndroidViewModel(app) {
         transfer = UpdateTransferState.Idle
         notice = "Current download discarded. You can check for another Demo update."
         if (source != null) operation = viewModelScope.launch { withContext(Dispatchers.IO) { source.file.delete() } }
-    }
-
-    /** UI must first ask the user to confirm that all installer/URI readers have finished. */
-    fun releaseAfterReadersFinished(value: InstallRequest) {
-        if (busy || pending.none { it.id == value.id }) return
-        operation = viewModelScope.launch {
-            try {
-                installer.release(value)
-                pending = pending.filterNot { it.id == value.id }
-                if (request?.id == value.id) {
-                    request = null
-                    pinned = null
-                    transfer = UpdateTransferState.Idle
-                }
-                notice = "Installer file released after your confirmation. Installation remains unconfirmed."
-            } catch (cancel: CancellationException) { throw cancel
-            } catch (_: Exception) { notice = "Could not release the installer file. Request retained for retry." }
-        }
     }
 
     override fun onCleared() {

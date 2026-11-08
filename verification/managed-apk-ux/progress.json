@@ -1,0 +1,53 @@
+{
+  "updatedJst": "2026-11-08T19:17:35.6853959+09:00",
+  "objective": "Safe automatic update APK lifecycle and concise update UX across four apps",
+  "phase1": {
+    "status": "complete",
+    "schedulerHead": "f18c14afe718f9987874659f1a21a30c5bdb1ac7",
+    "removedUnusedStrings": [
+      "goldy_update_allow_install",
+      "goldy_update_release",
+      "goldy_update_release_failed",
+      "goldy_update_restore_loading",
+      "goldy_update_retained_body",
+      "goldy_update_retained_title"
+    ],
+    "usedJapaneseStrings": "preserved as user baseline",
+    "validation": "Scheduler :app:processDebugResources PASS (28s)"
+  },
+  "phase2": {
+    "releaseR8": "PASS: Demo optimized Release 1606713 bytes",
+    "knownPlatformBehavior": "Android may kill stable provider clients and revoke grants on package update; external test uses released unstable client and real SDK fresh Intent grant for explicit retry",
+    "api28": "PASS: same actual replacement/FD/restore/SDK launch checks as API36",
+    "api36": "Actual signed APK replacement; protected receiver cleanup; external held FD full hash; fresh SDK launch/read grant restores same URI; cancelled/unknown retained; duplicate prepare reused",
+    "publicSha": "unchanged 27692fc (not yet published)",
+    "androidUi": "2 passed: restored install at 320dp/fontScale1.8; permission guide",
+    "unitTests": {
+      "elief": 23,
+      "gold": 171,
+      "failures": 0,
+      "skipped": 0,
+      "errors": 0,
+      "additionalSameCodeCase": "PASS; focused lifecycle 15 tests after the full Gold171/Elief23 run"
+    },
+    "testHarnessFixes": "Separate reader task prevents Intent misdelivery; known host queries; Play Store parallel update stopped; non-streaming adb used after streaming timeout",
+    "debugBuild": "pass",
+    "lint": "PASS: no Error/Fatal; Gold debug5/release4 warnings, Elief0, Demo23",
+    "implementation": "Actual installed bytes + full archive verification; atomic lifecycle record fsync/rename/directory-fsync before unlink; no URI revocation; installed APK backs same URI",
+    "abi": {
+      "goldDescriptors": 807,
+      "missing": 0,
+      "eliefDescriptors": 244
+    },
+    "status": "local_verified_public_pending",
+    "demoUnitTests": {
+      "failures": 0.0,
+      "tests": 9.0,
+      "errors": 0.0
+    }
+  },
+  "phase3": "not_started",
+  "phase4": "Glyph partial tree protected; migration paused for shared UX",
+  "phase5": "Beast original changes protected",
+  "phase6": "pending"
+}

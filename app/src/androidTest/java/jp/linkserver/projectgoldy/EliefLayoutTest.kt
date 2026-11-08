@@ -13,6 +13,9 @@ import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.test.*
 import androidx.compose.ui.test.junit4.createAndroidComposeRule
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.Density
+import jp.linkserver.goldy.ApkMetadata
+import jp.linkserver.goldy.ApkSigners
 import jp.linkserver.goldy.compose.*
 import org.junit.Assert.*
 import org.junit.Rule
@@ -22,6 +25,36 @@ import java.io.File
 class EliefLayoutTest {
     @get:Rule(order = 0) val appearance = IsolatedDemoAppearance()
     @get:Rule(order = 1) val rule = createAndroidComposeRule<MainActivity>()
+
+    @Test fun restoredInstallationNeedsNeitherReleaseMetadataNorFileManagement() {
+        var installs = 0
+        var transfer by mutableStateOf<UpdateTransferState>(UpdateTransferState.Ready)
+        val apk = ApkMetadata("example.app", "2.0.0-IntDev_rev10", 2,
+            ApkSigners(setOf("a".repeat(64)), false))
+        rule.activity.setContent {
+            val density = LocalDensity.current
+            CompositionLocalProvider(LocalDensity provides Density(density.density, 1.8f)) {
+                MaterialTheme {
+                    Box(Modifier.width(320.dp).fillMaxHeight()) {
+                        UpdateOverviewScreen(preparedApk = apk, transfer = transfer, onBack = {},
+                            onAction = { if (it == UpdateAction.Install) { installs++; transfer = UpdateTransferState.HandedOff } })
+                    }
+                }
+            }
+        }
+        rule.onNodeWithText(apk.versionName).assertIsDisplayed()
+        rule.onNodeWithText("Install").performScrollTo().assertIsDisplayed().performClick()
+        assertEquals(1, installs)
+        rule.onNodeWithText("Installer opened.").performScrollTo().assertIsDisplayed()
+        rule.onNodeWithText("Install").assertDoesNotExist()
+        rule.onNodeWithText("Download APK").assertDoesNotExist()
+        rule.onNodeWithText("Release notes").assertDoesNotExist()
+        rule.onNodeWithText("No update is available.").assertDoesNotExist()
+        // Only the host's foreground-return/reconciliation can enable another explicit install.
+        rule.runOnIdle { transfer = UpdateTransferState.Ready }
+        rule.onNodeWithText("Install").performScrollTo().performClick()
+        assertEquals(2, installs)
+    }
 
     private fun screen(state: UpdateUiState = fixture(0), heightLimited: Boolean = false) {
         rule.activity.setContent {

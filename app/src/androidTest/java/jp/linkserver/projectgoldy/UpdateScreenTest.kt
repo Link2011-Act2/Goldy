@@ -65,15 +65,15 @@ class UpdateScreenTest {
     @Test fun permissionIsHostOwned() {
         select(5)
         rule.onNodeWithText("Try again").assertDoesNotExist()
-        rule.onNodeWithText("Open installer").assertDoesNotExist()
+        rule.onNodeWithText("Install").assertDoesNotExist()
         rule.onNodeWithText("Allow installation in settings").performScrollTo().performClick()
         rule.runOnIdle { assertEquals("Fixture permission guide · no settings Activity launched", rule.activity.model.event) }
         rule.runOnIdle { rule.activity.model.permissionResult(true) }
         rule.onNodeWithText("Allow installation in settings").assertDoesNotExist()
-        rule.onNodeWithText("Open installer").performScrollTo().performClick()
+        rule.onNodeWithText("Install").performScrollTo().performClick()
         rule.runOnIdle { assertEquals(UpdateTransferState.HandedOff, rule.activity.model.state.transfer) }
         rule.onNodeWithText("Installer opened.", substring = true).performScrollTo().assertIsDisplayed()
-        rule.onNodeWithText("Open installer").assertDoesNotExist()
+        rule.onNodeWithText("Install").assertDoesNotExist()
     }
     @Test fun emptyNotes() {
         select(7)

@@ -42,7 +42,7 @@ data class UpdateNotificationStrings(
     val noEligible: String = "No release matches your update policy.",
     val unsupported: String = "The installed version cannot be compared safely.",
     val disabled: String = "Automatic checks are off. You can check manually.",
-    val failure: String = "Could not check for updates. Saved information is retained.",
+    val failure: String = "Could not check for updates.",
     val throttled: String = "Requests are temporarily limited. Try again later.",
     val incomplete: String = "The release history is incomplete.",
     val cached: String = "Saved update information"

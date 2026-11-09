@@ -1,5 +1,5 @@
 {
-  "updatedJst": "2026-11-08T19:17:35.6853959+09:00",
+  "updatedJst": "2026-11-08T22:59:34.292234+09:00",
   "objective": "Safe automatic update APK lifecycle and concise update UX across four apps",
   "phase1": {
     "status": "complete",
@@ -20,7 +20,7 @@
     "knownPlatformBehavior": "Android may kill stable provider clients and revoke grants on package update; external test uses released unstable client and real SDK fresh Intent grant for explicit retry",
     "api28": "PASS: same actual replacement/FD/restore/SDK launch checks as API36",
     "api36": "Actual signed APK replacement; protected receiver cleanup; external held FD full hash; fresh SDK launch/read grant restores same URI; cancelled/unknown retained; duplicate prepare reused",
-    "publicSha": "unchanged 27692fc (not yet published)",
+    "publicSha": "809dda97ab45cd28812f150697cba126c6d4d406",
     "androidUi": "2 passed: restored install at 320dp/fontScale1.8; permission guide",
     "unitTests": {
       "elief": 23,
@@ -39,15 +39,302 @@
       "missing": 0,
       "eliefDescriptors": 244
     },
-    "status": "local_verified_public_pending",
+    "status": "complete",
     "demoUnitTests": {
       "failures": 0.0,
       "tests": 9.0,
       "errors": 0.0
+    },
+    "publicArtifacts": "Gold/Elief AAR POM module: all six fresh HTTP200, coordinates/transitive SHA/new classes validated",
+    "publicConsumers": "Gold-only + Elief-to-Gold: Debug Release R8 sources dependency/manifest checks PASS"
+  },
+  "phase3": {
+    "scope": "App updater only; no shutter/timetable/AI feature changes",
+    "status": "implementation_and_available_checks_complete",
+    "implementation": "Normal Install after restore/foreground return; SDK reconciliation; retired ledger cleanup; no retained APK cards/delete/reopen dialogs",
+    "tests": "Existing host tests updated for new UX; related compilation/testing started on ShutUp",
+    "pending": "Host compile/test fixes if needed; runtime lifecycle tests; app-completion Unit/R8/Lint gates",
+    "dependencies": "ShutUp and Scheduler now pin verified public 809dda9",
+    "relatedUnitTests": {
+      "shutup": {
+        "tests": 18,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "schedulernittc": {
+        "tests": 19,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    },
+    "shutUpDevice": "7 passed (3 managed lifecycle, 2 explicit-install/record-tamper, light/dark UI); background notification assertion failed due POST_NOTIFICATIONS denied, isolated retry with permission granted running",
+    "fixes": "Cold first foreground duplicated reconciliation and rejected a visible Install; now skip duplicate cold reconciliation and use launch generation to avoid late return work overriding a new launch. First-run regression tests passed after fix.",
+    "schedulerDevice": "PASS: four managed lifecycle/UI tests; real UIDT background test; five permission/process stages. No successful cases repeated after test-namespace correction.",
+    "shutUp": {
+      "status": "implementation_and_host_checks_complete",
+      "publicSha": "809dda97ab45cd28812f150697cba126c6d4d406",
+      "fullUnitTests": 190,
+      "unitFailures": 0,
+      "debugBuild": "PASS",
+      "releaseR8": "PASS",
+      "lint": {
+        "debug": {
+          "Error": 0,
+          "Fatal": 0,
+          "Warning": 60
+        },
+        "release": {
+          "Error": 0,
+          "Fatal": 0,
+          "Warning": 61
+        }
+      },
+      "androidApi36": {
+        "lifecycleAndTheme": 7,
+        "uidtBackgroundScreenOffCancelRetry": 1,
+        "permissionSeparateProcessStages": 5,
+        "restoredInstallerSeparateProcessStages": 3
+      },
+      "releaseApk": "Blocked by existing validateReleaseSigning guard: formal signing configuration absent. Guard unchanged, no keys accessed. R8 and Lint verified separately.",
+      "notes": "Notification test setup required POST_NOTIFICATIONS; one isolated retry passed. Process-driver first-stage method typo ran zero tests, corrected and all three actual stages passed."
+    },
+    "scheduler": {
+      "publicSha": "809dda97ab45cd28812f150697cba126c6d4d406",
+      "fullUnitTests": 247,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "debug": "PASS",
+      "releaseR8UnsignedApk": "PASS (12762716 bytes)",
+      "lint": {
+        "debug": {
+          "errors": 0,
+          "warnings": 245
+        },
+        "release": {
+          "errors": 0,
+          "warnings": 243
+        }
+      },
+      "androidApi36": {
+        "managedLifecycleAndUi": 4,
+        "uidtBackground": 1,
+        "permissionStages": 5
+      },
+      "environment": "Read-only API36; Play Store disabled early after its queued updates stalled test APK installation. Test ledger namespace corrected, no production namespace change."
     }
   },
-  "phase3": "not_started",
-  "phase4": "Glyph partial tree protected; migration paused for shared UX",
-  "phase5": "Beast original changes protected",
-  "phase6": "pending"
+  "phase4": {
+    "status": "implementation_and_available_checks_complete",
+    "publicGoldySha": "809dda97ab45cd28812f150697cba126c6d4d406",
+    "head": "cc1b285b07374ec79ec78ed01f027e504416491f",
+    "relatedUnit": "PASS",
+    "api36": {
+      "migration": 1,
+      "managedLifecycle": 4,
+      "hostTheme": 1,
+      "realUidtBackground": 1,
+      "permissionSeparateProcessStages": 5,
+      "rangeSeparateProcessStages": 2,
+      "normalAppEntryMaintenance": 1
+    },
+    "range": {
+      "restoredBytes": 4194304,
+      "totalBytes": 69351780,
+      "http": "206",
+      "automaticInstallerLaunches": 0,
+      "explicitInstallerLaunches": 1,
+      "wholeApkVerification": "PASS"
+    },
+    "fullUnit": {
+      "initialFullRun": {
+        "tests": 435,
+        "case": "GlyphVisualizerServiceRecoveryTest.matrixRecoveryRestartsPlaybackWatchdogAndKeepsSessionUntilExplicitStop",
+        "evidence": "build/phase4/full-unit-results",
+        "failures": 1
+      },
+      "tests": 435,
+      "failures": 0,
+      "skipped": 0,
+      "isolatedRetry": "PASS",
+      "finalFullRun": "PASS,435/435; build/phase4/glyph-final-entry-gates.log",
+      "errors": 0
+    },
+    "changes": "Goldy state/cache/ignore migration, Elief UI, actual installed version, separate UIDT/WorkManager transfer, resumable download, verified explicit install and automatic SDK reconciliation. Old updater HTTP/download/verification removed. Existing non-updater user changes preserved.",
+    "limitations": [
+      "API33 Foreground WorkManager branch not yet exercised on device",
+      "Actual Nothing/Glyph hardware, audio capture and MediaProjection not exercised",
+      "Formal signed release APK installation not exercised"
+    ],
+    "remaining": "None within implementation scope; documented hardware/signing/API33 limits remain",
+    "builds": {
+      "debug": "PASS",
+      "unsignedUniversalReleaseBytes": 3970246,
+      "lint": {
+        "debug": {
+          "errors": 0,
+          "warnings": 213
+        },
+        "release": {
+          "errors": 0,
+          "warnings": 213
+        }
+      },
+      "releaseR8": "PASS",
+      "finalEntryChange": "Debug, AndroidTest APK, unsigned Release R8 and both Lints PASS on final source"
+    },
+    "changedFiles": [
+      "app/build.gradle.kts",
+      "app/src/androidTest/java/jp/linkserver/glyphvisualizer/ui/PyriteMigrationTest.kt",
+      "app/src/androidTest/java/jp/linkserver/glyphvisualizer/ui/VersionDetailsDialogUiTest.kt",
+      "app/src/main/AndroidManifest.xml",
+      "app/src/main/java/jp/linkserver/glyphvisualizer/MainActivity.kt",
+      "app/src/main/java/jp/linkserver/glyphvisualizer/ui/AboutScreen.kt",
+      "app/src/main/java/jp/linkserver/glyphvisualizer/ui/HomeMeterComponents.kt",
+      "app/src/main/java/jp/linkserver/glyphvisualizer/ui/UpdateOverviewScreen.kt",
+      "app/src/main/java/jp/linkserver/glyphvisualizer/ui/VersionDetailsDialog.kt",
+      "app/src/main/java/jp/linkserver/glyphvisualizer/ui/VisualizerApp.kt",
+      "app/src/main/java/jp/linkserver/glyphvisualizer/ui/VisualizerScreens.kt",
+      "app/src/main/java/jp/linkserver/glyphvisualizer/ui/theme/Theme.kt",
+      "app/src/main/java/jp/linkserver/glyphvisualizer/update/AppUpdateRepository.kt",
+      "app/src/main/java/jp/linkserver/glyphvisualizer/update/GitHubReleaseChecker.kt",
+      "app/src/main/res/values-ja/strings.xml",
+      "app/src/main/res/values/strings.xml",
+      "app/src/test/java/jp/linkserver/glyphvisualizer/ui/VersionPersonalityTest.kt",
+      "settings.gradle.kts",
+      "app/src/androidTest/java/jp/linkserver/glyphvisualizer/update/InlineTransferExecution.kt",
+      "app/src/androidTest/java/jp/linkserver/glyphvisualizer/update/ManagedInstallLifecycleTest.kt",
+      "app/src/androidTest/java/jp/linkserver/glyphvisualizer/update/PreferenceTestSupport.kt",
+      "app/src/androidTest/java/jp/linkserver/glyphvisualizer/update/RangeApkFixture.kt",
+      "app/src/androidTest/java/jp/linkserver/glyphvisualizer/update/RangeProcessTest.kt",
+      "app/src/androidTest/java/jp/linkserver/glyphvisualizer/update/UpdateBackgroundExecutionTest.kt",
+      "app/src/androidTest/java/jp/linkserver/glyphvisualizer/update/UpdatePermissionRecoveryTest.kt",
+      "app/src/androidTest/java/jp/linkserver/glyphvisualizer/update/UpdatePreferencesMigrationTest.kt",
+      "app/src/main/java/jp/linkserver/glyphvisualizer/ui/GoldyUpdateStrings.kt",
+      "app/src/main/java/jp/linkserver/glyphvisualizer/update/ApkUpdateProfile.kt",
+      "app/src/main/java/jp/linkserver/glyphvisualizer/update/AppUpdates.kt",
+      "app/src/main/java/jp/linkserver/glyphvisualizer/update/UpdateDownloadViewModel.kt",
+      "app/src/main/java/jp/linkserver/glyphvisualizer/update/UpdateSettings.kt",
+      "app/src/main/java/jp/linkserver/glyphvisualizer/update/UpdateTransferExecution.kt",
+      "app/src/main/java/jp/linkserver/glyphvisualizer/update/UpdateTransferRuntime.kt",
+      "app/src/main/java/jp/linkserver/glyphvisualizer/update/UpdateTransferSnapshot.kt",
+      "app/src/main/res/values-ja/goldy_updates.xml",
+      "app/src/main/res/values/goldy_updates.xml",
+      "app/src/test/java/jp/linkserver/glyphvisualizer/update/GoldyProfileWiringTest.kt"
+    ],
+    "finalLifecycleEvidence": "build/phase4/glyph-normal-entry-api36.log"
+  },
+  "phase5": {
+    "status": "implementation_and_available_checks_complete",
+    "head": "bc8589756a58b0637cca35eb1ac6042c2577d66c",
+    "branch": "develop",
+    "publicGoldySha": "809dda97ab45cd28812f150697cba126c6d4d406",
+    "goldCoreOnly": true,
+    "initialKotlinCompile": "PASS in 1m13s",
+    "unit": "66 full JVM tests PASS, no failures/errors/skips",
+    "androidTest": "API36: 12 host cases plus5 permission stages plus6 Range stages PASS (23 cases/stages total)",
+    "debugApk": "PASS",
+    "releaseR8Lint": "PASS: explicit -PverifyUpdateR8=true, unsignedRelease5157099bytes; Lintdebug197/release199 warnings, no Error/Fatal",
+    "remaining": "No implementation work; documented verification limits only",
+    "sourceState": "Single Gold path; host checks complete with explicit hardware/signing limits",
+    "buildEnvironment": {
+      "reason": "Public Gold809 AAR and androidx.core1.19.1 require compile37",
+      "targetSdk": 36,
+      "sdk36FailureRecorded": "build/phase5/beast-related-unit.log",
+      "minSdk": 26,
+      "compileSdk": 37
+    },
+    "publicDependencyAudit": "Gold809 only; Elief/Compose UI/runtime implementation absent. Existing activity1.13.0 -> navigationevent brings runtime-annotation1.9.0 only; existing Activity version preserved.",
+    "api36": {
+      "explicitInstallerCallbacks": 1,
+      "hostCases": 12,
+      "totalBytes": 13382167,
+      "restoredBytes": 4194304,
+      "automaticInstallerLaunches": 0,
+      "permissionProcessStages": 5,
+      "rangeProcessStages": 6
+    },
+    "api28": {
+      "foregroundWorkManagerCases": 1,
+      "totalBytes": 13382167,
+      "restoredBytes": 3145728,
+      "automaticInstallerLaunches": 0,
+      "explicitInstallerCallbacks": 1,
+      "rangeProcessStages": 2
+    },
+    "limitations": [
+      "API26 unavailable",
+      "Real GPS/Geofence/sound hardware not exercised",
+      "Formal signed update and external installer final result not exercised; controlled callbacks recorded",
+      "Shared SDK internal/security/public-Consumer evidence reused at unchanged809 SHA"
+    ],
+    "modifiedBeforeGoal": [
+      "app/build.gradle.kts",
+      "settings.gradle.kts",
+      "AboutActivity.kt",
+      "SettingsActivity.kt",
+      "three staged release artifact deletions"
+    ],
+    "changedFiles": [
+      "app/build.gradle.kts",
+      "app/src/main/AndroidManifest.xml",
+      "app/src/main/java/jp/linkserver/beastlocator/AboutActivity.kt",
+      "app/src/main/java/jp/linkserver/beastlocator/AppUpdateManager.kt",
+      "app/src/main/java/jp/linkserver/beastlocator/GitHubReleaseChecker.kt",
+      "app/src/main/java/jp/linkserver/beastlocator/MainActivity.kt",
+      "app/src/main/java/jp/linkserver/beastlocator/SettingsActivity.kt",
+      "app/src/main/java/jp/linkserver/beastlocator/UpdateActivity.kt",
+      "app/src/main/java/jp/linkserver/beastlocator/UpdateDownloadViewModel.kt",
+      "app/src/main/res/layout/activity_about.xml",
+      "app/src/main/res/values-en/strings.xml",
+      "app/src/main/res/values-zh-rCN/strings.xml",
+      "app/src/main/res/values/strings.xml",
+      "app/src/main/res/xml/update_file_paths.xml",
+      "app/src/test/java/jp/linkserver/beastlocator/AppUpdateManagerTest.kt",
+      "app/src/test/java/jp/linkserver/beastlocator/GitHubReleaseCheckerTest.kt",
+      "app/src/test/java/jp/linkserver/beastlocator/UpdateDownloadViewModelTest.kt",
+      "settings.gradle.kts",
+      "app/src/androidTest/java/jp/linkserver/beastlocator/InlineTransferExecution.kt",
+      "app/src/androidTest/java/jp/linkserver/beastlocator/ManagedInstallLifecycleTest.kt",
+      "app/src/androidTest/java/jp/linkserver/beastlocator/PreferenceTestSupport.kt",
+      "app/src/androidTest/java/jp/linkserver/beastlocator/RangeApkFixture.kt",
+      "app/src/androidTest/java/jp/linkserver/beastlocator/RangeProcessTest.kt",
+      "app/src/androidTest/java/jp/linkserver/beastlocator/UpdateBackgroundExecutionTest.kt",
+      "app/src/androidTest/java/jp/linkserver/beastlocator/UpdatePermissionRecoveryTest.kt",
+      "app/src/androidTest/java/jp/linkserver/beastlocator/UpdatePreferencesMigrationTest.kt",
+      "app/src/androidTest/java/jp/linkserver/beastlocator/UpdateViewsIntegrationTest.kt",
+      "app/src/debug/AndroidManifest.xml",
+      "app/src/debug/java/jp/linkserver/beastlocator/UpdateTransferTestActivity.kt",
+      "app/src/main/java/jp/linkserver/beastlocator/ApkUpdateProfile.kt",
+      "app/src/main/java/jp/linkserver/beastlocator/DownloadProgressFormatter.kt",
+      "app/src/main/java/jp/linkserver/beastlocator/UpdateTransferExecution.kt",
+      "app/src/main/java/jp/linkserver/beastlocator/UpdateTransferRuntime.kt",
+      "app/src/main/java/jp/linkserver/beastlocator/UpdateTransferSnapshot.kt",
+      "app/src/main/java/jp/linkserver/beastlocator/UpdateTransferState.kt",
+      "app/src/main/res/drawable/goldy_update.xml",
+      "app/src/main/res/values-en/goldy_updates.xml",
+      "app/src/main/res/values-zh-rCN/goldy_updates.xml",
+      "app/src/main/res/values/goldy_updates.xml",
+      "verification/phase5/implementation.md",
+      "verification/phase5/range-server.py",
+      "verification/phase5/results.json",
+      "verification/phase5/run-permission-process.ps1",
+      "verification/phase5/run-range-process.ps1"
+    ]
+  },
+  "phase6": "Completion audit passed; see completion-audit.json and final-report.md",
+  "interruption": {
+    "buildsTestsRunning": false,
+    "reason": "User requests complete stop before23:50 JST",
+    "recordedJst": "2026-11-08 23:42 JST",
+    "resume": "verification/managed-apk-ux/resume.md",
+    "stoppedJst": "2026-11-08 23:43 JST",
+    "snapshotsVerified": true,
+    "beastOriginalStagedPatchUnchanged": true
+  },
+  "resumedJst": "2026-11-09 14:25 JST",
+  "finalStatus": "complete_with_documented_verification_limits",
+  "finalRecordedJst": "2026-11-09 15:29:42 JST"
 }

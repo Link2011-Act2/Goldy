@@ -1,0 +1,271 @@
+[
+  {
+    "root": "D:/apps/goldy",
+    "head": "809dda97ab45cd28812f150697cba126c6d4d406",
+    "branch": "master",
+    "status": [
+      " M verification/jitpack-consumer/app/src/gold/java/example/jitpackconsumer/MainActivity.kt",
+      " M verification/managed-apk-ux/progress.json",
+      " M verification/managed-apk-ux/progress.md",
+      "?? verification/managed-apk-ux/resume.md"
+    ],
+    "untracked": [
+      {
+        "sha256": "122D083938026A7A636A000D94A0B96AA7C001B14BDCCDE320D57997F439C8C9",
+        "path": "verification/managed-apk-ux/resume.md"
+      }
+    ],
+    "stagedPatchSha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+  },
+  {
+    "root": "D:/apps/shutup",
+    "head": "aace54ce865a9201638dded9533a16c89be4b08e",
+    "branch": "main",
+    "status": [
+      " M app/build.gradle.kts",
+      " M app/src/androidTest/java/jp/linkserver/shutter/ui/EliefThemeParityTest.kt",
+      " M app/src/androidTest/java/jp/linkserver/shutter/update/GoldyTransferIntegrationTest.kt",
+      " M app/src/androidTest/java/jp/linkserver/shutter/update/GoldyTransferProcessTest.kt",
+      " M app/src/androidTest/java/jp/linkserver/shutter/update/UpdateBackgroundExecutionTest.kt",
+      " M app/src/androidTest/java/jp/linkserver/shutter/update/UpdatePermissionRecoveryTest.kt",
+      " M app/src/androidTest/java/jp/linkserver/shutter/update/UpdateTransferProcessRecoveryTest.kt",
+      " M app/src/main/java/jp/linkserver/shutter/ui/AppUpdateUi.kt",
+      " M app/src/main/java/jp/linkserver/shutter/ui/UpdateOverviewContent.kt",
+      " M app/src/main/java/jp/linkserver/shutter/update/UpdateDownloadViewModel.kt",
+      " M app/src/main/java/jp/linkserver/shutter/update/UpdateTransferRuntime.kt",
+      " M app/src/main/res/values-ja/goldy_install_requests.xml",
+      " M app/src/main/res/values-ja/goldy_transfer.xml",
+      " M app/src/main/res/values-ja/goldy_updates.xml",
+      " M app/src/main/res/values/goldy_install_requests.xml",
+      " M app/src/main/res/values/goldy_transfer.xml",
+      " M app/src/main/res/values/goldy_updates.xml",
+      " M verification/phase3/results.json",
+      "?? app/src/androidTest/java/jp/linkserver/shutter/update/ManagedInstallLifecycleTest.kt"
+    ],
+    "untracked": [
+      {
+        "sha256": "F1102B3F4EAD145B244EFC18D48E1E7EB2C6B9BF8C750B12D43537A7F1050651",
+        "path": "app/src/androidTest/java/jp/linkserver/shutter/update/ManagedInstallLifecycleTest.kt"
+      }
+    ],
+    "stagedPatchSha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+  },
+  {
+    "root": "D:/apps/schedulernittc",
+    "head": "f18c14afe718f9987874659f1a21a30c5bdb1ac7",
+    "branch": "master",
+    "status": [
+      " M app/build.gradle.kts",
+      " M app/src/androidTest/java/jp/linkserver/nittcsc/update/UpdateBackgroundExecutionTest.kt",
+      " M app/src/androidTest/java/jp/linkserver/nittcsc/update/UpdatePermissionRecoveryTest.kt",
+      " M app/src/main/java/jp/linkserver/nittcsc/ui/UpdateOverviewScreen.kt",
+      " M app/src/main/java/jp/linkserver/nittcsc/update/UpdateDownloadViewModel.kt",
+      " M app/src/main/java/jp/linkserver/nittcsc/update/UpdateTransferRuntime.kt",
+      " M app/src/main/res/values/strings.xml",
+      "?? app/src/androidTest/java/jp/linkserver/nittcsc/update/ManagedInstallLifecycleTest.kt"
+    ],
+    "untracked": [
+      {
+        "sha256": "32662872FC898FB96AB4E48786E741221E80942070FB13B15CD09648A186612A",
+        "path": "app/src/androidTest/java/jp/linkserver/nittcsc/update/ManagedInstallLifecycleTest.kt"
+      }
+    ],
+    "stagedPatchSha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+  },
+  {
+    "root": "D:/apps/glyphvisualizer",
+    "head": "cc1b285b07374ec79ec78ed01f027e504416491f",
+    "branch": "master",
+    "status": [
+      " M app/build.gradle.kts",
+      " M app/src/androidTest/java/jp/linkserver/glyphvisualizer/ui/PyriteMigrationTest.kt",
+      " M app/src/androidTest/java/jp/linkserver/glyphvisualizer/ui/VersionDetailsDialogUiTest.kt",
+      " M app/src/main/AndroidManifest.xml",
+      " M app/src/main/java/jp/linkserver/glyphvisualizer/MainActivity.kt",
+      " M app/src/main/java/jp/linkserver/glyphvisualizer/ui/AboutScreen.kt",
+      " M app/src/main/java/jp/linkserver/glyphvisualizer/ui/HomeMeterComponents.kt",
+      " M app/src/main/java/jp/linkserver/glyphvisualizer/ui/UpdateOverviewScreen.kt",
+      " M app/src/main/java/jp/linkserver/glyphvisualizer/ui/VersionDetailsDialog.kt",
+      " M app/src/main/java/jp/linkserver/glyphvisualizer/ui/VisualizerApp.kt",
+      " M app/src/main/java/jp/linkserver/glyphvisualizer/ui/VisualizerScreens.kt",
+      " M app/src/main/java/jp/linkserver/glyphvisualizer/ui/theme/Theme.kt",
+      " D app/src/main/java/jp/linkserver/glyphvisualizer/update/AppUpdateRepository.kt",
+      " D app/src/main/java/jp/linkserver/glyphvisualizer/update/GitHubReleaseChecker.kt",
+      " M app/src/main/res/values-ja/strings.xml",
+      " M app/src/main/res/values/strings.xml",
+      " M app/src/test/java/jp/linkserver/glyphvisualizer/ui/VersionPersonalityTest.kt",
+      " M settings.gradle.kts",
+      "?? app/src/androidTest/java/jp/linkserver/glyphvisualizer/update/",
+      "?? app/src/main/java/jp/linkserver/glyphvisualizer/ui/GoldyUpdateStrings.kt",
+      "?? app/src/main/java/jp/linkserver/glyphvisualizer/update/ApkUpdateProfile.kt",
+      "?? app/src/main/java/jp/linkserver/glyphvisualizer/update/AppUpdates.kt",
+      "?? app/src/main/java/jp/linkserver/glyphvisualizer/update/UpdateDownloadViewModel.kt",
+      "?? app/src/main/java/jp/linkserver/glyphvisualizer/update/UpdateSettings.kt",
+      "?? app/src/main/java/jp/linkserver/glyphvisualizer/update/UpdateTransferExecution.kt",
+      "?? app/src/main/java/jp/linkserver/glyphvisualizer/update/UpdateTransferRuntime.kt",
+      "?? app/src/main/java/jp/linkserver/glyphvisualizer/update/UpdateTransferSnapshot.kt",
+      "?? app/src/main/res/values-ja/goldy_updates.xml",
+      "?? app/src/main/res/values/goldy_updates.xml",
+      "?? app/src/test/java/jp/linkserver/glyphvisualizer/update/GoldyProfileWiringTest.kt"
+    ],
+    "untracked": [
+      {
+        "sha256": "D0108804CB1998ABBEB8E5A9F197EAA24D65063F184F6960C438DDD1C019F935",
+        "path": "app/src/androidTest/java/jp/linkserver/glyphvisualizer/update/InlineTransferExecution.kt"
+      },
+      {
+        "sha256": "CC4A9560D49FA8AF91BCA394FE75D638FB4AB71785A55B204A5E831ACE88DBB4",
+        "path": "app/src/androidTest/java/jp/linkserver/glyphvisualizer/update/ManagedInstallLifecycleTest.kt"
+      },
+      {
+        "sha256": "A52360AFA10B13E12629D6B354BA5A99BD981BA63DDF11EBF4B7808E8448433A",
+        "path": "app/src/androidTest/java/jp/linkserver/glyphvisualizer/update/PreferenceTestSupport.kt"
+      },
+      {
+        "sha256": "BFD37F7A0AAA59A802DC4328B188FA0A6ADE892EA4EB00F4FB9D7585F6B86A75",
+        "path": "app/src/androidTest/java/jp/linkserver/glyphvisualizer/update/RangeApkFixture.kt"
+      },
+      {
+        "sha256": "3AC555C4FBC4C5F7D1B34FAF471483F8AE2AB547A08F438C11A5EC49129900EE",
+        "path": "app/src/androidTest/java/jp/linkserver/glyphvisualizer/update/RangeProcessTest.kt"
+      },
+      {
+        "sha256": "E0E869F53DA4C42FD6F61D5013FCFFBF6541A3832FC5F57CC25EAAE9CC9A356A",
+        "path": "app/src/androidTest/java/jp/linkserver/glyphvisualizer/update/UpdateBackgroundExecutionTest.kt"
+      },
+      {
+        "sha256": "5C1254BA99952137141C1CEA85B5ED7C641C186EB050AE66D4FD888B45C28775",
+        "path": "app/src/androidTest/java/jp/linkserver/glyphvisualizer/update/UpdatePermissionRecoveryTest.kt"
+      },
+      {
+        "sha256": "5BEC686B146923CAE98F71FD243BA53B3DC59D923AAFF23FB0BF32F151F6C7CF",
+        "path": "app/src/androidTest/java/jp/linkserver/glyphvisualizer/update/UpdatePreferencesMigrationTest.kt"
+      },
+      {
+        "sha256": "BD74C962602AC16D7BC08B50294C83A8E242BEA12E788E65053F4173BBB9D152",
+        "path": "app/src/main/java/jp/linkserver/glyphvisualizer/ui/GoldyUpdateStrings.kt"
+      },
+      {
+        "sha256": "5AC55FAE162B0C593F85AD965D7534540391CBF11F782BA46900E234A14B7048",
+        "path": "app/src/main/java/jp/linkserver/glyphvisualizer/update/ApkUpdateProfile.kt"
+      },
+      {
+        "sha256": "AF103ABFC8DF7AD68269195E227398A08FA89985BC6C4B7D48E3FC17D93B0D8C",
+        "path": "app/src/main/java/jp/linkserver/glyphvisualizer/update/AppUpdates.kt"
+      },
+      {
+        "sha256": "08D2CC943256949C7810F8163FD1B02F28918D88166EB6B60CD448C0C78837D0",
+        "path": "app/src/main/java/jp/linkserver/glyphvisualizer/update/UpdateDownloadViewModel.kt"
+      },
+      {
+        "sha256": "552C8F750B9E00B07E0A74835A1F71DB4C360C7F0FF544019562BA63116CECEE",
+        "path": "app/src/main/java/jp/linkserver/glyphvisualizer/update/UpdateSettings.kt"
+      },
+      {
+        "sha256": "D025508DEE40CF8F72302FD767A7561A15310A5279FEE788275016CC0338C6D9",
+        "path": "app/src/main/java/jp/linkserver/glyphvisualizer/update/UpdateTransferExecution.kt"
+      },
+      {
+        "sha256": "6DA5E154420AFDCE9600FFB8D55B7DE11359D88DBD94047BAC72994C64A6C360",
+        "path": "app/src/main/java/jp/linkserver/glyphvisualizer/update/UpdateTransferRuntime.kt"
+      },
+      {
+        "sha256": "12623446C838BECEC2AADE50EC964757A09A171D3B696CE0368306AADD4A34A7",
+        "path": "app/src/main/java/jp/linkserver/glyphvisualizer/update/UpdateTransferSnapshot.kt"
+      },
+      {
+        "sha256": "2BC8A9E9A75AA5157418D9577D1721CEA35A2D9C02B1399F8CA6D694F9AD9CDB",
+        "path": "app/src/main/res/values-ja/goldy_updates.xml"
+      },
+      {
+        "sha256": "28975E3989734D18BEBC49B24CAF951AE7D21FA0FCDFDC2B481DB12393FD5908",
+        "path": "app/src/main/res/values/goldy_updates.xml"
+      },
+      {
+        "sha256": "D38869A74D127403C0B60BDF224DCE792EF0AF38D3689B07437CBF2F3F51C00B",
+        "path": "app/src/test/java/jp/linkserver/glyphvisualizer/update/GoldyProfileWiringTest.kt"
+      }
+    ],
+    "stagedPatchSha256": "E3B0C44298FC1C149AFBF4C8996FB92427AE41E4649B934CA495991B7852B855"
+  },
+  {
+    "root": "D:/apps/beastlocator",
+    "head": "bc8589756a58b0637cca35eb1ac6042c2577d66c",
+    "branch": "develop",
+    "status": [
+      " M app/build.gradle.kts",
+      "D  app/release/baselineProfiles/0/app-release.dm",
+      "D  app/release/baselineProfiles/1/app-release.dm",
+      "D  app/release/output-metadata.json",
+      " M app/src/main/AndroidManifest.xml",
+      " M app/src/main/java/jp/linkserver/beastlocator/AboutActivity.kt",
+      " M app/src/main/java/jp/linkserver/beastlocator/AppUpdateManager.kt",
+      " D app/src/main/java/jp/linkserver/beastlocator/GitHubReleaseChecker.kt",
+      " M app/src/main/java/jp/linkserver/beastlocator/MainActivity.kt",
+      " M app/src/main/java/jp/linkserver/beastlocator/SettingsActivity.kt",
+      " M app/src/main/java/jp/linkserver/beastlocator/UpdateActivity.kt",
+      " M app/src/main/java/jp/linkserver/beastlocator/UpdateDownloadViewModel.kt",
+      " M app/src/main/res/layout/activity_about.xml",
+      " D app/src/main/res/xml/update_file_paths.xml",
+      " M settings.gradle.kts",
+      "?? app/src/main/java/jp/linkserver/beastlocator/ApkUpdateProfile.kt",
+      "?? app/src/main/java/jp/linkserver/beastlocator/DownloadProgressFormatter.kt",
+      "?? app/src/main/java/jp/linkserver/beastlocator/UpdateTransferExecution.kt",
+      "?? app/src/main/java/jp/linkserver/beastlocator/UpdateTransferRuntime.kt",
+      "?? app/src/main/java/jp/linkserver/beastlocator/UpdateTransferSnapshot.kt",
+      "?? app/src/main/java/jp/linkserver/beastlocator/UpdateTransferState.kt",
+      "?? app/src/main/res/drawable/goldy_update.xml",
+      "?? app/src/main/res/values-en/goldy_updates.xml",
+      "?? app/src/main/res/values-zh-rCN/goldy_updates.xml",
+      "?? app/src/main/res/values/goldy_updates.xml",
+      "?? verification/"
+    ],
+    "untracked": [
+      {
+        "sha256": "AA3B47A33AD83AE41EA3181D3C83E7462D096010EDF328122EEF4838DF5C8FA1",
+        "path": "app/src/main/java/jp/linkserver/beastlocator/ApkUpdateProfile.kt"
+      },
+      {
+        "sha256": "13F56977F4A1C40BD732D22F574F35C2710A69C8B24F891C1C77C2613462EA99",
+        "path": "app/src/main/java/jp/linkserver/beastlocator/DownloadProgressFormatter.kt"
+      },
+      {
+        "sha256": "D8B78B8B34EDA1BC4AAAF176ACAC19D1F37212F795D17BB849C047BA83CA9764",
+        "path": "app/src/main/java/jp/linkserver/beastlocator/UpdateTransferExecution.kt"
+      },
+      {
+        "sha256": "267C73467C651CEB6202AF2ADBA887877B2431BC89FB9A6A7CBAB2819E06D9DE",
+        "path": "app/src/main/java/jp/linkserver/beastlocator/UpdateTransferRuntime.kt"
+      },
+      {
+        "sha256": "06B0D07D9E18B54CEE67432B3498F6F1D92F1A8677CE17A5B74B640AAF112E12",
+        "path": "app/src/main/java/jp/linkserver/beastlocator/UpdateTransferSnapshot.kt"
+      },
+      {
+        "sha256": "2AA9D1707FEE95781C7690506B31AF367522BBCA2F66269A92DE3733EC099F7C",
+        "path": "app/src/main/java/jp/linkserver/beastlocator/UpdateTransferState.kt"
+      },
+      {
+        "sha256": "AC4EA9443C19F7F42B9246358DCDE77507D88998BC54E4FFB0E8B78AEEF75249",
+        "path": "app/src/main/res/drawable/goldy_update.xml"
+      },
+      {
+        "sha256": "E886F2D3EBA8943BB093D9C4BB6DAC4C83B2A240DFED5EAD50D676201C763B63",
+        "path": "app/src/main/res/values-en/goldy_updates.xml"
+      },
+      {
+        "sha256": "0792AA35538E94AFAD21F94B03322347085C3668719D0A70D7854CDEA2E131F2",
+        "path": "app/src/main/res/values-zh-rCN/goldy_updates.xml"
+      },
+      {
+        "sha256": "3928932FEA66F3888D9CB6373C1BE08766084910A3CA42EC59988A4EC3F21EA2",
+        "path": "app/src/main/res/values/goldy_updates.xml"
+      },
+      {
+        "sha256": "2AF63EC8206F4B14D18CE1ABBE39A9A77B5AB18C547E12A830CC9604AF4DC6C6",
+        "path": "verification/phase5/results.json"
+      }
+    ],
+    "stagedPatchSha256": "EB1960BBE6FCF602B66BB138130F38D58B1DD51E674AE7FBFFD8A9357E77FDA0"
+  }
+]

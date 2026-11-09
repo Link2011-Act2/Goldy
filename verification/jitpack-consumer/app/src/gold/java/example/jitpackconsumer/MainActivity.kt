@@ -5,7 +5,7 @@ import android.widget.TextView
 import jp.linkserver.goldy.*
 import kotlinx.coroutines.*
 class MainActivity : Activity() {
-    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Main.immediate)
+    private val scope = CoroutineScope(SupervisorJob() + Dispatchers.Default)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val goldy = Goldy.createWithSource(this,
@@ -17,7 +17,7 @@ class MainActivity : Activity() {
         setContentView(label)
         scope.launch {
             val restored = installer.reconcileInstalledUpdates()
-            label.append(" / pending=" + restored.pendingRequests.size + " / retained bytes=" + restored.retainedBytes)
+            runOnUiThread { label.append(" / pending=" + restored.pendingRequests.size + " / retained bytes=" + restored.retainedBytes) }
         }
     }
     override fun onDestroy() { scope.cancel(); super.onDestroy() }

@@ -74,7 +74,7 @@ internal fun UpdateScreenLayout(
                                     Column(Modifier.widthIn(max = 840.dp).fillMaxWidth().heightIn(max = maxActionsHeight)
                                         .verticalScroll(actionsScroll).testTag("goldy-docked-actions").padding(horizontal = 20.dp, vertical = 14.dp),
                                         verticalArrangement = Arrangement.spacedBy(12.dp)) {
-                                        TransferContent(state, strings, onAction, onOpenUrl, loadingIndicator)
+                                        TransferContent(state, strings, onAction, onOpenUrl, loadingIndicator, presentation.pausedDownload)
                                     }
                                 }
                             }
@@ -93,19 +93,17 @@ internal fun UpdateScreenLayout(
                         }
                         val candidate = state.update
                         if (candidate == null && preparedApk == null) {
-                            if (!state.checking) Text(state.message ?: strings.noUpdate)
+                            if (!state.checking) {
+                                if (state.transfer == UpdateTransferState.PreparingInstall) {
+                                    loadingIndicator()
+                                    StatusText(state.message ?: strings.preparing)
+                                } else Text(state.message ?: strings.noUpdate)
+                            }
                         } else {
                             VersionRow(candidate?.let { presentation.versionLabel(it.release) }
                                 ?: checkNotNull(preparedApk).versionName, channelLabel, prominent = true)
-                            state.message?.let { Text(it) }
-                            if (inlineActions) {
-                                Surface(shape = updateCardShape(), color = updateCardColor(),
-                                    modifier = Modifier.fillMaxWidth().testTag("goldy-inline-actions")) {
-                                    Column(Modifier.padding(22.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
-                                        TransferContent(state, strings, onAction, onOpenUrl, loadingIndicator)
-                                    }
-                                }
-                            }
+                            if (state.transfer !is UpdateTransferState.Failed || presentation.pausedDownload == null)
+                                state.message?.let { Text(it) }
                             if (candidate != null) {
                                 Text(strings.releaseNotes, Modifier.semantics { heading() },
                                     style = MaterialTheme.typography.titleSmall,
@@ -118,6 +116,14 @@ internal fun UpdateScreenLayout(
                                 if (history.isNotEmpty()) History(history, presentation, strings, onOpenUrl)
                                 if (!candidate.catalogComplete) Text(strings.incompleteHistory)
                                 if (state.apkAvailable) ReleaseLink(candidate.release, strings, onOpenUrl)
+                            }
+                            if (inlineActions) {
+                                Surface(shape = updateCardShape(), color = updateCardColor(),
+                                    modifier = Modifier.fillMaxWidth().testTag("goldy-inline-actions")) {
+                                    Column(Modifier.padding(22.dp), verticalArrangement = Arrangement.spacedBy(14.dp)) {
+                                        TransferContent(state, strings, onAction, onOpenUrl, loadingIndicator, presentation.pausedDownload)
+                                    }
+                                }
                             }
                         }
                         Spacer(Modifier.height(8.dp))
@@ -191,8 +197,16 @@ private fun StatusText(text: String) {
 
 @Composable
 private fun TransferContent(state: UpdateUiState, s: UpdateStrings, action: (UpdateAction) -> Unit,
-                            open: (String) -> Unit, loading: @Composable () -> Unit) {
+                            open: (String) -> Unit, loading: @Composable () -> Unit, paused: PausedDownload?) {
     val release = state.update?.release
+    if (state.transfer is UpdateTransferState.Failed && paused != null) {
+        StatusText(paused.message)
+        PausedProgress(paused.progress)
+        Button(onClick = { action(UpdateAction.Download) }, enabled = state.apkAvailable,
+            modifier = Modifier.primaryAction()) { Text(paused.resumeLabel) }
+        OutlinedButton(onClick = { action(UpdateAction.CancelDownload) }, modifier = Modifier.fillMaxWidth()) { Text(s.cancel) }
+        return
+    }
     if (!state.apkAvailable && state.transfer == UpdateTransferState.Idle && release != null) {
         Button(onClick = { if (safeWebUrl(release.url)) open(release.url) }, enabled = safeWebUrl(release.url), modifier = Modifier.primaryAction()) { Text(s.openRelease) }
         Text(s.noApk, style = MaterialTheme.typography.bodySmall)
@@ -257,8 +271,26 @@ private fun updateCardShape(): Shape = LocalUpdateCardStyle.current.shape ?: Mat
 private fun DownloadProgress(progress: ApkProgress) {
     val fraction = DownloadProgressFormatter.fraction(progress)
     val locale = LocalConfiguration.current.locales[0]
-    if (fraction == null) LinearProgressIndicator(Modifier.fillMaxWidth())
-    else LinearProgressIndicator(progress = { fraction }, modifier = Modifier.fillMaxWidth())
+    if (fraction == null) LinearProgressIndicator(Modifier.fillMaxWidth().testTag("goldy-download-progress"))
+    else LinearProgressIndicator(progress = { fraction }, modifier = Modifier.fillMaxWidth().testTag("goldy-download-progress"))
     Text(DownloadProgressFormatter.format(progress, locale),
         style = MaterialTheme.typography.labelMedium)
+}
+
+@Composable
+private fun PausedProgress(progress: ApkProgress?) {
+    val fraction = progress?.let(DownloadProgressFormatter::fraction)
+    val bar = Modifier.fillMaxWidth().testTag("goldy-download-progress")
+    if (fraction == null) {
+        // Unknown total: a static decorative track, with no invented accessibility percentage.
+        LinearProgressIndicator(progress = { 0f }, modifier = bar.clearAndSetSemantics { testTag = "goldy-download-progress" },
+            color = MaterialTheme.colorScheme.error, trackColor = MaterialTheme.colorScheme.errorContainer)
+    } else {
+        LinearProgressIndicator(progress = { fraction }, modifier = bar,
+            color = MaterialTheme.colorScheme.error, trackColor = MaterialTheme.colorScheme.errorContainer)
+    }
+    progress?.let {
+        Text(DownloadProgressFormatter.format(it, LocalConfiguration.current.locales[0]),
+            style = MaterialTheme.typography.labelMedium)
+    }
 }

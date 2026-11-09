@@ -6,6 +6,15 @@ import org.junit.Assert.*
 import org.junit.Test
 
 class UpdatePresentationTest {
+    @Test fun pausedPresentationIsOptInAndKeepsOriginalDefaults() {
+        assertNull(UpdatePresentation().pausedDownload)
+        val progress = jp.linkserver.goldy.ApkProgress(15_000_000, 30_000_000, 1)
+        val paused = PausedDownload(progress, "中断しました", "ダウンロードを再開")
+        val presentation = UpdatePresentation(pausedDownload = paused)
+        assertSame(paused, presentation.pausedDownload)
+        assertEquals("v2.4.0-Beta", presentation.versionLabel(release))
+        assertEquals("Beta", presentation.historyChannelLabel(release))
+    }
     private val release = GitHubRelease(1, "v2.4.0-Beta", url = "https://github.com/example/app/releases/tag/v2.4.0-Beta")
     @Test fun formattingNeverChangesTheRawTagOrReleaseUrl() {
         val presentation = UpdatePresentation(versionLabel = { it.tag.removePrefix("v") })

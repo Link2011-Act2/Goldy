@@ -1,10 +1,12 @@
 param(
     [Parameter(Mandatory=$true)][string]$Serial,
-    [string]$AndroidSdk = "$env:LOCALAPPDATA/Android/Sdk",
+    [string]$AndroidSdk = $env:ANDROID_HOME,
     [string]$JavaHome = $env:JAVA_HOME,
     [switch]$SkipNetwork
 )
 $ErrorActionPreference = 'Stop'
+if (-not $AndroidSdk) { $AndroidSdk = $env:ANDROID_SDK_ROOT }
+if (-not $AndroidSdk) { throw 'Set ANDROID_HOME or pass -AndroidSdk.' }
 if ($Serial -notmatch '^emulator-[0-9]+$') { throw 'Use a disposable emulator; this script installs test APKs and controls test-only app ops.' }
 $root = Split-Path -Parent $PSScriptRoot
 $work = Join-Path $root 'build/phase-2-3'

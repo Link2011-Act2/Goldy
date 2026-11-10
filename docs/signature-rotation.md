@@ -36,7 +36,7 @@ No public flag or developer option disables verification. Custom `ApkInspector` 
 
 `ApksigFixtureTest` verifies real fixture bytes for SDK26/27/28/29/32/33/36. `verification/run-rotation-device.ps1 -Serial emulator-...` compares Android inspection and 14 actual OS install/update outcomes on a disposable emulator. `verify-api-compatibility.py` compares old public descriptors; `verify-signer-binary-compatibility.py` compiles against the old AAR and runs the unchanged client with only the new AAR.
 
-Runtime results and publication/consumer evidence are recorded separately in `verification/rotation-2026-11-07.json`; do not infer a device/API result from JVM SDK emulation. No production signing key, silent installer, root or Shizuku is used.
+Do not infer a device/API result from JVM SDK emulation. Record each run under an ignored build directory. No production signing key, silent installer, root or Shizuku is used.
 
 ## Primary references
 

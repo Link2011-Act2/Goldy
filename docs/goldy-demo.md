@@ -1,4 +1,4 @@
-# Goldy Demo（Phase 2-6）
+# Goldy Demo
 
 既存 `:app` を実行可能なDemoへ拡張しています。GoldはCore、EliefはCompose UIです。更新処理と表示には両モジュールの公開APIを使用します。Demoだけが公開Pyrite SHA `508b1cf5131679fee7581acbc7ea55a365b6ff2c` に依存し、実際のPyriteThemeを適用します。Gold/EliefにPyriteの依存はありません。JitPackの配布対象はGold/Eliefだけで、Demo APKは含みません。
 
@@ -13,7 +13,7 @@
 
 テーマ操作は全画面共通です。Styleから **Material 3 Expressive（初回の既定値）／Nothing風／通常Material 3** を排他的に選択します。DarkでLight/Dark、DynamicでAPI31以降のDynamic Color、Custom fontで等幅フォント例を切り替えます。Nothing風ではDynamicをOFF/無効表示にし、他スタイルへ戻ると以前の設定を復元します。Nothing専有フォントは同梱しません。
 
-スタイル・明暗・Dynamic Color・フォントはDemo専用設定としてプロセス終了後も保持します。選択画面と履歴・スクロールの表示状態はsaveable、通信・転送とLiveのセッションキャッシュはViewModelでActivity再生成を越えて保持します。設定行は横スクロール、スタイル選択ダイアログは必要に応じて縦スクロールできます。詳細は[スタイル選択の検証](demo-style-selection.md)を参照してください。
+スタイル・明暗・Dynamic Color・フォントはDemo専用設定としてプロセス終了後も保持します。選択画面と履歴・スクロールの表示状態はsaveable、通信・転送とLiveのセッションキャッシュはViewModelでActivity再生成を越えて保持します。設定行は横スクロール、スタイル選択ダイアログは必要に応じて縦スクロールできます。詳細は[スタイル選択の検証](demo-appearance.md)を参照してください。
 
 ## 画面遷移
 
@@ -33,7 +33,7 @@ UpdateのメタデータはGoldの永続キャッシュを使用します。ダ�
 
 ## 自己更新配布の設定
 
-現在の配布先は `Link2011-Act2/Goldy` です。このPhaseでは鍵、タグ、GitHub Release、配布APKを作成・公開しません。公開Releaseがなければ、確認結果は **Not configured** です。
+現在の配布先は `Link2011-Act2/Goldy` です。DemoのビルドとReleaseの公開は別の操作です。公開Releaseがなければ、確認結果は **Not configured** です。
 
 将来、配布を準備する場合の規約：
 
@@ -72,7 +72,7 @@ Release出力は署名設定を追加していないため**未署名**です。
 3. SDKのapksignerで両APKの証明書SHA-256が同一であること、apkanalyzerでpackageとversionCode/nameが上記の値であることを確認します。異なる証明書やpackageなら停止します。
 4. `adb -s <専用emulator> install old.apk` で旧版を起動し、Update Demoの実際のidentityを確認します。
 5. OSの更新互換性だけをローカル確認する場合は `adb -s <専用emulator> install -r new.apk` を実行し、新版のidentityでcode `2` を確認します。これは**Goldのダウンロードやインストーラー経路の成功とは別の確認**です。
-6. ローカルAPKを任意パスからVerifiedApkとして偽造する抜け道は設けていません。Goldの実ダウンロード→検証→インストーラーを通す自己更新は、上記規約の実配布を別途承認・準備してから実演します。今回はその経路の実配布による成功は未検証です。
+6. ローカルAPKを任意パスからVerifiedApkとして偽造する抜け道は設けていません。Goldの実ダウンロード→検証→インストーラーを通す自己更新を確認するには、上記規約に合う配布APKが必要です。ローカルAPKの置換だけではSDK経由の転送を検証できません。
 
 ## インストーラーとファイル寿命
 
@@ -86,17 +86,18 @@ Release出力は署名設定を追加していないため**未署名**です。
 ## 検証コマンド
 
 JDK21、既存のGradle wrapper、Android SDK 37を使用します。
+`adb devices`で専用エミュレーターのIDを確認し、以下の`$serial`に設定してください。
 
 ```powershell
 ./gradlew.bat :gold:testDebugUnitTest :elief:testDebugUnitTest :app:testDebugUnitTest `
   :app:assembleDebug :app:assembleRelease :app:assembleDebugAndroidTest `
   :app:lintDebug :app:lintRelease
 
-./verification/run-demo-ui.ps1 -Serial emulator-5556 -Label api36-320dp-font180 `
+./verification/run-demo-ui.ps1 -Serial $serial -Label api36-320dp-font180 `
   -AndroidSdk <Android-SDK> -FontScale 1.8 -WidthDp 320
 
 # 実通信だけを明示的に実行（未認証のGitHub APIを少数回使用）
-./verification/run-demo-ui.ps1 -Serial emulator-5556 -Label api36-live `
+./verification/run-demo-ui.ps1 -Serial $serial -Label api36-live `
   -AndroidSdk <Android-SDK> -Live
 ```
 

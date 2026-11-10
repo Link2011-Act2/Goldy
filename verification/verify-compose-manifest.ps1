@@ -15,5 +15,7 @@ foreach ($variant in @('debug','release')) {
     if ($provider[0].GetAttribute('exported','http://schemas.android.com/apk/res/android') -ne 'false') { throw 'Provider exported' }
     $records += [pscustomobject]@{variant=$variant; authority=$authority; installPermission=$false; services=0}
 }
-$records | ConvertTo-Json | Set-Content -Encoding utf8 (Join-Path $PSScriptRoot 'phase-2-4-manifest.json')
+$taskOutput = Join-Path $taskRoot 'build/verification'
+New-Item -ItemType Directory -Force $taskOutput | Out-Null
+$records | ConvertTo-Json | Set-Content -Encoding utf8 (Join-Path $taskOutput 'compose-manifest.json')
 $records | Format-Table | Out-String | Write-Output

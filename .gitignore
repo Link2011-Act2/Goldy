@@ -11,14 +11,6 @@ local.properties
 
 # Android Studio / IntelliJ IDEA local state
 *.iml
-/.idea/.name
-/.idea/caches/
-/.idea/libraries/
-/.idea/modules.xml
-/.idea/workspace.xml
-/.idea/navEditor.xml
-/.idea/assetWizardSettings.xml
-/.idea/shelf/
 
 # Operating system files
 .DS_Store
@@ -27,3 +19,62 @@ Thumbs.db
 # Workstation and sibling-repository preservation snapshots stay local.
 /verification/phase-2-3-baseline.json
 /verification/phase-2-4-baseline.json
+
+# Local coding-assistant instructions and state
+AGENTS.md
+AGENTS.override.md
+CLAUDE.md
+GEMINI.md
+.agents/
+.codex/
+.claude/
+/design-qa.md
+/BUG_FIX_PLAN.md
+
+# Local editor settings and credentials
+.idea/
+.vscode/
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.key
+*.pem
+.env
+.env.*
+!.env.example
+
+# Generated verification records; consumers, scripts and test fixtures stay tracked.
+/docs/phase-*
+/docs/phase3-progress.md
+/docs/*-review.md
+/docs/*-investigation.md
+/docs/publication-*.md
+/docs/ui-publication.md
+/docs/unified-updates-verification.md
+/docs/reviews/
+/verification/*.json
+/verification/*.txt
+/verification/crossapp-ui/
+/verification/pyrite-style-review/
+/verification/managed-apk-ux/*.json
+/verification/managed-apk-ux/*.md
+__pycache__/
+*.py[cod]
+
+# Local diagnostics and exported build artifacts
+*.pk8
+*.log
+*.hprof
+*.tmp
+/app/release/
+*.apk
+*.aab
+*.apks
+*.idsig
+!gold/src/test/resources/signatures/*.apk
+
+# Local document archives
+.local-notes/
+/docs/demo-style-selection.md
+/docs/four-app-updater-comparison.md

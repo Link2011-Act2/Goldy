@@ -2,13 +2,16 @@ param(
     [Parameter(Mandatory=$true)][string]$Serial,
     [Parameter(Mandatory=$true)][string]$Label,
     [double]$FontScale = 1.0,
-    [int]$WidthDp = 320
+    [int]$WidthDp = 320,
+    [string]$AndroidSdk = $env:ANDROID_HOME
 )
 $ErrorActionPreference = 'Stop'
 if (-not $Serial.StartsWith('emulator-')) { throw 'Use a dedicated disposable emulator.' }
 if ($Label -notmatch '^[a-zA-Z0-9-]+$') { throw 'Label must be a simple filename component.' }
 $taskRoot = Split-Path $PSScriptRoot -Parent
-$adb = Join-Path $env:LOCALAPPDATA 'Android/Sdk/platform-tools/adb.exe'
+if (-not $AndroidSdk) { $AndroidSdk = $env:ANDROID_SDK_ROOT }
+if (-not $AndroidSdk) { throw 'Set ANDROID_HOME or pass -AndroidSdk.' }
+$adb = Join-Path $AndroidSdk 'platform-tools/adb.exe'
 $oldFont = (& $adb -s $Serial shell settings get system font_scale).Trim()
 $oldSize = (& $adb -s $Serial shell wm size) -join "`n"
 $densityText = (& $adb -s $Serial shell wm density) -join "`n"
@@ -26,7 +29,7 @@ try {
     & $adb -s $Serial install -r (Join-Path $taskRoot 'app/build/outputs/apk/androidTest/debug/app-debug-androidTest.apk')
     if ($LASTEXITCODE -ne 0) { throw 'Test install failed' }
     $output = & $adb -s $Serial shell am instrument -w -r -e class jp.linkserver.projectgoldy.UpdateScreenTest jp.linkserver.projectgoldy.test/androidx.test.runner.AndroidJUnitRunner
-    $output | Set-Content -Encoding utf8 (Join-Path $PSScriptRoot ('phase-2-4-' + $Label + '.txt'))
+    $output | Set-Content -Encoding utf8 (Join-Path $destination 'instrumentation.txt')
     & $adb -s $Serial pull /sdcard/Android/data/jp.linkserver.projectgoldy/files/phase-2-4 $destination
     $text = $output -join "`n"
     if ($text -notmatch 'OK \(\d+ tests\)' -or $text -match 'FAILURES!!!|INSTRUMENTATION_FAILED') {

@@ -1,8 +1,8 @@
 # Elief Compose UI
 
-The new banner, badge and manual-check dialog APIs are documented in
-[update-notifications.md](update-notifications.md). They require the new verified
-revision listed there; older README coordinates do not contain these additions.
+Banner, badge and manual-check dialog APIs are documented in
+[update-notifications.md](update-notifications.md). Use the public dependency
+coordinates from the [README](../README.md).
 
 Elief is the optional Android UI module `:elief`, minSdk 26. Use the verified public JitPack coordinate in the [README](../README.md); `jp.linkserver.goldy:elief:0.1.0-SNAPSHOT` is only the local publication fixture. It exports Gold transitively. The host applies the Kotlin Compose plugin and enables Compose. No Pyrite dependency or theme is required.
 
@@ -124,7 +124,7 @@ The Markdown view is text-selectable and uses native accessibility. Markdown tab
 
 `:app` is Goldy Demo. Its UI Showcase retains the offline fixtures, all three styles, light/dark, API31+ dynamic colors and a monospace custom-font example. Horizontally scroll the settings/scenario rows to access every option; the Style dialog offers one selected radio option and scrolls vertically when needed. Showcase actions never download or install an APK. Separate Live Demo and self Update Demo modes use real Gold APIs only after explicit user actions; see [Goldy Demo](goldy-demo.md) for distribution rules, file lifetime and safe local test instructions.
 
-## App adoption (separate approval required)
+## Host integration
 
 | Host | Metadata policy | APK selection / version binding |
 |---|---|---|
@@ -132,6 +132,6 @@ The Markdown view is text-selectable and uses native accessibility. Markdown tab
 | NITTC Scheduler | UpdatePolicies.nittcScheduler(), VersionPolicies.NittcScheduler | ApkSelectionPolicies.NittcScheduler / ApkVersionBindings.NittcScheduler |
 | Glyph Barty | UpdatePolicies.glyphBarty(), VersionPolicies.GlyphBarty | ApkSelectionPolicies.GlyphBarty / ApkVersionBindings.GlyphBarty |
 
-Each host supplies its existing GitHubRepository, notification preferences and UI resources. Replace only its detail screen with UpdateOverviewScreen under its existing theme, retain the above policies (including Scheduler's non-app release filter), connect actions to the existing host ViewModel and Activity navigation, and opt into installation permission only where needed. APK naming bindings retain all Phase 2-2 restrictions; rendering a channel never authorizes a previously unconfirmed APK/tag mapping. No application migration is included in this phase.
+Each host supplies its existing GitHubRepository, notification preferences and UI resources. Replace only its detail screen with UpdateOverviewScreen under its existing theme, retain the above policies (including Scheduler's non-app release filter), connect actions to the existing host ViewModel and Activity navigation, and opt into installation permission only where needed. APK naming bindings retain their verification restrictions; rendering a channel never authorizes a previously unconfirmed APK/tag mapping.
 
 References: [Markwon plugin configuration](https://noties.io/Markwon/docs/v4/core/plugins.html), [Material3 release notes](https://developer.android.com/jetpack/androidx/releases/compose-material3).

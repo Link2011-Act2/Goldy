@@ -1,7 +1,7 @@
 param(
     [Parameter(Mandatory=$true)][string]$Serial,
     [Parameter(Mandatory=$true)][string]$Label,
-    [string]$AndroidSdk = "$env:LOCALAPPDATA/Android/Sdk",
+    [string]$AndroidSdk = $env:ANDROID_HOME,
     [double]$FontScale = 1.0,
     [int]$WidthDp = 320,
     [int]$HeightDp = 640,
@@ -9,6 +9,8 @@ param(
     [string]$TestClasses = 'jp.linkserver.projectgoldy.UpdateScreenTest,jp.linkserver.projectgoldy.DemoScreenTest,jp.linkserver.projectgoldy.EliefLayoutTest'
 )
 $ErrorActionPreference = 'Stop'
+if (-not $AndroidSdk) { $AndroidSdk = $env:ANDROID_SDK_ROOT }
+if (-not $AndroidSdk) { throw 'Set ANDROID_HOME or pass -AndroidSdk.' }
 if ($Serial -notmatch '^emulator-[0-9]+$') { throw 'Use a dedicated disposable emulator.' }
 if ($Label -notmatch '^[a-zA-Z0-9-]+$') { throw 'Invalid label.' }
 $taskRoot = Split-Path $PSScriptRoot -Parent

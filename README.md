@@ -11,10 +11,9 @@ Verified library revision: `af5f415db976f62f991369224cb236d272f0103a`.
 The [public build log](https://jitpack.io/com/github/Link2011-Act2/Goldy/af5f415db976f62f991369224cb236d272f0103a/build.log)
 and independent Gold/Elief R8 consumers were checked against the downloaded
 AARs, POMs, Gradle metadata and sources. Elief also passed POM-only resolution.
-See [latest publication verification](docs/publication-2026-11-07.md). These
-coordinates pin authenticated forward signer rotation, strict published-version
-binding and the improved update check dialog. The earlier [UI publication verification](docs/ui-publication.md)
-remains a historical record.
+These coordinates pin authenticated forward signer rotation, strict
+published-version binding and the improved update check dialog. See the
+[verification tools](verification/README.md) for reproducible distribution checks.
 
 In `settings.gradle.kts`:
 
@@ -154,15 +153,15 @@ UI Showcase uses offline fixtures. Live Demo reads public release metadata;
 Update Demo exercises Gold's self-update APIs only after explicit user actions
 and requires a separately prepared, correctly signed Demo release. Demo APKs
 are not JitPack artifacts. See [Goldy Demo](docs/goldy-demo.md),
-[style selection verification](docs/demo-style-selection.md), and
-[Elief/Pyrite design verification](docs/pyrite-style-review.md).
+[Demo appearance](docs/demo-appearance.md), and
+[theme integration](docs/compose-api.md#themes-strings-and-slots).
 
 ## Limits and license
 
 API26, API28, API33 and API36 passed real signed-fixture inspection and OS update tests.
 API26 verifies unchanged v2 fallback identity; it does not support signer rotation.
-API27 and other API levels have JVM signature fixtures; runtime coverage is
-recorded in [verification results](verification/rotation-2026-11-07.json).
+API27 and other API levels have JVM signature fixtures; runtime test setup is
+described in [signature verification](docs/signature-rotation.md).
 Physical devices and OEM-specific installers remain untested. Forward rotation
 requires verified platform-specific PoR and installed-data capability; OS install
 completion remains separate from preflight and handoff. Coordination is within one process.
@@ -171,8 +170,8 @@ parsing is synchronous and very wide tables need content-specific testing.
 HTML/images are not loaded and only absolute credential-free HTTP(S) links are
 delegated to the host. Host fonts and URL policy remain host responsibilities.
 
-Scheduler, Glyph Barty and BeastLocator adoption is outside this change. Their
-settings/cache adapters and application-specific restoration need testing during adoption.
+Hosts supply their settings/cache adapters and application-specific restoration
+policy. Test those integrations alongside the SDK and UI contracts.
 
 MIT License; see [LICENSE](LICENSE), [NOTICE](NOTICE), and
 [third-party licenses](docs/third-party-licenses.md).

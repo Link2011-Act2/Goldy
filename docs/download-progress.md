@@ -14,10 +14,3 @@ on returning from settings and choose Idle/Ready according to whether an APK has
 been verified/prepared. Permission grant alone must not replay an uncertain prior
 installer handoff. Failed actions use the actual action label instead of an
 ambiguous retry label. Gold download, verification and lease behavior is unchanged.
-
-Validation on 2026-11-07: Gold 129 and Elief 23 JVM tests; Debug/Release builds,
-Demo R8, Gold/Elief lint; 20 Demo UI tests on API36 at 320x640dp, fontScale1.0.
-These include the standard update icon in light/dark, permission action layout,
-unknown-size progress, narrow layout and IME accessibility. Public JVM descriptors
-from the prior af5f415 publication remain present. Publication is recorded
-separately after the pushed commit's artifacts are retrieved.

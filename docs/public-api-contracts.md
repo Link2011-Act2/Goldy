@@ -1,6 +1,6 @@
-# Public API and ownership review
+# Public API and ownership
 
-The published surface retains the Phase 2-1/2-2 parser, selector, version policies
+The published surface includes the parser, selector, version policies
 and APK verification utilities used by independent hosts. It adds the installer
 and optional Compose UI without a new routing framework. HTTP transports,
 persistence codecs, installer records and revalidation helpers are internal.
@@ -28,7 +28,7 @@ All four UpdatePolicies presets now use VersionPolicies.Common (the unchanged
 ShutUp comparator). Existing policy getters and factory signatures remain.
 Scheduler/Glyph legacy ordering changes intentionally; policy IDs invalidate
 old comparison-dependent caches while retaining ignores. See
-[the comparison and migration report](four-app-updater-comparison.md).
+[the comparison and migration report](version-policies.md).
 
 The canonical internal implementation is `ReleaseVersions.kt` /
 `compareReleaseVersions`. `ShutUpVersionsKt.compareShutUpVersions` and
@@ -36,7 +36,7 @@ The canonical internal implementation is `ReleaseVersions.kt` /
 previously compiled clients. The algorithm, app presets, public VersionPolicies
 getters and persisted policy IDs are unchanged. Elief uses Common for its default
 history channel labels, which remains identical to the NittcScheduler alias.
-See [the naming and binary compatibility review](internal-naming-review.md).
+Use `verification/verify-version-binary-compatibility.py` to check previously compiled version-policy clients.
 
 The sample and compiled host example synchronously claim operations on Main
 before launching coroutines. Updating MutableStateFlow from progress IO is safe;
@@ -52,5 +52,6 @@ HTTPS CDN redirect is allowlisted and redirects are bounded. Shared copies are
 revalidated before launch and provider open, and are read-only with a single
 temporary read grant. REQUEST_INSTALL_PACKAGES remains a host opt-in.
 
-No API26/27 runtime, physical/OEM installation, multiprocess coordination,
-automatic signer rotation or actual installation-success claim was added.
+Do not infer installation success from handoff. Multiprocess coordination and
+OEM-specific installer behavior require host testing. Platform-specific signer
+checks are described in [signature rotation](signature-rotation.md).

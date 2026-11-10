@@ -66,7 +66,7 @@ when (val update = goldy.check(CheckTrigger.Manual)) {
 
 上記の表示関数・StateFlow・Activity Result launcherと、ダウンロード済みAPKの保持はホスト側の例です。downloadが投げるApkExceptionはホストで捕捉してreasonを表示してください。Coroutineキャンセルは通常どおり上位へ伝播させてください。設定画面のlauncherについてもActivityNotFoundException等をホストで処理してください。Goldyは `Context.startActivity` を呼びません。Application Contextから起動する場合に必要なNEW_TASK等もホストが判断します。Goldyが生成するインストールIntent自体のflagはREAD_URI_PERMISSIONだけです。
 
-NITTC Scheduler / Glyph Bartyは既存のrepository、UpdatePoliciesと、対応するApkSelectionPolicies / ApkVersionBindingsに差し替えます。メタデータ・通知無視・版比較の仕組みはPhase 2-2のAPIを維持しています。
+NITTC Scheduler / Glyph Bartyは既存のrepository、UpdatePoliciesと、対応するApkSelectionPolicies / ApkVersionBindingsに差し替えます。メタデータ・通知無視・版比較にはGoldの対応するAPIを使用します。
 
 ## 公開API
 
